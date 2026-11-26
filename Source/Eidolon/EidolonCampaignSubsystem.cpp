@@ -244,6 +244,41 @@ bool UEidolonCampaignSubsystem::CompleteFirstDescentSurfaceReturn()
         CommitFirstDescentEvent({2, "mq_02", 4, EidolonFirstDescent::Steps[4]});
 }
 
+bool UEidolonCampaignSubsystem::CommitRivenConversation()
+{
+    if (!IsValidCheckpoint(State) || State->Chapter != 3 || !State->Ending.IsNone() ||
+        State->FirstDescentCursor != static_cast<int32>(EidolonFirstDescent::Steps.size()) ||
+        HasFlag(TEXT("chapter_3_riven_spoken")) ||
+        UGameplayStatics::GetCurrentLevelName(GetGameInstance()) != TEXT("AbyssFloor001"))
+    {
+        return false;
+    }
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->Flags.Add(TEXT("chapter_3_riven_spoken"));
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+bool UEidolonCampaignSubsystem::FinishSecondDay()
+{
+    if (!IsValidCheckpoint(State) || State->Chapter != 3 || !State->Ending.IsNone() ||
+        !HasFlag(TEXT("chapter_3_riven_spoken")) ||
+        UGameplayStatics::GetCurrentLevelName(GetGameInstance()) != TEXT("ValdrisPrologue"))
+    {
+        return false;
+    }
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->Flags.Add(TEXT("chapter_3_resolved"));
+    Snapshot->Chapter = 4;
+    Snapshot->ObjectiveCount = 0;
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
 FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const
 {
     return State && Chapters.IsValidIndex(State->Chapter-1) ? Chapters[State->Chapter-1] : FEidolonChapter();

@@ -63,7 +63,13 @@ void AEidolonAbyssFloorGameMode::StartPlay()
     }
 
     auto* Campaign = GetCampaign();
-    if (!Campaign || Campaign->CurrentChapter().Id != 2) return;
+    if (!Campaign) return;
+    if (Campaign->CurrentChapter().Id == 3)
+    {
+        UpdateGate(AnomalyStep);
+        return;
+    }
+    if (Campaign->CurrentChapter().Id != 2) return;
     const int32 Cursor = Campaign->GetFirstDescentCursor();
     UpdateGate(Cursor);
     auto* Player = Cast<AEidolonCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
@@ -93,6 +99,7 @@ bool AEidolonAbyssFloorGameMode::BindFloor()
     Checkpoint = FindFloorActor<ATargetPoint>(*World, TEXT("checkpoint_abyss_001"));
     Anomaly = FindFloorActor<ATargetPoint>(*World, TEXT("first_anomaly"));
     SurfaceExit = FindFloorActor<ATargetPoint>(*World, TEXT("surface_exit"));
+    Riven = FindFloorActor<ATargetPoint>(*World, TEXT("abyss_001_riven"));
     CrawlerSpawns[0] = FindFloorActor<ATargetPoint>(*World, TEXT("abyss_001_crawler_01"));
     CrawlerSpawns[1] = FindFloorActor<ATargetPoint>(*World, TEXT("abyss_001_crawler_02"));
     Gate = FindFloorActor<AStaticMeshActor>(*World, TEXT("abyss_001_combat_gate"));
@@ -191,10 +198,16 @@ void AEidolonAbyssFloorGameMode::Interact(AEidolonCharacter* Player)
 {
     auto* Campaign = GetCampaign();
     if (!bFloorBound || !Gate.IsValid() || !IsActivePlayer(Player) || !Campaign
-        || Campaign->CurrentChapter().Id != 2 || !Campaign->GetEnding().IsNone())
+        || !Campaign->GetEnding().IsNone())
     {
         return;
     }
+    if (Campaign->CurrentChapter().Id == 3)
+    {
+        InteractOnSecondDay(*Campaign, *Player);
+        return;
+    }
+    if (Campaign->CurrentChapter().Id != 2) return;
 
     switch (Campaign->GetFirstDescentCursor())
     {
@@ -235,6 +248,42 @@ void AEidolonAbyssFloorGameMode::Interact(AEidolonCharacter* Player)
     }
 }
 
+void AEidolonAbyssFloorGameMode::InteractOnSecondDay(UEidolonCampaignSubsystem& Campaign, const AEidolonCharacter& Player)
+{
+    if (Campaign.HasFlag(TEXT("chapter_3_riven_spoken")))
+    {
+        const auto* Exit = SurfaceExit.Get();
+        if (Exit && EidolonQuest::CanReachInteractionTarget(Player, *Exit, InteractionDistance) &&
+            FPackageName::DoesPackageExist(SurfaceMap))
+        {
+            UGameplayStatics::OpenLevel(this, FName(*SurfaceMap));
+        }
+        return;
+    }
+
+    const auto* Companion = Riven.Get();
+    if (!Companion)
+    {
+        FloorNotice = FloorText(TEXT("Riven's scene marker is missing."),
+                               TEXT("Il punto della scena di Riven è mancante."));
+        return;
+    }
+    if (!EidolonQuest::CanReachInteractionTarget(Player, *Companion, InteractionDistance)) return;
+    const auto Chapter = Campaign.CurrentChapter();
+    if (Chapter.Dialogue.IsValidIndex(RivenLine))
+    {
+        RivenDialogue = Chapter.Dialogue[RivenLine++];
+        return;
+    }
+    if (!Campaign.CommitRivenConversation())
+    {
+        FloorNotice = FloorText(TEXT("Progress could not be saved. Interact to retry."),
+                               TEXT("Impossibile salvare i progressi. Interagisci per riprovare."));
+        return;
+    }
+    FloorNotice.Reset();
+}
+
 void AEidolonAbyssFloorGameMode::ReloadCheckpoint()
 {
     if (auto* Campaign = GetCampaign())
@@ -251,6 +300,12 @@ FString AEidolonAbyssFloorGameMode::GetPrompt() const
 {
     if (!FloorNotice.IsEmpty()) return FloorNotice;
     const auto* Campaign = GetCampaign();
+    if (Campaign && Campaign->CurrentChapter().Id == 3)
+    {
+        return Campaign->HasFlag(TEXT("chapter_3_riven_spoken"))
+            ? FloorText(TEXT("Return to the surface."), TEXT("Torna in superficie."))
+            : FloorText(TEXT("Speak to Riven past the checkpoint."), TEXT("Parla con Riven oltre il checkpoint."));
+    }
     if (!Campaign || Campaign->CurrentChapter().Id != 2)
         return FloorText(TEXT("Start the descent at the Guild."), TEXT("Inizia la discesa dalla Gilda."));
 
@@ -274,11 +329,15 @@ FString AEidolonAbyssFloorGameMode::GetPrompt() const
 
 FString AEidolonAbyssFloorGameMode::GetNarrative() const
 {
+    if (const auto* Campaign = GetCampaign(); Campaign && Campaign->CurrentChapter().Id == 3)
+        return FloorText(TEXT("The Weight of Memories | Abyss, floor 1"),
+                         TEXT("Il peso dei ricordi | Abisso, livello 1"));
     return FloorText(TEXT("First Descent | Abyss, floor 1"), TEXT("Prima Discesa | Abisso, livello 1"));
 }
 
 FString AEidolonAbyssFloorGameMode::GetDialogue() const
 {
+    if (!RivenDialogue.IsEmpty()) return RivenDialogue;
     return bAnomalyObserved
         ? FloorText(TEXT("[The chamber warps. A muffled voice echoes briefly.]"),
                     TEXT("[La sala si deforma. Una voce indistinta risuona per un istante.]"))

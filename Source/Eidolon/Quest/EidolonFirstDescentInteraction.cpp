@@ -41,15 +41,21 @@ bool FEidolonFirstDescentInteraction::CanReachTarget(const APawn& Player, const 
                                                      int32 StepIndex, double MaxDistanceCm) const
 {
     const TWeakObjectPtr<AActor>* Registered = Targets.Find(StepIndex);
+    return Registered && Registered->Get() == &RequestedTarget
+        && EidolonQuest::CanReachInteractionTarget(Player, RequestedTarget, MaxDistanceCm);
+}
+
+bool EidolonQuest::CanReachInteractionTarget(const APawn& Player, const AActor& Target, double MaxDistanceCm)
+{
     UWorld* World = Player.GetWorld();
-    if (!Registered || Registered->Get() != &RequestedTarget || !World || World != RequestedTarget.GetWorld()
+    if (!World || World != Target.GetWorld() || !Target.HasAuthority()
         || !Player.HasAuthority() || !Player.IsPlayerControlled() || Player.IsActorBeingDestroyed()
-        || RequestedTarget.IsActorBeingDestroyed())
+        || Target.IsActorBeingDestroyed())
     {
         return false;
     }
 
-    const FVector TargetLocation = RequestedTarget.GetActorLocation();
+    const FVector TargetLocation = Target.GetActorLocation();
     if (!EidolonQuest::IsWithinInteractionRange(FVector::DistSquared(Player.GetActorLocation(), TargetLocation), MaxDistanceCm))
         return false;
 
@@ -61,5 +67,5 @@ bool FEidolonFirstDescentInteraction::CanReachTarget(const APawn& Player, const 
     FCollisionQueryParams QueryParams(SCENE_QUERY_STAT(EidolonFirstDescentInteraction), false, &Player);
     FHitResult Hit;
     return !World->LineTraceSingleByChannel(Hit, Eyes, TargetLocation, ECC_Visibility, QueryParams)
-        || Hit.GetActor() == &RequestedTarget;
+        || Hit.GetActor() == &Target;
 }

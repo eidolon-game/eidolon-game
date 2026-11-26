@@ -57,16 +57,16 @@
       "id": 3,
       "act": 1,
       "title": "Il peso dei ricordi",
-      "region": "Valdris",
-      "objective": "Investigate the Discrepancy and speak to Riven",
+      "region": "Abisso",
+      "objective": "Meet Riven in the Abyss and ask him about Noah",
       "type": "home",
       "target": 0,
       "dialogue": [
         {
-          "speaker": "Noah",
-          "text": "Fratellone! Ti ho aspettato!",
-          "speaker_en": "Noah",
-          "text_en": "Big brother! I've been waiting for you!"
+          "speaker": "Kael",
+          "text": "Quando sono tornato a casa, Noah mi ha chiamato fratellone. Io non l’avevo mai visto.",
+          "speaker_en": "Kael",
+          "text_en": "When I got home, Noah called me his big brother. I'd never seen him before."
         },
         {
           "speaker": "Riven",
@@ -76,8 +76,8 @@
         }
       ],
       "title_en": "The Weight of Memories",
-      "region_en": "Valdris",
-      "objective_it": "Indaga sulla Discrepanza e parla con Riven."
+      "region_en": "Abyss",
+      "objective_it": "Incontra Riven nell’Abisso e chiedigli di Noah."
     },
     {
       "id": 4,

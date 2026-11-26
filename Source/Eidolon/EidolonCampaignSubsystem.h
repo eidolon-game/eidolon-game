@@ -53,6 +53,8 @@ public:
     bool BeginValdrisFirstDescent();
     bool RequestFirstDescentSurfaceReturn();
     bool CompleteFirstDescentSurfaceReturn();
+    bool CommitRivenConversation();
+    bool FinishSecondDay();
     bool HasPendingFirstDescentSurfaceReturn() const { return bFirstDescentReturnRequested; }
 private:
     UPROPERTY() TObjectPtr<UEidolonCampaignSave> State;

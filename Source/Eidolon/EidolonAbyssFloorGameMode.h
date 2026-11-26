@@ -37,6 +37,7 @@ private:
     bool IsActivePlayer(const AEidolonCharacter* Player) const;
     bool CommitStep(UEidolonCampaignSubsystem& Campaign, int32 Step);
     void ArriveAtFloor(UEidolonCampaignSubsystem& Campaign, const AEidolonCharacter& Player);
+    void InteractOnSecondDay(UEidolonCampaignSubsystem& Campaign, const AEidolonCharacter& Player);
     void SpawnNextCrawler();
     void ConfirmCrawlerDefeat(AEidolonFirstDescentCrawler& Crawler);
     void UpdateGate(int32 Cursor);
@@ -46,6 +47,7 @@ private:
     TWeakObjectPtr<ATargetPoint> Checkpoint;
     TWeakObjectPtr<ATargetPoint> Anomaly;
     TWeakObjectPtr<ATargetPoint> SurfaceExit;
+    TWeakObjectPtr<ATargetPoint> Riven;
     TWeakObjectPtr<ATargetPoint> CrawlerSpawns[CrawlerCount];
     TWeakObjectPtr<AStaticMeshActor> Gate;
     UPROPERTY() TObjectPtr<AEidolonFirstDescentCrawler> ActiveCrawler;
@@ -53,6 +55,8 @@ private:
     bool bFloorBound = false;
     bool bAnomalyObserved = false;
     FString FloorNotice;
+    FString RivenDialogue;
+    int32 RivenLine = 0;
 };
 
 UCLASS()

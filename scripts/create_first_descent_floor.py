@@ -22,6 +22,7 @@ FLOOR_THICKNESS = 18
 GATE_WIDTH = 150
 GATE_HEIGHT = 240
 SECOND_CRAWLER_CELL = (8, 3)
+RIVEN_CELL = (3, 2)
 
 
 def neighbors(cell):
@@ -70,6 +71,7 @@ def read_layout():
     before_gate = visit(cells, entry, gate_edge)
     if (tuple(layout["encounter"]) not in before_gate
             or SECOND_CRAWLER_CELL not in before_gate
+            or RIVEN_CELL not in before_gate
             or tuple(layout["anomaly"]) in before_gate
             or tuple(layout["exit"]) in before_gate):
         raise ValueError("The closed gate must stand after the encounter and before the anomaly and exit.")
@@ -165,6 +167,8 @@ def build_map(unreal, layout, cells, gate):
         spawn(unreal.TargetPoint, marker, (x, y, z))
     x, y = center(SECOND_CRAWLER_CELL, size)
     spawn(unreal.TargetPoint, "abyss_001_crawler_02", (x, y, 0))
+    x, y = center(RIVEN_CELL, size)
+    spawn(unreal.TargetPoint, "abyss_001_riven", (x, y, 110))
     x, y = center(layout["entry"], size)
     spawn(unreal.PlayerStart, "abyss_001_player_start", (x, y, 110))
 

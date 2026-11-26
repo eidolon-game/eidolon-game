@@ -32,4 +32,5 @@ private:
     FString PromptOverride;
     FString Dialogue;
     int32 FarewellLine = 0;
+    bool bWarningHeard = false;
 };

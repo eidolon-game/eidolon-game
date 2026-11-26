@@ -65,3 +65,7 @@ The generators create `/Game/Eidolon/Maps/ValdrisPrologue` and `/Game/Eidolon/Ma
 | Recovery and controls | Repeat after defeat, relaunch and failed writes. Cover keyboard and controller interactions. Verify that travel and combat depend on the authored maps, and that the existing Arena still starts independently. |
 
 These maps use graybox geometry and interaction text. Character staging, final effects, world streaming and distribution of the full campaign have separate verification gates.
+
+## The Weight of Memories
+
+From the chapter 3 checkpoint after Noah's reveal, return to the Abyss entrance in Valdris. On the first floor, find the Riven anchor beyond the checkpoint and finish the conversation. Test that wrong or obscured targets leave the checkpoint unchanged. Reload after the saved dialogue and confirm it is not repeated. Use the surface exit, then acknowledge the adventurer's warning near the Guild. Confirm that the chapter 4 checkpoint keeps Noah's presence and Riven's conversation. Riven and the adventurer use interaction markers in this graybox.

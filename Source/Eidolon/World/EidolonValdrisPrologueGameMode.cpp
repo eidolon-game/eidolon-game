@@ -115,10 +115,26 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
         Dialogue.Reset();
         return;
     }
-    if (Chapter.Id != 2) return;
+    if (Chapter.Id != 2 && Chapter.Id != 3) return;
 
     const int32 Cursor = Campaign->GetFirstDescentCursor();
-    if (Cursor >= Descent && Cursor <= Return)
+    const bool bSecondDay = Chapter.Id == 3;
+    if (bSecondDay && Campaign->HasFlag(TEXT("chapter_3_riven_spoken")))
+    {
+        const auto* Guild = Anchors.Find(Registration);
+        const auto* Target = Guild ? Guild->Get() : nullptr;
+        if (!Target || !QuestInteraction.CanReachTarget(*Player, *Target, Registration, InteractionRange)) return;
+        if (!bWarningHeard)
+        {
+            Dialogue = Display(TEXT("Adventurer: Whatever happens, don't tell the Guild Master."),
+                               TEXT("Avventuriero: Qualunque cosa accada, non parlarne con il Maestro della Gilda."));
+            bWarningHeard = true;
+            return;
+        }
+        if (!Campaign->FinishSecondDay()) SaveFailure();
+        return;
+    }
+    if (bSecondDay || (Cursor >= Descent && Cursor <= Return))
     {
         const auto* Entrance = Anchors.Find(Descent);
         const auto* Target = Entrance ? Entrance->Get() : nullptr;
@@ -181,7 +197,11 @@ FString AEidolonValdrisPrologueGameMode::GetPrompt() const
     if (Chapter == 1)
         return Display(TEXT("Speak to your family."), TEXT("Parla con la tua famiglia."));
     if (Chapter == 3)
-        return Display(TEXT("Noah is home."), TEXT("Noah è a casa."));
+        return Campaign->HasFlag(TEXT("chapter_3_riven_spoken"))
+            ? Display(TEXT("Speak to the adventurer outside the Guild."), TEXT("Parla con l'avventuriero fuori dalla Gilda."))
+            : Display(TEXT("Meet Riven on the first floor of the Abyss."), TEXT("Raggiungi Riven al primo piano dell'Abisso."));
+    if (Chapter == 4)
+        return Display(TEXT("Next chapter: the hundredth floor."), TEXT("Prossimo capitolo: il centesimo livello."));
     if (Chapter != 2) return {};
 
     switch (Campaign->GetFirstDescentCursor())

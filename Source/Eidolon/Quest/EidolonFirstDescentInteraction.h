@@ -7,6 +7,12 @@
 class AActor;
 class APawn;
 
+namespace EidolonQuest
+{
+    // The owning GameMode resolves the target from its authored level.
+    bool CanReachInteractionTarget(const APawn& Player, const AActor& Target, double MaxDistanceCm);
+}
+
 // An authoritative scene adapter owns one registry for the lifetime of its world.
 // Only that adapter should bind actors from trusted scene configuration.
 class FEidolonFirstDescentInteraction

@@ -88,8 +88,3 @@ float AEidolonOssuaryTick::TakeDamage(float Amount, const FDamageEvent& Event,
 
     return Super::TakeDamage(Amount, Event, Instigator, Causer);
 }
-
-void AEidolonOssuaryTick::OnLethalDamage()
-{
-    OnDefeated.Broadcast(*this);
-}

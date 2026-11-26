@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "id": "abyss_003",
+  "legacy_id": "abyss.003",
+  "dungeon_id": "abyss",
+  "floor": 3,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Galleria degli Architravi",
+    "en": "Lintel Gallery"
+  },
+  "cell_cm": 200,
+  "height_cm": 420,
+  "footprint_cm": [
+    2800,
+    2400
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [0, 0],
+    [1, 0],
+    [2, 0],
+    [0, 1],
+    [1, 1],
+    [2, 1],
+    [1, 2],
+    [1, 3],
+    [2, 3],
+    [3, 3],
+    [4, 3],
+    [4, 4],
+    [5, 4],
+    [6, 4],
+    [7, 4],
+    [8, 4],
+    [9, 4],
+    [10, 4],
+    [4, 5],
+    [5, 5],
+    [6, 5],
+    [7, 5],
+    [8, 5],
+    [9, 5],
+    [10, 5],
+    [4, 6],
+    [5, 6],
+    [7, 6],
+    [8, 6],
+    [9, 6],
+    [10, 6],
+    [4, 7],
+    [5, 7],
+    [6, 7],
+    [7, 7],
+    [9, 7],
+    [10, 7],
+    [1, 8],
+    [2, 8],
+    [3, 8],
+    [4, 8],
+    [5, 8],
+    [6, 8],
+    [7, 8],
+    [8, 8],
+    [9, 8],
+    [10, 8],
+    [1, 9],
+    [2, 9],
+    [3, 9],
+    [4, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [10, 9],
+    [11, 9],
+    [12, 9],
+    [12, 10],
+    [12, 11],
+    [13, 11]
+  ],
+  "entry": [
+    1,
+    0
+  ],
+  "entry_yaw_deg": 90,
+  "checkpoint": [
+    1,
+    1
+  ],
+  "checkpoint_yaw_deg": 90,
+  "encounter": [
+    10,
+    6
+  ],
+  "lever": [
+    9,
+    9
+  ],
+  "exit": [
+    13,
+    11
+  ],
+  "secret": [
+    1,
+    9
+  ],
+  "blocked_piers": [
+    [6, 6],
+    [8, 7]
+  ],
+  "gate": {
+    "id": "abyss_003_lintel_gate",
+    "from_cell": [
+      10,
+      9
+    ],
+    "to_cell": [
+      11,
+      9
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": "abyss_003_lintel_encounter_committed",
+    "open_action": "abyss_003_lever"
+  },
+  "lintel_perch": {
+    "cell": [
+      11,
+      6
+    ],
+    "mouth_cell": [
+      10,
+      6
+    ],
+    "ledge_height_cm": 180,
+    "minimum_body_headroom_cm": 190,
+    "spawn_marker": "abyss_003_lintel_mantis_01",
+    "spawn_position_cm": [
+      2300,
+      1300,
+      180
+    ],
+    "spawn_yaw_deg": 180,
+    "landing_cell": [
+      9,
+      6
+    ],
+    "landing_position_cm": [
+      1900,
+      1300,
+      0
+    ],
+    "sidestep_cells": [
+      [
+        9,
+        5
+      ],
+      [
+        9,
+        7
+      ]
+    ],
+    "takeoff": "move west past the ledge edge before lowering the collision body",
+    "player_walkable": false
+  },
+  "encounter_definition": {
+    "id": "abyss_003_lintel_encounter",
+    "creature_id": "abyss_lintel_mantis",
+    "required_spawn_ids": [
+      "abyss_003_lintel_mantis_01"
+    ],
+    "activation_cell": [
+      10,
+      6
+    ],
+    "completion": "confirmed_required_defeat_and_durable_receipt",
+    "defeat_or_spawn_failure": "retry_from_checkpoint",
+    "boss": false,
+    "presentation": {
+      "it": "Una Mantide d'architrave introduce la picchiata. La sagoma cala le lame prima di fissare il punto d'impatto; lascia libere le due corsie laterali. Dopo l'atterraggio il dorso rimane esposto per il contrattacco.",
+      "en": "One Lintel Mantis introduces diving attacks. Its silhouette drops both blades before locking onto the impact point; both sidestep lanes stay clear. After landing, the exposed back offers a counterattack window."
+    }
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_002",
+      "transition": "abyss_002_lower_stair",
+      "requires_completed_floor": 2,
+      "save_required": true
+    },
+    "exit": {
+      "to_floor": "abyss_004",
+      "transition": "abyss_003_lower_stair",
+      "requires_completed_floor": 3,
+      "save_required": true
+    }
+  },
+  "optional_alcove": {
+    "id": "abyss_003_arch_niche",
+    "required": false,
+    "reward": null
+  },
+  "accessibility": {
+    "visual_telegraph_required": true,
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

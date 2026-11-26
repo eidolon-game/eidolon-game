@@ -92,3 +92,9 @@ From an authored Chapter 4 checkpoint after Riven's scene and the Guild warning,
 - Interact at the lower stair. The target is reserved for `AbyssFloor003`; the current project reports an unavailable passage until that package exists.
 
 The interactive prototype uses the shared collision mesh. The Tick GLB and scrape WAV are separate art deliverables awaiting Unreal import and integration.
+
+## Lintel Gallery encounter
+
+Generate `/Game/Eidolon/Maps/AbyssFloor003` with `scripts/create_lintel_floor.py` in the Unreal Python commandlet. Enter from the Ossuary exit after the floor 2 checkpoint, or resume from the Valdris entrance. Test early direct entry, duplicate tags, premature lever use, and replay from the saved checkpoint. The gate must stay closed until an authoritative defeat and a successful lever checkpoint.
+
+Move to the encounter marker and start the fight. Use the blades and the floor marker to anticipate the fixed dive. Compare hits, sidesteps, and wall impacts. The Mantis must clear the ledge before lowering toward the floor, use one impact per dive, and offer a longer vulnerable recovery on a miss. Verify the approach at low and high frame rates. The lower stair is reserved for floor 4.

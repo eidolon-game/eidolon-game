@@ -2,6 +2,7 @@
 
 #include "../EidolonCampaignSubsystem.h"
 #include "../EidolonCharacter.h"
+#include "../Dungeons/EidolonAbyssProgression.h"
 #include "Engine/GameInstance.h"
 #include "Engine/TargetPoint.h"
 #include "Engine/World.h"
@@ -23,7 +24,6 @@ namespace
     constexpr int32 Reveal = 6;
 
     const FString AbyssMap = TEXT("/Game/Eidolon/Maps/AbyssFloor001");
-    const FString OssuaryMap = TEXT("/Game/Eidolon/Maps/AbyssFloor002");
     const FName PrologueMap = TEXT("/Game/Eidolon/Maps/ValdrisPrologue");
 
     const TCHAR* Display(const TCHAR* English, const TCHAR* Italian)
@@ -117,8 +117,8 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
         return;
     }
     const int32 CompletedFloor = Campaign->GetAuthoredAbyssCompletedFloor();
-    const bool bOssuaryDescent = Chapter.Id == 4 && CompletedFloor >= 1 && CompletedFloor <= 2;
-    if (Chapter.Id != 2 && Chapter.Id != 3 && !bOssuaryDescent) return;
+    const bool bAuthoredDescent = Chapter.Id == 4 && CompletedFloor >= 1;
+    if (Chapter.Id != 2 && Chapter.Id != 3 && !bAuthoredDescent) return;
 
     const int32 Cursor = Campaign->GetFirstDescentCursor();
     const bool bSecondDay = Chapter.Id == 3;
@@ -137,7 +137,7 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
         if (!Campaign->FinishSecondDay()) SaveFailure();
         return;
     }
-    if (bOssuaryDescent || bSecondDay || (Cursor >= Descent && Cursor <= Return))
+    if (bAuthoredDescent || bSecondDay || (Cursor >= Descent && Cursor <= Return))
     {
         const auto* Entrance = Anchors.Find(Descent);
         const auto* Target = Entrance ? Entrance->Get() : nullptr;
@@ -148,7 +148,14 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
             if (!Campaign->CompleteFirstDescentSurfaceReturn()) SaveFailure();
             return;
         }
-        const FString& Destination = bOssuaryDescent ? OssuaryMap : AbyssMap;
+        FString Destination = AbyssMap;
+        if (bAuthoredDescent)
+        {
+            const int32 NextFloor = FMath::Min(CompletedFloor + 1, EidolonAbyss::GuardianFloor);
+            Destination = FString::Printf(TEXT("/Game/Eidolon/Maps/AbyssFloor%03d"), NextFloor);
+            if (CompletedFloor > 1 && !FPackageName::DoesPackageExist(Destination))
+                Destination = FString::Printf(TEXT("/Game/Eidolon/Maps/AbyssFloor%03d"), CompletedFloor);
+        }
         if (!FPackageName::DoesPackageExist(Destination))
         {
             PromptOverride = Display(TEXT("The route to the Abyss is unavailable."),
@@ -207,7 +214,7 @@ FString AEidolonValdrisPrologueGameMode::GetPrompt() const
     if (Chapter == 4)
     {
         const int32 CompletedFloor = Campaign->GetAuthoredAbyssCompletedFloor();
-        if (CompletedFloor >= 1 && CompletedFloor <= 2)
+        if (CompletedFloor >= 1)
             return Display(TEXT("Continue the descent at the Abyss entrance."),
                            TEXT("Prosegui la discesa dall'ingresso dell'Abisso."));
         return Display(TEXT("Next chapter: the hundredth floor."), TEXT("Prossimo capitolo: il centesimo livello."));

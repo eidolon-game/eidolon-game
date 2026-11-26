@@ -4,9 +4,6 @@
 #include "EidolonOssuaryTickRules.h"
 #include "EidolonOssuaryTick.generated.h"
 
-class AEidolonOssuaryTick;
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnOssuaryTickDefeated, AEidolonOssuaryTick&);
-
 UCLASS()
 class EIDOLON_API AEidolonOssuaryTick : public AEidolonArenaEnemy
 {
@@ -18,11 +15,6 @@ public:
     void Tick(float DeltaSeconds) override;
     float TakeDamage(float Amount, const FDamageEvent& Event,
                      AController* Instigator, AActor* Causer) override;
-
-    FOnOssuaryTickDefeated OnDefeated;
-
-protected:
-    void OnLethalDamage() override;
 
 private:
     EidolonOssuaryTick::Attack Attack;

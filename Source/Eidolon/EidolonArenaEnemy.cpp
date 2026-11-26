@@ -76,6 +76,7 @@ float AEidolonArenaEnemy::TakeDamage(float Amount, const FDamageEvent& Event, AC
     if (Health <= 0.f)
     {
         OnLethalDamage();
+        OnEncounterDefeated.Broadcast(*this);
         Destroy();
     }
     return Applied;

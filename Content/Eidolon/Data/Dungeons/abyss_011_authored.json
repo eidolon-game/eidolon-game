@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "id": "abyss_011",
+  "legacy_id": "abyss.011",
+  "dungeon_id": "abyss",
+  "floor": 11,
+  "family": "buried_forest",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Soglia della Foresta Sepolta",
+    "en": "Buried Forest Threshold"
+  },
+  "cell_cm": 200,
+  "height_cm": 500,
+  "footprint_cm": [
+    3800,
+    3000
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [1, 1],
+    [2, 1],
+    [3, 1],
+    [4, 1],
+    [1, 2],
+    [2, 2],
+    [3, 2],
+    [4, 2],
+    [1, 3],
+    [2, 3],
+    [3, 3],
+    [4, 3],
+    [3, 4],
+    [3, 5],
+    [4, 5],
+    [5, 5],
+    [6, 5],
+    [7, 5],
+    [8, 5],
+    [9, 5],
+    [10, 5],
+    [11, 5],
+    [12, 5],
+    [6, 6],
+    [12, 6],
+    [15, 6],
+    [16, 6],
+    [17, 6],
+    [18, 6],
+    [19, 6],
+    [6, 7],
+    [7, 7],
+    [8, 7],
+    [9, 7],
+    [10, 7],
+    [11, 7],
+    [12, 7],
+    [13, 7],
+    [15, 7],
+    [16, 7],
+    [17, 7],
+    [18, 7],
+    [19, 7],
+    [6, 8],
+    [7, 8],
+    [8, 8],
+    [9, 8],
+    [10, 8],
+    [11, 8],
+    [12, 8],
+    [13, 8],
+    [14, 8],
+    [15, 8],
+    [16, 8],
+    [17, 8],
+    [18, 8],
+    [19, 8],
+    [15, 9],
+    [16, 9],
+    [17, 9],
+    [18, 9],
+    [19, 9],
+    [15, 10],
+    [16, 10],
+    [17, 10],
+    [18, 10],
+    [19, 10],
+    [15, 11],
+    [16, 11],
+    [17, 11],
+    [18, 11],
+    [19, 11],
+    [17, 12],
+    [17, 13],
+    [17, 14],
+    [18, 14]
+  ],
+  "entry": [
+    2,
+    1
+  ],
+  "entry_yaw_deg": 90,
+  "checkpoint": [
+    13,
+    8
+  ],
+  "checkpoint_yaw_deg": 0,
+  "encounter": [
+    15,
+    8
+  ],
+  "exit": [
+    18,
+    14
+  ],
+  "stone_vestibule": {
+    "minimum": [
+      1,
+      0
+    ],
+    "maximum": [
+      4,
+      3
+    ],
+    "low_ceiling_cm": 285
+  },
+  "routes": {
+    "fork": [
+      6,
+      5
+    ],
+    "rejoin": [
+      12,
+      7
+    ],
+    "wet_cells": [
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        7
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        9,
+        7
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        12,
+        8
+      ]
+    ],
+    "dry_cells": [
+      [
+        7,
+        5
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        9,
+        5
+      ],
+      [
+        10,
+        5
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        12,
+        5
+      ],
+      [
+        12,
+        6
+      ]
+    ],
+    "marsh_visual": {
+      "id": "abyss_011_marsh_visual",
+      "minimum": [
+        7,
+        7
+      ],
+      "maximum": [
+        11,
+        8
+      ],
+      "height_cm": 8
+    },
+    "dry_rootwalk": {
+      "height_cm": 18,
+      "width_cm": 155
+    }
+  },
+  "forest": {
+    "root_arch": {
+      "cell": [
+        14,
+        8
+      ],
+      "clear_width_cm": 160,
+      "clear_height_cm": 270
+    },
+    "arena": {
+      "minimum": [
+        15,
+        6
+      ],
+      "maximum": [
+        19,
+        11
+      ]
+    },
+    "root_masses": [
+      {
+        "position_cm": [
+          3900,
+          1380,
+          52
+        ],
+        "dimensions_cm": [
+          115,
+          130,
+          104
+        ]
+      },
+      {
+        "position_cm": [
+          3880,
+          2250,
+          78
+        ],
+        "dimensions_cm": [
+          155,
+          145,
+          156
+        ]
+      },
+      {
+        "position_cm": [
+          3150,
+          2270,
+          58
+        ],
+        "dimensions_cm": [
+          180,
+          140,
+          116
+        ]
+      }
+    ]
+  },
+  "encounter_definition": {
+    "id": "abyss_011_threshold_encounter",
+    "creature_id": "forest_stalker",
+    "spawn_marker": "abyss_011_forest_stalker_01",
+    "spawn_cell": [
+      17,
+      9
+    ],
+    "spawn_yaw_deg": -150,
+    "trigger": "confirmed_interaction_beyond_root_arch",
+    "completion": "confirmed_stalker_defeat_and_durable_receipt"
+  },
+  "gate": {
+    "id": "abyss_011_forest_gate",
+    "from_cell": [
+      17,
+      11
+    ],
+    "to_cell": [
+      17,
+      12
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": "confirmed_forest_stalker_defeat_saved"
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_010",
+      "transition": "abyss_010_lower_stair",
+      "requires_completed_floor": 10
+    },
+    "exit": {
+      "to_floor": "abyss_012",
+      "transition": "abyss_011_lower_stair",
+      "requires_completed_floor": 11
+    }
+  },
+  "accessibility": {
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false,
+    "optional_dry_route": true
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

@@ -44,6 +44,12 @@ No binary map, character mesh, animation or console SDK is included.
 
 ## First Descent across two native maps
 
+The campaign generator creates Valdris and all available interactive Abyss floors in a single editor session. Substitute absolute paths and use a fresh checkout when regenerating packages after layout edits.
+
+```text
+UnrealEditor-Cmd /path/to/Eidolon.uproject -run=pythonscript -script=/path/to/scripts/create_authored_campaign_maps.py -unattended -nop4
+```
+
 Build `EidolonEditor` with UE 5.6. In a fresh checkout, run each generator in the editor Python commandlet, substituting absolute project and script paths.
 
 ```text
@@ -161,4 +167,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor010` with `scripts/create_rootclaw_floor.
 - Start Rootclaw from the arena marker and identify its three lanes. Test each side of the sweep, the narrow thrust, and counterattack timing on controller and keyboard. Keep a readable escape direction and test the camera against both outer walls.
 - Cross half health during windup, contact, and recovery. Rootclaw should finish the current move before announcing a single phase transition. Check a blocked adjacent lane and a lethal hit that crosses the threshold before moving. The lateral step should cause no damage.
 - Suppress the boss spawn or a lane binding, then retry. Only loss of the registered Rootclaw should advance the boss receipt. Simulate a failed save after defeat and retry at the arena marker. Reload from a successful receipt and confirm the exit stays open and Rootclaw does not return.
-- The stair targets the future floor 11 interactive package. The mesh and theme are previews awaiting rig, import, and runtime testing.
+- The stair opens the Soglia della Foresta Sepolta once `AbyssFloor011` is generated. The mesh and theme are previews awaiting rig, import, and runtime testing.
+
+## Buried Forest Threshold
+
+Generate `/Game/Eidolon/Maps/AbyssFloor011` with `scripts/create_buried_forest_entry.py` or the campaign generator. Enter through the stair after Rootclaw's defeat has been saved. Try both the raised dry path and the shallow marsh, then pass under the root arch to reach the encounter.
+
+- Test the Stalker's line of sight from the approach and behind roots. Break line of sight before the attack locks, then repeat after the pounce direction locks. Check the ground warning, one impact per attack, the longer recovery on a miss, and the return to the ambush after losing sight of the player.
+- Block the spawn, retry, then defeat the registered Stalker. Test a failed save and retry before advancing. After a successful save, reload and confirm the gate stays open and the Stalker stays defeated. The exit targets the future interactive floor 12.
+- Check route clearance, ledges, sightlines, and the arch with mouse and keyboard and with a controller. The map and enemy use placeholder art. The static Root Stalker and Root Arch meshes and the ambience preview require Unreal import and runtime integration.

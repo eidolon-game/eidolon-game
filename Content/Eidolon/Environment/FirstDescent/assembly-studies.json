@@ -1,0 +1,501 @@
+{
+  "schema_version": 1,
+  "status": "graybox_cutaway",
+  "units": "cm",
+  "shell": [
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -300,
+        -300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -300,
+        -100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -300,
+        100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -300,
+        300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -100,
+        -300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -100,
+        -100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -100,
+        100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        -100,
+        300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        100,
+        -300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        100,
+        -100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        100,
+        100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        100,
+        300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        300,
+        -300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        300,
+        -100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        300,
+        100,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_floor_stone",
+      "position_cm": [
+        300,
+        300,
+        -18
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_wall_stone",
+      "position_cm": [
+        -200,
+        375,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_wall_stone",
+      "position_cm": [
+        200,
+        375,
+        0
+      ],
+      "yaw_deg": 0
+    },
+    {
+      "asset_id": "env_asset_wall_stone",
+      "position_cm": [
+        -375,
+        -200,
+        0
+      ],
+      "yaw_deg": 90
+    },
+    {
+      "asset_id": "env_asset_wall_stone",
+      "position_cm": [
+        -375,
+        200,
+        0
+      ],
+      "yaw_deg": 90
+    },
+    {
+      "asset_id": "env_asset_door_frame",
+      "position_cm": [
+        0,
+        -385,
+        0
+      ],
+      "yaw_deg": 0
+    }
+  ],
+  "studies": [
+    {
+      "id": "env_study_home_before",
+      "poi": "valdris_home",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_table_oak",
+          "position_cm": [
+            0,
+            0,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            -85,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            85,
+            0
+          ],
+          "yaw_deg": 180
+        },
+        {
+          "asset_id": "env_asset_storage_crate",
+          "position_cm": [
+            -280,
+            280,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_home_present",
+      "poi": "valdris_home",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_table_oak",
+          "position_cm": [
+            0,
+            0,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            -85,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            85,
+            0
+          ],
+          "yaw_deg": 180
+        },
+        {
+          "asset_id": "env_asset_bed_child",
+          "position_cm": [
+            -230,
+            250,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_toy_wood",
+          "position_cm": [
+            -230,
+            170,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_home_erased",
+      "poi": "valdris_home",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_table_oak",
+          "position_cm": [
+            0,
+            0,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            -85,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            85,
+            0
+          ],
+          "yaw_deg": 180
+        },
+        {
+          "asset_id": "env_asset_storage_crate",
+          "position_cm": [
+            -280,
+            280,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_forge",
+      "poi": "valdris_forge",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_forge_anvil",
+          "position_cm": [
+            0,
+            0,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_table_oak",
+          "position_cm": [
+            -260,
+            270,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_storage_crate",
+          "position_cm": [
+            260,
+            270,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_guild",
+      "poi": "valdris_guild",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_table_oak",
+          "position_cm": [
+            0,
+            200,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_chair_oak",
+          "position_cm": [
+            0,
+            290,
+            0
+          ],
+          "yaw_deg": 180
+        },
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            -280,
+            150,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            280,
+            150,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_dormitory",
+      "poi": "valdris_dormitory",
+      "floor_id": null,
+      "placements": [
+        {
+          "asset_id": "env_asset_dorm_bunk",
+          "position_cm": [
+            -270,
+            190,
+            0
+          ],
+          "yaw_deg": 90
+        },
+        {
+          "asset_id": "env_asset_dorm_bunk",
+          "position_cm": [
+            270,
+            190,
+            0
+          ],
+          "yaw_deg": 90
+        },
+        {
+          "asset_id": "env_asset_storage_crate",
+          "position_cm": [
+            -270,
+            -10,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_storage_crate",
+          "position_cm": [
+            270,
+            -10,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    },
+    {
+      "id": "env_study_abyss_trial",
+      "poi": "valdris_abyss",
+      "floor_id": "abyss_001",
+      "placements": [
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            -270,
+            250,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            270,
+            250,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            -270,
+            -250,
+            0
+          ],
+          "yaw_deg": 0
+        },
+        {
+          "asset_id": "env_asset_catacomb_pier",
+          "position_cm": [
+            270,
+            -250,
+            0
+          ],
+          "yaw_deg": 0
+        }
+      ]
+    }
+  ],
+  "variant_contract": "Save and Quest select state; never infer from chapter alone. Cutaways are not playable levels. Shared shell intentionally open. No automatic registry approval.",
+  "source_manifest_sha256": "c72f7590fc58c67fbf021af649e9a9b6bb42d5af764f3c0d627eafd88eb6d13a"
+}

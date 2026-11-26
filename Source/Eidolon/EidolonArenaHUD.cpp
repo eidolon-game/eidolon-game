@@ -26,6 +26,7 @@ void AEidolonArenaHUD::DrawHUD()
     if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>())
     {
         DrawText(GM->GetNarrative(), FLinearColor::White,30,145);
+        DrawText(GM->GetDialogue(), FLinearColor::White,30,320);
         DrawText(GM->GetPrompt(), FLinearColor::Yellow,30,205);
     }
     if (auto* GI = GetWorld()->GetGameInstance())
@@ -34,6 +35,7 @@ void AEidolonArenaHUD::DrawHUD()
             const auto Chapter = C->CurrentChapter();
             DrawText(Chapter.Objective, FLinearColor::White,30,170);
             DrawText(FString::Printf(TEXT("Rank %s | Level %d | Objective %d/%d"), *C->GetRank().ToString(), C->GetLevel(), C->GetObjectiveCount(), Chapter.Target), FLinearColor::White,30,235);
+            if (Chapter.Id == 6 || Chapter.Id == 20) DrawText(TEXT("M / R3: optional memory objective"), FLinearColor::Yellow,30,350);
             if (Chapter.Id == 4 || Chapter.Id == 23)
                 DrawText(FString::Printf(TEXT("Floor %d/100"), C->GetFloor(Chapter.Id == 23)), FLinearColor::White,30,260);
         }

@@ -15,7 +15,7 @@ bool UEidolonCombatComponent::Attack(bool bHeavy)
 }
 bool UEidolonCombatComponent::StartAttack(const FAttack& A,float Reach,float Radius)
 {
-    if(!GetWorld() || !GetOwner() || !FMath::IsFinite(Reach) || !FMath::IsFinite(Radius) || Reach<=0 || Radius<=0) return false;
+    if(bPending || !GetWorld() || !GetOwner() || !FMath::IsFinite(Reach) || !FMath::IsFinite(Radius) || Reach<=0 || Radius<=0 || Radius>Reach) return false;
     const float Now=GetWorld()->GetTimeSeconds();
     if(!State.BeginAttack(A,Now)) return false;
     ArmAttack(A,Reach,Radius,Now); return true;
@@ -23,7 +23,7 @@ bool UEidolonCombatComponent::StartAttack(const FAttack& A,float Reach,float Rad
 void UEidolonCombatComponent::ArmAttack(const FAttack& A,float Reach,float Radius,float Now)
 {
     Pending=A; AttackReach=Reach; AttackRadius=Radius;
-    ActiveStart=Now+A.Windup; ActiveEnd=ActiveStart+A.Active; LastSample=Now;
+    ActiveStart=Now+A.Windup; ActiveEnd=ActiveStart+A.Active;
     HitActors.Reset(); bPending=true;
     OnTelegraph.Broadcast(A.Windup,Reach);
 }
@@ -68,7 +68,6 @@ void UEidolonCombatComponent::TickComponent(float Delta,ELevelTick TickType,FAct
     if(!bPending) return;
     if(Now<State.StaggerUntil) { bPending=false; return; }
     if(Now>=ActiveStart && Now<ActiveEnd) SampleHits();
-    LastSample=Now;
     if(Now>=ActiveEnd) bPending=false;
 }
 void UEidolonCombatComponent::SampleHits()
@@ -102,11 +101,33 @@ void UEidolonCombatComponent::ReceiveAttack(const FAttack& A,AActor* Source)
     const FVector Direction=(Source->GetActorLocation()-GetOwner()->GetActorLocation()).GetSafeNormal2D();
     const bool Front=FVector::DotProduct(GetOwner()->GetActorForwardVector(),Direction)>=.5f;
     const bool Alive=State.IsAlive();
+    SyncEncounter();
+    if(!Encounter.CanTakeHealthDamage()) return;
     const auto Result=State.Receive(A,Now,Front);
+    SyncEncounter();
     if(Now<State.StaggerUntil || !State.IsAlive()) bPending=false;
     if(Result==EOutcome::Parried)
         if(auto* Other=Source->FindComponentByClass<UEidolonCombatComponent>())
         { Other->bPending=false; Other->State.StaggerUntil=FMath::Max(Other->State.StaggerUntil,Now+.5f); }
     if(Result!=EOutcome::Ignored) OnImpact.Broadcast(Source,static_cast<int32>(Result));
     if(Alive && !State.IsAlive()) OnDeath.Broadcast();
+}
+
+void UEidolonCombatComponent::SyncEncounter()
+{
+    Encounter.bCustodian=bCustodian;
+    Encounter.HealthFraction=State.Health/State.MaxHealth;
+}
+bool UEidolonCombatComponent::BreakCustodianAnchor(int32 Index)
+{
+    SyncEncounter();
+    return Encounter.BreakAnchor(Index);
+}
+bool UEidolonCombatComponent::AttackEnemy(AActor* Target)
+{
+    SyncEncounter();
+    if(!State.IsAlive()) return false;
+    const auto P=EnemyAttack(Encounter.Phase());
+    if(!IsInRange(Target,P.Reach)) return false;
+    return StartAttack(P.Attack,P.Reach,P.Radius);
 }

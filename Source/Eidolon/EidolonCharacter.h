@@ -16,6 +16,11 @@ class EIDOLON_API AEidolonCharacter : public ACharacter
     GENERATED_BODY()
 public:
     AEidolonCharacter();
+    virtual void Tick(float DeltaSeconds) override;
+    virtual float TakeDamage(float Amount, const FDamageEvent& Event, AController* Instigator, AActor* Causer) override;
+    bool IsDefeated() const { return Health <= 0.f; }
+    float GetHealthFraction() const { return Health / 100.f; }
+    float GetStaminaFraction() const { return Stamina / 100.f; }
     virtual void PawnClientRestart() override;
     virtual void UnPossessed() override;
 protected:
@@ -40,6 +45,24 @@ private:
     UPROPERTY(Transient) TObjectPtr<UInputAction> StickPitchAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> JumpAction;
     UPROPERTY(Transient) TObjectPtr<UInputAction> SprintAction;
+    UPROPERTY() TObjectPtr<class UStaticMeshComponent> PrototypeBody;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> LightAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> HeavyAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> DodgeAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> BlockAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> RestartAction;
+    float Health = 100.f;
+    float Stamina = 100.f;
+    float AttackCooldown = 0.f;
+    float InvulnerableTime = 0.f;
+    bool bBlocking = false;
+    void Attack(float Damage, float Cost, float Cooldown);
+    void LightAttack();
+    void HeavyAttack();
+    void Dodge();
+    void StartBlock();
+    void EndBlock();
+    void RestartArena();
     void BuildInputMapping();
     void RemoveInputMapping();
     void MoveForward(const FInputActionValue& Value);

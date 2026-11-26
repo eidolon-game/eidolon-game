@@ -1,0 +1,1595 @@
+{
+  "schema_version": 1,
+  "quests": [
+    {
+      "id": "mq_01",
+      "chapter": 1,
+      "act": 1,
+      "category": "main",
+      "title": {
+        "it": "La città senza orizzonte",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Explore Valdris and meet the Veyr family"
+      },
+      "npcs": [
+        "darius",
+        "elara"
+      ],
+      "prerequisites": [],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "meet_family",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_01_line_1",
+          "speaker": "darius",
+          "it": "Diciannove anni, Kael. La fucina sarà qui quando tornerai.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_01_line_2",
+          "speaker": "elara",
+          "it": "Promettimi che tornerai a casa.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_1_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_02",
+      "chapter": 2,
+      "act": 1,
+      "category": "main",
+      "title": {
+        "it": "La prima discesa",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Register at the Guild, defeat the first monsters, return after the dormitory night"
+      },
+      "npcs": [
+        "aldren",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_01"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "guild_register",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "abyss_floor_1",
+          "required": 1
+        },
+        {
+          "id": "step_3",
+          "event": "tutorial_monster_defeated",
+          "required": 1
+        },
+        {
+          "id": "step_4",
+          "event": "first_anomaly",
+          "required": 1
+        },
+        {
+          "id": "step_5",
+          "event": "surface_return",
+          "required": 1
+        },
+        {
+          "id": "step_6",
+          "event": "dormitory_night",
+          "required": 1
+        },
+        {
+          "id": "step_7",
+          "event": "noah_reveal",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_02_line_1",
+          "speaker": "aldren",
+          "it": "L'Abisso custodisce ciò che non deve raggiungere Valdris.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_02_line_2",
+          "speaker": "kael",
+          "it": "Quella voce... che cosa è successo?",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_2_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_03",
+      "chapter": 3,
+      "act": 1,
+      "category": "main",
+      "title": {
+        "it": "Il peso dei ricordi",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet Noah, investigate the discrepancy and speak to Riven"
+      },
+      "npcs": [
+        "noah",
+        "riven"
+      ],
+      "prerequisites": [
+        "mq_02"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "riven_conversation",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "companion_formation",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_03_line_1",
+          "speaker": "noah",
+          "it": "Fratellone! Ti ho aspettato!",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_03_line_2",
+          "speaker": "riven",
+          "it": "Ricordo il giorno in cui è nato. Forse hai bisogno di riposare.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_3_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_04",
+      "chapter": 4,
+      "act": 2,
+      "category": "main",
+      "title": {
+        "it": "Il centesimo livello",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Reach floor 100 and defeat the Custode; receive the Sigillo dell'Egida"
+      },
+      "npcs": [
+        "custode",
+        "aldren"
+      ],
+      "prerequisites": [
+        "mq_03"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "abyss_floor_100",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "guardian_defeated",
+          "required": 1
+        },
+        {
+          "id": "step_3",
+          "event": "aegis_sigil_received",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_04_line_1",
+          "speaker": "custode",
+          "it": "Ricorda.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_04_line_2",
+          "speaker": "aldren",
+          "it": "L'Abisso è una nostra creazione. Ora puoi oltrepassare le mura.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_4_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_05",
+      "chapter": 5,
+      "act": 3,
+      "category": "main",
+      "title": {
+        "it": "Il territorio dei Giganti",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Discover monsters emerging from a defeated Giant"
+      },
+      "npcs": [
+        "kael",
+        "avventuriero"
+      ],
+      "prerequisites": [
+        "mq_04"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "giant_defeated",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "monster_capture_witnessed",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_05_line_1",
+          "speaker": "kael",
+          "it": "Questi mostri provengono dal Gigante.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_05_line_2",
+          "speaker": "avventuriero",
+          "it": "Lascia fare a noi. Li porteremo all'Abisso.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_5_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_06",
+      "chapter": 6,
+      "act": 3,
+      "category": "main",
+      "title": {
+        "it": "La famiglia dimenticata",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet Edran and recover his diary"
+      },
+      "npcs": [
+        "edran"
+      ],
+      "prerequisites": [
+        "mq_05"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "edran_conversation",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "edran_diary_received",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_06_line_1",
+          "speaker": "edran",
+          "it": "Una moglie, una figlia. Non ricordavo nessuna delle due.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_06_line_2",
+          "speaker": "edran",
+          "it": "Chiamiamo questo fenomeno la Discrepanza. Prendi il mio diario.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_6_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_07",
+      "chapter": 7,
+      "act": 3,
+      "category": "main",
+      "title": {
+        "it": "La seconda cinta muraria",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Defeat 100 Giants and receive the Sigillo dell'Orizzonte"
+      },
+      "npcs": [
+        "lucien",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_06"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "hundred_giants_verified",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "horizon_sigil_received",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_07_line_1",
+          "speaker": "lucien",
+          "it": "Valdris non è l'unica città. Oltre questa cinta vivono i Titani.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_07_line_2",
+          "speaker": "kael",
+          "it": "Quante altre cose ci avete nascosto?",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_7_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_08",
+      "chapter": 8,
+      "act": 4,
+      "category": "main",
+      "title": {
+        "it": "Aetheryon",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Discover the seven cities and the territory of the Titans"
+      },
+      "npcs": [
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_07"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "aetheryon_discovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_08_line_1",
+          "speaker": "kael",
+          "it": "Ignareth, Thalassar, Nordheim, Solkar, Elyndor, Aureth... un mondo intero.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_08_line_2",
+          "speaker": "kael",
+          "it": "E tutti vivono dietro le mura.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_8_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_09",
+      "chapter": 9,
+      "act": 4,
+      "category": "main",
+      "title": {
+        "it": "Il ciclo dei mostri",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Defeat a Titan and its emerging Giants"
+      },
+      "npcs": [
+        "avventuriero",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_08"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "titan_defeated",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "emerging_giants_resolved",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_09_line_1",
+          "speaker": "avventuriero",
+          "it": "Un Titano abbattuto non significa che la battaglia sia finita.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_09_line_2",
+          "speaker": "kael",
+          "it": "I Giganti emergono dal suo corpo.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_9_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_10",
+      "chapter": 10,
+      "act": 4,
+      "category": "main",
+      "title": {
+        "it": "La prima città caduta",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Rescue the survivor; witness Vareth vanish"
+      },
+      "npcs": [
+        "bambina",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_09"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "vareth_survivor_rescued",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "vareth_erasure_witnessed",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_10_line_1",
+          "speaker": "bambina",
+          "it": "Mi aiuterai a ritrovare i miei genitori?",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_10_line_2",
+          "speaker": "kael",
+          "it": "Vareth... non compare più nemmeno sulle mappe.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_10_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_11",
+      "chapter": 11,
+      "act": 5,
+      "category": "main",
+      "title": {
+        "it": "La caduta dal cielo",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Witness a Titan falling through the celestial fracture"
+      },
+      "npcs": [
+        "kael",
+        "ricercatore"
+      ],
+      "prerequisites": [
+        "mq_10"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "celestial_fracture_witnessed",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_11_line_1",
+          "speaker": "kael",
+          "it": "Quelle figure, oltre la frattura...",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_11_line_2",
+          "speaker": "ricercatore",
+          "it": "Il Consiglio ci ha ordinato di non parlarne.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_11_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_12",
+      "chapter": 12,
+      "act": 5,
+      "category": "main",
+      "title": {
+        "it": "Il Concilio Celeste",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Investigate the seven ancient gods"
+      },
+      "npcs": [
+        "iris",
+        "selene"
+      ],
+      "prerequisites": [
+        "mq_11"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "seven_gods_researched",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_12_line_1",
+          "speaker": "iris",
+          "it": "Sette divinità. I loro nomi sono stati rimossi dalla nostra storia.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_12_line_2",
+          "speaker": "selene",
+          "it": "Empyrea. Il regno oltre il firmamento.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_12_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_13",
+      "chapter": 13,
+      "act": 5,
+      "category": "main",
+      "title": {
+        "it": "I sette traditori",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Infiltrate the archives with Selene and Iris"
+      },
+      "npcs": [
+        "selene",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_12"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "founders_archive_read",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_13_line_1",
+          "speaker": "selene",
+          "it": "Guarda questi ritratti. Hanno tremila anni.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_13_line_2",
+          "speaker": "kael",
+          "it": "Aldren e Lucien. Sono ancora vivi.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_13_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_14",
+      "chapter": 14,
+      "act": 6,
+      "category": "main",
+      "title": {
+        "it": "La vera origine della Gilda",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Discover the theft of the Cuore dell'Eternità"
+      },
+      "npcs": [
+        "archivio",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_13"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "heart_theft_discovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_14_line_1",
+          "speaker": "archivio",
+          "it": "Sette eroi sottrassero il Cuore dell'Eternità alle divinità.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_14_line_2",
+          "speaker": "kael",
+          "it": "La Gilda ci ha protetti. Ma a quale prezzo?",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_14_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_15",
+      "chapter": 15,
+      "act": 6,
+      "category": "main",
+      "title": {
+        "it": "Il prezzo della sopravvivenza",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Learn the nature of the Eidolon and the Discrepancy"
+      },
+      "npcs": [
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_14"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "eidolon_truth_discovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_15_line_1",
+          "speaker": "kael",
+          "it": "Il Cuore modifica la realtà. Gli Eidolon ricordano ciò che viene perduto.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_15_line_2",
+          "speaker": "kael",
+          "it": "È successo anche a me.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_15_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_16",
+      "chapter": 16,
+      "act": 6,
+      "category": "main",
+      "title": {
+        "it": "Il fratello impossibile",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Discover Noah's origin and decide to protect him"
+      },
+      "npcs": [
+        "noah",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_15"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "noah_origin_discovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_16_line_1",
+          "speaker": "noah",
+          "it": "Quando torni, mi racconti un'altra avventura?",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_16_line_2",
+          "speaker": "kael",
+          "it": "Sei mio fratello. Nessuno potrà negarlo.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_16_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_17",
+      "chapter": 17,
+      "act": 7,
+      "category": "main",
+      "title": {
+        "it": "La Gilda si divide",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet the three factions and face companion loyalties"
+      },
+      "npcs": [
+        "riven",
+        "selene"
+      ],
+      "prerequisites": [
+        "mq_16"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "faction_division_witnessed",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_17_line_1",
+          "speaker": "riven",
+          "it": "Senza l'Egida saremmo tutti morti.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_17_line_2",
+          "speaker": "selene",
+          "it": "Deve esserci un'altra strada.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_17_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_18",
+      "chapter": 18,
+      "act": 7,
+      "category": "main",
+      "title": {
+        "it": "Il primo dio",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet Nhalor and learn the nature of the Titans"
+      },
+      "npcs": [
+        "nhalor",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_17"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "nhalor_revelation",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_18_line_1",
+          "speaker": "nhalor",
+          "it": "I Titani cercano l'energia del Cuore. Non tutti gli dei vogliono la vostra fine.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_18_line_2",
+          "speaker": "kael",
+          "it": "Allora questa guerra si alimenta da sola.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_18_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_19",
+      "chapter": 19,
+      "act": 7,
+      "category": "main",
+      "title": {
+        "it": "Il ritorno dei dimenticati",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Find the survivor of Vareth and learn of the Oblio"
+      },
+      "npcs": [
+        "bambina",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_18"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "vareth_survivor_reunited",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_19_line_1",
+          "speaker": "bambina",
+          "it": "Ti ricordi di me? Mi sono svegliata in un mondo senza sole.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_19_line_2",
+          "speaker": "kael",
+          "it": "L'Oblio. Le persone cancellate sono ancora vive.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_19_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_20",
+      "chapter": 20,
+      "act": 8,
+      "category": "main",
+      "title": {
+        "it": "L'Oblio",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Cross the fracture and explore erased realities"
+      },
+      "npcs": [
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_19"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "oblivion_entered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_20_line_1",
+          "speaker": "kael",
+          "it": "Questa città non appartiene al nostro mondo. Eppure è reale.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_20_line_2",
+          "speaker": "kael",
+          "it": "Devo aiutare chi è stato dimenticato.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_20_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_21",
+      "chapter": 21,
+      "act": 8,
+      "category": "main",
+      "title": {
+        "it": "La famiglia che avrebbe dovuto avere",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet the alternate Veyr family"
+      },
+      "npcs": [
+        "elara",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_20"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "alternate_family_met",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_21_line_1",
+          "speaker": "elara",
+          "it": "Kael? Ti credevo morto.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_21_line_2",
+          "speaker": "kael",
+          "it": "Non esiste una realtà che valga meno di un'altra.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_21_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_22",
+      "chapter": 22,
+      "act": 8,
+      "category": "main",
+      "title": {
+        "it": "La scomparsa di Noah",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Find Noah after the world forgets him"
+      },
+      "npcs": [
+        "noah",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_21"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "noah_erasure_witnessed",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "noah_found_in_oblivion",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_22_line_1",
+          "speaker": "noah",
+          "it": "Fratellone, perché non venivi a prendermi?",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_22_line_2",
+          "speaker": "kael",
+          "it": "Non permetterò più che ci separino.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_22_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_23",
+      "chapter": 23,
+      "act": 9,
+      "category": "main",
+      "title": {
+        "it": "L'ultimo dungeon",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Obtain the founders' keys and ascend 100 floors"
+      },
+      "npcs": [
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_22"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "founder_keys_obtained",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "stair_floor_100",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_23_line_1",
+          "speaker": "kael",
+          "it": "Cento livelli verso il cielo. Questa volta non scenderò.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_23_line_2",
+          "speaker": "kael",
+          "it": "La Scala dell'Eternità è aperta.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_23_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_24",
+      "chapter": 24,
+      "act": 9,
+      "category": "main",
+      "title": {
+        "it": "La verità sulla creazione",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Meet Elyria and learn about the Origine"
+      },
+      "npcs": [
+        "elyria",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_23"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "origin_truth_discovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_24_line_1",
+          "speaker": "elyria",
+          "it": "Gli dei non sono creatori. Siamo custodi delle leggi dell'esistenza.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_24_line_2",
+          "speaker": "kael",
+          "it": "Nessuno dovrebbe controllare da solo il potere dell'Origine.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_24_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_25",
+      "chapter": 25,
+      "act": 9,
+      "category": "main",
+      "title": {
+        "it": "La guerra degli dei",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Defend humanity and confront the allied gods"
+      },
+      "npcs": [
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_24"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "divine_war_resolved",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_25_line_1",
+          "speaker": "kael",
+          "it": "Tutte le città sono sotto attacco.",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_25_line_2",
+          "speaker": "kael",
+          "it": "Dobbiamo porre fine alla guerra.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_25_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mq_26",
+      "chapter": 26,
+      "act": 10,
+      "category": "main",
+      "title": {
+        "it": "Aurelion, il Dio dell'Ordine",
+        "en": null
+      },
+      "description": {
+        "it": null,
+        "en": "Defeat Aurelion and choose the fate of reality"
+      },
+      "npcs": [
+        "aurelion",
+        "kael"
+      ],
+      "prerequisites": [
+        "mq_25"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "aurelion_defeated",
+          "required": 1
+        },
+        {
+          "id": "step_2",
+          "event": "origin_reached",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [
+        {
+          "id": "mq_26_line_1",
+          "speaker": "aurelion",
+          "it": "Sacrificheresti davvero l'ordine dell'universo per un solo bambino?",
+          "en": null,
+          "review": "legacy_unapproved"
+        },
+        {
+          "id": "mq_26_line_2",
+          "speaker": "kael",
+          "it": "Un universo in cui qualcuno può decidere che una vita non merita di esistere non è un universo in ordine.",
+          "en": null,
+          "review": "legacy_unapproved"
+        }
+      ],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "chapter_26_resolved"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "mem_lost",
+      "category": "memory",
+      "chapter": 19,
+      "act": 7,
+      "title": {
+        "it": "Recuperare le memorie perdute",
+        "en": null
+      },
+      "description": {
+        "it": "Recuperare le memorie perdute",
+        "en": null
+      },
+      "npcs": [],
+      "prerequisites": [
+        "mq_19"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "lost_memories_recovered",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "lost_memories"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "sq_eidolon_aid",
+      "category": "secondary",
+      "chapter": 20,
+      "act": 8,
+      "title": {
+        "it": "Aiutare gli Eidolon",
+        "en": null
+      },
+      "description": {
+        "it": "Aiutare gli Eidolon",
+        "en": null
+      },
+      "npcs": [],
+      "prerequisites": [
+        "mq_20"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "eidolon_aid_verified",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "eidolon_aid"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    },
+    {
+      "id": "sec_origin",
+      "category": "secret",
+      "chapter": 24,
+      "act": 9,
+      "title": {
+        "it": "Comprendere la vera natura dell'Origine",
+        "en": null
+      },
+      "description": {
+        "it": "Comprendere la vera natura dell'Origine",
+        "en": null
+      },
+      "npcs": [],
+      "prerequisites": [
+        "mq_24"
+      ],
+      "objectives": [
+        {
+          "id": "step_1",
+          "event": "origin_truth_verified",
+          "required": 1
+        }
+      ],
+      "success": "all_objectives",
+      "failure": "retry_checkpoint",
+      "dialogue": [],
+      "rewards": [],
+      "consequences": {
+        "complete_flag": "origin_truth"
+      },
+      "dependencies": [],
+      "discrepancy": "preserve_progress",
+      "status": "draft"
+    }
+  ],
+  "endings": [
+    {
+      "id": "custodian",
+      "requires": [
+        "mq_26"
+      ]
+    },
+    {
+      "id": "origin",
+      "requires": [
+        "mq_26"
+      ]
+    },
+    {
+      "id": "guild",
+      "requires": [
+        "mq_26"
+      ]
+    },
+    {
+      "id": "freedom",
+      "requires": [
+        "mq_26",
+        "mem_lost",
+        "sq_eidolon_aid",
+        "sec_origin"
+      ]
+    }
+  ],
+  "notes": "Draft mapping from campaign baseline; localization, NPC registry, event producers, exact secret requirements and rewards pending. No new canon."
+}

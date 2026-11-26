@@ -2,6 +2,7 @@
 #include "EidolonCampaignSave.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
+#include "Engine/GameInstance.h"
 #include "Internationalization/Culture.h"
 #include "Internationalization/Internationalization.h"
 #include "Kismet/GameplayStatics.h"
@@ -15,6 +16,13 @@
 namespace
 {
     const FString Slot = TEXT("EidolonCampaign01");
+
+    void RevealNoah(UEidolonCampaignSave& Snapshot)
+    {
+        Snapshot.Memories.Add(TEXT("family_before_noah"));
+        Snapshot.Flags.Add(TEXT("noah_present"));
+        ++Snapshot.RealityRevision;
+    }
 
     FString ReadText(const FJsonObject& Object, const TCHAR* Preferred, const TCHAR* Fallback)
     {
@@ -99,6 +107,7 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
 
 bool UEidolonCampaignSubsystem::NewCampaign()
 {
+    bFirstDescentReturnRequested = false;
     State = NewObject<UEidolonCampaignSave>(this);
     State->Flags.Add(TEXT("family_original"));
     return Chapters.Num() == 26;
@@ -108,6 +117,7 @@ bool UEidolonCampaignSubsystem::LoadCampaign()
 {
     auto* Loaded = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(Slot, 0));
     if (!IsValidCheckpoint(Loaded)) return false;
+    bFirstDescentReturnRequested = false;
     State = Loaded;
     return true;
 }
@@ -137,12 +147,17 @@ bool UEidolonCampaignSubsystem::WriteCheckpoint(UEidolonCampaignSave* Snapshot) 
 
 bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const
 {
-    return Checkpoint && Checkpoint->Schema == 1
-        && Checkpoint->Chapter > 0 && Chapters.IsValidIndex(Checkpoint->Chapter - 1)
-        && Checkpoint->FirstDescentCursor >= 0
-        && Checkpoint->FirstDescentCursor <= static_cast<int32>(EidolonFirstDescent::Steps.size())
-        && (Checkpoint->FirstDescentCursor == 0 || Checkpoint->Chapter >= 2)
-        && Checkpoint->ObjectiveCount >= 0;
+    if (!Checkpoint || Checkpoint->Schema != 1 || Checkpoint->Chapter <= 0 ||
+        !Chapters.IsValidIndex(Checkpoint->Chapter - 1) || Checkpoint->ObjectiveCount < 0)
+    {
+        return false;
+    }
+
+    const int32 Cursor = Checkpoint->FirstDescentCursor;
+    const int32 FinalCursor = static_cast<int32>(EidolonFirstDescent::Steps.size());
+    return Cursor == 0 ||
+        (Cursor > 0 && Cursor < FinalCursor && Checkpoint->Chapter == 2) ||
+        (Cursor == FinalCursor && Checkpoint->Chapter >= 3);
 }
 
 int32 UEidolonCampaignSubsystem::GetFirstDescentCursor() const
@@ -172,14 +187,61 @@ bool UEidolonCampaignSubsystem::CommitFirstDescentEvent(const EidolonFirstDescen
 
     const auto Next = EidolonFirstDescent::Advance(State->FirstDescentCursor, Event);
     if (!Next) return false;
+    if (Event.Payload.Event == "surface_return" &&
+        (!bFirstDescentReturnRequested || UGameplayStatics::GetCurrentLevelName(GetGameInstance()) != TEXT("ValdrisPrologue")))
+    {
+        return false;
+    }
 
     // The cursor is the durable receipt because each position has one accepted payload.
     UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
     Snapshot->FirstDescentCursor = static_cast<int32>(*Next);
+    if (*Next == EidolonFirstDescent::Steps.size())
+    {
+        RevealNoah(*Snapshot);
+        Snapshot->Flags.Add(TEXT("chapter_2_resolved"));
+        Snapshot->Chapter = 3;
+        Snapshot->ObjectiveCount = 0;
+    }
     if (!WriteCheckpoint(Snapshot)) return false;
 
     State = Snapshot;
+    if (Event.Payload.Event == "surface_return") bFirstDescentReturnRequested = false;
     return true;
+}
+
+bool UEidolonCampaignSubsystem::RequestFirstDescentSurfaceReturn()
+{
+    if (!State || State->Chapter != 2 || State->FirstDescentCursor != 4 ||
+        UGameplayStatics::GetCurrentLevelName(GetGameInstance()) != TEXT("AbyssFloor001"))
+    {
+        return false;
+    }
+    bFirstDescentReturnRequested = true;
+    return true;
+}
+
+bool UEidolonCampaignSubsystem::BeginValdrisFirstDescent()
+{
+    if (!IsValidCheckpoint(State) || State->Chapter != 1 || !State->Ending.IsNone() ||
+        UGameplayStatics::GetCurrentLevelName(GetGameInstance()) != TEXT("ValdrisPrologue"))
+    {
+        return false;
+    }
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->Flags.Add(TEXT("chapter_1_resolved"));
+    Snapshot->Chapter = 2;
+    Snapshot->ObjectiveCount = 0;
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+bool UEidolonCampaignSubsystem::CompleteFirstDescentSurfaceReturn()
+{
+    return bFirstDescentReturnRequested &&
+        CommitFirstDescentEvent({2, "mq_02", 4, EidolonFirstDescent::Steps[4]});
 }
 
 FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const
@@ -235,7 +297,11 @@ bool UEidolonCampaignSubsystem::AdvanceChapter()
     if (C.Id == 4 && State->AbyssFloor < 100) return false;
     if (C.Id == 23 && State->StairFloor < 100) return false;
     if (C.Target == 0 && !HasFlag(FName(*FString::Printf(TEXT("chapter_%d_resolved"), C.Id)))) return false;
-    if (C.Id == 2) ApplyDiscrepancy(TEXT("family_before_noah"), TEXT("noah_present"), true);
+    if (C.Id == 2)
+    {
+        if (State->FirstDescentCursor != 0) return false;
+        RevealNoah(*State);
+    }
     if (C.Id == 4) SetFlag(TEXT("sigil_aegis"));
     if (C.Id == 7) SetFlag(TEXT("sigil_horizon"));
     if (C.Id == 10) ApplyDiscrepancy(TEXT("vareth_survivor"), TEXT("vareth_present"), false);

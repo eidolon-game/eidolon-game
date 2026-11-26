@@ -23,7 +23,8 @@ void AEidolonArenaHUD::DrawHUD()
     DrawRect(FLinearColor(0.2f,0.8f,0.35f),30,86,250*Player->GetStaminaFraction(),12);
     DrawText(FString::Printf(TEXT("Enemies: %d"), Remaining), FLinearColor::White,30,110);
     DrawText(TEXT("WASD / stick | LMB / RB light | RMB / RT heavy | Q / B dodge | F / LB block"), FLinearColor::White,30,Canvas->ClipY-55);
-    if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>())
+    const auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>();
+    if (GM)
     {
         DrawText(GM->GetNarrative(), FLinearColor::White,30,145);
         DrawText(GM->GetDialogue(), FLinearColor::White,30,320);
@@ -34,7 +35,8 @@ void AEidolonArenaHUD::DrawHUD()
         {
             const auto Chapter = C->CurrentChapter();
             DrawText(Chapter.Objective, FLinearColor::White,30,170);
-            DrawText(FString::Printf(TEXT("Rank %s | Level %d | Objective %d/%d"), *C->GetRank().ToString(), C->GetLevel(), C->GetObjectiveCount(), Chapter.Target), FLinearColor::White,30,235);
+            if (GM && GM->ShowsArenaObjectiveCounter())
+                DrawText(FString::Printf(TEXT("Rank %s | Level %d | Objective %d/%d"), *C->GetRank().ToString(), C->GetLevel(), C->GetObjectiveCount(), Chapter.Target), FLinearColor::White,30,235);
             if (Chapter.Id == 6 || Chapter.Id == 20) DrawText(TEXT("M / R3: optional memory objective"), FLinearColor::Yellow,30,350);
             if (Chapter.Id == 4 || Chapter.Id == 23)
                 DrawText(FString::Printf(TEXT("Floor %d/100"), C->GetFloor(Chapter.Id == 23)), FLinearColor::White,30,260);

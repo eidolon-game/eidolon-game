@@ -2,18 +2,15 @@
 
 In UnrealEditor-Cmd use -run=pythonscript -script=<absolute path to this file>.
 Generate in a clean source checkout. Existing map assets are reused.
-Set EIDOLON_FIRST_DESCENT_CLOSED_GATE=1 before generation to inspect a closed gate.
 """
 
 import json
-import os
 from pathlib import Path
 import sys
 
 MAP_FOLDER = "/Game/Eidolon/Maps"
 MAP_PACKAGE = MAP_FOLDER + "/AbyssFloor001"
-MODE_ASSET = "BP_AbyssFloor001Traversal"
-TRAVERSAL_MODE_PACKAGE = MAP_FOLDER + "/" + MODE_ASSET
+MODE_CLASS = "/Script/Eidolon.EidolonAbyssFloorGameMode"
 LAYOUT_PATH = (
     Path(__file__).resolve().parents[1]
     / "Content" / "Eidolon" / "Data" / "Dungeons" / "abyss_001_authored.json"
@@ -83,37 +80,6 @@ def center(cell, size):
     return tuple(coordinate * size + size / 2 for coordinate in cell)
 
 
-def traversal_mode(unreal):
-    """Use the game's walking pawn without the Arena GameMode's spawned scenery."""
-    assets = unreal.EditorAssetLibrary
-    pawn_class = unreal.load_class(None, "/Script/Eidolon.EidolonCharacter")
-    if not pawn_class:
-        raise RuntimeError("Build EidolonEditor before generating this map.")
-    if assets.does_asset_exist(TRAVERSAL_MODE_PACKAGE):
-        mode_class = assets.load_blueprint_class(TRAVERSAL_MODE_PACKAGE)
-        if not mode_class:
-            raise RuntimeError("Could not load the existing Abyss traversal GameMode.")
-        defaults = unreal.get_default_object(mode_class)
-        if defaults.get_editor_property("default_pawn_class") != pawn_class:
-            raise RuntimeError("The existing Abyss traversal GameMode has an unexpected pawn class.")
-        return mode_class
-
-    factory = unreal.BlueprintFactory()
-    factory.set_editor_property("parent_class", unreal.GameModeBase)
-    asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
-    blueprint = asset_tools.create_asset(MODE_ASSET, MAP_FOLDER, unreal.Blueprint, factory)
-    if not blueprint:
-        raise RuntimeError("Failed to create an Abyss traversal GameMode.")
-    mode_class = assets.load_blueprint_class(TRAVERSAL_MODE_PACKAGE)
-    if not mode_class:
-        raise RuntimeError("Failed to compile the Abyss traversal GameMode.")
-    defaults = unreal.get_default_object(mode_class)
-    defaults.set_editor_property("default_pawn_class", pawn_class)
-    if not assets.save_loaded_asset(blueprint, only_if_is_dirty=False):
-        raise RuntimeError("Failed to save the Abyss traversal GameMode.")
-    return mode_class
-
-
 def build_map(unreal, layout, cells, gate):
     assets = unreal.EditorAssetLibrary
     if assets.does_asset_exist(MAP_PACKAGE):
@@ -122,7 +88,9 @@ def build_map(unreal, layout, cells, gate):
 
     if not assets.does_directory_exist(MAP_FOLDER) and not assets.make_directory(MAP_FOLDER):
         raise RuntimeError("Failed to create the Eidolon Maps folder.")
-    mode_class = traversal_mode(unreal)
+    mode_class = unreal.load_class(None, MODE_CLASS)
+    if not mode_class:
+        raise RuntimeError("Build EidolonEditor before generating the Abyss floor.")
     editor = unreal.EditorLoadingAndSavingUtils
     world = editor.new_blank_map(False)
     if not world:
@@ -180,9 +148,7 @@ def build_map(unreal, layout, cells, gate):
     header_height = height - GATE_HEIGHT
     box("gate_header", (gate_x, gate_y, GATE_HEIGHT + header_height / 2),
         (WALL_THICKNESS, GATE_WIDTH, header_height))
-    closed_gate = os.environ.get("EIDOLON_FIRST_DESCENT_CLOSED_GATE") == "1"
-    gate_z = GATE_HEIGHT / 2 if closed_gate else height + FLOOR_THICKNESS + GATE_HEIGHT / 2
-    box("abyss_001_combat_gate", (gate_x, gate_y, gate_z),
+    box("abyss_001_combat_gate", (gate_x, gate_y, GATE_HEIGHT / 2),
         (WALL_THICKNESS, GATE_WIDTH, GATE_HEIGHT), movable=True)
 
     marker_names = {
@@ -195,7 +161,8 @@ def build_map(unreal, layout, cells, gate):
     }
     for anchor, marker in marker_names.items():
         x, y = center(layout[anchor], size)
-        spawn(unreal.TargetPoint, marker, (x, y, 0))
+        z = 100 if anchor in ("entry", "anomaly", "exit") else 0
+        spawn(unreal.TargetPoint, marker, (x, y, z))
     x, y = center(SECOND_CRAWLER_CELL, size)
     spawn(unreal.TargetPoint, "abyss_001_crawler_02", (x, y, 0))
     x, y = center(layout["entry"], size)
@@ -211,7 +178,7 @@ def build_map(unreal, layout, cells, gate):
 
     if not editor.save_map(world, MAP_PACKAGE):
         raise RuntimeError("Failed to save the Abyss floor map.")
-    unreal.log(f"EIDOLON Abyss floor graybox saved at {MAP_PACKAGE}. Gate closed: {closed_gate}.")
+    unreal.log(f"EIDOLON Abyss floor graybox saved at {MAP_PACKAGE}.")
 
 
 if __name__ == "__main__":

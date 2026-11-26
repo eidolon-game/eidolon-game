@@ -50,10 +50,15 @@ public:
     int32 GetFirstDescentCursor() const;
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
+    bool BeginValdrisFirstDescent();
+    bool RequestFirstDescentSurfaceReturn();
+    bool CompleteFirstDescentSurfaceReturn();
+    bool HasPendingFirstDescentSurfaceReturn() const { return bFirstDescentReturnRequested; }
 private:
     UPROPERTY() TObjectPtr<UEidolonCampaignSave> State;
     UPROPERTY() TArray<FEidolonChapter> Chapters;
     TMap<FName, FString> Epilogues;
+    bool bFirstDescentReturnRequested = false;
     bool LoadDefinitions();
     bool IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const;
     bool WriteCheckpoint(UEidolonCampaignSave* Snapshot) const;

@@ -10,13 +10,14 @@ class EIDOLON_API AEidolonGameMode : public AGameModeBase
 public:
     AEidolonGameMode();
     virtual void StartPlay() override;
-    void Interact(class AEidolonCharacter* Player);
-    void SelectEnding(int32 Choice);
-    void ReloadCheckpoint();
-    FString GetPrompt() const;
-    FString GetNarrative() const;
-    FString GetDialogue() const;
-    void RecoverMemory(class AEidolonCharacter* Player);
+    virtual void Interact(class AEidolonCharacter* Player);
+    virtual void SelectEnding(int32 Choice);
+    virtual void ReloadCheckpoint();
+    virtual FString GetPrompt() const;
+    virtual FString GetNarrative() const;
+    virtual FString GetDialogue() const;
+    virtual bool ShowsArenaObjectiveCounter() const { return true; }
+    virtual void RecoverMemory(class AEidolonCharacter* Player);
 private:
     void SpawnEncounter();
     void RetryEncounterSpawns();

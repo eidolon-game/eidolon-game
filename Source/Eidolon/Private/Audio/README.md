@@ -1,0 +1,2 @@
+# Audio runtime prototype
+Uncompiled UE subsystem. Caller must resolve catalog IDs, authorized chapter/ending/region and revision, and sound asset. No MetaSound dependency: Intensity parameter hook only. No shared module/config changes. Crossfade may leave outgoing components playing for fade duration; world transition and stale outgoing cleanup require integration tests. No implemented adaptive hysteresis, settings, spatial emitters or persistence yet.

@@ -54,8 +54,10 @@ void AEidolonAuthoredAbyssGameMode::StartPlay()
     }
 
     const auto* Campaign = GetCampaign();
-    SetGateOpen(Campaign && CanUseFloor(*Campaign) &&
-                Campaign->GetAuthoredAbyssCompletedFloor() >= GetEncounter().Floor);
+    const bool bCanUseFloor = Campaign && CanUseFloor(*Campaign);
+    const bool bCompleted = bCanUseFloor && Campaign->GetAuthoredAbyssCompletedFloor() >= GetEncounter().Floor;
+    SetGateOpen(bCompleted);
+    if (bCanUseFloor && !bCompleted) SpawnOptionalThreats();
 }
 
 AActor* AEidolonAuthoredAbyssGameMode::ChoosePlayerStart_Implementation(AController* Player)
@@ -162,6 +164,15 @@ void AEidolonAuthoredAbyssGameMode::SpawnEnemy(UEidolonCampaignSubsystem& Campai
         return;
     }
 
+    if (!ConfigureEnemy(*ActiveEnemy))
+    {
+        ActiveEnemy->Destroy();
+        ActiveEnemy = nullptr;
+        Notice = Display(TEXT("Encounter positions are unavailable."),
+                         TEXT("Le posizioni dell'incontro non sono disponibili."));
+        return;
+    }
+
     SpawnRevision = Campaign.GetAuthoredAbyssRevision();
     ActiveEnemy->OnEncounterDefeated.AddUObject(this, &AEidolonAuthoredAbyssGameMode::HandleDefeat);
     Notice.Reset();
@@ -181,9 +192,9 @@ void AEidolonAuthoredAbyssGameMode::HandleDefeat(AEidolonArenaEnemy& Enemy)
 void AEidolonAuthoredAbyssGameMode::CommitEncounter(UEidolonCampaignSubsystem& Campaign)
 {
     using namespace EidolonAbyss;
-    const int32 Floor = GetEncounter().Floor;
-    const Event Defeat{Chapter, Floor, Floor, SpawnRevision,
-                       EventKind::FloorCleared, Producer::Encounter, Target::FloorEncounter};
+    const auto Encounter = GetEncounter();
+    const Event Defeat{Chapter, Encounter.Floor, Encounter.Floor, SpawnRevision,
+                       Encounter.CompletionKind, Producer::Encounter, Encounter.CompletionTarget};
     if (!bDefeatAwaitingReceipt || !Campaign.CommitAuthoredAbyssEvent(Defeat))
     {
         Notice = Display(TEXT("Progress could not be saved. Interact to retry."),

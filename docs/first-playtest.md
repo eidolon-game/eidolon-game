@@ -153,3 +153,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor009` with `scripts/create_urn_fork_floor.
 - In the upper wing, verify that the Mantises' ledge facing and the Tick's niche are compatible with their warnings and recovery. In the lower wing, verify the Hagfish's lane, dry refuge and sightline breaks. Start from the branch entrance and reach its latch without crossing the other route.
 - Try the latch from outside its interaction zone and behind cover. Neither attempt should write progress. With a failed latch save, the gate stays shut and either route is still available.
 - Save either latch and check the same gate opens. Reload to confirm the original route persists, the other latch cannot override it, and both routes lead to the same stair. The stair awaits the `AbyssFloor010` package.
+
+## Root Antechamber
+
+Generate `/Game/Eidolon/Maps/AbyssFloor010` with `scripts/create_rootclaw_floor.py` in Unreal's Python commandlet. Enter after either Urn Fork latch is saved. The two courtyard encounters are optional. Verify the crawler remains outside the boss hall and that skipping both still allows the checkpoint and encounter.
+
+- Start Rootclaw from the arena marker and identify its three lanes. Test each side of the sweep, the narrow thrust, and counterattack timing on controller and keyboard. Keep a readable escape direction and test the camera against both outer walls.
+- Cross half health during windup, contact, and recovery. Rootclaw should finish the current move before announcing a single phase transition. Check a blocked adjacent lane and a lethal hit that crosses the threshold before moving. The lateral step should cause no damage.
+- Suppress the boss spawn or a lane binding, then retry. Only loss of the registered Rootclaw should advance the boss receipt. Simulate a failed save after defeat and retry at the arena marker. Reload from a successful receipt and confirm the exit stays open and Rootclaw does not return.
+- The stair targets the future floor 11 interactive package. The mesh and theme are previews awaiting rig, import, and runtime testing.

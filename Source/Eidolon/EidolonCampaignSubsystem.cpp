@@ -293,6 +293,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
     Snapshot->bAuthoredAbyssRicordaHeard = Next->RicordaHeard;
     if (Event.Kind == EidolonAbyss::EventKind::RicordaHeard)
         Snapshot->Memories.Add(TEXT("abyss_ricorda"));
+    if (Event.Kind == EidolonAbyss::EventKind::RootclawDefeated)
+        Snapshot->Flags.Add(TEXT("abyss_rootclaw_defeated"));
     if (Event.Kind == EidolonAbyss::EventKind::GuardianDefeated)
     {
         Snapshot->AbyssFloor = EidolonAbyss::GuardianFloor;

@@ -48,6 +48,10 @@ int main()
                 Clear.Kind = EventKind::GuardianDefeated;
                 Clear.Subject = Target::AbyssGuardian;
                 break;
+            case RootclawFloor:
+                Clear.Kind = EventKind::RootclawDefeated;
+                Clear.Subject = Target::Rootclaw;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -89,7 +93,7 @@ int main()
             return 1;
         }
 
-        if (Guardian)
+        if (Guardian || Floor == RootclawFloor)
         {
             Event OrdinaryClear = Clear;
             OrdinaryClear.Kind = EventKind::FloorCleared;
@@ -98,7 +102,7 @@ int main()
             WrongTarget.Subject = Target::NamelessSpeaker;
             if (Advance(State, OrdinaryClear) || Advance(State, WrongTarget))
             {
-                std::cerr << "Floor 100 allowed a substitute for the Guardian\n";
+                std::cerr << "A capstone floor allowed a substitute for its boss\n";
                 return 1;
             }
         }

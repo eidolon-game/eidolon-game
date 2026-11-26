@@ -11,6 +11,7 @@ namespace EidolonAbyss
     inline constexpr int MirrorFloor = 7;
     inline constexpr int PincerWinchFloor = 8;
     inline constexpr int BranchLatchFloor = 9;
+    inline constexpr int RootclawFloor = 10;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -23,6 +24,7 @@ namespace EidolonAbyss
         MirrorsAligned,
         PincerWinchOpened,
         BranchLatchSelected,
+        RootclawDefeated,
         RicordaHeard,
         GuardianDefeated
     };
@@ -43,6 +45,7 @@ namespace EidolonAbyss
         MirrorControls,
         PincerWinch,
         BranchLatches,
+        Rootclaw,
         NamelessSpeaker,
         AbyssGuardian
     };
@@ -147,6 +150,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::BranchLatchSelected || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::BranchLatches)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == RootclawFloor)
+        {
+            if (Input.Kind != EventKind::RootclawDefeated || Input.Source != Producer::Encounter ||
+                Input.Subject != Target::Rootclaw)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

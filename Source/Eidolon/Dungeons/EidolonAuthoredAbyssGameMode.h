@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../EidolonGameMode.h"
+#include "EidolonAbyssProgression.h"
 #include "Templates/SubclassOf.h"
 #include "EidolonAuthoredAbyssGameMode.generated.h"
 
@@ -22,6 +23,8 @@ struct FEidolonAbyssEncounter
     const TCHAR* TitleItalian = TEXT("");
     const TCHAR* FightEnglish = TEXT("");
     const TCHAR* FightItalian = TEXT("");
+    EidolonAbyss::EventKind CompletionKind = EidolonAbyss::EventKind::FloorCleared;
+    EidolonAbyss::Target CompletionTarget = EidolonAbyss::Target::FloorEncounter;
 };
 
 UCLASS(Abstract)
@@ -43,6 +46,8 @@ public:
 
 protected:
     virtual FEidolonAbyssEncounter GetEncounter() const { return {}; }
+    virtual bool ConfigureEnemy(AEidolonArenaEnemy&) { return true; }
+    virtual void SpawnOptionalThreats() {}
 
 private:
     UEidolonCampaignSubsystem* GetCampaign() const;

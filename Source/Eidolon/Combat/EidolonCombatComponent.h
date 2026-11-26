@@ -6,6 +6,7 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEidolonCombatImpact,AActor*,Source,int32,Outcome);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FEidolonCombatDeath);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEidolonCombatTelegraph,float,Windup,float,Reach);
 
 UCLASS(ClassGroup=(Eidolon), meta=(BlueprintSpawnableComponent))
 class EIDOLON_API UEidolonCombatComponent : public UActorComponent
@@ -17,6 +18,11 @@ public:
     UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Combat") int32 Team=0;
     UPROPERTY(BlueprintAssignable,Category="Combat") FEidolonCombatImpact OnImpact;
     UPROPERTY(BlueprintAssignable,Category="Combat") FEidolonCombatDeath OnDeath;
+    UPROPERTY(BlueprintAssignable,Category="Combat") FEidolonCombatTelegraph OnTelegraph;
+    UFUNCTION(BlueprintPure,Category="Combat") bool CanAct() const;
+    UFUNCTION(BlueprintCallable,Category="Combat") bool CounterAttack();
+    bool IsInRange(const AActor* Target,float Reach) const;
+    bool InitializeStats(float Health,float Stamina,float Mana,float Poise);
     UFUNCTION(BlueprintCallable,Category="Combat") bool Attack(bool bHeavy);
     UFUNCTION(BlueprintCallable,Category="Combat") bool Dodge();
     UFUNCTION(BlueprintCallable,Category="Combat") bool BeginGuard();
@@ -33,4 +39,5 @@ private:
     bool bPending=false;
     TSet<TWeakObjectPtr<AActor>> HitActors;
     void SampleHits();
+    void ArmAttack(const EidolonCombat::FAttack& A,float Reach,float Radius,float Now);
 };

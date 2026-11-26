@@ -83,7 +83,15 @@ void AEidolonGameMode::SpawnEncounter()
     FActorSpawnParameters Params;
     Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
     for (int32 Index = 0; Index < Count; ++Index)
-        GetWorld()->SpawnActor<AEidolonArenaEnemy>(FVector(850,(Index-1)*500,55), FRotator::ZeroRotator, Params);
+    {
+        auto* Enemy = GetWorld()->SpawnActor<AEidolonArenaEnemy>(FVector(850,(Index-1)*500,55), FRotator::ZeroRotator, Params);
+        if (Enemy)
+        {
+            const bool bFloor = Chapter.Id == 4 || Chapter.Id == 23;
+            const int32 Difficulty = bFloor ? C->GetFloor(Chapter.Id == 23)+1 : Chapter.Id;
+            Enemy->Configure(bFloor && Difficulty == 100 ? FName(TEXT("boss")) : Chapter.Type, Difficulty);
+        }
+    }
 }
 
 bool AEidolonGameMode::CommitCheckpoint()
@@ -98,6 +106,7 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
 {
     auto* C = Campaign(this);
     if (!C || !Player || Player->IsDefeated() || !C->GetEnding().IsNone()) return;
+    Notice.Reset();
     const auto Chapter = C->CurrentChapter();
     if (!Chapter.Id) { Notice = TEXT("Campaign data missing."); return; }
     if (!IsEncounterClear()) { Notice = TEXT("Defeat the remaining enemies."); return; }
@@ -251,7 +260,7 @@ void AEidolonGameMode::BuildChapterScenery()
         Shape(Cube, FVector(850,-650,180), FVector(7,1,3.6));
         Shape(Cube, FVector(900,0,65), FVector(2,3,1.3));
         Label(TEXT("Darius / Elara / Lyra"), FVector(1100,0,340));
-        if (C->HasFlag(TEXT("noah_present")) || Chapter.Id == 22)
+        if (C->HasFlag(TEXT("noah_present")))
         {
             Shape(Cylinder,FVector(600,200,55),FVector(.55,.55,1.1));
             Label(TEXT("Noah"), FVector(600,200,140));

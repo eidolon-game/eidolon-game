@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "status": "proposed",
+  "units": "centimeters",
+  "coordinateSpace": "segment-local",
+  "segments": [
+    {
+      "id": "leg.front.left",
+      "anchors": [
+        {
+          "id": "ankle",
+          "position": [
+            0,
+            0,
+            100
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "shin",
+          "position": [
+            0,
+            0,
+            250
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "torso.left",
+      "anchors": [
+        {
+          "id": "shoulder",
+          "position": [
+            0,
+            0,
+            100
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "dorsal",
+          "position": [
+            0,
+            0,
+            250
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "leg.front.left:ankle",
+      "to": "leg.front.left:shin",
+      "type": "climb"
+    },
+    {
+      "from": "torso.left:shoulder",
+      "to": "torso.left:dorsal",
+      "type": "climb"
+    }
+  ],
+  "constraints": {
+    "maxReachCm": 160,
+    "requireRuntimeSweep": true,
+    "requireSegmentTransform": true,
+    "requireSafeDetach": true,
+    "crossSegmentEdges": "runtime validated only"
+  },
+  "notes": "Illustrative local anchor coordinates only; not attached to a mesh. Require continuous path from ground to target before approval. No runtime integration."
+}

@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "profiles": [
+    {
+      "id": "riven",
+      "role": "duelist",
+      "work": "training",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "training"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "aiden",
+      "role": "protector",
+      "work": "training",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "training"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "selene",
+      "role": "mage",
+      "work": "study",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "study"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "nyra",
+      "role": "assassin",
+      "work": "exploration",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "exploration"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "theron",
+      "role": "lancer",
+      "work": "training",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "training"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "iris",
+      "role": "priest",
+      "work": "healing",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "healing"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "narrative_authorized"
+    },
+    {
+      "id": "darius",
+      "role": "civilian",
+      "work": "forge",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "forge"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": false,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "elara",
+      "role": "civilian",
+      "work": "healing",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "healing"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": false,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "lyra",
+      "role": "civilian",
+      "work": "training",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "training"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": false,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "noah",
+      "role": "civilian",
+      "work": "home",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "home"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": false,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "aldren",
+      "role": "guard",
+      "work": "guild",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "guild"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "lucien",
+      "role": "guard",
+      "work": "guild",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "guild"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": true,
+      "recruitment": "disabled"
+    },
+    {
+      "id": "merchant_generic",
+      "role": "civilian",
+      "work": "market",
+      "routine": [
+        {
+          "start": 0,
+          "activity": "rest"
+        },
+        {
+          "start": 480,
+          "activity": "market"
+        },
+        {
+          "start": 1080,
+          "activity": "social"
+        },
+        {
+          "start": 1320,
+          "activity": "rest"
+        }
+      ],
+      "combatEnabled": false,
+      "recruitment": "disabled"
+    }
+  ]
+}

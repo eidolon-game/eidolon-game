@@ -1,0 +1,9 @@
+diff --git a/Config/DefaultEngine.ini b/Config/DefaultEngine.ini
+--- a/Config/DefaultEngine.ini
++++ b/Config/DefaultEngine.ini
+@@ -1,4 +1,4 @@
+ [/Script/EngineSettings.GameMapsSettings]
+-GlobalDefaultGameMode=/Script/Eidolon.EidolonGameMode
++GlobalDefaultGameMode=/Script/Eidolon.EidolonM1GameMode
+ GameDefaultMap=/Game/Eidolon/Maps/Arena
+ EditorStartupMap=/Engine/Maps/Entry

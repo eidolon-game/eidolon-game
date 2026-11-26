@@ -5,8 +5,10 @@
 #include "EidolonMineBorer.generated.h"
 
 class AEidolonCharacter;
+class UAudioComponent;
 class UBoxComponent;
 class UStaticMeshComponent;
+class USoundWave;
 
 UCLASS()
 class EIDOLON_API AEidolonMineBorer : public AEidolonArenaEnemy
@@ -24,6 +26,7 @@ public:
 private:
     void ConfigurePresentation();
     void UpdatePose();
+    void PlayPhaseSound();
     void ResolveDebris(AEidolonCharacter* Player);
     bool CanSee(const AEidolonCharacter& Player) const;
 
@@ -33,6 +36,11 @@ private:
     UPROPERTY() TObjectPtr<UStaticMeshComponent> LeftPlate;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> RightPlate;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> DangerMarker;
+    UPROPERTY() TObjectPtr<UAudioComponent> ActionAudio;
+    UPROPERTY() TObjectPtr<UAudioComponent> ChargeAudio;
+    UPROPERTY() TObjectPtr<USoundWave> WindupSound;
+    UPROPERTY() TObjectPtr<USoundWave> ChargeSound;
+    UPROPERTY() TObjectPtr<USoundWave> ImpactSound;
     EidolonMineBorer::Attack Attack;
     FVector Home = FVector::ZeroVector;
     FVector Direction = FVector::ZeroVector;

@@ -5,6 +5,7 @@
 #include "EidolonMineBorerPresentation.generated.h"
 
 class UStaticMesh;
+class USoundWave;
 
 UCLASS()
 class EIDOLON_API UEidolonMineBorerPresentation : public UDataAsset
@@ -16,6 +17,9 @@ public:
     UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<UStaticMesh> Head;
     UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<UStaticMesh> RearLeft;
     UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<UStaticMesh> RearRight;
+    UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<USoundWave> WindupSound;
+    UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<USoundWave> ChargeSound;
+    UPROPERTY(EditAnywhere, Category="Mine Borer") TObjectPtr<USoundWave> ImpactSound;
 
     UPROPERTY(EditAnywhere, Category="Mine Borer") FVector BodyPivot = FVector::ZeroVector;
     UPROPERTY(EditAnywhere, Category="Mine Borer") FVector HeadPivot = FVector::ZeroVector;

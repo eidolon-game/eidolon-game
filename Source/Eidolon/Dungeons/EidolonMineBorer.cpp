@@ -3,12 +3,15 @@
 #include "../EidolonCharacter.h"
 #include "EidolonMineBorerPresentation.h"
 #include "CollisionQueryParams.h"
+#include "Components/AudioComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/HitResult.h"
 #include "Engine/StaticMesh.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
+#include "Sound/SoundAttenuation.h"
+#include "Sound/SoundWave.h"
 #include "UObject/ConstructorHelpers.h"
 
 namespace
@@ -51,6 +54,23 @@ AEidolonMineBorer::AEidolonMineBorer()
         DangerMarker->SetStaticMesh(Plate.Object);
     }
     DangerMarker->SetCastShadow(false);
+    ActionAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("BorerActionAudio"));
+    ChargeAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("BorerChargeAudio"));
+    for (auto* Audio : {ActionAudio.Get(), ChargeAudio.Get()})
+    {
+        Audio->SetupAttachment(CollisionBody);
+        Audio->SetAutoActivate(false);
+        Audio->bOverrideAttenuation = true;
+        Audio->AttenuationOverrides.bSpatialize = true;
+        Audio->AttenuationOverrides.bAttenuate = true;
+        Audio->AttenuationOverrides.AttenuationShapeExtents = FVector(250.0, 0.0, 0.0);
+        Audio->AttenuationOverrides.FalloffDistance = 1450.0f;
+        Audio->AttenuationOverrides.bEnableOcclusion = true;
+        Audio->AttenuationOverrides.OcclusionLowPassFilterFrequency = 1800.0f;
+        Audio->AttenuationOverrides.OcclusionVolumeAttenuation = 0.40f;
+    }
+    ActionAudio->SetRelativeLocation(FVector(BodyHalfLengthCm + 16.0, 0.0, -30.0));
+    ChargeAudio->SetRelativeLocation(FVector(BodyHalfLengthCm + 8.0, 0.0, -121.0));
     Head->SetRelativeScale3D(FVector(1.28, 1.52, 1.35));
     LeftPlate->SetRelativeScale3D(FVector(1.38, .76, .17));
     RightPlate->SetRelativeScale3D(FVector(1.38, .76, .17));
@@ -79,6 +99,12 @@ void AEidolonMineBorer::ConfigurePresentation()
 {
     const auto* Asset = LoadObject<UEidolonMineBorerPresentation>(nullptr,
         TEXT("/Game/Eidolon/Creatures/MineBorer/DA_MineBorerPresentation.DA_MineBorerPresentation"));
+    if (Asset)
+    {
+        WindupSound = Asset->WindupSound;
+        ChargeSound = Asset->ChargeSound;
+        ImpactSound = Asset->ImpactSound;
+    }
     if (!Asset || !Asset->Body || !Asset->Head || !Asset->RearLeft || !Asset->RearRight)
     {
         UE_LOG(LogTemp, Warning, TEXT("Mine Borer presentation is unavailable. Using native graybox meshes."));
@@ -198,6 +224,41 @@ void AEidolonMineBorer::Tick(float DeltaSeconds)
     if (Attack.Current == Previous) return;
     if (Attack.Current == Phase::Impact) ResolveDebris(Player);
     UpdatePose();
+    PlayPhaseSound();
+}
+
+void AEidolonMineBorer::PlayPhaseSound()
+{
+    using EidolonMineBorer::Phase;
+    switch (Attack.Current)
+    {
+        case Phase::Windup:
+            if (WindupSound)
+            {
+                ActionAudio->SetSound(WindupSound.Get());
+                ActionAudio->Play();
+            }
+            break;
+        case Phase::Charge:
+            if (ChargeSound)
+            {
+                ChargeAudio->SetSound(ChargeSound.Get());
+                ChargeAudio->Play();
+            }
+            break;
+        case Phase::Impact:
+            if (ChargeAudio->IsPlaying()) ChargeAudio->FadeOut(0.07f, 0.0f);
+            if (ImpactSound)
+            {
+                ActionAudio->SetSound(ImpactSound.Get());
+                ActionAudio->Play();
+            }
+            break;
+        case Phase::Ready:
+        case Phase::Approach:
+        case Phase::Recovery:
+            break;
+    }
 }
 
 void AEidolonMineBorer::ResolveDebris(AEidolonCharacter* Player)

@@ -6,7 +6,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from create_first_descent_floor import MAP_FOLDER, WALL_THICKNESS, build_shell, create_graybox, visit
-from import_mine_borer import import_presentation, read_source, verify_calibration
+from import_mine_borer import SOURCE as MINE_BORER_SOURCE, import_presentation, read_audio, read_source, verify_calibration
 
 LAYOUT = Path(__file__).resolve().parents[1] / "Content/Eidolon/Data/Dungeons/abyss_021_authored.json"
 MAP_PACKAGE = MAP_FOLDER + "/AbyssFloor021"
@@ -128,6 +128,7 @@ if __name__ == "__main__":
     if "--validate" in sys.argv[1:]:
         bundle, _ = read_source()
         verify_calibration(bundle)
+        read_audio(MINE_BORER_SOURCE / "Audio")
         print(f"Validated {layout['id']}: {len(cells)} cells, sheltered arrivals, two recesses and inner release.")
     else:
         import unreal

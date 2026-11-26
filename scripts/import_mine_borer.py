@@ -7,12 +7,14 @@ import math
 from pathlib import Path
 import struct
 import sys
+import wave
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "ContentSource/MineBorer"
 DESTINATION = "/Game/Eidolon/Creatures/MineBorer"
 DATA_ASSET = "DA_MineBorerPresentation"
 PARTS = {"Body": "body", "Head": "head", "RearLeft": "rear_left", "RearRight": "rear_right"}
+PHASES = {"windup": "S_Borer_Windup.wav", "charge": "S_Borer_Charge.wav", "impact": "S_Borer_Impact.wav"}
 
 
 def glb_document(data, path):
@@ -105,39 +107,61 @@ def verify_calibration(entries):
             raise ValueError("The Mine Borer transform calibration failed to resolve an exact test fixture.")
 
 
-def import_static_mesh(unreal, tools, library, name, source):
-    asset_name = f"SM_MineBorer_{name}"
-    folder = f"{DESTINATION}/{name}"
-    canonical = f"{folder}/{asset_name}"
-    mesh = library.load_asset(canonical) if library.does_asset_exist(canonical) else None
-    if mesh:
-        if not isinstance(mesh, unreal.StaticMesh) or library.get_metadata_tag(mesh, "EidolonSourceSHA") != source["sha256"]:
+def read_audio(directory):
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    entries = {entry["phase"]: entry for entry in manifest["cues"]}
+    if len(manifest["cues"]) != len(PHASES) or entries.keys() != PHASES.keys():
+        raise ValueError("The Mine Borer needs one cue for each attack phase.")
+    if (manifest["format"], manifest["channels"], manifest["sample_rate"]) != ("PCM16", 1, 48_000):
+        raise ValueError("Mine Borer cues must use mono 48 kHz PCM16.")
+    for phase, entry in entries.items():
+        path = directory / PHASES[phase]
+        if entry["file"] != path.name or sha256(path.read_bytes()).hexdigest() != entry["sha256"]:
+            raise ValueError(f"Audio checksum or name mismatch for {phase}")
+        with wave.open(str(path), "rb") as take:
+            expected = (1, 2, 48_000, entry["frames"], "NONE")
+            if take.getparams()[:5] != expected:
+                raise ValueError(f"Unexpected WAV format or length for {phase}")
+            samples = tuple(sample[0] for sample in struct.iter_unpack("<h", take.readframes(take.getnframes())))
+        if (len(samples) != entry["frames"] or not 48_000 * .15 <= len(samples) <= 48_000 * 1.5
+                or max(abs(samples[0]), abs(samples[-1])) > 4 or not 3000 < max(map(abs, samples)) < 30000):
+            raise ValueError(f"Invalid cue level, length or edge fade for {phase}")
+    return entries
+
+
+def import_asset(unreal, tools, library, path, folder, asset_type, digest):
+    canonical = f"{folder}/{path.stem}"
+    asset = library.load_asset(canonical) if library.does_asset_exist(canonical) else None
+    if asset:
+        if not isinstance(asset, asset_type) or library.get_metadata_tag(asset, "EidolonSourceSHA") != digest:
             raise RuntimeError(f"{canonical} exists with different provenance.")
-        return mesh
+        return asset
 
     task = unreal.AssetImportTask()
-    for key, value in (("filename", str(SOURCE / source["file"])), ("destination_path", folder),
+    for key, value in (("filename", str(path)), ("destination_path", folder),
                        ("automated", True), ("replace_existing", False), ("save", False)):
         task.set_editor_property(key, value)
     tools.import_asset_tasks([task])
-    meshes = [asset for asset in task.get_objects() if isinstance(asset, unreal.StaticMesh)]
-    if len(meshes) != 1:
-        raise RuntimeError(f"UE glTF import for {name} returned {len(meshes)} static meshes.")
-    mesh = meshes[0]
-    current = mesh.get_path_name().split(".")[0]
+    matching = [asset for asset in task.get_objects() if isinstance(asset, asset_type)]
+    if len(matching) != 1:
+        raise RuntimeError(f"Unreal import for {path.name} returned {len(matching)} matching assets.")
+    asset = matching[0]
+    current = asset.get_path_name().split(".")[0]
     if current != canonical:
         if not library.rename_asset(current, canonical):
             raise RuntimeError(f"Could not assign the canonical asset path {canonical}.")
-        mesh = library.load_asset(canonical)
-    library.set_metadata_tag(mesh, "EidolonSourceSHA", source["sha256"])
-    return mesh
+        asset = library.load_asset(canonical)
+    library.set_metadata_tag(asset, "EidolonSourceSHA", digest)
+    return asset
 
 
 def import_presentation(unreal):
     entries, hinge = read_source()
+    audio = read_audio(SOURCE / "Audio")
     library = unreal.EditorAssetLibrary
     tools = unreal.AssetToolsHelpers.get_asset_tools()
-    assets = {name: import_static_mesh(unreal, tools, library, name, entry)
+    assets = {name: import_asset(unreal, tools, library, SOURCE / entry["file"], f"{DESTINATION}/{name}",
+                                 unreal.StaticMesh, entry["sha256"])
               for name, entry in entries.items()}
     expected, observed = {}, {}
     for name, mesh in assets.items():
@@ -169,16 +193,22 @@ def import_presentation(unreal):
     presentation.set_editor_property("import_scale", scale)
     presentation.set_editor_property("rear_hinge_axis", unreal.Vector(*hinge["axis"]))
     presentation.set_editor_property("rear_open_radians", hinge["radians"])
+    for phase, entry in audio.items():
+        sound = import_asset(unreal, tools, library, SOURCE / "Audio" / entry["file"], f"{DESTINATION}/Audio",
+                             unreal.SoundWave, entry["sha256"])
+        presentation.set_editor_property(f"{phase}_sound", sound)
     if not library.save_directory(DESTINATION, only_if_is_dirty=True, recursive=True):
         raise RuntimeError("Could not save the Mine Borer meshes, materials and presentation.")
-    unreal.log(f"Imported Mine Borer from four calibrated GLBs, axes {axes}, scale {scale}.")
+    unreal.log(f"Imported Mine Borer from four calibrated GLBs and three phase cues, axes {axes}, scale {scale}.")
 
 
 if __name__ == "__main__":
     if "--validate" in sys.argv[1:]:
         bundle, _ = read_source()
         verify_calibration(bundle)
-        print(f"Validated Mine Borer: {len(bundle)} pivot meshes, {sum(x['triangles'] for x in bundle.values())} triangles.")
+        sounds = read_audio(SOURCE / "Audio")
+        print(f"Validated Mine Borer: {len(bundle)} pivot meshes, {sum(x['triangles'] for x in bundle.values())} triangles, "
+              f"{len(sounds)} phase cues.")
     else:
         import unreal
 

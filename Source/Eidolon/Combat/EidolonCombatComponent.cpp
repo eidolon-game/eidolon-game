@@ -87,7 +87,7 @@ void UEidolonCombatComponent::SampleHits()
         if(!Combat || Combat->Team==Team || !Combat->State.IsAlive()) continue;
         FHitResult Wall;
         if(GetWorld()->LineTraceSingleByChannel(Wall,Start,Target->GetActorLocation(),ECC_Visibility,Params) && Wall.GetActor()!=Target) continue;
-        HitActors.Add(TWeakObjectPtr<AActor>(Target));
+        if(!ClaimHit(HitActors,TWeakObjectPtr<AActor>(Target))) continue;
         Combat->ReceiveAttack(Pending,Owner);
         if(!bPending || !State.IsAlive()) break;
     }

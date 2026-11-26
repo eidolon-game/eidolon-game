@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "id": "abyss_001",
+  "dungeon_id": "abyss",
+  "floor": 1,
+  "chapter": 2,
+  "quest_id": "mq_02",
+  "status": "authored_graybox_unintegrated",
+  "units": "cm",
+  "coordinate_system": "local Z up; world transform assigned by 16",
+  "world_poi": "valdris_abyss",
+  "environment_id": "env_abyss",
+  "layout": "abyss_001_authored.json",
+  "grid_cell_cm": 200,
+  "ceiling_height_cm": 300,
+  "footprint_cm": [
+    3200,
+    1400
+  ],
+  "kit": [
+    {
+      "id": "env_asset_floor_stone",
+      "size_cm": [
+        200,
+        200,
+        18
+      ],
+      "use": "floor cells"
+    },
+    {
+      "id": "env_asset_wall_stone",
+      "size_cm": [
+        400,
+        50,
+        300
+      ],
+      "use": "perimeter; proxy segments 200 x 25 x 300 need modular fit review"
+    },
+    {
+      "id": "env_asset_door_frame",
+      "size_cm": [
+        150,
+        25,
+        240
+      ],
+      "use": "gate; 200 cm aperture proxy needs jamb adjustment"
+    },
+    {
+      "id": "env_asset_catacomb_pier",
+      "size_cm": [
+        80,
+        80,
+        300
+      ],
+      "use": "optional art dressing; no placement yet"
+    }
+  ],
+  "points": [
+    {
+      "id": "entry",
+      "position_cm": [
+        100,
+        500,
+        0
+      ],
+      "event": "abyss_floor_1",
+      "requires": [
+        "guild_register"
+      ]
+    },
+    {
+      "id": "checkpoint_abyss_001",
+      "position_cm": [
+        500,
+        500,
+        0
+      ],
+      "owner": "06",
+      "event": null
+    },
+    {
+      "id": "tutorial_arena",
+      "position_cm": [
+        1500,
+        500,
+        0
+      ],
+      "event": "tutorial_monster_defeated",
+      "requires": [
+        "abyss_floor_1"
+      ]
+    },
+    {
+      "id": "anomaly",
+      "position_cm": [
+        2500,
+        500,
+        0
+      ],
+      "event": "first_anomaly",
+      "requires": [
+        "tutorial_monster_defeated"
+      ]
+    },
+    {
+      "id": "surface_exit",
+      "position_cm": [
+        3100,
+        500,
+        0
+      ],
+      "event": "surface_return",
+      "requires": [
+        "tutorial_monster_defeated",
+        "first_anomaly"
+      ],
+      "destination": "valdris_abyss",
+      "mode": "validated_transition_not_physical_stair"
+    },
+    {
+      "id": "secret_alcove",
+      "position_cm": [
+        1300,
+        1300,
+        0
+      ],
+      "optional": true
+    }
+  ],
+  "encounter": {
+    "id": "abyss_001_tutorial",
+    "creature_id": "abyss_catacomb_crawler",
+    "combat_profile": "FirstMonster",
+    "reach_cm": 190,
+    "spawn_positions_cm": [
+      [
+        1500,
+        500,
+        0
+      ],
+      [
+        1700,
+        700,
+        0
+      ]
+    ],
+    "spawn_mode": "sequential_proposed",
+    "completion": "all required spawn IDs defeated; one durable tutorial_monster_defeated event",
+    "boss": false
+  },
+  "gate": {
+    "id": "abyss_001_combat_gate",
+    "position_cm": [
+      2000,
+      500,
+      0
+    ],
+    "object_name": "gate_2",
+    "requires": "tutorial_monster_defeated",
+    "fail_closed": true,
+    "owner": "08/06 committed state; 17 projection",
+    "collision": "separate movable proxy; never bake into static floor mesh"
+  },
+  "checkpoint": {
+    "id": "checkpoint_abyss_001",
+    "restore_position_cm": [
+      500,
+      500,
+      0
+    ],
+    "authoritative_owner": "06",
+    "restore_rule": "use committed snapshot; respawn incomplete encounters, do not replay committed rewards/events"
+  },
+  "reward": {
+    "status": "unassigned",
+    "owner": "03/08",
+    "idempotency_scope": "quest encounter receipt"
+  },
+  "optional_secret": {
+    "reward": "unassigned",
+    "required": false
+  },
+  "traps": [],
+  "puzzles": [],
+  "accessibility": [
+    "no color-only cues",
+    "subtitles for anomaly",
+    "no mandatory timed traversal"
+  ],
+  "duration_seconds": 360,
+  "narrative": "chapter 2; no Noah reveal or Guild truth inside floor",
+  "provenance": "original project graybox; all rights reserved",
+  "limitations": [
+    "no ceiling or climb/jump barrier; grid non-bypass is not UE collision proof",
+    "door and wall proxies not production kit",
+    "no runtime importer or gate actor",
+    "surface transition not implemented"
+  ]
+}

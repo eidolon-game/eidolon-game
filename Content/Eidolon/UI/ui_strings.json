@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "id": "ui_strings",
+  "strings": [
+    {
+      "id": "title",
+      "en": "Main menu",
+      "it": "Menu principale"
+    },
+    {
+      "id": "new_game",
+      "en": "New game",
+      "it": "Nuova partita"
+    },
+    {
+      "id": "load",
+      "en": "Load game",
+      "it": "Carica partita"
+    },
+    {
+      "id": "settings",
+      "en": "Settings",
+      "it": "Impostazioni"
+    },
+    {
+      "id": "pause",
+      "en": "Pause",
+      "it": "Pausa"
+    },
+    {
+      "id": "inventory",
+      "en": "Inventory",
+      "it": "Inventario"
+    },
+    {
+      "id": "equipment",
+      "en": "Equipment",
+      "it": "Equipaggiamento"
+    },
+    {
+      "id": "skills",
+      "en": "Skills",
+      "it": "Abilità"
+    },
+    {
+      "id": "map",
+      "en": "Map",
+      "it": "Mappa"
+    },
+    {
+      "id": "journal",
+      "en": "Journal",
+      "it": "Diario"
+    },
+    {
+      "id": "dialogue",
+      "en": "Dialogue",
+      "it": "Dialogo"
+    },
+    {
+      "id": "merchant",
+      "en": "Merchant",
+      "it": "Mercante"
+    },
+    {
+      "id": "crafting",
+      "en": "Crafting",
+      "it": "Creazione"
+    },
+    {
+      "id": "memories",
+      "en": "Memories",
+      "it": "Ricordi"
+    },
+    {
+      "id": "companions",
+      "en": "Companions",
+      "it": "Compagni"
+    },
+    {
+      "id": "tutorial",
+      "en": "Tutorial",
+      "it": "Tutorial"
+    },
+    {
+      "id": "death",
+      "en": "Defeated",
+      "it": "Sconfitto"
+    },
+    {
+      "id": "ending",
+      "en": "Choice",
+      "it": "Scelta"
+    },
+    {
+      "id": "credits",
+      "en": "Credits",
+      "it": "Titoli di coda"
+    },
+    {
+      "id": "hud",
+      "en": "Status",
+      "it": "Stato"
+    },
+    {
+      "id": "health",
+      "en": "Health",
+      "it": "Salute"
+    },
+    {
+      "id": "stamina",
+      "en": "Stamina",
+      "it": "Resistenza"
+    },
+    {
+      "id": "mana",
+      "en": "Mana",
+      "it": "Mana"
+    },
+    {
+      "id": "back",
+      "en": "Back",
+      "it": "Indietro"
+    },
+    {
+      "id": "confirm",
+      "en": "Confirm",
+      "it": "Conferma"
+    },
+    {
+      "id": "subtitles",
+      "en": "Subtitles",
+      "it": "Sottotitoli"
+    },
+    {
+      "id": "text_scale",
+      "en": "Text size",
+      "it": "Dimensione testo"
+    },
+    {
+      "id": "high_contrast",
+      "en": "High contrast",
+      "it": "Contrasto elevato"
+    },
+    {
+      "id": "reduced_motion",
+      "en": "Reduced motion",
+      "it": "Movimento ridotto"
+    }
+  ]
+}

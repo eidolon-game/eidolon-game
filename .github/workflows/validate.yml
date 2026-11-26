@@ -30,6 +30,13 @@ jobs:
             Write-Host '::notice::Unreal Engine unavailable on this hosted runner. No Windows binary produced.'
             'No Unreal Engine available; source validation only.' | Out-File -Append $env:GITHUB_STEP_SUMMARY
           } else {
-            & ./scripts/Build-Editor.ps1 -EngineRoot $engines[0].FullName
+            & ./scripts/Package-Windows.ps1 -EngineRoot $engines[0].FullName
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
+      - name: Upload Windows demo when packaged
+        uses: actions/upload-artifact@v4
+        with:
+          name: Eidolon-Windows-Demo
+          path: Saved/Distribution/Windows/
+          if-no-files-found: ignore
+          retention-days: 14

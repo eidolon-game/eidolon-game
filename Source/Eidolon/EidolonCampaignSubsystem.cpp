@@ -14,8 +14,10 @@
 #include "Internationalization/Culture.h"
 #include "Internationalization/Internationalization.h"
 #include "Kismet/GameplayStatics.h"
+#include "Misc/CommandLine.h"
 #include "Misc/FileHelper.h"
 #include "Misc/PackageName.h"
+#include "Misc/Parse.h"
 #include "Misc/Paths.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
@@ -25,7 +27,22 @@
 
 namespace
 {
-    const FString Slot = TEXT("EidolonCampaign01");
+    const FString& CampaignSlot()
+    {
+        static const FString ArenaSlot = TEXT("EidolonCampaign01");
+        static const FString AuthoredSlot = TEXT("EidolonAuthoredCampaign01");
+        return FParse::Param(FCommandLine::Get(), TEXT("EidolonAuthoredCampaign")) ? AuthoredSlot : ArenaSlot;
+    }
+
+    uint8 UEidolonCampaignSave::* DrainMaskMember(int32 Floor)
+    {
+        switch (Floor)
+        {
+            case EidolonAbyss::SluiceFloor: return &UEidolonCampaignSave::AbyssSluiceProgress;
+            case EidolonAbyss::FernBasinFloor: return &UEidolonCampaignSave::AbyssFernBasinProgress;
+            default: return nullptr;
+        }
+    }
     constexpr int32 FinalFirstDescentCursor = static_cast<int32>(EidolonFirstDescent::Steps.size());
 
     EidolonAbyss::Progress ReadAuthoredAbyssProgress(const UEidolonCampaignSave& Snapshot)
@@ -144,7 +161,7 @@ bool UEidolonCampaignSubsystem::NewCampaign()
 
 bool UEidolonCampaignSubsystem::LoadCampaign()
 {
-    auto* Loaded = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(Slot, 0));
+    auto* Loaded = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(CampaignSlot(), 0));
     if (!IsValidCheckpoint(Loaded)) return false;
     bFirstDescentReturnRequested = false;
     State = Loaded;
@@ -161,6 +178,7 @@ bool UEidolonCampaignSubsystem::WriteCheckpoint(UEidolonCampaignSave* Snapshot) 
     if (!IsValidCheckpoint(Snapshot)) return false;
 
     // Never replace an occupied slot whose data we cannot recover.
+    const FString& Slot = CampaignSlot();
     if (UGameplayStatics::DoesSaveGameExist(Slot, 0))
     {
         const auto* Existing = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(Slot, 0));
@@ -193,10 +211,10 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
-    const uint8 Sluice = Checkpoint->AbyssSluiceProgress;
-    if (!EidolonSluice::IsValid(Sluice) ||
-        (Authored.CompletedFloor < EidolonAbyss::SluiceFloor - 1 && Sluice != 0) ||
-        (EidolonSluice::CanExit(Sluice) != (Authored.CompletedFloor >= EidolonAbyss::SluiceFloor)))
+    if (!EidolonSluice::MatchesFloorProgress(Checkpoint->AbyssSluiceProgress, Authored.CompletedFloor,
+            EidolonAbyss::SluiceFloor) ||
+        !EidolonSluice::MatchesFloorProgress(Checkpoint->AbyssFernBasinProgress, Authored.CompletedFloor,
+            EidolonAbyss::FernBasinFloor))
     {
         return false;
     }
@@ -274,6 +292,7 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         State->Chapter != EidolonAbyss::Chapter ||
         State->FirstDescentCursor != FinalFirstDescentCursor ||
         Event.Kind == EidolonAbyss::EventKind::SluicesOpened ||
+        Event.Kind == EidolonAbyss::EventKind::FernBasinDrained ||
         Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened ||
         Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled ||
         Event.Kind == EidolonAbyss::EventKind::MirrorsAligned ||
@@ -313,33 +332,37 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
     return true;
 }
 
-uint8 UEidolonCampaignSubsystem::GetAbyssSluiceProgress() const
+uint8 UEidolonCampaignSubsystem::GetAbyssDrainProgress(int32 Floor) const
 {
-    return State ? State->AbyssSluiceProgress : 0;
+    const auto Member = DrainMaskMember(Floor);
+    return State && Member ? State.Get()->*Member : 0;
 }
 
-bool UEidolonCampaignSubsystem::CommitAbyssSluice(EidolonSluice::Control Control, uint8 ExpectedProgress)
+bool UEidolonCampaignSubsystem::CommitAbyssDrain(int32 Floor, EidolonSluice::Control Control, uint8 ExpectedProgress)
 {
     using namespace EidolonAbyss;
-    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+    const auto Member = DrainMaskMember(Floor);
+    if (!Member || !IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
         State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
-        GetAuthoredAbyssCompletedFloor() != SluiceFloor - 1)
+        GetAuthoredAbyssCompletedFloor() != Floor - 1)
     {
         return false;
     }
 
     const auto* GameInstance = GetGameInstance();
-    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), SluiceFloor)) return false;
-    const auto NextSluice = EidolonSluice::ProposeActivation(State->AbyssSluiceProgress, ExpectedProgress, Control);
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), Floor)) return false;
+    const auto NextSluice = EidolonSluice::ProposeActivation(State.Get()->*Member, ExpectedProgress, Control);
     if (!NextSluice) return false;
 
     UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
-    Snapshot->AbyssSluiceProgress = *NextSluice;
+    Snapshot->*Member = *NextSluice;
     if (EidolonSluice::CanExit(*NextSluice))
     {
         const auto Progress = ReadAuthoredAbyssProgress(*State);
-        const auto NextFloor = Advance(Progress, {Chapter, SluiceFloor, SluiceFloor, Revision(Progress),
-            EventKind::SluicesOpened, Producer::Puzzle, Target::SluiceControls});
+        const bool bFernBasin = Floor == FernBasinFloor;
+        const auto NextFloor = Advance(Progress, {Chapter, Floor, Floor, Revision(Progress),
+            bFernBasin ? EventKind::FernBasinDrained : EventKind::SluicesOpened, Producer::Puzzle,
+            bFernBasin ? Target::FernBasinDrains : Target::SluiceControls});
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }

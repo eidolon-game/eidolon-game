@@ -1,4 +1,5 @@
 #include "../Source/Eidolon/Dungeons/EidolonSluiceRules.h"
+#include "../Source/Eidolon/Dungeons/EidolonAbyssProgression.h"
 
 #include <iostream>
 
@@ -55,6 +56,18 @@ int main()
             || (!IsValid(Saved) && ProposeActivation(Saved, Saved, Control::Inlet)))
         {
             std::cerr << "Invalid mask or lever accepted: " << Mask << '\n';
+            return 1;
+        }
+    }
+
+    for (const int Floor : {EidolonAbyss::SluiceFloor, EidolonAbyss::FernBasinFloor})
+    {
+        if (!MatchesFloorProgress(0, Floor - 2, Floor) || MatchesFloorProgress(1, Floor - 2, Floor) ||
+            !MatchesFloorProgress(1, Floor - 1, Floor) || !MatchesFloorProgress(2, Floor - 1, Floor) ||
+            MatchesFloorProgress(AllControls, Floor - 1, Floor) || MatchesFloorProgress(1, Floor, Floor) ||
+            !MatchesFloorProgress(AllControls, Floor, Floor))
+        {
+            std::cerr << "Saved drain state is inconsistent with completion for floor " << Floor << '\n';
             return 1;
         }
     }

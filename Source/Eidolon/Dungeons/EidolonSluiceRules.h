@@ -31,6 +31,12 @@ namespace EidolonSluice
         return Committed == AllControls;
     }
 
+    inline constexpr bool MatchesFloorProgress(Progress Committed, int CompletedFloor, int DrainFloor)
+    {
+        return IsValid(Committed) && (CompletedFloor >= DrainFloor - 1 || Committed == 0)
+            && (CanExit(Committed) == (CompletedFloor >= DrainFloor));
+    }
+
     // The native adapter confirms the actual lever. Publish the candidate only
     // after the campaign checkpoint has saved successfully.
     inline std::optional<Progress> ProposeActivation(Progress Committed, Progress Expected, Control Lever)

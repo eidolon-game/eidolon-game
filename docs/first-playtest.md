@@ -57,7 +57,7 @@ UnrealEditor-Cmd <Eidolon.uproject> -run=pythonscript -script=<scripts/create_va
 UnrealEditor-Cmd <Eidolon.uproject> -run=pythonscript -script=<scripts/create_first_descent_floor.py> -unattended -nop4
 ```
 
-The generators create `/Game/Eidolon/Maps/ValdrisPrologue` and `/Game/Eidolon/Maps/AbyssFloor001`. They reuse existing generated assets. Use a clean checkout to reproduce edits to the generators, especially after generating the older traversal-only Abyss map. Open `ValdrisPrologue` in the editor with an isolated test save slot environment and begin a fresh campaign.
+The generators create `/Game/Eidolon/Maps/ValdrisPrologue` and `/Game/Eidolon/Maps/AbyssFloor001`. They reuse existing generated assets. Use a clean checkout to reproduce edits to the generators, especially after generating the older traversal-only Abyss map. Start the editor with `-EidolonAuthoredCampaign` to use the isolated campaign prototype slot and open `ValdrisPrologue`. The [Win64 campaign prototype launcher](windows-campaign-package.md) supplies the same flag.
 
 | Test | Expected result |
 | --- | --- |
@@ -191,4 +191,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor013` with `scripts/create_branch_terrace.
 
 - Observe the anchored climb and landing. Walk out of the impact zone after the telegraph. Test a blocked ascent or landing and a missing optional spawn or perch anchor. The upper stair release must remain reachable in every case.
 - Try the release from the lower route, out of range and behind geometry. From the upper platform, fail the checkpoint and verify both the lower shortcut and the onward gate stay blocked. Save successfully, then test returning through the opened shortcut and leaving through the exit.
-- Reload before and after the release. Verify the closed or open geometry matches the checkpoint and repeated interactions do not re-award completion. The exit targets the future `AbyssFloor014`. Rigging and import of the preview ladder and native runtime tests are pending.
+- Reload before and after the release. Verify the closed or open geometry matches the checkpoint and repeated interactions do not re-award completion. The exit leads to `AbyssFloor014` once generated. Rigging and import of the preview ladder and native runtime tests are pending.
+
+## Fern Basin
+
+Generate `/Game/Eidolon/Maps/AbyssFloor014` with `scripts/create_fern_basin.py` or the campaign generator. Enter after saving the Branch Terraces stair release. Reach each drain by the boardwalk and by the raised service route. Verify the service route, drain pads and exit remain usable with the optional Stalker alive and after a blocked spawn.
+
+- Use the upper drain first, then repeat from a fresh checkpoint with the lower drain first. One saved drain lowers the water once and leaves the gate closed. Reload at that point and verify both the water level and the remaining prompt.
+- Attempt early entry, remote and obstructed interactions, and toggling the same drain twice. Fail the second write in each order. Only the first drain should remain active. Retry and verify that the final drop, open channel and floor 14 completion appear together and survive reload.
+- Take the exit after a successful checkpoint. The exit targets the future `AbyssFloor015`. Check the ledges, camera and controls in UE 5.6. The handwheel prop and audio cues await runtime integration.

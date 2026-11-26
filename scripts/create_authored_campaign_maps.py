@@ -3,12 +3,14 @@
 Pass --validate with standard Python for structural checks. In the Unreal
 editor Python commandlet, omit --validate to create the campaign packages.
 """
+import json
 import os
 import runpy
 import sys
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
+PROJECT = SCRIPTS.parent
 GENERATORS = (
     ("create_valdris_prologue.py", None),
     ("create_first_descent_floor.py", None),
@@ -24,6 +26,7 @@ GENERATORS = (
     ("create_buried_forest_entry.py", None),
     ("create_oblique_clearing.py", None),
     ("create_branch_terrace.py", None),
+    ("create_fern_basin.py", None),
 )
 
 
@@ -44,6 +47,23 @@ def run_generator(filename, interactive_variable):
                 os.environ[interactive_variable] = previous
 
 
+def write_package_manifest():
+    maps = ["ValdrisPrologue"] + [f"AbyssFloor{floor:03d}" for floor in range(1, len(GENERATORS))]
+    for name in maps:
+        path = PROJECT / "Content" / "Eidolon" / "Maps" / f"{name}.umap"
+        if not path.is_file() or path.stat().st_size == 0:
+            raise RuntimeError(f"Campaign generator did not produce a nonempty map at {path}.")
+
+    packages = [f"/Game/Eidolon/Maps/{name}" for name in maps]
+    manifest = PROJECT / "Saved" / "EidolonAuthoredMaps.json"
+    manifest.parent.mkdir(parents=True, exist_ok=True)
+    pending = manifest.with_suffix(".tmp")
+    pending.write_text(json.dumps({"startup_map": packages[0], "maps": packages}, indent=2) + "\n", encoding="utf-8")
+    pending.replace(manifest)
+
+
 if __name__ == "__main__":
     for filename, interactive_variable in GENERATORS:
         run_generator(filename, interactive_variable)
+    if "--validate" not in sys.argv[1:]:
+        write_package_manifest()

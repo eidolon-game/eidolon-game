@@ -62,6 +62,11 @@ int main()
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::BranchStairRelease;
                 break;
+            case FernBasinFloor:
+                Clear.Kind = EventKind::FernBasinDrained;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::FernBasinDrains;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -131,6 +136,18 @@ int main()
         {
             std::cerr << "The Branch Terraces stair release was accepted at a different anchor or floor\n";
             return 1;
+        }
+
+        if (Floor == FernBasinFloor)
+        {
+            Event CanalClear = Clear;
+            CanalClear.Kind = EventKind::SluicesOpened;
+            CanalClear.Subject = Target::SluiceControls;
+            if (Advance(State, CanalClear))
+            {
+                std::cerr << "The Fern Basin accepted a Drainage Canals receipt\n";
+                return 1;
+            }
         }
 
         if (Guardian || Floor == RootclawFloor)

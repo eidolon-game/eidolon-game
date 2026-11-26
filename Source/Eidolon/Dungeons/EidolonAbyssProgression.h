@@ -14,6 +14,7 @@ namespace EidolonAbyss
     inline constexpr int RootclawFloor = 10;
     inline constexpr int ObliqueClearingFloor = 12;
     inline constexpr int BranchTerraceFloor = 13;
+    inline constexpr int FernBasinFloor = 14;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -30,7 +31,8 @@ namespace EidolonAbyss
         RicordaHeard,
         GuardianDefeated,
         FloorTraversed,
-        BranchStairReleased
+        BranchStairReleased,
+        FernBasinDrained
     };
 
     enum class Producer
@@ -54,7 +56,8 @@ namespace EidolonAbyss
         NamelessSpeaker,
         AbyssGuardian,
         TraversalExit,
-        BranchStairRelease
+        BranchStairRelease,
+        FernBasinDrains
     };
 
     struct Progress
@@ -113,10 +116,12 @@ namespace EidolonAbyss
         if (Floor == SpeakerFloor && !State.RicordaHeard)
             return std::nullopt;
 
-        if (Floor == SluiceFloor)
+        if (Floor == SluiceFloor || Floor == FernBasinFloor)
         {
-            if (Input.Kind != EventKind::SluicesOpened || Input.Source != Producer::Puzzle ||
-                Input.Subject != Target::SluiceControls)
+            const bool FernBasin = Floor == FernBasinFloor;
+            if (Input.Kind != (FernBasin ? EventKind::FernBasinDrained : EventKind::SluicesOpened) ||
+                Input.Source != Producer::Puzzle ||
+                Input.Subject != (FernBasin ? Target::FernBasinDrains : Target::SluiceControls))
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

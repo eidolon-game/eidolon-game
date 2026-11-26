@@ -1,0 +1,116 @@
+{
+  "source_glb_sha256": "6e19f9339f68cda01977c32df5e01d87d324a4773726450655e063716bd88351",
+  "blender": "4.3.2",
+  "units": "Unreal centimeters",
+  "reassembled_recovery_error_mm": 0.000642,
+  "rear_open_from_rest": {
+    "axis": [
+      0.8727446,
+      0.0,
+      0.4881773
+    ],
+    "radians": 1.1600001
+  },
+  "parts": [
+    {
+      "name": "Body",
+      "file": "SM_MineBorer_Body.glb",
+      "sha256": "072ffef081a5874ff27a28e01fe98d1a57e18dfceeaf962962aebd14f432cc2f",
+      "pivot_cm": [
+        -0.0,
+        -0.0,
+        4.0
+      ],
+      "local_bounds_cm": {
+        "min": [
+          -201.29695,
+          -209.4595,
+          -151.19882
+        ],
+        "max": [
+          232.65836,
+          208.65583,
+          149.50633
+        ]
+      },
+      "triangles": 72148,
+      "textured_primitives_with_tangents": 5,
+      "rest_error_mm": 6e-05
+    },
+    {
+      "name": "Head",
+      "file": "SM_MineBorer_Head.glb",
+      "sha256": "7508c966c9999ff7764d917055f7f49a71d1fec3a5cbdbb02294ba9390c848d7",
+      "pivot_cm": [
+        99.0,
+        -0.0,
+        36.0
+      ],
+      "local_bounds_cm": {
+        "min": [
+          -6.76576,
+          -81.79279,
+          -93.6429
+        ],
+        "max": [
+          188.76102,
+          81.48654,
+          47.30788
+        ]
+      },
+      "triangles": 17576,
+      "textured_primitives_with_tangents": 4,
+      "rest_error_mm": 0.0
+    },
+    {
+      "name": "RearLeft",
+      "file": "SM_MineBorer_RearLeft.glb",
+      "sha256": "60fc6edb8ae22543bb51af8b87042cd939cdc19af0dab6a6ba50a1d3aa33b4ef",
+      "pivot_cm": [
+        -103.0,
+        -64.0,
+        59.5
+      ],
+      "local_bounds_cm": {
+        "min": [
+          -102.8183,
+          -15.5,
+          -49.98823
+        ],
+        "max": [
+          19.37442,
+          60.5,
+          31.50525
+        ]
+      },
+      "triangles": 4096,
+      "textured_primitives_with_tangents": 2,
+      "rest_error_mm": 0.000337
+    },
+    {
+      "name": "RearRight",
+      "file": "SM_MineBorer_RearRight.glb",
+      "sha256": "420406340a5ce14d256b98dba8f27e8e6c7c4d423607a3d39312ef8b39ce6aee",
+      "pivot_cm": [
+        -103.0,
+        64.0,
+        59.5
+      ],
+      "local_bounds_cm": {
+        "min": [
+          -95.92546,
+          -60.5,
+          -50.98337
+        ],
+        "max": [
+          32.31454,
+          15.5,
+          30.64971
+        ]
+      },
+      "triangles": 4096,
+      "textured_primitives_with_tangents": 2,
+      "rest_error_mm": 0.000268
+    }
+  ]
+}

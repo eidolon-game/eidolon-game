@@ -22,11 +22,13 @@ public:
                      AController* Instigator, AActor* Causer) override;
 
 private:
+    void ConfigurePresentation();
     void UpdatePose();
     void ResolveDebris(AEidolonCharacter* Player);
     bool CanSee(const AEidolonCharacter& Player) const;
 
     UPROPERTY() TObjectPtr<UBoxComponent> CollisionBody;
+    UPROPERTY() TObjectPtr<UStaticMeshComponent> VisualBody;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Head;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> LeftPlate;
     UPROPERTY() TObjectPtr<UStaticMeshComponent> RightPlate;
@@ -34,6 +36,10 @@ private:
     EidolonMineBorer::Attack Attack;
     FVector Home = FVector::ZeroVector;
     FVector Direction = FVector::ZeroVector;
+    FQuat PresentationAlignment = FQuat::Identity;
+    FVector RearHingeAxis = FVector::ZeroVector;
     double LaneLength = 0.0;
+    double RearOpenRadians = 0.0;
+    bool bHasPresentation = false;
     bool bHitPlayer = false;
 };

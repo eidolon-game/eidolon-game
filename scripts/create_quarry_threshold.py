@@ -6,6 +6,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from create_first_descent_floor import MAP_FOLDER, WALL_THICKNESS, build_shell, create_graybox, visit
+from import_mine_borer import import_presentation, read_source, verify_calibration
 
 LAYOUT = Path(__file__).resolve().parents[1] / "Content/Eidolon/Data/Dungeons/abyss_021_authored.json"
 MAP_PACKAGE = MAP_FOLDER + "/AbyssFloor021"
@@ -92,6 +93,7 @@ def read_layout():
 
 
 def build(unreal, layout, cells):
+    import_presentation(unreal)
     graybox = create_graybox(unreal, MAP_PACKAGE, MODE_PATH)
     if graybox is None:
         return
@@ -124,6 +126,8 @@ def build(unreal, layout, cells):
 if __name__ == "__main__":
     layout, cells = read_layout()
     if "--validate" in sys.argv[1:]:
+        bundle, _ = read_source()
+        verify_calibration(bundle)
         print(f"Validated {layout['id']}: {len(cells)} cells, sheltered arrivals, two recesses and inner release.")
     else:
         import unreal

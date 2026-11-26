@@ -1,6 +1,7 @@
 #include "EidolonMineBorer.h"
 
 #include "../EidolonCharacter.h"
+#include "EidolonMineBorerPresentation.h"
 #include "CollisionQueryParams.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -20,7 +21,7 @@ namespace
 AEidolonMineBorer::AEidolonMineBorer()
 {
     using namespace EidolonMineBorer;
-    auto* VisualBody = CastChecked<UStaticMeshComponent>(GetRootComponent());
+    VisualBody = CastChecked<UStaticMeshComponent>(GetRootComponent());
     CollisionBody = CreateDefaultSubobject<UBoxComponent>(TEXT("BorerCollision"));
     SetRootComponent(CollisionBody);
     CollisionBody->InitBoxExtent(FVector(BodyHalfLengthCm, BodyHalfWidthCm, BodyHalfHeightCm));
@@ -70,7 +71,60 @@ bool AEidolonMineBorer::ConfigureChargeLane(const FVector& End)
         return false;
     }
     Configure(TEXT("abyss_mine_borer"), 21);
+    ConfigurePresentation();
     return true;
+}
+
+void AEidolonMineBorer::ConfigurePresentation()
+{
+    const auto* Asset = LoadObject<UEidolonMineBorerPresentation>(nullptr,
+        TEXT("/Game/Eidolon/Creatures/MineBorer/DA_MineBorerPresentation.DA_MineBorerPresentation"));
+    if (!Asset || !Asset->Body || !Asset->Head || !Asset->RearLeft || !Asset->RearRight)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Mine Borer presentation is unavailable. Using native graybox meshes."));
+        return;
+    }
+
+    const int32 Axes[] = {Asset->ImportedAxes.X, Asset->ImportedAxes.Y, Asset->ImportedAxes.Z};
+    uint8 Seen = 0;
+    for (const int32 Axis : Axes)
+    {
+        if (Axis == 0 || Axis < -3 || Axis > 3) return;
+        const uint8 Bit = static_cast<uint8>(1u << (FMath::Abs(Axis) - 1));
+        if (Seen & Bit) return;
+        Seen |= Bit;
+    }
+    if (!FMath::IsFinite(Asset->ImportScale) || Asset->ImportScale <= 0.0
+        || Asset->RearHingeAxis.ContainsNaN() || !Asset->RearHingeAxis.IsNormalized()
+        || !FMath::IsFinite(Asset->RearOpenRadians) || Asset->RearOpenRadians <= 0.0)
+        return;
+
+    const auto CanonicalVector = [&Axes, Asset](const FVector& Value)
+    {
+        FVector Result;
+        for (int32 Index = 0; Index < 3; ++Index)
+            Result[Index] = Value[FMath::Abs(Axes[Index]) - 1] * (Axes[Index] < 0 ? -1.0 : 1.0);
+        return Result * Asset->ImportScale;
+    };
+    const FTransform Alignment{FMatrix(
+        FPlane(CanonicalVector(FVector::ForwardVector), 0.0),
+        FPlane(CanonicalVector(FVector::RightVector), 0.0),
+        FPlane(CanonicalVector(FVector::UpVector), 0.0),
+        FPlane(0.0, 0.0, 0.0, 1.0))};
+    PresentationAlignment = Alignment.GetRotation();
+    RearHingeAxis = Asset->RearHingeAxis;
+    RearOpenRadians = Asset->RearOpenRadians;
+    const auto Apply = [&Alignment](UStaticMeshComponent& Component, UStaticMesh* Mesh, const FVector& Pivot)
+    {
+        Component.SetStaticMesh(Mesh);
+        Component.SetRelativeTransform(FTransform(Alignment.GetRotation(), Pivot, Alignment.GetScale3D()));
+    };
+    Apply(*VisualBody.Get(), Asset->Body.Get(), Asset->BodyPivot);
+    Apply(*Head.Get(), Asset->Head.Get(), Asset->HeadPivot);
+    Apply(*LeftPlate.Get(), Asset->RearLeft.Get(), Asset->RearLeftPivot);
+    Apply(*RightPlate.Get(), Asset->RearRight.Get(), Asset->RearRightPivot);
+    bHasPresentation = true;
+    UpdatePose();
 }
 
 bool AEidolonMineBorer::CanSee(const AEidolonCharacter& Player) const
@@ -163,12 +217,23 @@ void AEidolonMineBorer::UpdatePose()
     using namespace EidolonMineBorer;
     const bool bDigging = Attack.Current == Phase::Windup || Attack.Current == Phase::Charge;
     const bool bExposed = Attack.Current == Phase::Recovery;
-    Head->SetRelativeLocation(FVector(173.0, 0.0, bDigging ? -75.0 : -30.0));
-    Head->SetRelativeRotation(FRotator(bDigging ? -108.0 : -94.0, 0.0, 0.0));
-    LeftPlate->SetRelativeLocation(FVector(-127.0, -91.0, bExposed ? 113.0 : 92.0));
-    RightPlate->SetRelativeLocation(FVector(-127.0, 91.0, bExposed ? 113.0 : 92.0));
-    LeftPlate->SetRelativeRotation(FRotator(-18.0, 0.0, bExposed ? -64.0 : -8.0));
-    RightPlate->SetRelativeRotation(FRotator(-18.0, 0.0, bExposed ? 64.0 : 8.0));
+    if (bHasPresentation)
+    {
+        const FQuat Pitch(FVector::RightVector, bDigging ? FMath::DegreesToRadians(16.0) : 0.0);
+        const double Release = bExposed ? RearOpenRadians : 0.0;
+        Head->SetRelativeRotation(Pitch * PresentationAlignment);
+        LeftPlate->SetRelativeRotation(FQuat(RearHingeAxis, Release) * PresentationAlignment);
+        RightPlate->SetRelativeRotation(FQuat(RearHingeAxis, -Release) * PresentationAlignment);
+    }
+    else
+    {
+        Head->SetRelativeLocation(FVector(173.0, 0.0, bDigging ? -75.0 : -30.0));
+        Head->SetRelativeRotation(FRotator(bDigging ? -108.0 : -94.0, 0.0, 0.0));
+        LeftPlate->SetRelativeLocation(FVector(-127.0, -91.0, bExposed ? 113.0 : 92.0));
+        RightPlate->SetRelativeLocation(FVector(-127.0, 91.0, bExposed ? 113.0 : 92.0));
+        LeftPlate->SetRelativeRotation(FRotator(-18.0, 0.0, bExposed ? -64.0 : -8.0));
+        RightPlate->SetRelativeRotation(FRotator(-18.0, 0.0, bExposed ? 64.0 : 8.0));
+    }
 
     const bool bImpact = Attack.Current == Phase::Impact;
     DangerMarker->SetHiddenInGame(!(bDigging || bImpact));

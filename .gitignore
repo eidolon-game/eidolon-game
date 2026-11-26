@@ -1,0 +1,16 @@
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+.idea/
+*.sln
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+Plugins/**/Binaries/
+Plugins/**/Intermediate/
+.env
+*.pfx
+*.pem

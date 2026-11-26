@@ -28,6 +28,7 @@ GENERATORS = (
     ("create_branch_terrace.py", None),
     ("create_fern_basin.py", None),
     ("create_hollow_trunk_plates.py", None),
+    ("create_rootlet_canal.py", None),
 )
 
 

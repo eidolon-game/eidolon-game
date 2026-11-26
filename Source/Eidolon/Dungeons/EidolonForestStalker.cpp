@@ -92,25 +92,77 @@ bool AEidolonForestStalker::CanSee(const AEidolonCharacter& Player) const
 
 bool AEidolonForestStalker::CanStandAt(const FVector& Position) const
 {
+    double SupportZ = 0.0;
+    return ReadSupportZ(Position, 125.0, SupportZ);
+}
+
+void AEidolonForestStalker::EnableCanalGroundFollowing()
+{
+    if (HasAuthority()) bCanalGroundFollowing = true;
+}
+
+bool AEidolonForestStalker::ReadSupportZ(const FVector& Position, double Depth, double& SupportZ) const
+{
     if (FVector::DistSquared2D(Home, Position) > FMath::Square(HomeRadiusCm)) return false;
 
     const FCollisionQueryParams Query(SCENE_QUERY_STAT(EidolonForestStalkerGround), false, this);
     const FCollisionObjectQueryParams Surface(ECC_WorldStatic);
     FHitResult Hit;
-    return GetWorld()->LineTraceSingleByObjectType(Hit, Position,
-        Position - FVector(0.0, 0.0, 125.0), Surface, Query)
-        && Hit.ImpactNormal.Z > 0.5;
+    if (!GetWorld()->LineTraceSingleByObjectType(Hit, Position,
+        Position - FVector(0.0, 0.0, Depth), Surface, Query) || Hit.ImpactNormal.Z <= 0.5)
+    {
+        return false;
+    }
+    SupportZ = Hit.ImpactPoint.Z;
+    return true;
 }
 
-bool AEidolonForestStalker::SweepGrounded(const FVector& Movement, FHitResult& Hit)
+bool AEidolonForestStalker::ResolveGroundStep(FVector& Position, bool bFollowGrade) const
+{
+    if (!bCanalGroundFollowing) return CanStandAt(Position);
+
+    using namespace EidolonForestStalker;
+    // The extra centimetre lets an exact legal drop hit before the trace end.
+    constexpr double ProbeDepth = PerchCenterHeightCm + CanalMaxGroundStepCm + 1.0;
+    double SupportZ = 0.0;
+    if (!ReadSupportZ(Position, ProbeDepth, SupportZ)) return false;
+
+    const auto RootZ = CanalRootZ(Position.Z, SupportZ, bFollowGrade);
+    if (!RootZ) return false;
+    Position.Z = *RootZ;
+    return true;
+}
+
+bool AEidolonForestStalker::CanStartGroundAttack(const FVector& Offset) const
+{
+    using namespace EidolonForestStalker;
+    if (!bCanalGroundFollowing) return FMath::Abs(Offset.Z) <= MaxHeightDeltaCm;
+    if (FMath::Abs(Offset.Z) > CanalMaxGroundStepCm) return false;
+    const double Distance = Offset.Size2D();
+    if (Distance <= SweepRangeCm || Distance > PounceRangeCm) return true;
+
+    const FVector Start = GetActorLocation();
+    const FVector Horizontal(Offset.X, Offset.Y, 0.0);
+    const int32 Pieces = FMath::CeilToInt(Distance / GroundStepCm);
+    for (int32 Index = 1; Index <= Pieces; ++Index)
+    {
+        FVector Sample = Start + Horizontal * (static_cast<double>(Index) / Pieces);
+        if (!ResolveGroundStep(Sample, false)) return false;
+    }
+    return true;
+}
+
+bool AEidolonForestStalker::SweepGrounded(const FVector& Movement, FHitResult& Hit, bool bFollowGrade)
 {
     const int32 Pieces = FMath::Max(1, FMath::CeilToInt(Movement.Size2D() / GroundStepCm));
     const FVector Step = Movement / static_cast<double>(Pieces);
     for (int32 Index = 0; Index < Pieces; ++Index)
     {
-        if (!CanStandAt(GetActorLocation() + Step)) return false;
+        const FVector Current = GetActorLocation();
+        FVector Destination = Current + Step;
+        if (!ResolveGroundStep(Destination, bFollowGrade)) return false;
 
-        AddActorWorldOffset(Step, true, &Hit);
+        AddActorWorldOffset(Destination - Current, true, &Hit);
         if (Hit.bBlockingHit) return false;
     }
     return true;
@@ -124,7 +176,7 @@ void AEidolonForestStalker::StalkToward(const FVector& Destination, double Delta
     const double Distance = FMath::Min(Offset.Size2D(), FMath::Min(GroundStepCm, Speed * DeltaSeconds));
     SetActorRotation(Direction.Rotation());
     FHitResult Hit;
-    SweepGrounded(Direction * Distance, Hit);
+    SweepGrounded(Direction * Distance, Hit, true);
 }
 
 bool AEidolonForestStalker::ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet)
@@ -337,7 +389,7 @@ void AEidolonForestStalker::Tick(float DeltaSeconds)
     if (Previous == Phase::Ready)
     {
         const FVector Offset = LastSeen - GetActorLocation();
-        if (Visible && FMath::Abs(Offset.Z) <= MaxHeightDeltaCm && Attack.Begin(true, Offset.Size2D()))
+        if (Visible && CanStartGroundAttack(Offset) && Attack.Begin(true, Offset.Size2D()))
         {
             LockedDirection = Offset.GetSafeNormal2D();
             LockedPlayer = Player;

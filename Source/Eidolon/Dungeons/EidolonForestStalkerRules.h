@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <optional>
 
 namespace EidolonForestStalker
 {
@@ -29,6 +30,17 @@ namespace EidolonForestStalker
     inline constexpr double PerchWindupSeconds = 1.10;
     inline constexpr double PerchTraversalSeconds = 0.85;
     inline constexpr double PerchWaitSeconds = 2.40;
+    inline constexpr double CanalMaxGroundStepCm = 30.0;
+    inline constexpr double CanalPounceGroundToleranceCm = 10.0;
+
+    inline std::optional<double> CanalRootZ(double CurrentZ, double SupportZ, bool FollowGrade)
+    {
+        if (!std::isfinite(CurrentZ) || !std::isfinite(SupportZ)) return std::nullopt;
+        const double AdjustedZ = SupportZ + PerchCenterHeightCm;
+        const double Limit = FollowGrade ? CanalMaxGroundStepCm : CanalPounceGroundToleranceCm;
+        if (std::abs(AdjustedZ - CurrentZ) > Limit) return std::nullopt;
+        return FollowGrade ? AdjustedZ : CurrentZ;
+    }
 
     inline bool IsPerchRouteValid(double HorizontalCm, double ElevationCm)
     {

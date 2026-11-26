@@ -100,5 +100,20 @@ int main()
         return 1;
     }
 
-    std::cout << "Forest Stalker: sight memory, sweep, locked pounce, ledge clearance, abort and landing passed\n";
+    const auto TenCm = CanalRootZ(95.0, 10.0, true);
+    const auto UpRamp = TenCm ? CanalRootZ(*TenCm, 30.0, true) : std::nullopt;
+    const auto DownRamp = UpRamp ? CanalRootZ(*UpRamp, 0.0, true) : std::nullopt;
+    const auto FlatPounce = CanalRootZ(95.0, 10.0, false);
+    if (!TenCm || *TenCm != 105.0 || !UpRamp || *UpRamp != 125.0
+        || !DownRamp || *DownRamp != 95.0 || !FlatPounce || *FlatPounce != 95.0
+        || CanalRootZ(95.0, 31.0, true) || CanalRootZ(95.0, -31.0, true)
+        || CanalRootZ(95.0, 11.0, false) || CanalRootZ(95.0, -11.0, false)
+        || CanalRootZ(95.0, std::numeric_limits<double>::quiet_NaN(), true)
+        || CanalRootZ(std::numeric_limits<double>::infinity(), 10.0, true))
+    {
+        std::cerr << "Canal support lost height, followed a cliff, or bent a locked pounce\n";
+        return 1;
+    }
+
+    std::cout << "Forest Stalker: search, sweep, locked pounce, perch, landing and canal support passed\n";
 }

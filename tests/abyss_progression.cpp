@@ -1,6 +1,8 @@
 #include "../Source/Eidolon/Dungeons/EidolonAbyssProgression.h"
+#include "../Source/Eidolon/Dungeons/EidolonRootletCanalRules.h"
 
 #include <iostream>
+#include <limits>
 
 using namespace EidolonAbyss;
 
@@ -71,6 +73,11 @@ int main()
                 Clear.Kind = EventKind::HollowTrunkPinSeated;
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::HollowTrunkSocket;
+                break;
+            case RootletCanalFloor:
+                Clear.Kind = EventKind::RootletCounterweightReleased;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::RootletCounterweight;
                 break;
         }
         const Event Rejected[]{
@@ -163,6 +170,26 @@ int main()
             return 1;
         }
 
+        const Event RootletWeight{Chapter, Floor, Floor, Revision(State), EventKind::RootletCounterweightReleased,
+            Producer::Puzzle, Target::RootletCounterweight};
+        if (Floor == RootletCanalFloor)
+        {
+            Event WrongWeight = RootletWeight;
+            WrongWeight.Subject = Target::CounterweightWinch;
+            Event WrongProducer = RootletWeight;
+            WrongProducer.Source = Producer::Traversal;
+            if (Advance(State, WrongWeight) || Advance(State, WrongProducer))
+            {
+                std::cerr << "The Rootlet Canal accepted a substitute counterweight or producer\n";
+                return 1;
+            }
+        }
+        else if (Advance(State, RootletWeight))
+        {
+            std::cerr << "The Rootlet counterweight was accepted outside floor 16\n";
+            return 1;
+        }
+
         if (Floor == FernBasinFloor)
         {
             Event CanalClear = Clear;
@@ -215,6 +242,16 @@ int main()
         || !IsValid({89, false}) || IsValid({90, false}) || IsValid({88, true}))
     {
         std::cerr << "Abyss invalid-save or completion bounds failed\n";
+        return 1;
+    }
+
+    using EidolonRootletCanal::IsOnReleaseSide;
+    if (!IsOnReleaseSide(500.0, 500.0) || !IsOnReleaseSide(-500.0, -500.0) ||
+        IsOnReleaseSide(-500.0, 500.0) || IsOnReleaseSide(500.0, -500.0) ||
+        IsOnReleaseSide(40.0, 500.0) || IsOnReleaseSide(500.0, 0.0) ||
+        IsOnReleaseSide(std::numeric_limits<double>::quiet_NaN(), 500.0))
+    {
+        std::cerr << "Rootlet Canal accepted a release on the wrong side of the gate\n";
         return 1;
     }
 

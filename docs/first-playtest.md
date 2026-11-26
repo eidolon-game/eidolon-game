@@ -207,4 +207,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor015` with `scripts/create_hollow_trunk_pl
 
 - Interact away from the socket to set the pin down. Dodge while carrying and check that the pin drops and can be picked up again. Try dropping over a gap. On defeat, falling out of the carrying area or requesting recovery at the alcove, verify that the single pin returns.
 - Try the socket unladen, out of range, behind cover and in the air. Fail the seat save while holding the pin. Check that the pin remains available, with the gate closed and walkway disabled, then retry. A successful save seats the pin and enables the walkway and exit together.
-- Reload with a loose, carried or seated pin and verify that exactly one instance appears. The exit targets the future `AbyssFloor016`. Verify collision on the lowered walkway. The pin artwork and audio still need Unreal import and routing.
+- Reload with a loose, carried or seated pin and verify that exactly one instance appears. The exit leads to `AbyssFloor016` once generated. Verify collision on the lowered walkway. The pin artwork and audio still need Unreal import and routing.
+
+## Rootlet Canal
+
+Generate `/Game/Eidolon/Maps/AbyssFloor016` with `scripts/create_rootlet_canal.py` or the campaign generator. Enter after saving the Hollow Trunk pin. Walk from the high gallery to either canal inlet and use the low route to reach the inside of the portcullis. Check that a player can backtrack and return to the checkpoint with the gate still closed.
+
+- Try the release from the outside, behind cover and out of range. Bypass the Stalker and release the counterweight from the inner landing. Repeat by drawing the Stalker toward an opening before taking the other one. Verify support, swept movement and the fixed pounce on both approaches. A failed enemy spawn must leave both routes usable.
+- With a failed checkpoint, the grate and counterweight must stay in place. Save successfully, then verify the raised grate, lowered counterweight, clear return opening and floor 16 completion. Reload before and after this change and confirm opening the grate does not award completion twice.
+- Check the headroom under the lifted grate, collision on the ramps and travel toward the future `AbyssFloor017`. The separate gate art and sound still await Unreal import and routing.

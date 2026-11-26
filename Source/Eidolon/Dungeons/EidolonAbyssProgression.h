@@ -16,6 +16,7 @@ namespace EidolonAbyss
     inline constexpr int BranchTerraceFloor = 13;
     inline constexpr int FernBasinFloor = 14;
     inline constexpr int HollowTrunkFloor = 15;
+    inline constexpr int RootletCanalFloor = 16;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -34,7 +35,8 @@ namespace EidolonAbyss
         FloorTraversed,
         BranchStairReleased,
         FernBasinDrained,
-        HollowTrunkPinSeated
+        HollowTrunkPinSeated,
+        RootletCounterweightReleased
     };
 
     enum class Producer
@@ -60,7 +62,8 @@ namespace EidolonAbyss
         TraversalExit,
         BranchStairRelease,
         FernBasinDrains,
-        HollowTrunkSocket
+        HollowTrunkSocket,
+        RootletCounterweight
     };
 
     struct Progress
@@ -193,10 +196,12 @@ namespace EidolonAbyss
             return Progress{Floor, State.RicordaHeard};
         }
 
-        if (Floor == HollowTrunkFloor)
+        if (Floor == HollowTrunkFloor || Floor == RootletCanalFloor)
         {
-            if (Input.Kind != EventKind::HollowTrunkPinSeated || Input.Source != Producer::Puzzle ||
-                Input.Subject != Target::HollowTrunkSocket)
+            const bool Rootlet = Floor == RootletCanalFloor;
+            if (Input.Kind != (Rootlet ? EventKind::RootletCounterweightReleased : EventKind::HollowTrunkPinSeated)
+                || Input.Source != Producer::Puzzle
+                || Input.Subject != (Rootlet ? Target::RootletCounterweight : Target::HollowTrunkSocket))
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

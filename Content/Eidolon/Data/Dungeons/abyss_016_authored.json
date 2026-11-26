@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "id": "abyss_016",
+  "legacy_id": "abyss.016",
+  "dungeon_id": "abyss",
+  "floor": 16,
+  "family": "buried_forest",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Canale delle radichette",
+    "en": "Rootlet Canal"
+  },
+  "cell_cm": 200,
+  "roof_height_cm": 720,
+  "wall_thickness_cm": 25,
+  "cells": [
+    [2, 0],
+    [3, 0],
+    [4, 0],
+    [5, 0],
+    [6, 0],
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [10, 0],
+    [11, 0],
+    [12, 0],
+    [13, 0],
+    [14, 0],
+    [15, 0],
+    [16, 0],
+    [17, 0],
+    [2, 1],
+    [3, 1],
+    [4, 1],
+    [5, 1],
+    [6, 1],
+    [7, 1],
+    [8, 1],
+    [9, 1],
+    [10, 1],
+    [11, 1],
+    [12, 1],
+    [13, 1],
+    [14, 1],
+    [15, 1],
+    [16, 1],
+    [17, 1],
+    [3, 2],
+    [4, 2],
+    [10, 2],
+    [11, 2],
+    [16, 2],
+    [17, 2],
+    [18, 2],
+    [19, 2],
+    [3, 3],
+    [4, 3],
+    [10, 3],
+    [11, 3],
+    [16, 3],
+    [17, 3],
+    [18, 3],
+    [19, 3],
+    [3, 4],
+    [4, 4],
+    [10, 4],
+    [11, 4],
+    [13, 4],
+    [14, 4],
+    [15, 4],
+    [16, 4],
+    [17, 4],
+    [18, 4],
+    [19, 4],
+    [3, 5],
+    [4, 5],
+    [10, 5],
+    [11, 5],
+    [16, 5],
+    [17, 5],
+    [18, 5],
+    [19, 5],
+    [3, 6],
+    [4, 6],
+    [10, 6],
+    [11, 6],
+    [16, 6],
+    [17, 6],
+    [18, 6],
+    [19, 6],
+    [3, 7],
+    [4, 7],
+    [10, 7],
+    [11, 7],
+    [0, 8],
+    [1, 8],
+    [2, 8],
+    [3, 8],
+    [4, 8],
+    [5, 8],
+    [6, 8],
+    [7, 8],
+    [8, 8],
+    [9, 8],
+    [10, 8],
+    [11, 8],
+    [12, 8],
+    [13, 8],
+    [14, 8],
+    [15, 8],
+    [0, 9],
+    [1, 9],
+    [2, 9],
+    [3, 9],
+    [4, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [10, 9],
+    [11, 9],
+    [12, 9],
+    [13, 9],
+    [14, 9],
+    [15, 9],
+    [0, 10],
+    [1, 10],
+    [2, 10],
+    [3, 10],
+    [4, 10],
+    [5, 10],
+    [6, 10],
+    [7, 10],
+    [8, 10],
+    [9, 10],
+    [10, 10],
+    [11, 10],
+    [12, 10],
+    [13, 10],
+    [14, 10],
+    [15, 10]
+  ],
+  "entry": [
+    0,
+    9
+  ],
+  "checkpoint": [
+    1,
+    9
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint_yaw_deg": 0,
+  "counterweight_release": [
+    18,
+    4
+  ],
+  "exit": [
+    13,
+    4
+  ],
+  "gallery_height_cm": 240,
+  "gallery": {
+    "minimum": [
+      0,
+      8
+    ],
+    "maximum": [
+      15,
+      10
+    ]
+  },
+  "canal": {
+    "minimum": [
+      2,
+      0
+    ],
+    "maximum": [
+      17,
+      1
+    ],
+    "minimum_clear_width_cm": 250,
+    "clear_height_cm": 340,
+    "water_visual_width_cm": 250
+  },
+  "apertures": [
+    {
+      "id": "a",
+      "minimum": [
+        3,
+        2
+      ],
+      "maximum": [
+        4,
+        7
+      ],
+      "gallery_pad": [
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "canal_pad": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "lure_cell": [
+        3,
+        8
+      ]
+    },
+    {
+      "id": "b",
+      "minimum": [
+        10,
+        2
+      ],
+      "maximum": [
+        11,
+        7
+      ],
+      "gallery_pad": [
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          10,
+          9
+        ],
+        [
+          11,
+          9
+        ]
+      ],
+      "canal_pad": [
+        [
+          10,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "lure_cell": [
+        10,
+        8
+      ]
+    }
+  ],
+  "inner_side": {
+    "minimum": [
+      16,
+      2
+    ],
+    "maximum": [
+      19,
+      6
+    ],
+    "screen_cm": [
+      3550,
+      670,
+      75
+    ],
+    "screen_dimensions_cm": [
+      160,
+      55,
+      150
+    ]
+  },
+  "outlet": {
+    "minimum": [
+      13,
+      4
+    ],
+    "maximum": [
+      15,
+      4
+    ]
+  },
+  "gate": {
+    "id": "abyss_016_gate",
+    "from_inner_cell": [
+      16,
+      4
+    ],
+    "to_outlet_cell": [
+      15,
+      4
+    ],
+    "closed_center_cm": [
+      3200,
+      900,
+      120
+    ],
+    "raised_center_cm": [
+      3200,
+      900,
+      380
+    ],
+    "dimensions_cm": [
+      25,
+      150,
+      240
+    ],
+    "release_side": "positive_x",
+    "requires_durable_release": true
+  },
+  "counterweight": {
+    "id": "abyss_016_counterweight",
+    "closed_cm": [
+      3780,
+      950,
+      180
+    ],
+    "released_cm": [
+      3780,
+      950,
+      60
+    ],
+    "dimensions_cm": [
+      46,
+      50,
+      82
+    ],
+    "collision": false
+  },
+  "stalker": {
+    "id": "abyss_016_stalker_spawn",
+    "feet_cm": [
+      1700,
+      1900,
+      240
+    ],
+    "required": false,
+    "home_radius_cm": 1120
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_015",
+      "transition": "abyss_015_lower_stair",
+      "requires_completed_floor": 15
+    },
+    "exit": {
+      "to_floor": "abyss_017",
+      "transition": "abyss_016_lower_stair",
+      "requires_completed_floor": 16
+    }
+  },
+  "accessibility": {
+    "optional_stalker": true,
+    "mandatory_timed_traversal": false,
+    "dry_turn_pads": true
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

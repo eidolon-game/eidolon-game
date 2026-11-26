@@ -19,13 +19,17 @@ public:
     float TakeDamage(float Amount, const FDamageEvent& Event,
                      AController* Instigator, AActor* Causer) override;
     bool ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet);
+    void EnableCanalGroundFollowing();
 
 private:
     enum class PerchStage { Disabled, Ground, Climb, Waiting, Telegraph, Drop, ReturnToGround };
 
     bool CanSee(const AEidolonCharacter& Player) const;
     bool CanStandAt(const FVector& Position) const;
-    bool SweepGrounded(const FVector& Movement, FHitResult& Hit);
+    bool ReadSupportZ(const FVector& Position, double Depth, double& SupportZ) const;
+    bool ResolveGroundStep(FVector& Position, bool bFollowGrade) const;
+    bool CanStartGroundAttack(const FVector& Offset) const;
+    bool SweepGrounded(const FVector& Movement, FHitResult& Hit, bool bFollowGrade = false);
     void StalkToward(const FVector& Destination, double DeltaSeconds, double Speed);
     void UpdatePose();
     bool TickPerch(AEidolonCharacter* Player, bool bVisible, double DeltaSeconds);
@@ -45,6 +49,7 @@ private:
     FVector LastSeen = FVector::ZeroVector;
     FVector LockedDirection = FVector::ZeroVector;
     TWeakObjectPtr<AEidolonCharacter> LockedPlayer;
+    bool bCanalGroundFollowing = false;
     PerchStage Perch = PerchStage::Disabled;
     EidolonForestStalker::PerchTravel Flight;
     FVector PerchCenter = FVector::ZeroVector;

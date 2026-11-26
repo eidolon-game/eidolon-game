@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "id": "darius",
+      "role": "civilian",
+      "activity": "forge",
+      "save_id": "npc_darius"
+    },
+    {
+      "id": "elara",
+      "role": "civilian",
+      "activity": "heal_work",
+      "save_id": "npc_elara"
+    },
+    {
+      "id": "lyra",
+      "role": "civilian",
+      "activity": "train",
+      "save_id": "npc_lyra"
+    },
+    {
+      "id": "noah",
+      "role": "civilian",
+      "activity": "play",
+      "save_id": "npc_noah",
+      "presence_gate": "noah_appear",
+      "quest_gate": "dormitory_night"
+    },
+    {
+      "id": "aldren",
+      "role": "guild",
+      "activity": "guild_duty"
+    },
+    {
+      "id": "tutorial_monster",
+      "role": "monster",
+      "activity": "patrol",
+      "sight_cm": 1200,
+      "hearing_cm": 800,
+      "hearing_seconds": 3,
+      "reach_cm": 150,
+      "flee_health_percent": 20
+    }
+  ],
+  "routine_minutes": [
+    0,
+    480,
+    1080,
+    1320
+  ]
+}

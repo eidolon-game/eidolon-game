@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "proposal_not_runtime",
+  "entries": [
+    {
+      "floor_id": "abyss_010",
+      "creature_id": "boss_abyss_10",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_020",
+      "creature_id": "boss_abyss_20",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_030",
+      "creature_id": "boss_abyss_30",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_040",
+      "creature_id": "boss_abyss_40",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_050",
+      "creature_id": "boss_abyss_50",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_060",
+      "creature_id": "boss_abyss_60",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_070",
+      "creature_id": "boss_abyss_70",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_080",
+      "creature_id": "boss_abyss_80",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_090",
+      "creature_id": "boss_abyss_90",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_100",
+      "creature_id": "boss_abyss_guardian",
+      "status": "canon_creature_placement",
+      "combat_profile": "CustodianBound",
+      "anchors": 3,
+      "quest_id": "mq_04",
+      "defeat_event": "guardian_defeated"
+    },
+    {
+      "floor_id": "stair_014",
+      "creature_id": "stair_time_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_028",
+      "creature_id": "stair_memory_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_042",
+      "creature_id": "stair_life_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_056",
+      "creature_id": "stair_death_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_070",
+      "creature_id": "stair_matter_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_084",
+      "creature_id": "stair_will_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    },
+    {
+      "floor_id": "stair_098",
+      "creature_id": "stair_destiny_warden",
+      "status": "proposed_requires_law_sequence_reconciliation"
+    }
+  ],
+  "notes": "Stair warden allocation at 14-floor intervals is a proposal; existing cycling family labels and generic boss slots must be reconciled before activation. No additional canon boss implied at stair_100."
+}

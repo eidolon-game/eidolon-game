@@ -29,6 +29,7 @@ private:
     EidolonLintelMantis::Attack Attack;
     TWeakObjectPtr<AEidolonCharacter> LockedPlayer;
     FVector LockedDirection = FVector::ZeroVector;
+    FVector PerchForward = FVector::ForwardVector;
     double DiveTravel = 0.0;
     double LedgeClearance = 0.0;
     double DropHeight = 0.0;

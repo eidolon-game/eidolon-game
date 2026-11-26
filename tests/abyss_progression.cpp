@@ -39,6 +39,11 @@ int main()
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::PincerWinch;
                 break;
+            case BranchLatchFloor:
+                Clear.Kind = EventKind::BranchLatchSelected;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::BranchLatches;
+                break;
             case GuardianFloor:
                 Clear.Kind = EventKind::GuardianDefeated;
                 Clear.Subject = Target::AbyssGuardian;

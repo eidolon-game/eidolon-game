@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "id": "abyss_009",
+  "legacy_id": "abyss.009",
+  "dungeon_id": "abyss",
+  "floor": 9,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Bivio delle urne",
+    "en": "Urn Fork"
+  },
+  "cell_cm": 200,
+  "height_cm": 420,
+  "footprint_cm": [
+    4800,
+    2600
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [7, 0],
+    [8, 0],
+    [9, 0],
+    [7, 1],
+    [8, 1],
+    [9, 1],
+    [5, 2],
+    [6, 2],
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [11, 2],
+    [12, 2],
+    [13, 2],
+    [14, 2],
+    [15, 2],
+    [4, 3],
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [9, 3],
+    [10, 3],
+    [11, 3],
+    [12, 3],
+    [13, 3],
+    [14, 3],
+    [15, 3],
+    [16, 3],
+    [17, 3],
+    [18, 3],
+    [19, 3],
+    [20, 3],
+    [4, 4],
+    [5, 4],
+    [6, 4],
+    [7, 4],
+    [8, 4],
+    [9, 4],
+    [10, 4],
+    [11, 4],
+    [12, 4],
+    [13, 4],
+    [14, 4],
+    [15, 4],
+    [20, 4],
+    [0, 5],
+    [1, 5],
+    [2, 5],
+    [3, 5],
+    [4, 5],
+    [20, 5],
+    [0, 6],
+    [1, 6],
+    [2, 6],
+    [3, 6],
+    [4, 6],
+    [20, 6],
+    [21, 6],
+    [22, 6],
+    [23, 6],
+    [0, 7],
+    [1, 7],
+    [2, 7],
+    [3, 7],
+    [4, 7],
+    [20, 7],
+    [4, 8],
+    [20, 8],
+    [4, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [12, 9],
+    [13, 9],
+    [14, 9],
+    [15, 9],
+    [16, 9],
+    [20, 9],
+    [5, 10],
+    [6, 10],
+    [7, 10],
+    [8, 10],
+    [9, 10],
+    [10, 10],
+    [11, 10],
+    [12, 10],
+    [13, 10],
+    [14, 10],
+    [15, 10],
+    [16, 10],
+    [17, 10],
+    [18, 10],
+    [19, 10],
+    [20, 10],
+    [5, 11],
+    [6, 11],
+    [7, 11],
+    [8, 11],
+    [9, 11],
+    [12, 11],
+    [13, 11],
+    [14, 11],
+    [15, 11],
+    [16, 11],
+    [5, 12],
+    [6, 12],
+    [7, 12],
+    [8, 12],
+    [9, 12],
+    [12, 12],
+    [13, 12],
+    [14, 12],
+    [15, 12],
+    [16, 12]
+  ],
+  "entry": [
+    0,
+    6
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint": [
+    1,
+    6
+  ],
+  "checkpoint_yaw_deg": 0,
+  "exit": [
+    23,
+    6
+  ],
+  "fork": {
+    "minimum": [
+      0,
+      5
+    ],
+    "maximum": [
+      4,
+      7
+    ]
+  },
+  "convergence": {
+    "minimum": [
+      20,
+      3
+    ],
+    "maximum": [
+      20,
+      10
+    ]
+  },
+  "upper_route": {
+    "entry": [
+      4,
+      9
+    ],
+    "latch": [
+      19,
+      10
+    ],
+    "mantis": {
+      "creature_id": "abyss_lintel_mantis",
+      "spawn_marker": "abyss_009_lintel_mantis_01",
+      "cell": [
+        7,
+        13
+      ],
+      "mouth": [
+        7,
+        12
+      ],
+      "platform_height_cm": 180,
+      "body_headroom_cm": 190,
+      "yaw_deg": -90
+    },
+    "tick": {
+      "creature_id": "abyss_ossuary_tick",
+      "spawn_marker": "abyss_009_ossuary_tick_01",
+      "cell": [
+        14,
+        13
+      ],
+      "mouth": [
+        14,
+        12
+      ],
+      "opening_cm": [
+        110,
+        110
+      ],
+      "yaw_deg": -90
+    }
+  },
+  "lower_route": {
+    "entry": [
+      4,
+      4
+    ],
+    "latch": [
+      19,
+      3
+    ],
+    "hagfish": {
+      "creature_id": "abyss_censer_hagfish",
+      "spawn_marker": "abyss_009_censer_hagfish_01",
+      "cell": [
+        6,
+        3
+      ],
+      "yaw_deg": 0
+    },
+    "canal": {
+      "id": "abyss_009_lower_canal",
+      "minimum": [
+        5,
+        3
+      ],
+      "maximum": [
+        15,
+        3
+      ],
+      "height_cm": 8
+    },
+    "dry_recess": {
+      "cell": [
+        8,
+        1
+      ],
+      "screening_wall": [
+        7,
+        2
+      ]
+    }
+  },
+  "gate": {
+    "id": "abyss_009_urn_gate",
+    "from_cell": [
+      20,
+      6
+    ],
+    "to_cell": [
+      21,
+      6
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires_any": [
+      "abyss_009_latch_upper",
+      "abyss_009_latch_lower"
+    ],
+    "requires_durable_completion": true
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_008",
+      "transition": "abyss_008_lower_stair",
+      "requires_completed_floor": 8
+    },
+    "exit": {
+      "to_floor": "abyss_010",
+      "transition": "abyss_009_lower_stair",
+      "requires_completed_floor": 9
+    }
+  },
+  "accessibility": {
+    "color_only_cues": false,
+    "ignored_route_optional": true,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

@@ -145,3 +145,11 @@ Generate `/Game/Eidolon/Maps/AbyssFloor008` with `scripts/create_counterweight_v
 - Defeat the Pincer and operate the winch. Check the first indicator and the eastern entrance warning. Reload from this checkpoint and verify only the Crawler spawns. Test a blocked spawn, clear the entrance, and retry from the winch or arena.
 - Defeat the Crawler and operate the winch again. The second indicator, open gate and floor credit must appear only after saving succeeds. Retry a failed write and confirm no repeat encounter or credit.
 - Fault-test both defeat receipts and the first latch separately. The lower stair targets the future floor 9 package. The Pincer still uses placeholder geometry pending import and rig.
+
+## Urn Fork
+
+Generate `/Game/Eidolon/Maps/AbyssFloor009` with `scripts/create_urn_fork_floor.py` in Unreal's Python commandlet. Enter after the Counterweight Vault checkpoint. Record one run per route on separate test saves.
+
+- In the upper wing, verify that the Mantises' ledge facing and the Tick's niche are compatible with their warnings and recovery. In the lower wing, verify the Hagfish's lane, dry refuge and sightline breaks. Start from the branch entrance and reach its latch without crossing the other route.
+- Try the latch from outside its interaction zone and behind cover. Neither attempt should write progress. With a failed latch save, the gate stays shut and either route is still available.
+- Save either latch and check the same gate opens. Reload to confirm the original route persists, the other latch cannot override it, and both routes lead to the same stair. The stair awaits the `AbyssFloor010` package.

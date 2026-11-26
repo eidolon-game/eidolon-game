@@ -1,6 +1,7 @@
 #include "EidolonCampaignSubsystem.h"
 #include "EidolonCampaignSave.h"
 #include "Dungeons/EidolonAbyssProgression.h"
+#include "Dungeons/EidolonBranchLatchRules.h"
 #include "Dungeons/EidolonCounterweightRules.h"
 #include "Dungeons/EidolonSluiceRules.h"
 #include "Dungeons/EidolonMarrowLatchRules.h"
@@ -240,6 +241,13 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const auto BranchLatch = static_cast<EidolonBranchLatch::Route>(Checkpoint->AbyssBranchLatchRoute);
+    if (!EidolonBranchLatch::IsValid(BranchLatch) ||
+        (EidolonBranchLatch::CanExit(BranchLatch) != (Authored.CompletedFloor >= EidolonAbyss::BranchLatchFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -269,7 +277,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened ||
         Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled ||
         Event.Kind == EidolonAbyss::EventKind::MirrorsAligned ||
-        Event.Kind == EidolonAbyss::EventKind::PincerWinchOpened)
+        Event.Kind == EidolonAbyss::EventKind::PincerWinchOpened ||
+        Event.Kind == EidolonAbyss::EventKind::BranchLatchSelected)
     {
         return false;
     }
@@ -482,6 +491,41 @@ bool UEidolonCampaignSubsystem::CommitAbyssPincerWinch(EidolonPincerWinch::Signa
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+EidolonBranchLatch::Route UEidolonCampaignSubsystem::GetAbyssBranchLatchRoute() const
+{
+    return State ? static_cast<EidolonBranchLatch::Route>(State->AbyssBranchLatchRoute)
+        : EidolonBranchLatch::Route::Unselected;
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssBranchLatch(EidolonBranchLatch::Route VerifiedLatch,
+                                                      EidolonBranchLatch::Route ExpectedRoute)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != BranchLatchFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), BranchLatchFloor)) return false;
+    const auto NextRoute = EidolonBranchLatch::Propose(GetAbyssBranchLatchRoute(), ExpectedRoute, VerifiedLatch);
+    if (!NextRoute) return false;
+
+    const auto Progress = ReadAuthoredAbyssProgress(*State);
+    const auto NextFloor = Advance(Progress, {Chapter, BranchLatchFloor, BranchLatchFloor, Revision(Progress),
+        EventKind::BranchLatchSelected, Producer::Puzzle, Target::BranchLatches});
+    if (!NextFloor) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssBranchLatchRoute = static_cast<uint8>(*NextRoute);
+    Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     if (!WriteCheckpoint(Snapshot)) return false;
     State = Snapshot;
     return true;

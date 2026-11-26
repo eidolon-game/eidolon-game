@@ -49,6 +49,7 @@ void AEidolonLintelMantis::BeginPlay()
 {
     Super::BeginPlay();
     SetActorScale3D(FVector(1.15, 0.93, 0.74));
+    PerchForward = GetActorForwardVector().GetSafeNormal2D();
     Configure(TEXT("abyss_lintel_mantis"), 3);
 }
 
@@ -85,7 +86,7 @@ void AEidolonLintelMantis::Tick(float DeltaSeconds)
             DiveTravel = 0.0;
             DropHeight = FMath::Max(0.0, GetActorLocation().Z - Ground.ImpactPoint.Z - BodyClearanceCm);
             LedgeClearance = DropHeight > 60.0
-                ? TravelToClearLedgeCm / FMath::Max(0.55, FMath::Abs(LockedDirection.X)) : 0.0;
+                ? TravelToClearLedgeCm / FMath::Max(0.55, FVector::DotProduct(LockedDirection, PerchForward)) : 0.0;
             LandingMarker->SetWorldLocation(Ground.ImpactPoint + FVector(0, 0, 3));
             SetActorRotation(LockedDirection.Rotation());
             UpdateTelegraph();

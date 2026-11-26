@@ -1,0 +1,30 @@
+name: Win64 package gate
+on:
+  push:
+    branches: ['feature/build-engineering', 'integration/studio']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: windows-2022
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Require official UE 5.6 installation
+        shell: pwsh
+        run: |
+          $root = 'C:\Program Files\Epic Games\UE_5.6'
+          if (!(Test-Path (Join-Path $root 'Engine/Build/Build.version'))) {
+            'BLOCKED: UE 5.6 absent; compile, tests and package NOT RUN.' | Out-File -Append $env:GITHUB_STEP_SUMMARY
+            throw 'BLOCKED: authorized UE 5.6 installation unavailable'
+          }
+          & ./scripts/build/Invoke-VerifiedWin64.ps1 -EngineRoot $root
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: win64-${{ github.sha }}
+          path: Saved/BuildEvidence/
+          if-no-files-found: error

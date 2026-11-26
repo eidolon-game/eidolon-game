@@ -15,6 +15,7 @@ namespace EidolonAbyss
     inline constexpr int ObliqueClearingFloor = 12;
     inline constexpr int BranchTerraceFloor = 13;
     inline constexpr int FernBasinFloor = 14;
+    inline constexpr int HollowTrunkFloor = 15;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -32,7 +33,8 @@ namespace EidolonAbyss
         GuardianDefeated,
         FloorTraversed,
         BranchStairReleased,
-        FernBasinDrained
+        FernBasinDrained,
+        HollowTrunkPinSeated
     };
 
     enum class Producer
@@ -57,7 +59,8 @@ namespace EidolonAbyss
         AbyssGuardian,
         TraversalExit,
         BranchStairRelease,
-        FernBasinDrains
+        FernBasinDrains,
+        HollowTrunkSocket
     };
 
     struct Progress
@@ -186,6 +189,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::BranchStairReleased || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::BranchStairRelease)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == HollowTrunkFloor)
+        {
+            if (Input.Kind != EventKind::HollowTrunkPinSeated || Input.Source != Producer::Puzzle ||
+                Input.Subject != Target::HollowTrunkSocket)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

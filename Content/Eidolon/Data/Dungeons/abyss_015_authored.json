@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "id": "abyss_015",
+  "legacy_id": "abyss.015",
+  "dungeon_id": "abyss",
+  "floor": 15,
+  "family": "buried_forest",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Piastre nel tronco",
+    "en": "Hollow Trunk Plates"
+  },
+  "cell_cm": 200,
+  "roof_height_cm": 520,
+  "wall_thickness_cm": 25,
+  "cells": [
+    [6, 0],
+    [7, 0],
+    [3, 1],
+    [4, 1],
+    [5, 1],
+    [6, 1],
+    [7, 1],
+    [8, 1],
+    [9, 1],
+    [10, 1],
+    [11, 1],
+    [12, 1],
+    [13, 1],
+    [14, 1],
+    [3, 2],
+    [4, 2],
+    [5, 2],
+    [6, 2],
+    [7, 2],
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [11, 2],
+    [12, 2],
+    [13, 2],
+    [14, 2],
+    [3, 3],
+    [4, 3],
+    [12, 3],
+    [13, 3],
+    [14, 3],
+    [3, 4],
+    [4, 4],
+    [12, 4],
+    [13, 4],
+    [14, 4],
+    [3, 5],
+    [4, 5],
+    [13, 5],
+    [14, 5],
+    [1, 6],
+    [2, 6],
+    [3, 6],
+    [4, 6],
+    [13, 6],
+    [14, 6],
+    [1, 7],
+    [2, 7],
+    [3, 7],
+    [4, 7],
+    [13, 7],
+    [14, 7],
+    [15, 7],
+    [16, 7],
+    [1, 8],
+    [2, 8],
+    [3, 8],
+    [4, 8],
+    [5, 8],
+    [6, 8],
+    [7, 8],
+    [8, 8],
+    [9, 8],
+    [10, 8],
+    [11, 8],
+    [12, 8],
+    [13, 8],
+    [14, 8],
+    [15, 8],
+    [16, 8],
+    [17, 8],
+    [18, 8],
+    [19, 8],
+    [20, 8],
+    [21, 8],
+    [22, 8],
+    [1, 9],
+    [2, 9],
+    [3, 9],
+    [4, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [10, 9],
+    [11, 9],
+    [12, 9],
+    [13, 9],
+    [14, 9],
+    [15, 9],
+    [16, 9],
+    [17, 9],
+    [18, 9],
+    [19, 9],
+    [20, 9],
+    [21, 9],
+    [22, 9],
+    [13, 10],
+    [14, 10],
+    [15, 10],
+    [16, 10]
+  ],
+  "entry": [
+    1,
+    7
+  ],
+  "checkpoint": [
+    2,
+    7
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint_yaw_deg": 0,
+  "pin_pickup": [
+    3,
+    8
+  ],
+  "pin_seat": [
+    15,
+    8
+  ],
+  "exit": [
+    22,
+    8
+  ],
+  "arrival": {
+    "minimum": [
+      1,
+      6
+    ],
+    "maximum": [
+      4,
+      9
+    ]
+  },
+  "short_route": {
+    "minimum": [
+      5,
+      8
+    ],
+    "maximum": [
+      12,
+      9
+    ],
+    "minimum_clear_width_cm": 300,
+    "evade_pad": {
+      "minimum": [
+        8,
+        8
+      ],
+      "maximum": [
+        9,
+        9
+      ]
+    }
+  },
+  "long_route": {
+    "cells": [
+      [
+        6,
+        0
+      ],
+      [
+        7,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        9,
+        1
+      ],
+      [
+        10,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        12,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        14,
+        1
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        6,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        9,
+        2
+      ],
+      [
+        10,
+        2
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        13,
+        2
+      ],
+      [
+        14,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        3
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        14,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        13,
+        4
+      ],
+      [
+        14,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        13,
+        5
+      ],
+      [
+        14,
+        5
+      ],
+      [
+        13,
+        6
+      ],
+      [
+        14,
+        6
+      ]
+    ],
+    "refuges": [
+      {
+        "minimum": [
+          6,
+          0
+        ],
+        "maximum": [
+          7,
+          1
+        ]
+      },
+      {
+        "minimum": [
+          12,
+          3
+        ],
+        "maximum": [
+          13,
+          4
+        ]
+      }
+    ]
+  },
+  "assembly_pad": {
+    "minimum": [
+      13,
+      7
+    ],
+    "maximum": [
+      16,
+      10
+    ],
+    "minimum_side_cm": 400
+  },
+  "pin": {
+    "id": "abyss_015_pin",
+    "origin_cm": [
+      700,
+      1740,
+      28
+    ],
+    "dimensions_cm": [
+      136,
+      44,
+      34
+    ],
+    "recovery": {
+      "minimum_xy_cm": [
+        200,
+        0
+      ],
+      "maximum_xy_cm": [
+        3400,
+        2200
+      ],
+      "fall_below_z_cm": -70,
+      "requires_surface_trace": true
+    }
+  },
+  "stalker": {
+    "id": "abyss_015_stalker_spawn",
+    "species": "abyss_forest_stalker",
+    "required": false,
+    "feet_cm": [
+      1900,
+      1900,
+      0
+    ],
+    "home_radius_cm": 1120
+  },
+  "gate": {
+    "id": "abyss_015_gate",
+    "adjacency": [
+      [
+        16,
+        8
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        16,
+        9
+      ],
+      [
+        17,
+        9
+      ]
+    ],
+    "closed_center_cm": [
+      3400,
+      1800,
+      120
+    ],
+    "dimensions_cm": [
+      25,
+      240,
+      240
+    ],
+    "requires": "abyss_015_pin_seat"
+  },
+  "walkway": {
+    "id": "abyss_015_walkway",
+    "minimum": [
+      17,
+      8
+    ],
+    "maximum": [
+      19,
+      9
+    ],
+    "lowered_center_cm": [
+      3700,
+      1800,
+      -12
+    ],
+    "dimensions_cm": [
+      620,
+      400,
+      24
+    ],
+    "starts_open": false
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_014",
+      "transition": "abyss_014_lower_stair",
+      "requires_completed_floor": 14
+    },
+    "exit": {
+      "to_floor": "abyss_016",
+      "transition": "abyss_015_lower_stair",
+      "requires_completed_floor": 15
+    }
+  },
+  "accessibility": {
+    "optional_stalker": true,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

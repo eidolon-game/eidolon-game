@@ -27,6 +27,7 @@ GENERATORS = (
     ("create_oblique_clearing.py", None),
     ("create_branch_terrace.py", None),
     ("create_fern_basin.py", None),
+    ("create_hollow_trunk_plates.py", None),
 )
 
 

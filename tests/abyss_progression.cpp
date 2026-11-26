@@ -67,6 +67,11 @@ int main()
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::FernBasinDrains;
                 break;
+            case HollowTrunkFloor:
+                Clear.Kind = EventKind::HollowTrunkPinSeated;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::HollowTrunkSocket;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -135,6 +140,26 @@ int main()
         if (Advance(State, WrongStair))
         {
             std::cerr << "The Branch Terraces stair release was accepted at a different anchor or floor\n";
+            return 1;
+        }
+
+        const Event Pin{Chapter, Floor, Floor, Revision(State), EventKind::HollowTrunkPinSeated,
+            Producer::Puzzle, Target::HollowTrunkSocket};
+        if (Floor == HollowTrunkFloor)
+        {
+            Event WrongSocket = Pin;
+            WrongSocket.Subject = Target::CounterweightWinch;
+            Event WrongProducer = Pin;
+            WrongProducer.Source = Producer::Traversal;
+            if (Advance(State, WrongSocket) || Advance(State, WrongProducer))
+            {
+                std::cerr << "The Hollow Trunk pin accepted a different socket or producer\n";
+                return 1;
+            }
+        }
+        else if (Advance(State, Pin))
+        {
+            std::cerr << "The Hollow Trunk pin was accepted outside floor 15\n";
             return 1;
         }
 

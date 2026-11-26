@@ -19,6 +19,7 @@ public:
     virtual void Tick(float DeltaSeconds) override;
     virtual float TakeDamage(float Amount, const FDamageEvent& Event, AController* Instigator, AActor* Causer) override;
     bool IsDefeated() const { return Health <= 0.f; }
+    bool IsDodging() const { return InvulnerableTime > 0.f; }
     float GetHealthFraction() const { return Health / 100.f; }
     float GetStaminaFraction() const { return Stamina / 100.f; }
     virtual void PawnClientRestart() override;

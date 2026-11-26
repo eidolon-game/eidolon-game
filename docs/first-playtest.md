@@ -199,4 +199,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor014` with `scripts/create_fern_basin.py` 
 
 - Use the upper drain first, then repeat from a fresh checkpoint with the lower drain first. One saved drain lowers the water once and leaves the gate closed. Reload at that point and verify both the water level and the remaining prompt.
 - Attempt early entry, remote and obstructed interactions, and toggling the same drain twice. Fail the second write in each order. Only the first drain should remain active. Retry and verify that the final drop, open channel and floor 14 completion appear together and survive reload.
-- Take the exit after a successful checkpoint. The exit targets the future `AbyssFloor015`. Check the ledges, camera and controls in UE 5.6. The handwheel prop and audio cues await runtime integration.
+- Take the exit after a successful checkpoint. It leads to `AbyssFloor015` once generated. Check the ledges, camera and controls in UE 5.6. The handwheel prop and audio cues await runtime integration.
+
+## Hollow Trunk Plates
+
+Generate `/Game/Eidolon/Maps/AbyssFloor015` with `scripts/create_hollow_trunk_plates.py` or the campaign generator. Enter after opening both Fern Basin drains. Pick up the pin in the alcove and carry it around the hollow trunk on each route. Verify that the Stalker can be bypassed, with coverage for both a successful and a blocked spawn.
+
+- Interact away from the socket to set the pin down. Dodge while carrying and check that the pin drops and can be picked up again. Try dropping over a gap. On defeat, falling out of the carrying area or requesting recovery at the alcove, verify that the single pin returns.
+- Try the socket unladen, out of range, behind cover and in the air. Fail the seat save while holding the pin. Check that the pin remains available, with the gate closed and walkway disabled, then retry. A successful save seats the pin and enables the walkway and exit together.
+- Reload with a loose, carried or seated pin and verify that exactly one instance appears. The exit targets the future `AbyssFloor016`. Verify collision on the lowered walkway. The pin artwork and audio still need Unreal import and routing.

@@ -106,8 +106,10 @@ bool AEidolonAuthoredAbyssGameMode::BindFloor()
     if (!Encounter.CompletionControlTag.IsNone())
     {
         Lever = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, Encounter.CompletionControlTag);
-        ShortcutBlock = EidolonAbyss::FindTaggedActor<AStaticMeshActor>(*World, Encounter.ShortcutBlockTag);
-        return Lever.IsValid() && ShortcutBlock.IsValid();
+        if (!Encounter.ShortcutBlockTag.IsNone())
+            ShortcutBlock = EidolonAbyss::FindTaggedActor<AStaticMeshActor>(*World, Encounter.ShortcutBlockTag);
+        return Lever.IsValid() && (Encounter.ShortcutBlockTag.IsNone() || ShortcutBlock.IsValid())
+            && BindCompletionActors(*World);
     }
     if (!Encounter.EnemyClass) return false;
     Arena = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("encounter")));
@@ -119,12 +121,17 @@ bool AEidolonAuthoredAbyssGameMode::BindFloor()
         && (!Encounter.bRequiresLever || Lever.IsValid());
 }
 
-bool AEidolonAuthoredAbyssGameMode::CanInteractAt(const AEidolonCharacter& Player, const ATargetPoint* Marker) const
+bool AEidolonAuthoredAbyssGameMode::CanInteractAt(const AEidolonCharacter& Player, const AActor* Marker) const
 {
     auto* World = GetWorld();
     const auto* Controller = World ? World->GetFirstPlayerController() : nullptr;
     return IsValid(Marker) && Controller && Controller->GetPawn() == &Player && !Player.IsDefeated()
         && EidolonQuest::CanReachInteractionTarget(Player, *Marker, InteractionRange);
+}
+
+bool AEidolonAuthoredAbyssGameMode::InteractWithControl(AEidolonCharacter& Player, const ATargetPoint& Control)
+{
+    return CanInteractAt(Player, &Control);
 }
 
 void AEidolonAuthoredAbyssGameMode::Interact(AEidolonCharacter* Player)
@@ -155,7 +162,9 @@ void AEidolonAuthoredAbyssGameMode::Interact(AEidolonCharacter* Player)
 
     if (!Encounter.CompletionControlTag.IsNone())
     {
-        if (ShortcutBlock.IsValid() && CanInteractAt(*Player, Lever.Get()) &&
+        const auto* Control = Lever.Get();
+        if (Control && (Encounter.ShortcutBlockTag.IsNone() || ShortcutBlock.IsValid()) &&
+            InteractWithControl(*Player, *Control) &&
             SaveFloorCompletion(*Campaign, Producer::Puzzle, Campaign->GetAuthoredAbyssRevision()))
         {
             SetGateOpen(true);
@@ -256,6 +265,7 @@ void AEidolonAuthoredAbyssGameMode::SetGateOpen(bool bOpen)
         Block->SetActorEnableCollision(!bOpen);
         Block->SetActorHiddenInGame(bOpen);
     }
+    UpdateCompletionActors(bOpen);
 }
 
 void AEidolonAuthoredAbyssGameMode::ReloadCheckpoint()
@@ -285,13 +295,18 @@ FString AEidolonAuthoredAbyssGameMode::GetPrompt() const
     const auto Encounter = GetEncounter();
     if (Campaign->GetAuthoredAbyssCompletedFloor() >= Encounter.Floor)
         return Display(TEXT("Interact at the stairs down."), TEXT("Interagisci alla scala verso il basso."));
-    if (Encounter.IsTraversal() || !Encounter.CompletionControlTag.IsNone())
-        return Display(Encounter.FightEnglish, Encounter.FightItalian);
+    if (Encounter.IsTraversal() || !Encounter.CompletionControlTag.IsNone()) return GetControlPrompt();
     if (bDefeatAwaitingReceipt && Encounter.bRequiresLever)
         return Display(TEXT("Pull the lever by the stair."), TEXT("Aziona la leva accanto alla scala."));
     if (IsValid(ActiveEnemy.Get()))
         return Display(Encounter.FightEnglish, Encounter.FightItalian);
     return Display(TEXT("Interact at the encounter marker."), TEXT("Interagisci nel punto dell'incontro."));
+}
+
+FString AEidolonAuthoredAbyssGameMode::GetControlPrompt() const
+{
+    const auto Encounter = GetEncounter();
+    return Display(Encounter.FightEnglish, Encounter.FightItalian);
 }
 
 FString AEidolonAuthoredAbyssGameMode::GetNarrative() const

@@ -97,6 +97,7 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
     const auto Chapter = C->CurrentChapter();
     if (!Chapter.Id) { Notice = TEXT("Campaign data missing."); return; }
     if (!IsEncounterClear()) { Notice = TEXT("Defeat the remaining enemies."); return; }
+    if (DialogueIndex < Chapter.Dialogue.Num()) { ++DialogueIndex; Notice.Reset(); return; }
     if (Chapter.Id == 26) { Notice = TEXT("Choose your ending with 1-4 or D-pad."); return; }
     if (Chapter.Id == 4 || Chapter.Id == 23)
     {
@@ -135,6 +136,7 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
     C->SetFlag(FName(*FString::Printf(TEXT("chapter_%d_resolved"), Chapter.Id)));
     if (!C->AdvanceChapter()) return;
     Notice.Reset();
+    DialogueIndex = 0;
     CommitCheckpoint();
     SpawnEncounter();
 }
@@ -142,7 +144,7 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
 void AEidolonGameMode::SelectEnding(int32 Choice)
 {
     auto* C = Campaign(this);
-    if (!C || !IsEncounterClear()) return;
+    if (!C || !IsEncounterClear() || DialogueIndex < C->CurrentChapter().Dialogue.Num()) return;
     const FName Choices[] = {TEXT("custodian"), TEXT("origin"), TEXT("guild"), TEXT("freedom")};
     if (Choice < 1 || Choice > 4) return;
     if (!C->ChooseEnding(Choices[Choice-1])) { Notice = TEXT("Ending unavailable: requirements not fulfilled."); return; }
@@ -174,4 +176,34 @@ FString AEidolonGameMode::GetNarrative() const
     const auto Chapter = C->CurrentChapter();
     if (!C->GetEnding().IsNone()) return FString::Printf(TEXT("Ending: %s"), *C->GetEnding().ToString());
     return FString::Printf(TEXT("Act %d | Chapter %d: %s | %s"), Chapter.Act, Chapter.Id, *Chapter.Title, *Chapter.Region);
+}
+
+FString AEidolonGameMode::GetDialogue() const
+{
+    auto* C = Campaign(this);
+    if (!C) return TEXT("");
+    if (!C->GetEnding().IsNone()) return C->GetEpilogue();
+    const auto Chapter = C->CurrentChapter();
+    if (DialogueIndex > 0 && Chapter.Dialogue.IsValidIndex(DialogueIndex-1))
+        return Chapter.Dialogue[DialogueIndex-1];
+    return TEXT("");
+}
+void AEidolonGameMode::RecoverMemory(AEidolonCharacter* Player)
+{
+    auto* C = Campaign(this);
+    if (!C || !Player || Player->IsDefeated() || !IsEncounterClear() || !C->GetEnding().IsNone()) return;
+    const int32 Chapter = C->CurrentChapter().Id;
+    if (Chapter == 6 && !C->HasFlag(TEXT("lost_memories")))
+    {
+        C->RecordMemory(TEXT("edran_diary"));
+        C->SetFlag(TEXT("lost_memories"));
+        Notice = TEXT("Edran's diary recovered.");
+        CommitCheckpoint();
+    }
+    else if (Chapter == 20 && !C->HasFlag(TEXT("eidolon_aid")))
+    {
+        C->SetFlag(TEXT("eidolon_aid"));
+        Notice = TEXT("Forgotten residents assisted (graybox objective).");
+        CommitCheckpoint();
+    }
 }

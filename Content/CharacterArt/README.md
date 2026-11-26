@@ -1,0 +1,2 @@
+# Character Art staging contract
+No Unreal assets are included. This directory documents intended staging only. Do not create runtime soft references to ungenerated content. Catalog source: eidolon-docs/art/characters/catalog.json (character-art draft). Stable art IDs must be mapped to canonical gameplay IDs by AI/Save owners. Import approval requires UE 5.6 skeleton/physics/LOD verification, material review, clothing clipping and animation retarget tests. No shared runtime files changed.

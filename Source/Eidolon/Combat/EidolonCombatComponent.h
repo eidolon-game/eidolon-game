@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Combat/EidolonCombatRules.h"
+#include "Combat/EidolonEnemyEncounter.h"
 #include "EidolonCombatComponent.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FEidolonCombatImpact,AActor*,Source,int32,Outcome);
@@ -22,6 +23,9 @@ public:
     UFUNCTION(BlueprintPure,Category="Combat") bool CanAct() const;
     UFUNCTION(BlueprintCallable,Category="Combat") bool CounterAttack();
     bool IsInRange(const AActor* Target,float Reach) const;
+    UFUNCTION(BlueprintCallable,Category="Combat") bool AttackEnemy(AActor* Target);
+    UFUNCTION(BlueprintCallable,Category="Combat") bool BreakCustodianAnchor(int32 Index);
+    UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Combat") bool bCustodian=false;
     bool InitializeStats(float Health,float Stamina,float Mana,float Poise);
     UFUNCTION(BlueprintCallable,Category="Combat") bool Attack(bool bHeavy);
     UFUNCTION(BlueprintCallable,Category="Combat") bool Dodge();
@@ -34,10 +38,12 @@ public:
     void ReceiveAttack(const EidolonCombat::FAttack& Attack,AActor* Source);
 private:
     EidolonCombat::FState State;
+    EidolonCombat::FEnemyEncounter Encounter;
     EidolonCombat::FAttack Pending;
-    float ActiveStart=0,ActiveEnd=0,LastSample=0,AttackReach=0,AttackRadius=0;
+    float ActiveStart=0,ActiveEnd=0,AttackReach=0,AttackRadius=0;
     bool bPending=false;
     TSet<TWeakObjectPtr<AActor>> HitActors;
     void SampleHits();
+    void SyncEncounter();
     void ArmAttack(const EidolonCombat::FAttack& A,float Reach,float Radius,float Now);
 };

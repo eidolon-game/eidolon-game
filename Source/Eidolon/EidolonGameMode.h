@@ -19,9 +19,12 @@ public:
     void RecoverMemory(class AEidolonCharacter* Player);
 private:
     void SpawnEncounter();
+    void RetryEncounterSpawns();
     void BuildChapterScenery();
     UPROPERTY() TArray<TObjectPtr<AActor>> Scenery;
+    TArray<int32> PendingEnemySlots;
     bool IsEncounterClear() const;
+    bool HasLiveEncounterEnemies() const;
     bool CommitCheckpoint();
     FString Notice;
     int32 DialogueIndex = 0;

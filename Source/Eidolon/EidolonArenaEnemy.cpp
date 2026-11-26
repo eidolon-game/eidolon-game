@@ -1,6 +1,7 @@
 #include "EidolonArenaEnemy.h"
 #include "EidolonCharacter.h"
 #include "EidolonCampaignSubsystem.h"
+#include "EidolonMeleeReach.h"
 #include "Engine/GameInstance.h"
 #include "Engine/World.h"
 #include "Components/StaticMeshComponent.h"
@@ -36,16 +37,16 @@ void AEidolonArenaEnemy::Tick(float DeltaSeconds)
     auto* Player = Cast<AEidolonCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
     if (!Player || Player->IsDefeated()) return;
     AttackCooldown = FMath::Max(0.f, AttackCooldown - DeltaSeconds);
-    FVector Offset = Player->GetActorLocation() - GetActorLocation();
-    Offset.Z = 0.f;
-    const float Distance = Offset.Size();
+    const FVector Offset = Player->GetActorLocation() - GetActorLocation();
+    const double Distance = Offset.Size2D();
+    const bool bWithinReach = EidolonMelee::IsWithinReach(Offset, Reach);
     if (bWindingUp)
     {
         Windup -= DeltaSeconds;
         if (Windup > 0.f) return;
         bWindingUp = false;
         AttackCooldown = Recovery;
-        if (Distance <= Reach + 25.f && FMath::Abs(Player->GetActorLocation().Z - GetActorLocation().Z) < 180.f)
+        if (bWithinReach)
         {
             FHitResult Hit;
             FCollisionQueryParams Params;
@@ -56,8 +57,11 @@ void AEidolonArenaEnemy::Tick(float DeltaSeconds)
         return;
     }
     if (Distance > Reach)
-        AddActorWorldOffset(Offset.GetSafeNormal() * FMath::Min(Speed * DeltaSeconds, Distance - Reach), true);
-    else if (AttackCooldown <= 0.f)
+    {
+        const double Step = FMath::Min(static_cast<double>(Speed) * DeltaSeconds, Distance - Reach);
+        AddActorWorldOffset(Offset.GetSafeNormal2D() * Step, true);
+    }
+    else if (bWithinReach && AttackCooldown <= 0.f)
     {
         bWindingUp = true;
         Windup = WindupDuration;

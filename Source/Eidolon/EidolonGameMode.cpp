@@ -67,31 +67,54 @@ namespace
 
 bool AEidolonGameMode::IsEncounterClear() const
 {
+    return PendingEnemySlots.IsEmpty() && !HasLiveEncounterEnemies();
+}
+
+bool AEidolonGameMode::HasLiveEncounterEnemies() const
+{
     for (TActorIterator<AEidolonArenaEnemy> It(GetWorld()); It; ++It)
-        if (!It->IsActorBeingDestroyed()) return false;
-    return true;
+        if (!It->IsActorBeingDestroyed()) return true;
+    return false;
 }
 
 void AEidolonGameMode::SpawnEncounter()
 {
+    PendingEnemySlots.Reset();
     auto* C = Campaign(this);
     if (!C || !C->GetEnding().IsNone()) return;
     const auto Chapter = C->CurrentChapter();
     int32 Count = FMath::Clamp(Chapter.Target - C->GetObjectiveCount(), 0, 3);
     if (Chapter.Id == 4 || Chapter.Id == 23)
         Count = C->GetFloor(Chapter.Id == 23) < 100 ? 1 : 0;
+    for (int32 Index = 0; Index < Count; ++Index)
+        PendingEnemySlots.Add(Index);
+    RetryEncounterSpawns();
+}
+
+void AEidolonGameMode::RetryEncounterSpawns()
+{
+    auto* C = Campaign(this);
+    if (!C || PendingEnemySlots.IsEmpty()) return;
+    const auto Chapter = C->CurrentChapter();
+    const bool bFloor = Chapter.Id == 4 || Chapter.Id == 23;
+    const int32 Difficulty = bFloor ? C->GetFloor(Chapter.Id == 23) + 1 : Chapter.Id;
     FActorSpawnParameters Params;
     Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
-    for (int32 Index = 0; Index < Count; ++Index)
+    TArray<int32> FailedSlots;
+    for (const int32 Index : PendingEnemySlots)
     {
         auto* Enemy = GetWorld()->SpawnActor<AEidolonArenaEnemy>(FVector(850,(Index-1)*500,55), FRotator::ZeroRotator, Params);
         if (Enemy)
         {
-            const bool bFloor = Chapter.Id == 4 || Chapter.Id == 23;
-            const int32 Difficulty = bFloor ? C->GetFloor(Chapter.Id == 23)+1 : Chapter.Id;
             Enemy->Configure(bFloor && Difficulty == 100 ? FName(TEXT("boss")) : Chapter.Type, Difficulty);
         }
+        else
+        {
+            FailedSlots.Add(Index);
+            UE_LOG(LogTemp, Warning, TEXT("Encounter enemy spawn failed (chapter %d, slot %d)."), Chapter.Id, Index);
+        }
     }
+    PendingEnemySlots = MoveTemp(FailedSlots);
 }
 
 bool AEidolonGameMode::CommitCheckpoint()
@@ -109,7 +132,12 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
     Notice.Reset();
     const auto Chapter = C->CurrentChapter();
     if (!Chapter.Id) { Notice = TEXT("Campaign data missing."); return; }
-    if (!IsEncounterClear()) { Notice = TEXT("Defeat the remaining enemies."); return; }
+    if (HasLiveEncounterEnemies()) { Notice = TEXT("Defeat the remaining enemies."); return; }
+    if (!PendingEnemySlots.IsEmpty())
+    {
+        RetryEncounterSpawns();
+        return;
+    }
     if (DialogueIndex < Chapter.Dialogue.Num()) { ++DialogueIndex; Notice.Reset(); return; }
     if (Chapter.Id == 26) { Notice = TEXT("Choose your ending with 1-4 or D-pad."); return; }
     if (Chapter.Id == 4 || Chapter.Id == 23)
@@ -184,6 +212,8 @@ void AEidolonGameMode::ReloadCheckpoint()
 
 FString AEidolonGameMode::GetPrompt() const
 {
+    if (!PendingEnemySlots.IsEmpty() && !HasLiveEncounterEnemies())
+        return TEXT("Encounter spawn failed. E / X or Square: retry.");
     if (!Notice.IsEmpty()) return Notice;
     auto* C = Campaign(this);
     if (!C) return TEXT("Campaign unavailable");

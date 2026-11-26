@@ -35,3 +35,9 @@ No binary map, character mesh, animation or console SDK is included.
 - With a valid checkpoint, advance beyond the saved state and restart. Verify that the saved chapter, floor and flags return.
 - After advancing, remove or corrupt the local test slot and restart. Verify that the level restarts with the current chapter, floor, objectives and flags in memory, and that the log records the failed load.
 - In a fresh campaign with no slot, verify that restart still recovers from defeat and leaves the player at the first chapter.
+
+## Encounter and melee regressions (Game #25 and #26)
+
+- Force one spawn to fail in a multi-enemy encounter. Defeat the spawned enemies, retry, and verify only the missing slot spawns. Repeat at either dungeon's floor 100. Confirm dialogue, floor advancement and checkpoint writes stay gated while any required spawn is pending.
+- Verify a zero-enemy chapter can still advance its dialogue.
+- In the Arena, test player and boss at 259, 260, 261 and 285 cm horizontally, and 179 and 180 cm vertically. Check the player facing cone, obstacles, ordinary and giant profiles, and leaving melee range during a boss windup.

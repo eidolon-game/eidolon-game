@@ -15,6 +15,7 @@
 #include "InputCoreTypes.h"
 #include "EidolonArenaEnemy.h"
 #include "EidolonGameMode.h"
+#include "EidolonMeleeReach.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "EngineUtils.h"
@@ -240,18 +241,21 @@ void AEidolonCharacter::Attack(float Damage, float Cost, float Cooldown)
     Stamina -= Cost;
     AttackCooldown = Cooldown;
     AEidolonArenaEnemy* Target = nullptr;
-    float Best = 260.f;
+    constexpr float Reach = 260.f;
+    double BestDistanceSquared = 0.0;
     for (TActorIterator<AEidolonArenaEnemy> It(GetWorld()); It; ++It)
     {
         if (It->IsActorBeingDestroyed()) continue;
         const FVector Offset = It->GetActorLocation() - GetActorLocation();
-        const float Distance = Offset.Size();
-        if (Distance >= Best || FVector::DotProduct(GetActorForwardVector(), Offset.GetSafeNormal2D()) < 0.25f) continue;
+        const double DistanceSquared = Offset.SizeSquared();
+        if (!EidolonMelee::IsWithinReach(Offset, Reach)
+            || (Target && DistanceSquared >= BestDistanceSquared)
+            || FVector::DotProduct(GetActorForwardVector(), Offset.GetSafeNormal2D()) < 0.25f) continue;
         FHitResult Hit;
         FCollisionQueryParams Params;
         Params.AddIgnoredActor(this);
         if (GetWorld()->LineTraceSingleByChannel(Hit, GetActorLocation(), It->GetActorLocation(), ECC_Visibility, Params) && Hit.GetActor() != *It) continue;
-        Best = Distance;
+        BestDistanceSquared = DistanceSquared;
         Target = *It;
     }
     if (Target) UGameplayStatics::ApplyDamage(Target, Damage, GetController(), this, nullptr);

@@ -9,7 +9,7 @@ FName UEidolonNPCBrainComponent::Evaluate(bool bRecruited, FName Order, bool bHo
  const FName Orders[]={TEXT("free"),TEXT("follow"),TEXT("hold"),TEXT("focus"),TEXT("retreat")};
  for(int32 I=0;I<UE_ARRAY_COUNT(Orders);++I) if(Order==Orders[I]) X.order=static_cast<EidolonAI::Order>(I);
  X.recruited=bRecruited; X.hostile=bHostile; X.seen=bSeen; X.heard=bHeard; X.allyThreatened=bAllyThreatened; X.allyCritical=bAllyCritical; X.reinforcement=bReinforcement; X.inRange=bInRange; X.canAct=bCanAct; X.work=bWork; X.social=bSocial; X.health=FMath::Clamp(HealthPercent,0,100);
- const FName Names[]={TEXT("idle"),TEXT("work"),TEXT("social"),TEXT("patrol"),TEXT("search"),TEXT("retreat"),TEXT("defend"),TEXT("reinforce"),TEXT("follow"),TEXT("hold"),TEXT("attack"),TEXT("flank"),TEXT("cast"),TEXT("heal")};
+ const FName Names[]={TEXT("idle"),TEXT("work"),TEXT("social"),TEXT("patrol"),TEXT("search"),TEXT("retreat"),TEXT("defend"),TEXT("reinforce"),TEXT("follow"),TEXT("hold"),TEXT("attack"),TEXT("flank"),TEXT("cast"),TEXT("heal"),TEXT("counter"),TEXT("maintain_range")};
  const FName Next=Names[static_cast<int32>(Decide(X))];
  if(Next!=PreviousIntent){PreviousIntent=Next; OnIntentChanged.Broadcast(Next);}
  return Next;

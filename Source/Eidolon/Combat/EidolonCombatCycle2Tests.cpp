@@ -5,6 +5,9 @@ using namespace EidolonCombat;
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FEidolonCombatCycle2Test,"Eidolon.Combat.Cycle2",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
 bool FEidolonCombatCycle2Test::RunTest(const FString&)
 {
+ TSet<int32> Hits; TestTrue(TEXT("First target"),ClaimHit(Hits,1));
+ TestFalse(TEXT("Duplicate target"),ClaimHit(Hits,1)); TestTrue(TEXT("Second target"),ClaimHit(Hits,2));
+ Hits.Reset(); TestTrue(TEXT("Next attack"),ClaimHit(Hits,1));
  FState S; FAttack A;
  S.Stamina=0; TestFalse(TEXT("No stamina"),S.BeginAttack(A,1));
  TestTrue(TEXT("Guard"),S.BeginBlock(1));

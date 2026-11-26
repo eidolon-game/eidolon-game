@@ -4,6 +4,7 @@
 #include "Dungeons/EidolonCounterweightRules.h"
 #include "Dungeons/EidolonSluiceRules.h"
 #include "Dungeons/EidolonMarrowLatchRules.h"
+#include "Dungeons/EidolonMirrorRules.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
 #include "Engine/GameInstance.h"
@@ -218,6 +219,17 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const EidolonMirror::Progress Mirrors{
+        Checkpoint->AbyssFirstMirrorOrientation, Checkpoint->AbyssSecondMirrorOrientation,
+        Checkpoint->AbyssMirrorRevision
+    };
+    if (!EidolonMirror::IsValid(Mirrors) ||
+        (Authored.CompletedFloor < EidolonAbyss::MirrorFloor - 1 && Mirrors.Revision != 0) ||
+        (EidolonMirror::CanExit(Mirrors) != (Authored.CompletedFloor >= EidolonAbyss::MirrorFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -245,7 +257,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         State->FirstDescentCursor != FinalFirstDescentCursor ||
         Event.Kind == EidolonAbyss::EventKind::SluicesOpened ||
         Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened ||
-        Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled)
+        Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled ||
+        Event.Kind == EidolonAbyss::EventKind::MirrorsAligned)
     {
         return false;
     }
@@ -379,6 +392,45 @@ bool UEidolonCampaignSubsystem::CommitAbyssCounterweight(const EidolonCounterwei
         const auto Progress = ReadAuthoredAbyssProgress(*State);
         const auto NextFloor = Advance(Progress, {Chapter, CounterweightFloor, CounterweightFloor,
             Revision(Progress), EventKind::CounterweightInstalled, Producer::Puzzle, Target::CounterweightWinch});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+EidolonMirror::Progress UEidolonCampaignSubsystem::GetAbyssMirrorProgress() const
+{
+    if (!State) return {};
+    return {State->AbyssFirstMirrorOrientation, State->AbyssSecondMirrorOrientation,
+        State->AbyssMirrorRevision};
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssMirror(const EidolonMirror::Event& Event)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != MirrorFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), MirrorFloor)) return false;
+    const auto NextMirrors = EidolonMirror::Advance(GetAbyssMirrorProgress(), Event);
+    if (!NextMirrors) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssFirstMirrorOrientation = NextMirrors->First;
+    Snapshot->AbyssSecondMirrorOrientation = NextMirrors->Second;
+    Snapshot->AbyssMirrorRevision = NextMirrors->Revision;
+    if (EidolonMirror::CanExit(*NextMirrors))
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, MirrorFloor, MirrorFloor, Revision(Progress),
+            EventKind::MirrorsAligned, Producer::Puzzle, Target::MirrorControls});
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }

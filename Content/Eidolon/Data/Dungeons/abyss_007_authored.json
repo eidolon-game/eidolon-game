@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "id": "abyss_007",
+  "legacy_id": "abyss.007",
+  "dungeon_id": "abyss",
+  "floor": 7,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Sala dei pilastri",
+    "en": "Hall of Pillars"
+  },
+  "cell_cm": 200,
+  "height_cm": 300,
+  "footprint_cm": [
+    2000,
+    2800
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [5, 0],
+    [5, 1],
+    [1, 2],
+    [2, 2],
+    [3, 2],
+    [5, 2],
+    [6, 2],
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [1, 3],
+    [2, 3],
+    [3, 3],
+    [4, 3],
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [9, 3],
+    [10, 3],
+    [1, 4],
+    [2, 4],
+    [3, 4],
+    [5, 4],
+    [6, 4],
+    [8, 4],
+    [9, 4],
+    [10, 4],
+    [1, 5],
+    [3, 5],
+    [5, 5],
+    [6, 5],
+    [8, 5],
+    [9, 5],
+    [10, 5],
+    [1, 6],
+    [2, 6],
+    [3, 6],
+    [4, 6],
+    [5, 6],
+    [6, 6],
+    [7, 6],
+    [8, 6],
+    [9, 6],
+    [10, 6],
+    [1, 7],
+    [3, 7],
+    [5, 7],
+    [6, 7],
+    [8, 7],
+    [10, 7],
+    [1, 8],
+    [2, 8],
+    [3, 8],
+    [5, 8],
+    [8, 8],
+    [9, 8],
+    [10, 8],
+    [1, 9],
+    [2, 9],
+    [3, 9],
+    [4, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [10, 9],
+    [1, 10],
+    [2, 10],
+    [3, 10],
+    [5, 10],
+    [6, 10],
+    [8, 10],
+    [9, 10],
+    [10, 10],
+    [5, 11],
+    [5, 12],
+    [5, 13],
+    [6, 13]
+  ],
+  "entry": [
+    5,
+    0
+  ],
+  "entry_yaw_deg": 90,
+  "checkpoint": [
+    5,
+    1
+  ],
+  "checkpoint_yaw_deg": 90,
+  "exit": [
+    6,
+    13
+  ],
+  "hall": {
+    "bay_columns": [
+      [
+        1,
+        3
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        8,
+        10
+      ]
+    ],
+    "cross_passage_rows": [
+      3,
+      6,
+      9
+    ],
+    "blocked_piers": [
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        9,
+        7
+      ]
+    ],
+    "safe_approach_cells": [
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        10,
+        7
+      ],
+      [
+        10,
+        8
+      ]
+    ]
+  },
+  "mirrors": [
+    {
+      "id": "abyss_007_mirror_01",
+      "mesh_id": "abyss_007_mirror_01_mesh",
+      "pointer_id": "abyss_007_mirror_01_pointer",
+      "receiver_id": "abyss_007_receiver_01",
+      "control_cell": [
+        2,
+        8
+      ],
+      "pivot_cm": [
+        500,
+        1740,
+        125
+      ],
+      "initial_yaw_deg": 0,
+      "solved_yaw_deg": 90,
+      "receiver_position_cm": [
+        500,
+        2100,
+        125
+      ],
+      "plaque_marks": 1
+    },
+    {
+      "id": "abyss_007_mirror_02",
+      "mesh_id": "abyss_007_mirror_02_mesh",
+      "pointer_id": "abyss_007_mirror_02_pointer",
+      "receiver_id": "abyss_007_receiver_02",
+      "control_cell": [
+        9,
+        8
+      ],
+      "pivot_cm": [
+        1900,
+        1900,
+        125
+      ],
+      "initial_yaw_deg": 0,
+      "solved_yaw_deg": 180,
+      "receiver_position_cm": [
+        1300,
+        1900,
+        125
+      ],
+      "plaque_marks": 2
+    }
+  ],
+  "pointer_radius_cm": 85,
+  "gate": {
+    "id": "abyss_007_pillar_gate",
+    "from_cell": [
+      5,
+      10
+    ],
+    "to_cell": [
+      5,
+      11
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": "abyss_007_both_mirrors_aligned_and_saved"
+  },
+  "leech_anchors": {
+    "creature_id": "abyss_mortar_leech",
+    "status": "reserved_for_optional_encounters",
+    "cells": [
+      [
+        1,
+        5
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "avoidance_cut_cells": [
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ]
+    ],
+    "defeat_required": false
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_006",
+      "transition": "abyss_006_lower_stair",
+      "requires_completed_floor": 6
+    },
+    "exit": {
+      "to_floor": "abyss_008",
+      "transition": "abyss_007_lower_stair",
+      "requires_completed_floor": 7
+    }
+  },
+  "accessibility": {
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false,
+    "orientation_cues": "visible pointers and one- or two-bar receiver plaques"
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

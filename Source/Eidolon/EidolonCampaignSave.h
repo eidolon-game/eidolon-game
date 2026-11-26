@@ -27,6 +27,9 @@ public:
     UPROPERTY(SaveGame) uint8 AbyssMarrowLatchStage = 0;
     UPROPERTY(SaveGame) uint8 AbyssCounterweightLocation = 0;
     UPROPERTY(SaveGame) uint32 AbyssCounterweightRevision = 0;
+    UPROPERTY(SaveGame) uint8 AbyssFirstMirrorOrientation = 0;
+    UPROPERTY(SaveGame) uint8 AbyssSecondMirrorOrientation = 0;
+    UPROPERTY(SaveGame) uint32 AbyssMirrorRevision = 0;
     UPROPERTY(SaveGame) TSet<FName> Flags;
     UPROPERTY(SaveGame) TSet<FName> Memories;
     UPROPERTY(SaveGame) TMap<FName, int32> Relationships;

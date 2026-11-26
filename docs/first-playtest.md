@@ -127,3 +127,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor006` with `scripts/create_ambulatory_floo
 - Lose the carrier to defeat or below the floor. The counterweight returns to its source once the recovery checkpoint succeeds. Reload after recovery and check that the weight can be collected again. Exercise a failed recovery write and retry.
 - Install the carried weight at the winch. If saving fails, it stays carried and the gate remains closed. After success, the weight sits at the winch, the floor 6 credit and open gate survive reload, and a repeated interaction grants no additional progress.
 - The lower stair targets the future interactive floor 7 package. The Millipede still uses placeholder geometry while the static GLB awaits rig and import.
+
+## Pillar Hall
+
+Generate `/Game/Eidolon/Maps/AbyssFloor007` with `scripts/create_pillar_hall_floor.py` in Unreal's Python commandlet. Enter from the Double-Ring Ambulatory after the saved counterweight installation.
+
+- Find both mirror controls via the side passages. Turn either first. The pointer must rotate 90 degrees with that mirror after each successful save. Check the receivers from the approach, including the second mirror's opposite orientations.
+- Save a partial alignment and reload. Test a failed write and verify the pointer, other mirror and closed gate stay at their saved state. When both point at their receivers, confirm the gate and floor credit persist on reload.
+- Approach each Mortar Leech from two sides, step behind a pillar after it locks its thrust, and check one hit per cast. Both mirrors must be reachable while both enemies are alive or fail to spawn. The monster mesh is a prototype pending import and rig.
+- The lower stair targets the future interactive floor 8 package.

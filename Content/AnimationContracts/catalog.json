@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "status": "specified",
+  "provenance": "Original EIDOLON design; all rights reserved",
+  "clips": [
+    {
+      "id": "anim.idle",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.walk",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.run",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.sprint",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.jump",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.fall",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.land",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.dodge",
+      "root_motion": "authorized_montage",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.climb",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.titan_climb",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.attack_light",
+      "root_motion": "in_place",
+      "owner": "combat",
+      "asset": null
+    },
+    {
+      "id": "anim.attack_heavy",
+      "root_motion": "authorized_montage",
+      "owner": "combat",
+      "asset": null
+    },
+    {
+      "id": "anim.combo",
+      "root_motion": "in_place",
+      "owner": "combat",
+      "asset": null
+    },
+    {
+      "id": "anim.parry",
+      "root_motion": "in_place",
+      "owner": "combat",
+      "asset": null
+    },
+    {
+      "id": "anim.counter",
+      "root_motion": "authorized_montage",
+      "owner": "combat",
+      "asset": null
+    },
+    {
+      "id": "anim.hit_react",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.death",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.interact",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.facial",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.companion",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.creature",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    },
+    {
+      "id": "anim.boss",
+      "root_motion": "in_place",
+      "owner": "animation",
+      "asset": null
+    }
+  ],
+  "cinematics": [
+    {
+      "id": "cin.ch01.primary",
+      "chapter": 1,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch02.primary",
+      "chapter": 2,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch03.primary",
+      "chapter": 3,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch04.primary",
+      "chapter": 4,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch05.primary",
+      "chapter": 5,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch06.primary",
+      "chapter": 6,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch07.primary",
+      "chapter": 7,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch08.primary",
+      "chapter": 8,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch09.primary",
+      "chapter": 9,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch10.primary",
+      "chapter": 10,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch11.primary",
+      "chapter": 11,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch12.primary",
+      "chapter": 12,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch13.primary",
+      "chapter": 13,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch14.primary",
+      "chapter": 14,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch15.primary",
+      "chapter": 15,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch16.primary",
+      "chapter": 16,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch17.primary",
+      "chapter": 17,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch18.primary",
+      "chapter": 18,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch19.primary",
+      "chapter": 19,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch20.primary",
+      "chapter": 20,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch21.primary",
+      "chapter": 21,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch22.primary",
+      "chapter": 22,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch23.primary",
+      "chapter": 23,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch24.primary",
+      "chapter": 24,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch25.primary",
+      "chapter": 25,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ch26.primary",
+      "chapter": 26,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ending.1",
+      "chapter": 26,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ending.2",
+      "chapter": 26,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ending.3",
+      "chapter": 26,
+      "status": "specified",
+      "asset": null
+    },
+    {
+      "id": "cin.ending.4",
+      "chapter": 26,
+      "status": "specified",
+      "asset": null
+    }
+  ]
+}

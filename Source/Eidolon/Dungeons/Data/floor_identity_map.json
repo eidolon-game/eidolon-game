@@ -1,0 +1,1406 @@
+{
+  "schema_version": 1,
+  "status": "proposed_compatibility_mapping",
+  "records": [
+    {
+      "id": "abyss_001",
+      "legacy_id": "abyss.001",
+      "dungeon_id": "abyss",
+      "floor": 1,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_002",
+      "legacy_id": "abyss.002",
+      "dungeon_id": "abyss",
+      "floor": 2,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_003",
+      "legacy_id": "abyss.003",
+      "dungeon_id": "abyss",
+      "floor": 3,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_004",
+      "legacy_id": "abyss.004",
+      "dungeon_id": "abyss",
+      "floor": 4,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_005",
+      "legacy_id": "abyss.005",
+      "dungeon_id": "abyss",
+      "floor": 5,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_006",
+      "legacy_id": "abyss.006",
+      "dungeon_id": "abyss",
+      "floor": 6,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_007",
+      "legacy_id": "abyss.007",
+      "dungeon_id": "abyss",
+      "floor": 7,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_008",
+      "legacy_id": "abyss.008",
+      "dungeon_id": "abyss",
+      "floor": 8,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_009",
+      "legacy_id": "abyss.009",
+      "dungeon_id": "abyss",
+      "floor": 9,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_010",
+      "legacy_id": "abyss.010",
+      "dungeon_id": "abyss",
+      "floor": 10,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_011",
+      "legacy_id": "abyss.011",
+      "dungeon_id": "abyss",
+      "floor": 11,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_012",
+      "legacy_id": "abyss.012",
+      "dungeon_id": "abyss",
+      "floor": 12,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_013",
+      "legacy_id": "abyss.013",
+      "dungeon_id": "abyss",
+      "floor": 13,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_014",
+      "legacy_id": "abyss.014",
+      "dungeon_id": "abyss",
+      "floor": 14,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_015",
+      "legacy_id": "abyss.015",
+      "dungeon_id": "abyss",
+      "floor": 15,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_016",
+      "legacy_id": "abyss.016",
+      "dungeon_id": "abyss",
+      "floor": 16,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_017",
+      "legacy_id": "abyss.017",
+      "dungeon_id": "abyss",
+      "floor": 17,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_018",
+      "legacy_id": "abyss.018",
+      "dungeon_id": "abyss",
+      "floor": 18,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_019",
+      "legacy_id": "abyss.019",
+      "dungeon_id": "abyss",
+      "floor": 19,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_020",
+      "legacy_id": "abyss.020",
+      "dungeon_id": "abyss",
+      "floor": 20,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_021",
+      "legacy_id": "abyss.021",
+      "dungeon_id": "abyss",
+      "floor": 21,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_022",
+      "legacy_id": "abyss.022",
+      "dungeon_id": "abyss",
+      "floor": 22,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_023",
+      "legacy_id": "abyss.023",
+      "dungeon_id": "abyss",
+      "floor": 23,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_024",
+      "legacy_id": "abyss.024",
+      "dungeon_id": "abyss",
+      "floor": 24,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_025",
+      "legacy_id": "abyss.025",
+      "dungeon_id": "abyss",
+      "floor": 25,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_026",
+      "legacy_id": "abyss.026",
+      "dungeon_id": "abyss",
+      "floor": 26,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_027",
+      "legacy_id": "abyss.027",
+      "dungeon_id": "abyss",
+      "floor": 27,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_028",
+      "legacy_id": "abyss.028",
+      "dungeon_id": "abyss",
+      "floor": 28,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_029",
+      "legacy_id": "abyss.029",
+      "dungeon_id": "abyss",
+      "floor": 29,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_030",
+      "legacy_id": "abyss.030",
+      "dungeon_id": "abyss",
+      "floor": 30,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_031",
+      "legacy_id": "abyss.031",
+      "dungeon_id": "abyss",
+      "floor": 31,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_032",
+      "legacy_id": "abyss.032",
+      "dungeon_id": "abyss",
+      "floor": 32,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_033",
+      "legacy_id": "abyss.033",
+      "dungeon_id": "abyss",
+      "floor": 33,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_034",
+      "legacy_id": "abyss.034",
+      "dungeon_id": "abyss",
+      "floor": 34,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_035",
+      "legacy_id": "abyss.035",
+      "dungeon_id": "abyss",
+      "floor": 35,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_036",
+      "legacy_id": "abyss.036",
+      "dungeon_id": "abyss",
+      "floor": 36,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_037",
+      "legacy_id": "abyss.037",
+      "dungeon_id": "abyss",
+      "floor": 37,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_038",
+      "legacy_id": "abyss.038",
+      "dungeon_id": "abyss",
+      "floor": 38,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_039",
+      "legacy_id": "abyss.039",
+      "dungeon_id": "abyss",
+      "floor": 39,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_040",
+      "legacy_id": "abyss.040",
+      "dungeon_id": "abyss",
+      "floor": 40,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_041",
+      "legacy_id": "abyss.041",
+      "dungeon_id": "abyss",
+      "floor": 41,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_042",
+      "legacy_id": "abyss.042",
+      "dungeon_id": "abyss",
+      "floor": 42,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_043",
+      "legacy_id": "abyss.043",
+      "dungeon_id": "abyss",
+      "floor": 43,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_044",
+      "legacy_id": "abyss.044",
+      "dungeon_id": "abyss",
+      "floor": 44,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_045",
+      "legacy_id": "abyss.045",
+      "dungeon_id": "abyss",
+      "floor": 45,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_046",
+      "legacy_id": "abyss.046",
+      "dungeon_id": "abyss",
+      "floor": 46,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_047",
+      "legacy_id": "abyss.047",
+      "dungeon_id": "abyss",
+      "floor": 47,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_048",
+      "legacy_id": "abyss.048",
+      "dungeon_id": "abyss",
+      "floor": 48,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_049",
+      "legacy_id": "abyss.049",
+      "dungeon_id": "abyss",
+      "floor": 49,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_050",
+      "legacy_id": "abyss.050",
+      "dungeon_id": "abyss",
+      "floor": 50,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_051",
+      "legacy_id": "abyss.051",
+      "dungeon_id": "abyss",
+      "floor": 51,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_052",
+      "legacy_id": "abyss.052",
+      "dungeon_id": "abyss",
+      "floor": 52,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_053",
+      "legacy_id": "abyss.053",
+      "dungeon_id": "abyss",
+      "floor": 53,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_054",
+      "legacy_id": "abyss.054",
+      "dungeon_id": "abyss",
+      "floor": 54,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_055",
+      "legacy_id": "abyss.055",
+      "dungeon_id": "abyss",
+      "floor": 55,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_056",
+      "legacy_id": "abyss.056",
+      "dungeon_id": "abyss",
+      "floor": 56,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_057",
+      "legacy_id": "abyss.057",
+      "dungeon_id": "abyss",
+      "floor": 57,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_058",
+      "legacy_id": "abyss.058",
+      "dungeon_id": "abyss",
+      "floor": 58,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_059",
+      "legacy_id": "abyss.059",
+      "dungeon_id": "abyss",
+      "floor": 59,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_060",
+      "legacy_id": "abyss.060",
+      "dungeon_id": "abyss",
+      "floor": 60,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_061",
+      "legacy_id": "abyss.061",
+      "dungeon_id": "abyss",
+      "floor": 61,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_062",
+      "legacy_id": "abyss.062",
+      "dungeon_id": "abyss",
+      "floor": 62,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_063",
+      "legacy_id": "abyss.063",
+      "dungeon_id": "abyss",
+      "floor": 63,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_064",
+      "legacy_id": "abyss.064",
+      "dungeon_id": "abyss",
+      "floor": 64,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_065",
+      "legacy_id": "abyss.065",
+      "dungeon_id": "abyss",
+      "floor": 65,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_066",
+      "legacy_id": "abyss.066",
+      "dungeon_id": "abyss",
+      "floor": 66,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_067",
+      "legacy_id": "abyss.067",
+      "dungeon_id": "abyss",
+      "floor": 67,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_068",
+      "legacy_id": "abyss.068",
+      "dungeon_id": "abyss",
+      "floor": 68,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_069",
+      "legacy_id": "abyss.069",
+      "dungeon_id": "abyss",
+      "floor": 69,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_070",
+      "legacy_id": "abyss.070",
+      "dungeon_id": "abyss",
+      "floor": 70,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_071",
+      "legacy_id": "abyss.071",
+      "dungeon_id": "abyss",
+      "floor": 71,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_072",
+      "legacy_id": "abyss.072",
+      "dungeon_id": "abyss",
+      "floor": 72,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_073",
+      "legacy_id": "abyss.073",
+      "dungeon_id": "abyss",
+      "floor": 73,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_074",
+      "legacy_id": "abyss.074",
+      "dungeon_id": "abyss",
+      "floor": 74,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_075",
+      "legacy_id": "abyss.075",
+      "dungeon_id": "abyss",
+      "floor": 75,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_076",
+      "legacy_id": "abyss.076",
+      "dungeon_id": "abyss",
+      "floor": 76,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_077",
+      "legacy_id": "abyss.077",
+      "dungeon_id": "abyss",
+      "floor": 77,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_078",
+      "legacy_id": "abyss.078",
+      "dungeon_id": "abyss",
+      "floor": 78,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_079",
+      "legacy_id": "abyss.079",
+      "dungeon_id": "abyss",
+      "floor": 79,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_080",
+      "legacy_id": "abyss.080",
+      "dungeon_id": "abyss",
+      "floor": 80,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_081",
+      "legacy_id": "abyss.081",
+      "dungeon_id": "abyss",
+      "floor": 81,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_082",
+      "legacy_id": "abyss.082",
+      "dungeon_id": "abyss",
+      "floor": 82,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_083",
+      "legacy_id": "abyss.083",
+      "dungeon_id": "abyss",
+      "floor": 83,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_084",
+      "legacy_id": "abyss.084",
+      "dungeon_id": "abyss",
+      "floor": 84,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_085",
+      "legacy_id": "abyss.085",
+      "dungeon_id": "abyss",
+      "floor": 85,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_086",
+      "legacy_id": "abyss.086",
+      "dungeon_id": "abyss",
+      "floor": 86,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_087",
+      "legacy_id": "abyss.087",
+      "dungeon_id": "abyss",
+      "floor": 87,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_088",
+      "legacy_id": "abyss.088",
+      "dungeon_id": "abyss",
+      "floor": 88,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_089",
+      "legacy_id": "abyss.089",
+      "dungeon_id": "abyss",
+      "floor": 89,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_090",
+      "legacy_id": "abyss.090",
+      "dungeon_id": "abyss",
+      "floor": 90,
+      "duration_seconds": 720
+    },
+    {
+      "id": "abyss_091",
+      "legacy_id": "abyss.091",
+      "dungeon_id": "abyss",
+      "floor": 91,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_092",
+      "legacy_id": "abyss.092",
+      "dungeon_id": "abyss",
+      "floor": 92,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_093",
+      "legacy_id": "abyss.093",
+      "dungeon_id": "abyss",
+      "floor": 93,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_094",
+      "legacy_id": "abyss.094",
+      "dungeon_id": "abyss",
+      "floor": 94,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_095",
+      "legacy_id": "abyss.095",
+      "dungeon_id": "abyss",
+      "floor": 95,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_096",
+      "legacy_id": "abyss.096",
+      "dungeon_id": "abyss",
+      "floor": 96,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_097",
+      "legacy_id": "abyss.097",
+      "dungeon_id": "abyss",
+      "floor": 97,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_098",
+      "legacy_id": "abyss.098",
+      "dungeon_id": "abyss",
+      "floor": 98,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_099",
+      "legacy_id": "abyss.099",
+      "dungeon_id": "abyss",
+      "floor": 99,
+      "duration_seconds": 360
+    },
+    {
+      "id": "abyss_100",
+      "legacy_id": "abyss.100",
+      "dungeon_id": "abyss",
+      "floor": 100,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_001",
+      "legacy_id": "eternity.001",
+      "dungeon_id": "stair",
+      "floor": 1,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_002",
+      "legacy_id": "eternity.002",
+      "dungeon_id": "stair",
+      "floor": 2,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_003",
+      "legacy_id": "eternity.003",
+      "dungeon_id": "stair",
+      "floor": 3,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_004",
+      "legacy_id": "eternity.004",
+      "dungeon_id": "stair",
+      "floor": 4,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_005",
+      "legacy_id": "eternity.005",
+      "dungeon_id": "stair",
+      "floor": 5,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_006",
+      "legacy_id": "eternity.006",
+      "dungeon_id": "stair",
+      "floor": 6,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_007",
+      "legacy_id": "eternity.007",
+      "dungeon_id": "stair",
+      "floor": 7,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_008",
+      "legacy_id": "eternity.008",
+      "dungeon_id": "stair",
+      "floor": 8,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_009",
+      "legacy_id": "eternity.009",
+      "dungeon_id": "stair",
+      "floor": 9,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_010",
+      "legacy_id": "eternity.010",
+      "dungeon_id": "stair",
+      "floor": 10,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_011",
+      "legacy_id": "eternity.011",
+      "dungeon_id": "stair",
+      "floor": 11,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_012",
+      "legacy_id": "eternity.012",
+      "dungeon_id": "stair",
+      "floor": 12,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_013",
+      "legacy_id": "eternity.013",
+      "dungeon_id": "stair",
+      "floor": 13,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_014",
+      "legacy_id": "eternity.014",
+      "dungeon_id": "stair",
+      "floor": 14,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_015",
+      "legacy_id": "eternity.015",
+      "dungeon_id": "stair",
+      "floor": 15,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_016",
+      "legacy_id": "eternity.016",
+      "dungeon_id": "stair",
+      "floor": 16,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_017",
+      "legacy_id": "eternity.017",
+      "dungeon_id": "stair",
+      "floor": 17,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_018",
+      "legacy_id": "eternity.018",
+      "dungeon_id": "stair",
+      "floor": 18,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_019",
+      "legacy_id": "eternity.019",
+      "dungeon_id": "stair",
+      "floor": 19,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_020",
+      "legacy_id": "eternity.020",
+      "dungeon_id": "stair",
+      "floor": 20,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_021",
+      "legacy_id": "eternity.021",
+      "dungeon_id": "stair",
+      "floor": 21,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_022",
+      "legacy_id": "eternity.022",
+      "dungeon_id": "stair",
+      "floor": 22,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_023",
+      "legacy_id": "eternity.023",
+      "dungeon_id": "stair",
+      "floor": 23,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_024",
+      "legacy_id": "eternity.024",
+      "dungeon_id": "stair",
+      "floor": 24,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_025",
+      "legacy_id": "eternity.025",
+      "dungeon_id": "stair",
+      "floor": 25,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_026",
+      "legacy_id": "eternity.026",
+      "dungeon_id": "stair",
+      "floor": 26,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_027",
+      "legacy_id": "eternity.027",
+      "dungeon_id": "stair",
+      "floor": 27,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_028",
+      "legacy_id": "eternity.028",
+      "dungeon_id": "stair",
+      "floor": 28,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_029",
+      "legacy_id": "eternity.029",
+      "dungeon_id": "stair",
+      "floor": 29,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_030",
+      "legacy_id": "eternity.030",
+      "dungeon_id": "stair",
+      "floor": 30,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_031",
+      "legacy_id": "eternity.031",
+      "dungeon_id": "stair",
+      "floor": 31,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_032",
+      "legacy_id": "eternity.032",
+      "dungeon_id": "stair",
+      "floor": 32,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_033",
+      "legacy_id": "eternity.033",
+      "dungeon_id": "stair",
+      "floor": 33,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_034",
+      "legacy_id": "eternity.034",
+      "dungeon_id": "stair",
+      "floor": 34,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_035",
+      "legacy_id": "eternity.035",
+      "dungeon_id": "stair",
+      "floor": 35,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_036",
+      "legacy_id": "eternity.036",
+      "dungeon_id": "stair",
+      "floor": 36,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_037",
+      "legacy_id": "eternity.037",
+      "dungeon_id": "stair",
+      "floor": 37,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_038",
+      "legacy_id": "eternity.038",
+      "dungeon_id": "stair",
+      "floor": 38,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_039",
+      "legacy_id": "eternity.039",
+      "dungeon_id": "stair",
+      "floor": 39,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_040",
+      "legacy_id": "eternity.040",
+      "dungeon_id": "stair",
+      "floor": 40,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_041",
+      "legacy_id": "eternity.041",
+      "dungeon_id": "stair",
+      "floor": 41,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_042",
+      "legacy_id": "eternity.042",
+      "dungeon_id": "stair",
+      "floor": 42,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_043",
+      "legacy_id": "eternity.043",
+      "dungeon_id": "stair",
+      "floor": 43,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_044",
+      "legacy_id": "eternity.044",
+      "dungeon_id": "stair",
+      "floor": 44,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_045",
+      "legacy_id": "eternity.045",
+      "dungeon_id": "stair",
+      "floor": 45,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_046",
+      "legacy_id": "eternity.046",
+      "dungeon_id": "stair",
+      "floor": 46,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_047",
+      "legacy_id": "eternity.047",
+      "dungeon_id": "stair",
+      "floor": 47,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_048",
+      "legacy_id": "eternity.048",
+      "dungeon_id": "stair",
+      "floor": 48,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_049",
+      "legacy_id": "eternity.049",
+      "dungeon_id": "stair",
+      "floor": 49,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_050",
+      "legacy_id": "eternity.050",
+      "dungeon_id": "stair",
+      "floor": 50,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_051",
+      "legacy_id": "eternity.051",
+      "dungeon_id": "stair",
+      "floor": 51,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_052",
+      "legacy_id": "eternity.052",
+      "dungeon_id": "stair",
+      "floor": 52,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_053",
+      "legacy_id": "eternity.053",
+      "dungeon_id": "stair",
+      "floor": 53,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_054",
+      "legacy_id": "eternity.054",
+      "dungeon_id": "stair",
+      "floor": 54,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_055",
+      "legacy_id": "eternity.055",
+      "dungeon_id": "stair",
+      "floor": 55,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_056",
+      "legacy_id": "eternity.056",
+      "dungeon_id": "stair",
+      "floor": 56,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_057",
+      "legacy_id": "eternity.057",
+      "dungeon_id": "stair",
+      "floor": 57,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_058",
+      "legacy_id": "eternity.058",
+      "dungeon_id": "stair",
+      "floor": 58,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_059",
+      "legacy_id": "eternity.059",
+      "dungeon_id": "stair",
+      "floor": 59,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_060",
+      "legacy_id": "eternity.060",
+      "dungeon_id": "stair",
+      "floor": 60,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_061",
+      "legacy_id": "eternity.061",
+      "dungeon_id": "stair",
+      "floor": 61,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_062",
+      "legacy_id": "eternity.062",
+      "dungeon_id": "stair",
+      "floor": 62,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_063",
+      "legacy_id": "eternity.063",
+      "dungeon_id": "stair",
+      "floor": 63,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_064",
+      "legacy_id": "eternity.064",
+      "dungeon_id": "stair",
+      "floor": 64,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_065",
+      "legacy_id": "eternity.065",
+      "dungeon_id": "stair",
+      "floor": 65,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_066",
+      "legacy_id": "eternity.066",
+      "dungeon_id": "stair",
+      "floor": 66,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_067",
+      "legacy_id": "eternity.067",
+      "dungeon_id": "stair",
+      "floor": 67,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_068",
+      "legacy_id": "eternity.068",
+      "dungeon_id": "stair",
+      "floor": 68,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_069",
+      "legacy_id": "eternity.069",
+      "dungeon_id": "stair",
+      "floor": 69,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_070",
+      "legacy_id": "eternity.070",
+      "dungeon_id": "stair",
+      "floor": 70,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_071",
+      "legacy_id": "eternity.071",
+      "dungeon_id": "stair",
+      "floor": 71,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_072",
+      "legacy_id": "eternity.072",
+      "dungeon_id": "stair",
+      "floor": 72,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_073",
+      "legacy_id": "eternity.073",
+      "dungeon_id": "stair",
+      "floor": 73,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_074",
+      "legacy_id": "eternity.074",
+      "dungeon_id": "stair",
+      "floor": 74,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_075",
+      "legacy_id": "eternity.075",
+      "dungeon_id": "stair",
+      "floor": 75,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_076",
+      "legacy_id": "eternity.076",
+      "dungeon_id": "stair",
+      "floor": 76,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_077",
+      "legacy_id": "eternity.077",
+      "dungeon_id": "stair",
+      "floor": 77,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_078",
+      "legacy_id": "eternity.078",
+      "dungeon_id": "stair",
+      "floor": 78,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_079",
+      "legacy_id": "eternity.079",
+      "dungeon_id": "stair",
+      "floor": 79,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_080",
+      "legacy_id": "eternity.080",
+      "dungeon_id": "stair",
+      "floor": 80,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_081",
+      "legacy_id": "eternity.081",
+      "dungeon_id": "stair",
+      "floor": 81,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_082",
+      "legacy_id": "eternity.082",
+      "dungeon_id": "stair",
+      "floor": 82,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_083",
+      "legacy_id": "eternity.083",
+      "dungeon_id": "stair",
+      "floor": 83,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_084",
+      "legacy_id": "eternity.084",
+      "dungeon_id": "stair",
+      "floor": 84,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_085",
+      "legacy_id": "eternity.085",
+      "dungeon_id": "stair",
+      "floor": 85,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_086",
+      "legacy_id": "eternity.086",
+      "dungeon_id": "stair",
+      "floor": 86,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_087",
+      "legacy_id": "eternity.087",
+      "dungeon_id": "stair",
+      "floor": 87,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_088",
+      "legacy_id": "eternity.088",
+      "dungeon_id": "stair",
+      "floor": 88,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_089",
+      "legacy_id": "eternity.089",
+      "dungeon_id": "stair",
+      "floor": 89,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_090",
+      "legacy_id": "eternity.090",
+      "dungeon_id": "stair",
+      "floor": 90,
+      "duration_seconds": 720
+    },
+    {
+      "id": "stair_091",
+      "legacy_id": "eternity.091",
+      "dungeon_id": "stair",
+      "floor": 91,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_092",
+      "legacy_id": "eternity.092",
+      "dungeon_id": "stair",
+      "floor": 92,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_093",
+      "legacy_id": "eternity.093",
+      "dungeon_id": "stair",
+      "floor": 93,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_094",
+      "legacy_id": "eternity.094",
+      "dungeon_id": "stair",
+      "floor": 94,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_095",
+      "legacy_id": "eternity.095",
+      "dungeon_id": "stair",
+      "floor": 95,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_096",
+      "legacy_id": "eternity.096",
+      "dungeon_id": "stair",
+      "floor": 96,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_097",
+      "legacy_id": "eternity.097",
+      "dungeon_id": "stair",
+      "floor": 97,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_098",
+      "legacy_id": "eternity.098",
+      "dungeon_id": "stair",
+      "floor": 98,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_099",
+      "legacy_id": "eternity.099",
+      "dungeon_id": "stair",
+      "floor": 99,
+      "duration_seconds": 360
+    },
+    {
+      "id": "stair_100",
+      "legacy_id": "eternity.100",
+      "dungeon_id": "stair",
+      "floor": 100,
+      "duration_seconds": 720
+    }
+  ]
+}

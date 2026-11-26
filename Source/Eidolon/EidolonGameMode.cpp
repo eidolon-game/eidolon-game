@@ -169,7 +169,16 @@ void AEidolonGameMode::SelectEnding(int32 Choice)
 void AEidolonGameMode::ReloadCheckpoint()
 {
     auto* C = Campaign(this);
-    if (C && !C->LoadCampaign()) C->NewCampaign();
+    if (!C)
+    {
+        Notice = TEXT("Campaign unavailable.");
+        return;
+    }
+    if (!C->LoadCampaign())
+    {
+        // The campaign subsystem survives level travel and retains its current state.
+        UE_LOG(LogTemp, Warning, TEXT("Checkpoint could not be loaded. Restarting the level with the current campaign state."));
+    }
     UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this)));
 }
 

@@ -29,3 +29,9 @@ Status: source-only, not compiled or playtested. UE5 minor and compiler still re
 - No console build or performance claims until platform-specific testing.
 
 No binary map, character mesh, animation or console SDK is included.
+
+## Checkpoint recovery regression (Game #27)
+
+- With a valid checkpoint, advance beyond the saved state and restart. Verify that the saved chapter, floor and flags return.
+- After advancing, remove or corrupt the local test slot and restart. Verify that the level restarts with the current chapter, floor, objectives and flags in memory, and that the log records the failed load.
+- In a fresh campaign with no slot, verify that restart still recovers from defeat and leaves the player at the first chapter.

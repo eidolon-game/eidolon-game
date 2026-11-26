@@ -1,7 +1,9 @@
 # EIDOLON – Beyond the Last Wall
 
-Unreal Engine 5 C++ action RPG for PC, PlayStation and Xbox.
+UE5 C++ dark fantasy RPG. Arena prototype: source only, not compiled.
 
-Status: 0.1.0-dev, third-person source prototype; compilation and playtest pending.
+Open Eidolon.uproject with a compatible UE5 editor, build the Editor target and press Play. The native game mode generates a placeholder arena, three enemies and a visible player. If the engine Entry map does not support PIE, create an empty level with a Player Start and press Play. No external assets required for the sandbox.
 
-[First playtest instructions](docs/first-playtest.md) | [Design documentation](https://github.com/eidolon-game/eidolon-docs)
+Controls: WASD / left stick; mouse / right stick; Space / A jump; Shift / L3 sprint; left mouse / RB light attack; right mouse / RT heavy attack; Q / B dodge; F / LB block; R / Y restart.
+
+This is not the finished game. Build, input, combat, collision and restart require actual UE testing. No console SDKs included.

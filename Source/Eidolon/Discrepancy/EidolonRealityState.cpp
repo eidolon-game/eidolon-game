@@ -2,9 +2,9 @@
 
 namespace
 {
-    const FName Noah(TEXT("npc.noah")), Vareth(TEXT("city.vareth")), Survivor(TEXT("npc.vareth_survivor"));
-    const FName Appear(TEXT("noah.appear")), Erase(TEXT("vareth.erase")), Enter(TEXT("oblivion.enter"));
-    const FName Disappear(TEXT("noah.disappear")), Recover(TEXT("noah.recover"));
+    const FName Noah(TEXT("npc_noah")), Vareth(TEXT("city_vareth")), Survivor(TEXT("npc_vareth_survivor"));
+    const FName Appear(TEXT("noah_appear")), Erase(TEXT("vareth_erase")), Enter(TEXT("oblivion_enter"));
+    const FName Disappear(TEXT("noah_disappear")), Recover(TEXT("noah_recover"));
 }
 FEidolonRealityState FEidolonRealityState::Initial()
 {
@@ -12,19 +12,29 @@ FEidolonRealityState FEidolonRealityState::Initial()
     S.Entities.Add(Noah, EEidolonPresence::Absent);
     S.Entities.Add(Vareth, EEidolonPresence::Present);
     S.Entities.Add(Survivor, EEidolonPresence::Present);
-    S.OriginalMemories.Add(TEXT("family.before_noah"));
-    for (FName N : {FName(TEXT("npc.darius")), FName(TEXT("npc.elara")), FName(TEXT("npc.lyra")), FName(TEXT("npc.riven"))})
-        S.CurrentMemories.Add(N, TEXT("family.before_noah"));
+    S.OriginalMemories.Add(TEXT("family_before_noah"));
+    for (FName N : {FName(TEXT("npc_darius")), FName(TEXT("npc_elara")), FName(TEXT("npc_lyra")), FName(TEXT("npc_riven"))})
+        S.CurrentMemories.Add(N, TEXT("family_before_noah"));
     return S;
 }
 bool FEidolonRealityState::IsValid() const
 {
     if (Revision < 0 || Revision != AppliedEvents.Num() || !Entities.Contains(Noah) || !Entities.Contains(Vareth) || !Entities.Contains(Survivor)) return false;
+    if (!OriginalMemories.Contains(TEXT("family_before_noah"))) return false;
+    if (AppliedEvents.Contains(Erase) && !AppliedEvents.Contains(Appear)) return false;
+    if (AppliedEvents.Contains(Enter) && !AppliedEvents.Contains(Erase)) return false;
+    if (AppliedEvents.Contains(TEXT("alternate_family")) && !AppliedEvents.Contains(Enter)) return false;
+    if (AppliedEvents.Contains(Disappear) && !AppliedEvents.Contains(TEXT("alternate_family"))) return false;
+    if (Ending.IsNone() != !AppliedEvents.Contains(TEXT("ending_selected"))) return false;
+    const auto ExpectedNoah = !Ending.IsNone()
+        ? (Ending == TEXT("origin") ? EEidolonPresence::Absent : EEidolonPresence::Present)
+        : (AppliedEvents.Contains(Disappear) ? EEidolonPresence::Oblivion : (AppliedEvents.Contains(Appear) ? EEidolonPresence::Present : EEidolonPresence::Absent));
+    if (Entities.FindRef(Noah) != ExpectedNoah) return false;
     if (AppliedEvents.Contains(Recover) && !AppliedEvents.Contains(Disappear)) return false;
     if (AppliedEvents.Contains(Disappear) && !AppliedEvents.Contains(Appear)) return false;
     if (AppliedEvents.Contains(Erase) && Entities.FindRef(Vareth) != EEidolonPresence::Oblivion) return false;
     if (AppliedEvents.Contains(Recover) && Entities.FindRef(Noah) != EEidolonPresence::Oblivion && Ending.IsNone()) return false;
-    return Reality == TEXT("prime") || Reality == TEXT("oblivion") || Reality == TEXT("alternate.valdris");
+    return Reality == TEXT("prime") || Reality == TEXT("oblivion") || Reality == TEXT("alternate_valdris");
 }
 bool FEidolonRealityState::Apply(FName Event, int32 Chapter, int32 ExpectedRevision)
 {
@@ -34,30 +44,30 @@ bool FEidolonRealityState::Apply(FName Event, int32 Chapter, int32 ExpectedRevis
     if (Event == Appear && Chapter == 2 && Next.Entities.FindRef(Noah) == EEidolonPresence::Absent)
     {
         Next.Entities[Noah] = EEidolonPresence::Present;
-        FamilyMemory(TEXT("family.with_noah"));
+        FamilyMemory(TEXT("family_with_noah"));
     }
-    else if (Event == Erase && Chapter == 10 && Next.Entities.FindRef(Vareth) == EEidolonPresence::Present)
+    else if (Event == Erase && Chapter == 10 && Next.AppliedEvents.Contains(Appear) && Next.Entities.FindRef(Vareth) == EEidolonPresence::Present)
     {
         Next.Entities[Vareth] = EEidolonPresence::Oblivion;
         Next.Entities[Survivor] = EEidolonPresence::Oblivion;
-        Next.OriginalMemories.Add(TEXT("vareth.survivor"));
+        Next.OriginalMemories.Add(TEXT("vareth_survivor"));
     }
-    else if (Event == Enter && Chapter == 20)
+    else if (Event == Enter && Chapter == 20 && Next.AppliedEvents.Contains(Erase))
     {
-        Next.Flags.Add(TEXT("oblivion.unlocked"));
+        Next.Flags.Add(TEXT("oblivion_unlocked"));
         Next.Reality = TEXT("oblivion");
     }
-    else if (Event == TEXT("alternate.family") && Chapter == 21 && Next.Flags.Contains(TEXT("oblivion.unlocked")))
+    else if (Event == TEXT("alternate_family") && Chapter == 21 && Next.Flags.Contains(TEXT("oblivion_unlocked")))
     {
-        Next.Reality = TEXT("alternate.valdris");
-        Next.OriginalMemories.Add(TEXT("family.alternate"));
+        Next.Reality = TEXT("alternate_valdris");
+        Next.OriginalMemories.Add(TEXT("family_alternate"));
     }
-    else if (Event == Disappear && Chapter == 22 && Next.AppliedEvents.Contains(Appear) && Next.Flags.Contains(TEXT("oblivion.unlocked")))
+    else if (Event == Disappear && Chapter == 22 && Next.AppliedEvents.Contains(Appear) && Next.AppliedEvents.Contains(TEXT("alternate_family")) && Next.Flags.Contains(TEXT("oblivion_unlocked")))
     {
         Next.Entities[Noah] = EEidolonPresence::Oblivion;
         Next.Reality = TEXT("prime");
-        Next.OriginalMemories.Add(TEXT("family.with_noah"));
-        FamilyMemory(TEXT("family.before_noah"));
+        Next.OriginalMemories.Add(TEXT("family_with_noah"));
+        FamilyMemory(TEXT("family_before_noah"));
     }
     else if (Event == Recover && Chapter == 22 && Next.AppliedEvents.Contains(Disappear))
     {
@@ -80,9 +90,9 @@ bool FEidolonRealityState::SelectEnding(FName Choice, int32 Chapter, bool bBossD
     Next.Ending = Choice;
     Next.Reality = TEXT("prime");
     Next.Entities[Noah] = Choice == TEXT("origin") ? EEidolonPresence::Absent : EEidolonPresence::Present;
-    for (auto& Pair : Next.CurrentMemories) Pair.Value = Choice == TEXT("origin") ? FName(TEXT("family.before_noah")) : FName(TEXT("family.with_noah"));
-    if (Choice == TEXT("freedom")) Next.Flags.Add(TEXT("reality.stable_passages"));
-    Next.AppliedEvents.Add(TEXT("ending.selected"));
+    for (auto& Pair : Next.CurrentMemories) Pair.Value = Choice == TEXT("origin") ? FName(TEXT("family_before_noah")) : FName(TEXT("family_with_noah"));
+    if (Choice == TEXT("freedom")) Next.Flags.Add(TEXT("reality_stable_passages"));
+    Next.AppliedEvents.Add(TEXT("ending_selected"));
     ++Next.Revision;
     if (!Next.IsValid()) return false;
     *this = MoveTemp(Next);

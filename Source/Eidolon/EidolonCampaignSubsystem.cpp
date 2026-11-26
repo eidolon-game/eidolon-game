@@ -1,6 +1,7 @@
 #include "EidolonCampaignSubsystem.h"
 #include "EidolonCampaignSave.h"
 #include "Dungeons/EidolonAbyssProgression.h"
+#include "Dungeons/EidolonCounterweightRules.h"
 #include "Dungeons/EidolonSluiceRules.h"
 #include "Dungeons/EidolonMarrowLatchRules.h"
 #include "Quest/EidolonFirstDescentRules.h"
@@ -206,6 +207,17 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const EidolonCounterweight::Progress Weight{
+        static_cast<EidolonCounterweight::Location>(Checkpoint->AbyssCounterweightLocation),
+        Checkpoint->AbyssCounterweightRevision
+    };
+    if (!EidolonCounterweight::IsValid(Weight) ||
+        (Authored.CompletedFloor < EidolonAbyss::CounterweightFloor - 1 && Weight.Revision != 0) ||
+        (EidolonCounterweight::CanExit(Weight) != (Authored.CompletedFloor >= EidolonAbyss::CounterweightFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -232,7 +244,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         State->Chapter != EidolonAbyss::Chapter ||
         State->FirstDescentCursor != FinalFirstDescentCursor ||
         Event.Kind == EidolonAbyss::EventKind::SluicesOpened ||
-        Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened)
+        Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened ||
+        Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled)
     {
         return false;
     }
@@ -328,6 +341,44 @@ bool UEidolonCampaignSubsystem::CommitAbyssMarrowLatch(EidolonMarrowLatch::Signa
         const auto Progress = ReadAuthoredAbyssProgress(*State);
         const auto NextFloor = Advance(Progress, {Chapter, MarrowFloor, MarrowFloor, Revision(Progress),
             EventKind::MarrowLatchOpened, Producer::Puzzle, Target::MarrowLatch});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+EidolonCounterweight::Progress UEidolonCampaignSubsystem::GetAbyssCounterweightProgress() const
+{
+    if (!State) return {};
+    return {static_cast<EidolonCounterweight::Location>(State->AbyssCounterweightLocation),
+        State->AbyssCounterweightRevision};
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssCounterweight(const EidolonCounterweight::Event& Event)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != CounterweightFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), CounterweightFloor)) return false;
+    const auto NextWeight = EidolonCounterweight::Advance(GetAbyssCounterweightProgress(), Event);
+    if (!NextWeight) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssCounterweightLocation = static_cast<uint8>(NextWeight->Weight);
+    Snapshot->AbyssCounterweightRevision = NextWeight->Revision;
+    if (EidolonCounterweight::CanExit(*NextWeight))
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, CounterweightFloor, CounterweightFloor,
+            Revision(Progress), EventKind::CounterweightInstalled, Producer::Puzzle, Target::CounterweightWinch});
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }

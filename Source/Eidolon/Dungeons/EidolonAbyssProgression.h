@@ -7,6 +7,7 @@ namespace EidolonAbyss
     inline constexpr int Chapter = 4;
     inline constexpr int SluiceFloor = 4;
     inline constexpr int MarrowFloor = 5;
+    inline constexpr int CounterweightFloor = 6;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -15,6 +16,7 @@ namespace EidolonAbyss
         FloorCleared,
         SluicesOpened,
         MarrowLatchOpened,
+        CounterweightInstalled,
         RicordaHeard,
         GuardianDefeated
     };
@@ -31,6 +33,7 @@ namespace EidolonAbyss
         FloorEncounter,
         SluiceControls,
         MarrowLatch,
+        CounterweightWinch,
         NamelessSpeaker,
         AbyssGuardian
     };
@@ -103,6 +106,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::MarrowLatchOpened || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::MarrowLatch)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == CounterweightFloor)
+        {
+            if (Input.Kind != EventKind::CounterweightInstalled || Input.Source != Producer::Puzzle ||
+                Input.Subject != Target::CounterweightWinch)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

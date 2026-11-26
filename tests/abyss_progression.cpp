@@ -10,14 +10,30 @@ int main()
     for (int Floor = 1; Floor <= GuardianFloor; ++Floor)
     {
         const bool Guardian = Floor == GuardianFloor;
-        const bool Sluice = Floor == SluiceFloor;
-        const bool Marrow = Floor == MarrowFloor;
-        Event Clear{Chapter, Floor, Floor, Revision(State),
-            Sluice ? EventKind::SluicesOpened : Marrow ? EventKind::MarrowLatchOpened :
-                Guardian ? EventKind::GuardianDefeated : EventKind::FloorCleared,
-            Sluice || Marrow ? Producer::Puzzle : Producer::Encounter,
-            Sluice ? Target::SluiceControls : Marrow ? Target::MarrowLatch :
-                Guardian ? Target::AbyssGuardian : Target::FloorEncounter};
+        Event Clear{Chapter, Floor, Floor, Revision(State), EventKind::FloorCleared,
+            Producer::Encounter, Target::FloorEncounter};
+        switch (Floor)
+        {
+            case SluiceFloor:
+                Clear.Kind = EventKind::SluicesOpened;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::SluiceControls;
+                break;
+            case MarrowFloor:
+                Clear.Kind = EventKind::MarrowLatchOpened;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::MarrowLatch;
+                break;
+            case CounterweightFloor:
+                Clear.Kind = EventKind::CounterweightInstalled;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::CounterweightWinch;
+                break;
+            case GuardianFloor:
+                Clear.Kind = EventKind::GuardianDefeated;
+                Clear.Subject = Target::AbyssGuardian;
+                break;
+        }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
             {Chapter, Floor - 1, Floor, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -71,7 +87,7 @@ int main()
                 return 1;
             }
         }
-        if (Sluice || Marrow)
+        if (Clear.Source == Producer::Puzzle)
         {
             const Event Kill{Chapter, Floor, Floor, Revision(State),
                 EventKind::FloorCleared, Producer::Encounter, Target::FloorEncounter};

@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "id": "abyss_006",
+  "legacy_id": "abyss.006",
+  "dungeon_id": "abyss",
+  "floor": 6,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Ambulacro a doppio anello",
+    "en": "Double-Ring Ambulatory"
+  },
+  "cell_cm": 200,
+  "height_cm": 300,
+  "footprint_cm": [
+    3000,
+    3200
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [2, 2],
+    [3, 2],
+    [4, 2],
+    [5, 2],
+    [6, 2],
+    [7, 2],
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [11, 2],
+    [12, 2],
+    [13, 2],
+    [14, 2],
+    [2, 3],
+    [3, 3],
+    [4, 3],
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [9, 3],
+    [10, 3],
+    [11, 3],
+    [12, 3],
+    [13, 3],
+    [14, 3],
+    [2, 4],
+    [3, 4],
+    [13, 4],
+    [14, 4],
+    [2, 5],
+    [3, 5],
+    [5, 5],
+    [6, 5],
+    [7, 5],
+    [8, 5],
+    [9, 5],
+    [10, 5],
+    [11, 5],
+    [13, 5],
+    [14, 5],
+    [0, 6],
+    [1, 6],
+    [2, 6],
+    [3, 6],
+    [5, 6],
+    [11, 6],
+    [13, 6],
+    [14, 6],
+    [0, 7],
+    [1, 7],
+    [2, 7],
+    [3, 7],
+    [4, 7],
+    [5, 7],
+    [11, 7],
+    [12, 7],
+    [13, 7],
+    [14, 7],
+    [0, 8],
+    [1, 8],
+    [2, 8],
+    [3, 8],
+    [5, 8],
+    [11, 8],
+    [13, 8],
+    [14, 8],
+    [2, 9],
+    [3, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
+    [8, 9],
+    [9, 9],
+    [10, 9],
+    [11, 9],
+    [13, 9],
+    [14, 9],
+    [2, 10],
+    [3, 10],
+    [13, 10],
+    [14, 10],
+    [2, 11],
+    [3, 11],
+    [4, 11],
+    [5, 11],
+    [6, 11],
+    [7, 11],
+    [8, 11],
+    [9, 11],
+    [10, 11],
+    [11, 11],
+    [12, 11],
+    [13, 11],
+    [14, 11],
+    [2, 12],
+    [3, 12],
+    [4, 12],
+    [5, 12],
+    [6, 12],
+    [7, 12],
+    [8, 12],
+    [9, 12],
+    [10, 12],
+    [11, 12],
+    [12, 12],
+    [13, 12],
+    [14, 12],
+    [8, 13],
+    [8, 14],
+    [8, 15],
+    [9, 15]
+  ],
+  "entry": [
+    0,
+    7
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint": [
+    1,
+    7
+  ],
+  "checkpoint_yaw_deg": 0,
+  "sarcophagus": [
+    3,
+    7
+  ],
+  "winch": [
+    13,
+    7
+  ],
+  "exit": [
+    9,
+    15
+  ],
+  "rings": {
+    "outer_bounds": {
+      "minimum": [
+        2,
+        2
+      ],
+      "maximum": [
+        14,
+        12
+      ],
+      "band_cells": 2
+    },
+    "inner_bounds": {
+      "minimum": [
+        5,
+        5
+      ],
+      "maximum": [
+        11,
+        9
+      ],
+      "band_cells": 1
+    },
+    "connectors": [
+      [
+        4,
+        7
+      ],
+      [
+        12,
+        7
+      ]
+    ]
+  },
+  "gate": {
+    "id": "abyss_006_ambulatory_gate",
+    "from_cell": [
+      8,
+      12
+    ],
+    "to_cell": [
+      8,
+      13
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": "abyss_006_counterweight_seated"
+  },
+  "sarcophagus_prop": {
+    "id": "abyss_006_sarcophagus_prop",
+    "position_cm": [
+      700,
+      1550,
+      42
+    ],
+    "dimensions_cm": [
+      75,
+      130,
+      84
+    ]
+  },
+  "counterweight": {
+    "id": "abyss_006_counterweight",
+    "position_cm": [
+      700,
+      1550,
+      112
+    ],
+    "dimensions_cm": [
+      38,
+      46,
+      56
+    ],
+    "collision": false,
+    "return_when_outside_walkable_surface": true,
+    "persist_after_seating": true
+  },
+  "winch_prop": {
+    "id": "abyss_006_winch_prop",
+    "position_cm": [
+      2700,
+      1550,
+      51
+    ],
+    "dimensions_cm": [
+      62,
+      74,
+      102
+    ]
+  },
+  "counterweight_seat": {
+    "id": "abyss_006_counterweight_seat",
+    "position_cm": [
+      2700,
+      1550,
+      130
+    ]
+  },
+  "patrol": {
+    "creature_id": "abyss_rattle_millipede",
+    "status": "optional_native_patrol_pending_unreal_validation",
+    "cells": [
+      [
+        3,
+        3
+      ],
+      [
+        13,
+        3
+      ],
+      [
+        13,
+        11
+      ],
+      [
+        3,
+        11
+      ]
+    ]
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_005",
+      "transition": "abyss_005_lower_stair",
+      "requires_completed_floor": 5
+    },
+    "exit": {
+      "to_floor": "abyss_007",
+      "transition": "abyss_006_lower_stair",
+      "requires_completed_floor": 6
+    }
+  },
+  "accessibility": {
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

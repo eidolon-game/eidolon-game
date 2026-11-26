@@ -117,3 +117,13 @@ For the interactive package, set `EIDOLON_MARROW_INTERACTIVE=1` before running t
 - Confirm that a beam hit releases the latch while the Ram stays alive. Approach from the side bridge and operate the latch. The gate must remain closed until the checkpoint succeeds.
 - Simulate failed writes separately for release and latch operation. Retry at the appropriate anchor and ensure no duplicate progress. Reload after release and after opening. The gate should open only in the latter state.
 - Inspect collision, escape lanes and the checkpoint spawn. The next stair is reserved for the interactive floor 6 map. The Ram uses placeholder geometry while the GLB and hoof cue await import.
+
+## Double-Ring Ambulatory
+
+Generate `/Game/Eidolon/Maps/AbyssFloor006` with `scripts/create_ambulatory_floor.py` in the Unreal Python commandlet. Enter from the Broken Portico once its latch is saved.
+
+- Collect the counterweight at the sarcophagus. Confirm it follows the player and that an early interaction with the winch or the lower stair does nothing. Compare the short inner route with the outer patrol route.
+- Test the Millipede on the outer path. Check that each corner is traversable, a temporary obstruction reverses or pauses the patrol, and the side warning matches the attack on both sides. Fight it or bypass it without changing the counterweight requirement.
+- Lose the carrier to defeat or below the floor. The counterweight returns to its source once the recovery checkpoint succeeds. Reload after recovery and check that the weight can be collected again. Exercise a failed recovery write and retry.
+- Install the carried weight at the winch. If saving fails, it stays carried and the gate remains closed. After success, the weight sits at the winch, the floor 6 credit and open gate survive reload, and a repeated interaction grants no additional progress.
+- The lower stair targets the future interactive floor 7 package. The Millipede still uses placeholder geometry while the static GLB awaits rig and import.

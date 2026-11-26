@@ -1,0 +1,27 @@
+#include "EidolonM2Policy.h"
+#include <cassert>
+#include <limits>
+using namespace EidolonAI::M2;
+int main(){
+ Input x; x.snapshot={true,1,0,Presence::Absent,Reality::Prime,false}; x.minute=600;
+ assert(Decide(x)==Intent::Forge); x.actor=Actor::Elara; assert(Decide(x)==Intent::HealWork);
+ x.actor=Actor::Lyra; assert(Decide(x)==Intent::Train); x.actor=Actor::Guild; assert(Decide(x)==Intent::GuildDuty);
+ x.actor=Actor::Noah; assert(Decide(x)==Intent::Dormant);
+ x.snapshot.chapter=2; x.snapshot.noah=Presence::Present; assert(Decide(x)==Intent::Dormant);
+ x.snapshot.dormitoryComplete=true; assert(Decide(x)==Intent::Play); assert(CanInteract(x,200,true)); assert(!CanInteract(x,201,true));
+ x.snapshot.chapter=22; x.snapshot.noah=Presence::Oblivion; assert(Decide(x)==Intent::Dormant);
+ x.snapshot.reality=Reality::Oblivion; assert(Visible(x.actor,x.snapshot));
+ x.snapshot.reality=Reality::Prime; x.actor=Actor::Monster; x.snapshot.chapter=2;
+ x.target={true,true,true,true,true,false,150,0}; assert(Decide(x)==Intent::Attack);
+ x.target.distanceCm=151; assert(Decide(x)==Intent::Pursue); x.target.distanceCm=1201; assert(Decide(x)==Intent::Patrol);
+ x.target.distanceCm=150; x.canAct=false; assert(Decide(x)==Intent::Wait);
+ x.canAct=true; x.healthPercent=20; assert(Decide(x)==Intent::Flee); x.healthPercent=0; assert(Decide(x)==Intent::Dead);
+ x.healthPercent=100; x.target.lineOfSight=false; x.target.heard=true; x.target.soundAgeSeconds=3; assert(Decide(x)==Intent::Investigate);
+ x.target.soundAgeSeconds=3.1; assert(Decide(x)==Intent::Patrol);
+ x.target.lineOfSight=true; x.target.valid=false; assert(Decide(x)==Intent::Patrol);
+ x.target.valid=true; x.target.alive=false; assert(Decide(x)==Intent::Patrol);
+ x.target.alive=true; x.target.hostile=false; assert(Decide(x)==Intent::Patrol);
+ x.target.hostile=true; x.target.distanceCm=std::numeric_limits<double>::quiet_NaN(); assert(Decide(x)==Intent::Patrol);
+ x.target.distanceCm=100; x.actor=Actor::Darius; assert(Decide(x)==Intent::Flee); assert(!CanInteract(x,100,true));
+ x.snapshot.committed=false; assert(Decide(x)==Intent::Dormant);
+}

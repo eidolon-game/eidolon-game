@@ -1,0 +1,302 @@
+{
+  "schema": 1,
+  "units": "metres",
+  "status": "graybox_proposal",
+  "nodes": [
+    {
+      "id": "valdris",
+      "x": 0,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 1,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "valdris.outer",
+      "x": 1500,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 8
+    },
+    {
+      "id": "ignareth",
+      "x": 9000,
+      "y": 4000,
+      "biome": "volcanic",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "ignareth.outer",
+      "x": 10500,
+      "y": 4000,
+      "biome": "volcanic",
+      "chapter": 8
+    },
+    {
+      "id": "thalassar",
+      "x": -10000,
+      "y": -3000,
+      "biome": "coast",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "thalassar.outer",
+      "x": -8500,
+      "y": -3000,
+      "biome": "coast",
+      "chapter": 8
+    },
+    {
+      "id": "nordheim",
+      "x": 0,
+      "y": 11000,
+      "biome": "snow",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "nordheim.outer",
+      "x": 1500,
+      "y": 11000,
+      "biome": "snow",
+      "chapter": 8
+    },
+    {
+      "id": "solkar",
+      "x": 6000,
+      "y": -10000,
+      "biome": "desert",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "solkar.outer",
+      "x": 7500,
+      "y": -10000,
+      "biome": "desert",
+      "chapter": 8
+    },
+    {
+      "id": "elyndor",
+      "x": -8000,
+      "y": 7000,
+      "biome": "forest",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "elyndor.outer",
+      "x": -6500,
+      "y": 7000,
+      "biome": "forest",
+      "chapter": 8
+    },
+    {
+      "id": "aureth",
+      "x": 10000,
+      "y": -4000,
+      "biome": "highlands",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "aureth.outer",
+      "x": 11500,
+      "y": -4000,
+      "biome": "highlands",
+      "chapter": 8
+    },
+    {
+      "id": "vareth",
+      "x": -4000,
+      "y": -9000,
+      "biome": "ruins",
+      "chapter": 10,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "vareth.outer",
+      "x": -2500,
+      "y": -9000,
+      "biome": "ruins",
+      "chapter": 10
+    },
+    {
+      "id": "valdris.giants",
+      "x": 1000,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 5
+    },
+    {
+      "id": "valdris.home",
+      "x": -100,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris.guild",
+      "x": 100,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris.abyss",
+      "x": 0,
+      "y": 0,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris.forge",
+      "x": -150,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris.dormitory",
+      "x": 150,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    }
+  ],
+  "edges": [
+    {
+      "a": "valdris.outer",
+      "b": "ignareth.outer",
+      "chapter": 8
+    },
+    {
+      "a": "ignareth.outer",
+      "b": "ignareth",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "thalassar.outer",
+      "chapter": 8
+    },
+    {
+      "a": "thalassar.outer",
+      "b": "thalassar",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "nordheim.outer",
+      "chapter": 8
+    },
+    {
+      "a": "nordheim.outer",
+      "b": "nordheim",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "solkar.outer",
+      "chapter": 8
+    },
+    {
+      "a": "solkar.outer",
+      "b": "solkar",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "elyndor.outer",
+      "chapter": 8
+    },
+    {
+      "a": "elyndor.outer",
+      "b": "elyndor",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "aureth.outer",
+      "chapter": 8
+    },
+    {
+      "a": "aureth.outer",
+      "b": "aureth",
+      "chapter": 8
+    },
+    {
+      "a": "valdris.outer",
+      "b": "vareth.outer",
+      "chapter": 10
+    },
+    {
+      "a": "vareth.outer",
+      "b": "vareth",
+      "chapter": 10
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.giants",
+      "chapter": 5
+    },
+    {
+      "a": "valdris.giants",
+      "b": "valdris.outer",
+      "chapter": 8
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.home",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.guild",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.abyss",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.forge",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris.dormitory",
+      "chapter": 1
+    }
+  ],
+  "variants": [
+    {
+      "id": "vareth.erased",
+      "node": "vareth",
+      "after_chapter": 10,
+      "visible": false
+    },
+    {
+      "id": "valdris.home.noah_present",
+      "node": "valdris.home",
+      "after_chapter": 2
+    },
+    {
+      "id": "valdris.home.noah_erased",
+      "node": "valdris.home",
+      "during_chapter": 22
+    }
+  ]
+}

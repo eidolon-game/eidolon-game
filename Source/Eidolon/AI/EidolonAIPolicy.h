@@ -5,7 +5,7 @@
 #include <map>
 #include <set>
 namespace EidolonAI {
-enum class Intent { Idle, Work, Social, Patrol, Search, Retreat, Defend, Reinforce, Follow, Hold, Attack, Flank, Cast, Heal };
+enum class Intent { Idle, Work, Social, Patrol, Search, Retreat, Defend, Reinforce, Follow, Hold, Attack, Flank, Cast, Heal, Counter, MaintainRange };
 enum class Role { Civilian, Guard, Duelist, Protector, Mage, Assassin, Lancer, Priest };
 enum class Order { Free, Follow, Hold, Focus, Retreat };
 struct Input {
@@ -24,6 +24,8 @@ inline Intent Decide(const Input& x) {
   if(!x.canAct) return Intent::Defend;
   if(x.role==Role::Assassin && !x.inRange) return Intent::Flank;
   if(x.role==Role::Mage && x.inRange) return Intent::Cast;
+  if(x.role==Role::Duelist && x.inRange && x.allyThreatened) return Intent::Counter;
+  if(x.role==Role::Lancer && !x.inRange) return Intent::MaintainRange;
   return Intent::Attack;
  }
  if(x.role==Role::Priest && x.allyCritical && x.canAct) return Intent::Heal;

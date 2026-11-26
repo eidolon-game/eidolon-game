@@ -38,7 +38,22 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
         C.Type = FName(*Object->GetStringField(TEXT("type")));
         C.Target = Object->GetIntegerField(TEXT("target"));
         if (C.Id != Parsed.Num()+1 || C.Act < 1 || C.Act > 10 || C.Target < 0) return false;
+        const TArray<TSharedPtr<FJsonValue>>* Lines = nullptr;
+        if (Object->TryGetArrayField(TEXT("dialogue"), Lines))
+            for (const auto& Line : *Lines)
+            {
+                const auto Entry = Line->AsObject();
+                if (Entry.IsValid()) C.Dialogue.Add(Entry->GetStringField(TEXT("speaker")) + TEXT(": ") + Entry->GetStringField(TEXT("text")));
+            }
         Parsed.Add(C);
+    }
+    const TArray<TSharedPtr<FJsonValue>>* Endings = nullptr;
+    if (!Root->TryGetArrayField(TEXT("endings"), Endings)) return false;
+    Epilogues.Reset();
+    for (const auto& Value : *Endings)
+    {
+        const auto Entry = Value->AsObject();
+        if (Entry.IsValid()) Epilogues.Add(FName(*Entry->GetStringField(TEXT("id"))), Entry->GetStringField(TEXT("epilogue")));
     }
     Chapters = MoveTemp(Parsed);
     return true;
@@ -71,6 +86,7 @@ FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const
 int32 UEidolonCampaignSubsystem::GetObjectiveCount() const { return State ? State->ObjectiveCount : 0; }
 int32 UEidolonCampaignSubsystem::GetFloor(bool bStair) const { return State ? (bStair ? State->StairFloor : State->AbyssFloor) : 0; }
 FName UEidolonCampaignSubsystem::GetEnding() const { return State ? State->Ending : NAME_None; }
+FString UEidolonCampaignSubsystem::GetEpilogue() const { return Epilogues.FindRef(GetEnding()); }
 int32 UEidolonCampaignSubsystem::GetLevel() const { return State ? 1 + State->Experience / 100 : 1; }
 FName UEidolonCampaignSubsystem::GetRank() const
 {

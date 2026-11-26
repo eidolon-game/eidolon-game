@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "proposal_not_runtime",
+  "entries": [
+    {
+      "floor_id": "abyss_010",
+      "creature_id": "boss_abyss_10",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_020",
+      "creature_id": "boss_abyss_20",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_030",
+      "creature_id": "boss_abyss_30",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_040",
+      "creature_id": "boss_abyss_40",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_050",
+      "creature_id": "boss_abyss_50",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_060",
+      "creature_id": "boss_abyss_60",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_070",
+      "creature_id": "boss_abyss_70",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_080",
+      "creature_id": "boss_abyss_80",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_090",
+      "creature_id": "boss_abyss_90",
+      "status": "proposed_capstone"
+    },
+    {
+      "floor_id": "abyss_100",
+      "creature_id": "boss_abyss_guardian",
+      "status": "canon_creature_placement",
+      "combat_profile": "CustodianBound",
+      "anchors": 3,
+      "quest_id": "mq_04",
+      "defeat_event": "guardian_defeated"
+    },
+    {
+      "floor_id": "stair_010",
+      "creature_id": "stair_life_warden",
+      "family": "life",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_020",
+      "creature_id": "stair_will_warden",
+      "family": "will",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_030",
+      "creature_id": "stair_memory_warden",
+      "family": "memory",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_040",
+      "creature_id": "stair_matter_warden",
+      "family": "matter",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_050",
+      "creature_id": "stair_time_warden",
+      "family": "time",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_060",
+      "creature_id": "stair_death_warden",
+      "family": "death",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    },
+    {
+      "floor_id": "stair_070",
+      "creature_id": "stair_destiny_warden",
+      "family": "destiny",
+      "status": "proposed_matches_existing_family_and_boss_slot"
+    }
+  ],
+  "notes": "Seven proposed law wardens use existing boss slots 10–70 and match the existing cycling family labels exactly; slots 80, 90, 100 remain unresolved and are not additional canon bosses. Abyss 90 remembers only after defeat as per canon; mq_04 dialogue attribution discrepancy requires 07/08 review. No runtime assignment or approval."
+}

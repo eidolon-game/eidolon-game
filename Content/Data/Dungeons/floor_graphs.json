@@ -1,0 +1,10886 @@
+{
+ "schema_version": 1,
+ "status": "graph_prototype",
+ "floors": [
+  {
+   "id": "abyss.001",
+   "index": 1,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "linear",
+   "seed": 10001,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.linear",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.001.reward",
+   "narrative_anchor": "tutorial_perception",
+   "previous": null,
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.002",
+   "index": 2,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "fork",
+   "seed": 10002,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.fork",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.002.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.001",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.003",
+   "index": 3,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "loop",
+   "seed": 10003,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.loop",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.003.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.002",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.004",
+   "index": 4,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "hub",
+   "seed": 10004,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.hub",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.004.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.003",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.005",
+   "index": 5,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "switchback",
+   "seed": 10005,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.005.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.004",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.006",
+   "index": 6,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "linear",
+   "seed": 10006,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.linear",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.006.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.005",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.007",
+   "index": 7,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "fork",
+   "seed": 10007,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.fork",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.007.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.006",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.008",
+   "index": 8,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "loop",
+   "seed": 10008,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.loop",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.008.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.007",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.009",
+   "index": 9,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "hub",
+   "seed": 10009,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.hub",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.009.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.008",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.010",
+   "index": 10,
+   "dungeon": "abyss",
+   "family": "catacombs",
+   "layout": "switchback",
+   "seed": 10010,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "catacombs.switchback",
+   "encounter": "boss_slot",
+   "difficulty": 1,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.010.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.009",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.011",
+   "index": 11,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "fork",
+   "seed": 10011,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.fork",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.011.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.010",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.012",
+   "index": 12,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "loop",
+   "seed": 10012,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.loop",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.012.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.011",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.013",
+   "index": 13,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "hub",
+   "seed": 10013,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.hub",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.013.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.012",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.014",
+   "index": 14,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "switchback",
+   "seed": 10014,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.014.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.013",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.015",
+   "index": 15,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "linear",
+   "seed": 10015,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.linear",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.015.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.014",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.016",
+   "index": 16,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "fork",
+   "seed": 10016,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.fork",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.016.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.015",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.017",
+   "index": 17,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "loop",
+   "seed": 10017,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.loop",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.017.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.016",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.018",
+   "index": 18,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "hub",
+   "seed": 10018,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.hub",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.018.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.017",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.019",
+   "index": 19,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "switchback",
+   "seed": 10019,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.019.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.018",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.020",
+   "index": 20,
+   "dungeon": "abyss",
+   "family": "buried_forest",
+   "layout": "linear",
+   "seed": 10020,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "buried_forest.linear",
+   "encounter": "boss_slot",
+   "difficulty": 2,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.020.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.019",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.021",
+   "index": 21,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "loop",
+   "seed": 10021,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.loop",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.021.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.020",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.022",
+   "index": 22,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "hub",
+   "seed": 10022,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.hub",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.022.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.021",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.023",
+   "index": 23,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "switchback",
+   "seed": 10023,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.023.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.022",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.024",
+   "index": 24,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "linear",
+   "seed": 10024,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.linear",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.024.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.023",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.025",
+   "index": 25,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "fork",
+   "seed": 10025,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.fork",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.025.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.024",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.026",
+   "index": 26,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "loop",
+   "seed": 10026,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.loop",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.026.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.025",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.027",
+   "index": 27,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "hub",
+   "seed": 10027,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.hub",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.027.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.026",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.028",
+   "index": 28,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "switchback",
+   "seed": 10028,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.028.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.027",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.029",
+   "index": 29,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "linear",
+   "seed": 10029,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.linear",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.029.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.028",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.030",
+   "index": 30,
+   "dungeon": "abyss",
+   "family": "lost_mines",
+   "layout": "fork",
+   "seed": 10030,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "lost_mines.fork",
+   "encounter": "boss_slot",
+   "difficulty": 3,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.030.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.029",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.031",
+   "index": 31,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "hub",
+   "seed": 10031,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.hub",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.031.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.030",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.032",
+   "index": 32,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "switchback",
+   "seed": 10032,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.032.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.031",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.033",
+   "index": 33,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "linear",
+   "seed": 10033,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.linear",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.033.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.032",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.034",
+   "index": 34,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "fork",
+   "seed": 10034,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.fork",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.034.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.033",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.035",
+   "index": 35,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "loop",
+   "seed": 10035,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.loop",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.035.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.034",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.036",
+   "index": 36,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "hub",
+   "seed": 10036,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.hub",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.036.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.035",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.037",
+   "index": 37,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "switchback",
+   "seed": 10037,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.037.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.036",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.038",
+   "index": 38,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "linear",
+   "seed": 10038,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.linear",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.038.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.037",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.039",
+   "index": 39,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "fork",
+   "seed": 10039,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.fork",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.039.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.038",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.040",
+   "index": 40,
+   "dungeon": "abyss",
+   "family": "sunken_kingdom",
+   "layout": "loop",
+   "seed": 10040,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "sunken_kingdom.loop",
+   "encounter": "boss_slot",
+   "difficulty": 4,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.040.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.039",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.041",
+   "index": 41,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "switchback",
+   "seed": 10041,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.041.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.040",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.042",
+   "index": 42,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "linear",
+   "seed": 10042,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.linear",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.042.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.041",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.043",
+   "index": 43,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "fork",
+   "seed": 10043,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.fork",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.043.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.042",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.044",
+   "index": 44,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "loop",
+   "seed": 10044,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.loop",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.044.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.043",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.045",
+   "index": 45,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "hub",
+   "seed": 10045,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.hub",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.045.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.044",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.046",
+   "index": 46,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "switchback",
+   "seed": 10046,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.046.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.045",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.047",
+   "index": 47,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "linear",
+   "seed": 10047,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.linear",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.047.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.046",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.048",
+   "index": 48,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "fork",
+   "seed": 10048,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.fork",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.048.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.047",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.049",
+   "index": 49,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "loop",
+   "seed": 10049,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.loop",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.049.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.048",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.050",
+   "index": 50,
+   "dungeon": "abyss",
+   "family": "crystal_lands",
+   "layout": "hub",
+   "seed": 10050,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "crystal_lands.hub",
+   "encounter": "boss_slot",
+   "difficulty": 5,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.050.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.049",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.051",
+   "index": 51,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "linear",
+   "seed": 10051,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.linear",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.051.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.050",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.052",
+   "index": 52,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "fork",
+   "seed": 10052,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.fork",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.052.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.051",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.053",
+   "index": 53,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "loop",
+   "seed": 10053,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.loop",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.053.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.052",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.054",
+   "index": 54,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "hub",
+   "seed": 10054,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.hub",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.054.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.053",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.055",
+   "index": 55,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "switchback",
+   "seed": 10055,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.055.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.054",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.056",
+   "index": 56,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "linear",
+   "seed": 10056,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.linear",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.056.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.055",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.057",
+   "index": 57,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "fork",
+   "seed": 10057,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.fork",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.057.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.056",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.058",
+   "index": 58,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "loop",
+   "seed": 10058,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.loop",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.058.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.057",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.059",
+   "index": 59,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "hub",
+   "seed": 10059,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.hub",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.059.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.058",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.060",
+   "index": 60,
+   "dungeon": "abyss",
+   "family": "necropolis",
+   "layout": "switchback",
+   "seed": 10060,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "necropolis.switchback",
+   "encounter": "boss_slot",
+   "difficulty": 6,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.060.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.059",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.061",
+   "index": 61,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "fork",
+   "seed": 10061,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.fork",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.061.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.060",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.062",
+   "index": 62,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "loop",
+   "seed": 10062,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.loop",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.062.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.061",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.063",
+   "index": 63,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "hub",
+   "seed": 10063,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.hub",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.063.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.062",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.064",
+   "index": 64,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "switchback",
+   "seed": 10064,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.064.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.063",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.065",
+   "index": 65,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "linear",
+   "seed": 10065,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.linear",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.065.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.064",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.066",
+   "index": 66,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "fork",
+   "seed": 10066,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.fork",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.066.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.065",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.067",
+   "index": 67,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "loop",
+   "seed": 10067,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.loop",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.067.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.066",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.068",
+   "index": 68,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "hub",
+   "seed": 10068,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.hub",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.068.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.067",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.069",
+   "index": 69,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "switchback",
+   "seed": 10069,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.069.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.068",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.070",
+   "index": 70,
+   "dungeon": "abyss",
+   "family": "infernal_forges",
+   "layout": "linear",
+   "seed": 10070,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "infernal_forges.linear",
+   "encounter": "boss_slot",
+   "difficulty": 7,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.070.reward",
+   "narrative_anchor": "statue",
+   "previous": "abyss.069",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.071",
+   "index": 71,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "loop",
+   "seed": 10071,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.loop",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.071.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.070",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.072",
+   "index": 72,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "hub",
+   "seed": 10072,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.hub",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.072.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.071",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.073",
+   "index": 73,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "switchback",
+   "seed": 10073,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.073.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.072",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.074",
+   "index": 74,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "linear",
+   "seed": 10074,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.linear",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.074.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.073",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.075",
+   "index": 75,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "fork",
+   "seed": 10075,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.fork",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.075.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.074",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.076",
+   "index": 76,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "loop",
+   "seed": 10076,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.loop",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.076.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.075",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.077",
+   "index": 77,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "hub",
+   "seed": 10077,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.hub",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.077.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.076",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.078",
+   "index": 78,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "switchback",
+   "seed": 10078,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.078.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.077",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.079",
+   "index": 79,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "linear",
+   "seed": 10079,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.linear",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.079.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.078",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.080",
+   "index": 80,
+   "dungeon": "abyss",
+   "family": "inverted_citadel",
+   "layout": "fork",
+   "seed": 10080,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "inverted_citadel.fork",
+   "encounter": "boss_slot",
+   "difficulty": 8,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.080.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.079",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.081",
+   "index": 81,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "hub",
+   "seed": 10081,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.hub",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.081.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.080",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.082",
+   "index": 82,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "switchback",
+   "seed": 10082,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.082.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.081",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.083",
+   "index": 83,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "linear",
+   "seed": 10083,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.linear",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.083.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.082",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.084",
+   "index": 84,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "fork",
+   "seed": 10084,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.fork",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.084.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.083",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.085",
+   "index": 85,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "loop",
+   "seed": 10085,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.loop",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.085.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.084",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.086",
+   "index": 86,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "hub",
+   "seed": 10086,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.hub",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.086.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.085",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.087",
+   "index": 87,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "switchback",
+   "seed": 10087,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.087.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.086",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.088",
+   "index": 88,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "linear",
+   "seed": 10088,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.linear",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.088.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.087",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.089",
+   "index": 89,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "fork",
+   "seed": 10089,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.fork",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.089.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.088",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.090",
+   "index": 90,
+   "dungeon": "abyss",
+   "family": "silent_sanctuary",
+   "layout": "loop",
+   "seed": 10090,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "silent_sanctuary.loop",
+   "encounter": "boss_slot",
+   "difficulty": 9,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.090.reward",
+   "narrative_anchor": "remember",
+   "previous": "abyss.089",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.091",
+   "index": 91,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "switchback",
+   "seed": 10091,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.091.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.090",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.092",
+   "index": 92,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "linear",
+   "seed": 10092,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.linear",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.092.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.091",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.093",
+   "index": 93,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "fork",
+   "seed": 10093,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.fork",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.093.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.092",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.094",
+   "index": 94,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "loop",
+   "seed": 10094,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.loop",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.094.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.093",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.095",
+   "index": 95,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "hub",
+   "seed": 10095,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.hub",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.095.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.094",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.096",
+   "index": 96,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "switchback",
+   "seed": 10096,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.096.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.095",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.097",
+   "index": 97,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "linear",
+   "seed": 10097,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.linear",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.097.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.096",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.098",
+   "index": 98,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "fork",
+   "seed": 10098,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.fork",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.098.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.097",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.099",
+   "index": 99,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "loop",
+   "seed": 10099,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.loop",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.099.reward",
+   "narrative_anchor": null,
+   "previous": "abyss.098",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "abyss.100",
+   "index": 100,
+   "dungeon": "abyss",
+   "family": "abyss_heart",
+   "layout": "hub",
+   "seed": 10100,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "abyss_heart.hub",
+   "encounter": "boss_slot",
+   "difficulty": 10,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "abyss.100.reward",
+   "narrative_anchor": "guardian_and_sealed_door",
+   "previous": "abyss.099",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.001",
+   "index": 1,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "linear",
+   "seed": 20001,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.linear",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.001.reward",
+   "narrative_anchor": null,
+   "previous": null,
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.002",
+   "index": 2,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "fork",
+   "seed": 20002,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.fork",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.002.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.001",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.003",
+   "index": 3,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "loop",
+   "seed": 20003,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.loop",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.003.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.002",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.004",
+   "index": 4,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "hub",
+   "seed": 20004,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.hub",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.004.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.003",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.005",
+   "index": 5,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "switchback",
+   "seed": 20005,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.005.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.004",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.006",
+   "index": 6,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "linear",
+   "seed": 20006,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.linear",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.006.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.005",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.007",
+   "index": 7,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "fork",
+   "seed": 20007,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.fork",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.007.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.006",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.008",
+   "index": 8,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "loop",
+   "seed": 20008,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.loop",
+   "encounter": "standard_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.008.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.007",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.009",
+   "index": 9,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "hub",
+   "seed": 20009,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.hub",
+   "encounter": "elite_slot",
+   "difficulty": 1,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.009.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.008",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.010",
+   "index": 10,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "switchback",
+   "seed": 20010,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.switchback",
+   "encounter": "boss_slot",
+   "difficulty": 1,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.010.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.009",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.011",
+   "index": 11,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "fork",
+   "seed": 20011,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.fork",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.011.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.010",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.012",
+   "index": 12,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "loop",
+   "seed": 20012,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.loop",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.012.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.011",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.013",
+   "index": 13,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "hub",
+   "seed": 20013,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.hub",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.013.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.012",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.014",
+   "index": 14,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "switchback",
+   "seed": 20014,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.014.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.013",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.015",
+   "index": 15,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "linear",
+   "seed": 20015,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.linear",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.015.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.014",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.016",
+   "index": 16,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "fork",
+   "seed": 20016,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.fork",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.016.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.015",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.017",
+   "index": 17,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "loop",
+   "seed": 20017,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.loop",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.017.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.016",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.018",
+   "index": 18,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "hub",
+   "seed": 20018,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.hub",
+   "encounter": "elite_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.018.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.017",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.019",
+   "index": 19,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "switchback",
+   "seed": 20019,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 2,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.019.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.018",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.020",
+   "index": 20,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "linear",
+   "seed": 20020,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.linear",
+   "encounter": "boss_slot",
+   "difficulty": 2,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.020.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.019",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.021",
+   "index": 21,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "loop",
+   "seed": 20021,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.loop",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.021.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.020",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.022",
+   "index": 22,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "hub",
+   "seed": 20022,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.hub",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.022.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.021",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.023",
+   "index": 23,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "switchback",
+   "seed": 20023,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.023.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.022",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.024",
+   "index": 24,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "linear",
+   "seed": 20024,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.linear",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.024.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.023",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.025",
+   "index": 25,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "fork",
+   "seed": 20025,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.fork",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.025.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.024",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.026",
+   "index": 26,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "loop",
+   "seed": 20026,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.loop",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.026.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.025",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.027",
+   "index": 27,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "hub",
+   "seed": 20027,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.hub",
+   "encounter": "elite_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.027.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.026",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.028",
+   "index": 28,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "switchback",
+   "seed": 20028,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.028.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.027",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.029",
+   "index": 29,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "linear",
+   "seed": 20029,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.linear",
+   "encounter": "standard_slot",
+   "difficulty": 3,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.029.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.028",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.030",
+   "index": 30,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "fork",
+   "seed": 20030,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.fork",
+   "encounter": "boss_slot",
+   "difficulty": 3,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.030.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.029",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.031",
+   "index": 31,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "hub",
+   "seed": 20031,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.hub",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.031.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.030",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.032",
+   "index": 32,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "switchback",
+   "seed": 20032,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.032.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.031",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.033",
+   "index": 33,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "linear",
+   "seed": 20033,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.linear",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.033.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.032",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.034",
+   "index": 34,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "fork",
+   "seed": 20034,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.fork",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.034.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.033",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.035",
+   "index": 35,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "loop",
+   "seed": 20035,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.loop",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.035.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.034",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.036",
+   "index": 36,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "hub",
+   "seed": 20036,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.hub",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.036.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.035",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.037",
+   "index": 37,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "switchback",
+   "seed": 20037,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.037.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.036",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.038",
+   "index": 38,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "linear",
+   "seed": 20038,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.linear",
+   "encounter": "standard_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.038.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.037",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.039",
+   "index": 39,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "fork",
+   "seed": 20039,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.fork",
+   "encounter": "elite_slot",
+   "difficulty": 4,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.039.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.038",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.040",
+   "index": 40,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "loop",
+   "seed": 20040,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.loop",
+   "encounter": "boss_slot",
+   "difficulty": 4,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.040.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.039",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.041",
+   "index": 41,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "switchback",
+   "seed": 20041,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.041.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.040",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.042",
+   "index": 42,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "linear",
+   "seed": 20042,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.linear",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.042.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.041",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.043",
+   "index": 43,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "fork",
+   "seed": 20043,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.fork",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.043.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.042",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.044",
+   "index": 44,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "loop",
+   "seed": 20044,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.loop",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.044.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.043",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.045",
+   "index": 45,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "hub",
+   "seed": 20045,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.hub",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.045.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.044",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.046",
+   "index": 46,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "switchback",
+   "seed": 20046,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.046.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.045",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.047",
+   "index": 47,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "linear",
+   "seed": 20047,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.linear",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.047.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.046",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.048",
+   "index": 48,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "fork",
+   "seed": 20048,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.fork",
+   "encounter": "elite_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.048.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.047",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.049",
+   "index": 49,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "loop",
+   "seed": 20049,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.loop",
+   "encounter": "standard_slot",
+   "difficulty": 5,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.049.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.048",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.050",
+   "index": 50,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "hub",
+   "seed": 20050,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.hub",
+   "encounter": "boss_slot",
+   "difficulty": 5,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.050.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.049",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.051",
+   "index": 51,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "linear",
+   "seed": 20051,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.linear",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.051.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.050",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.052",
+   "index": 52,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "fork",
+   "seed": 20052,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.fork",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.052.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.051",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.053",
+   "index": 53,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "loop",
+   "seed": 20053,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.loop",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.053.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.052",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.054",
+   "index": 54,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "hub",
+   "seed": 20054,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.hub",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.054.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.053",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.055",
+   "index": 55,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "switchback",
+   "seed": 20055,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.055.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.054",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.056",
+   "index": 56,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "linear",
+   "seed": 20056,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.linear",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.056.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.055",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.057",
+   "index": 57,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "fork",
+   "seed": 20057,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.fork",
+   "encounter": "elite_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.057.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.056",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.058",
+   "index": 58,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "loop",
+   "seed": 20058,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.loop",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.058.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.057",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.059",
+   "index": 59,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "hub",
+   "seed": 20059,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.hub",
+   "encounter": "standard_slot",
+   "difficulty": 6,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.059.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.058",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.060",
+   "index": 60,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "switchback",
+   "seed": 20060,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.switchback",
+   "encounter": "boss_slot",
+   "difficulty": 6,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.060.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.059",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.061",
+   "index": 61,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "fork",
+   "seed": 20061,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.fork",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.061.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.060",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.062",
+   "index": 62,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "loop",
+   "seed": 20062,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.loop",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.062.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.061",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.063",
+   "index": 63,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "hub",
+   "seed": 20063,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.hub",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.063.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.062",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.064",
+   "index": 64,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "switchback",
+   "seed": 20064,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.064.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.063",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.065",
+   "index": 65,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "linear",
+   "seed": 20065,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.linear",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.065.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.064",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.066",
+   "index": 66,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "fork",
+   "seed": 20066,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.fork",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.066.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.065",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.067",
+   "index": 67,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "loop",
+   "seed": 20067,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.loop",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.067.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.066",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.068",
+   "index": 68,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "hub",
+   "seed": 20068,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.hub",
+   "encounter": "standard_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.068.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.067",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.069",
+   "index": 69,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "switchback",
+   "seed": 20069,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 7,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.069.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.068",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.070",
+   "index": 70,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "linear",
+   "seed": 20070,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.linear",
+   "encounter": "boss_slot",
+   "difficulty": 7,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.070.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.069",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.071",
+   "index": 71,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "loop",
+   "seed": 20071,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.loop",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.071.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.070",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.072",
+   "index": 72,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "hub",
+   "seed": 20072,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.hub",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.072.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.071",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.073",
+   "index": 73,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "switchback",
+   "seed": 20073,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.073.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.072",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.074",
+   "index": 74,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "linear",
+   "seed": 20074,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.linear",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.074.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.073",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.075",
+   "index": 75,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "fork",
+   "seed": 20075,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.fork",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.075.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.074",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.076",
+   "index": 76,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "loop",
+   "seed": 20076,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.loop",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.076.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.075",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.077",
+   "index": 77,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "hub",
+   "seed": 20077,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.hub",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.077.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.076",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.078",
+   "index": 78,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "switchback",
+   "seed": 20078,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.078.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.077",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.079",
+   "index": 79,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "linear",
+   "seed": 20079,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.linear",
+   "encounter": "standard_slot",
+   "difficulty": 8,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.079.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.078",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.080",
+   "index": 80,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "fork",
+   "seed": 20080,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.fork",
+   "encounter": "boss_slot",
+   "difficulty": 8,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.080.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.079",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.081",
+   "index": 81,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "hub",
+   "seed": 20081,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.hub",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.081.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.080",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.082",
+   "index": 82,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "switchback",
+   "seed": 20082,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.082.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.081",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.083",
+   "index": 83,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "linear",
+   "seed": 20083,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.linear",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.083.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.082",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.084",
+   "index": 84,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "fork",
+   "seed": 20084,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.fork",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.084.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.083",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.085",
+   "index": 85,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "loop",
+   "seed": 20085,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.loop",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.085.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.084",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.086",
+   "index": 86,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "hub",
+   "seed": 20086,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.hub",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.086.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.085",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.087",
+   "index": 87,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "switchback",
+   "seed": 20087,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.087.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.086",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.088",
+   "index": 88,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "linear",
+   "seed": 20088,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.linear",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.088.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.087",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.089",
+   "index": 89,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "fork",
+   "seed": 20089,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.fork",
+   "encounter": "standard_slot",
+   "difficulty": 9,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.089.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.088",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.090",
+   "index": 90,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "loop",
+   "seed": 20090,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.loop",
+   "encounter": "boss_slot",
+   "difficulty": 9,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.090.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.089",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.091",
+   "index": 91,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "switchback",
+   "seed": 20091,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.switchback",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.091.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.090",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.092",
+   "index": 92,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "linear",
+   "seed": 20092,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.linear",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.092.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.091",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.093",
+   "index": 93,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "fork",
+   "seed": 20093,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.fork",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.093.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.092",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.094",
+   "index": 94,
+   "dungeon": "eternity",
+   "family": "life",
+   "layout": "loop",
+   "seed": 20094,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "life.loop",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.094.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.093",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.095",
+   "index": 95,
+   "dungeon": "eternity",
+   "family": "death",
+   "layout": "hub",
+   "seed": 20095,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "death.hub",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.095.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.094",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.096",
+   "index": 96,
+   "dungeon": "eternity",
+   "family": "matter",
+   "layout": "switchback",
+   "seed": 20096,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "landing"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "landing"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "landing",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "matter.switchback",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.096.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.095",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.097",
+   "index": 97,
+   "dungeon": "eternity",
+   "family": "will",
+   "layout": "linear",
+   "seed": 20097,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "will.linear",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.097.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.096",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.098",
+   "index": 98,
+   "dungeon": "eternity",
+   "family": "destiny",
+   "layout": "fork",
+   "seed": 20098,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "entry",
+     "secret"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "destiny.fork",
+   "encounter": "standard_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.098.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.097",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.099",
+   "index": 99,
+   "dungeon": "eternity",
+   "family": "time",
+   "layout": "loop",
+   "seed": 20099,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "secret",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "time.loop",
+   "encounter": "elite_slot",
+   "difficulty": 10,
+   "duration_minutes": 6,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.099.reward",
+   "narrative_anchor": null,
+   "previous": "eternity.098",
+   "status": "graph_prototype"
+  },
+  {
+   "id": "eternity.100",
+   "index": 100,
+   "dungeon": "eternity",
+   "family": "memory",
+   "layout": "hub",
+   "seed": 20100,
+   "nodes": [
+    "entry",
+    "checkpoint",
+    "trial",
+    "exit",
+    "secret",
+    "annex"
+   ],
+   "edges": [
+    [
+     "entry",
+     "checkpoint"
+    ],
+    [
+     "checkpoint",
+     "trial"
+    ],
+    [
+     "trial",
+     "exit"
+    ],
+    [
+     "checkpoint",
+     "secret"
+    ],
+    [
+     "checkpoint",
+     "annex"
+    ],
+    [
+     "annex",
+     "trial"
+    ]
+   ],
+   "entry": "entry",
+   "exit": "exit",
+   "objective": "trial",
+   "checkpoint": "checkpoint",
+   "secret": "secret",
+   "mechanic": "memory.hub",
+   "encounter": "boss_slot",
+   "difficulty": 10,
+   "duration_minutes": 12,
+   "accessibility": [
+    "no_color_only",
+    "timing_assist"
+   ],
+   "reward_slot": "eternity.100.reward",
+   "narrative_anchor": "empyrea_threshold",
+   "previous": "eternity.099",
+   "status": "graph_prototype"
+  }
+ ]
+}

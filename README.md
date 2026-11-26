@@ -2,6 +2,6 @@
 
 Unreal Engine 5 C++ action RPG for PC, PlayStation and Xbox.
 
-Status: bootstrap, v0.0.1. No playable build yet. Exact UE5 minor version and toolchain must be pinned before validation.
+Status: 0.1.0-dev, third-person source prototype; compilation and playtest pending.
 
-See [design documentation](https://github.com/eidolon-game/eidolon-docs).
+[First playtest instructions](docs/first-playtest.md) | [Design documentation](https://github.com/eidolon-game/eidolon-docs)

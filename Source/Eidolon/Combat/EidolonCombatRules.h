@@ -30,7 +30,7 @@ struct FState
     }
     bool BeginAttack(const FAttack& A, float Now)
     {
-        if (!CanAct(Now) || !FMath::IsFinite(A.Windup+A.Active+A.Recovery) || A.Windup < 0 || A.Active <= 0 || A.Recovery < 0 || !Spend(A.Stamina,A.Mana)) return false;
+        if (!CanAct(Now) || !FMath::IsFinite(Now) || !FMath::IsFinite(A.Damage) || A.Damage<=0 || !FMath::IsFinite(A.Poise) || A.Poise<0 || !FMath::IsFinite(A.Windup+A.Active+A.Recovery) || A.Windup < 0 || A.Active <= 0 || A.Recovery < 0 || !Spend(A.Stamina,A.Mana)) return false;
         ReadyAt = Now+A.Windup+A.Active+A.Recovery; return true;
     }
     bool Dodge(float Now)

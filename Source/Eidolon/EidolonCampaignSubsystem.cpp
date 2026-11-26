@@ -304,6 +304,7 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         Event.Kind == EidolonAbyss::EventKind::MirrorsAligned ||
         Event.Kind == EidolonAbyss::EventKind::PincerWinchOpened ||
         Event.Kind == EidolonAbyss::EventKind::BranchLatchSelected ||
+        (Event.Kind == EidolonAbyss::EventKind::QuarryLatchOpened && !HasFlag(TEXT("abyss_quarry_arrived"))) ||
         Event.Kind == EidolonAbyss::EventKind::DoubleClearingLatchOpened)
     {
         return false;
@@ -335,6 +336,26 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
     }
     if (!WriteCheckpoint(Snapshot)) return false;
 
+    State = Snapshot;
+    return true;
+}
+
+bool UEidolonCampaignSubsystem::CommitQuarryArrival()
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() || State->Chapter != Chapter
+        || State->FirstDescentCursor != FinalFirstDescentCursor || GetAuthoredAbyssCompletedFloor() < RiftrootFloor)
+        return false;
+
+    const auto* Instance = GetGameInstance();
+    if (!Instance || !IsAuthoredAbyssMap(Instance->GetWorld(), QuarryThresholdFloor)) return false;
+
+    const FName Arrival = TEXT("abyss_quarry_arrived");
+    if (State->Flags.Contains(Arrival)) return true;
+
+    auto* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->Flags.Add(Arrival);
+    if (!WriteCheckpoint(Snapshot)) return false;
     State = Snapshot;
     return true;
 }

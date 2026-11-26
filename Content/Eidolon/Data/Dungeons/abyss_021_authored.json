@@ -1,0 +1,37 @@
+{
+  "id": "abyss_021",
+  "title": {"it": "Soglia di cava", "en": "Quarry Threshold"},
+  "requires_completed_floor": 20,
+  "next_floor": "abyss_022",
+  "cell_cm": 200,
+  "height_cm": 470,
+  "arrival": {"minimum": [0, -2], "maximum": [2, 2]},
+  "approach": {"minimum": [3, -2], "maximum": [3, -2]},
+  "gallery": {"minimum": [4, -2], "maximum": [13, 2]},
+  "recesses": [
+    {"minimum": [6, -3], "maximum": [7, -3]},
+    {"minimum": [10, 3], "maximum": [11, 3]}
+  ],
+  "outlet": {"minimum": [14, 0], "maximum": [16, 0]},
+  "gate": {
+    "from_cell": [13, 0],
+    "to_cell": [14, 0],
+    "center_cm": [2800, 100, 135],
+    "dimensions_cm": [40, 200, 270]
+  },
+  "anchors_cm": {
+    "player_start": [300, 100, 110],
+    "arrival_recovery": [300, 410, 110],
+    "checkpoint_start": [105, 100, 110],
+    "quarry_latch": [2690, 410, 110],
+    "exit": [3200, 100, 110],
+    "borer_spawn": [2270, 100, 0],
+    "charge_limit": [1500, 100, 0]
+  },
+  "borer": {
+    "creature_id": "abyss_mine_borer",
+    "required": false,
+    "footprint_cm": [494, 418, 301],
+    "charge_hazard_half_width_cm": 225
+  }
+}

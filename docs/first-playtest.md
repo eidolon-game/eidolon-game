@@ -245,4 +245,13 @@ Generate `/Game/Eidolon/Maps/AbyssFloor020` with `scripts/create_riftroot_arena.
 
 - Test the rock wedge and root draw from the center and either flank with mouse and keyboard and with controller. Verify that the wedge locks its axis before impact, the roots threaten only the signaled side and both warnings remain readable without sound.
 - Cross 45% health during each phase. The one-time relocation must wait for a break in the attacks and must deal no damage. Test a blocked destination, an obstruction along the path and a lethal hit crossing the threshold.
-- Block the spawn or remove an authored boss anchor and attempt again. Only the registered boss defeat can unlock the exit. Fail the checkpoint after defeat, retry and verify that Rank E and the open gate survive reload, with the boss absent. The stair targets the future `AbyssFloor021`. The final art, animations and cues require Unreal integration.
+- Block the spawn or remove an authored boss anchor and attempt again. Only the registered boss defeat can unlock the exit. Fail the checkpoint after defeat, retry and verify that Rank E and the open gate survive reload, with the boss absent. The stair targets `AbyssFloor021` when its package is available. The final art, animations and cues require Unreal integration.
+
+## Quarry Threshold
+
+Generate `/Game/Eidolon/Maps/AbyssFloor021` with the campaign generator. Enter from the open Riftroot stair. Check the primary start, then block it and confirm that the recovery marker is used. Block both starts and verify the return to the Riftroot checkpoint with the boss defeated and gate open. [Authored layout](media/quarry-threshold-layout.png)
+
+- Fail the arrival write and retry from the sheltered landing. Check support, facing and camera. After a successful write, reload and verify that the floor 21 checkpoint remains usable.
+- Provoke a charge, move into each recess, and cross the gallery along each flank. Verify the short approach, lowered head, fixed charge direction, warning stripe, debris range and rear vulnerability during recovery. Repeat with sound disabled. Block the charge against scenery and confirm that it ends at the collision. Check that debris cannot hit through cover or damage the same player again after a direct hit.
+- Try the latch from outside the gate and from behind cover. Reach the inner latch while the Borer is alive, and repeat after defeating it or blocking its spawn. Fail the latch write and retry. The gate opens on a successful write and stays open after reload. The stair targets `AbyssFloor022` when available.
+- Verify with keyboard and mouse and controller in UE 5.6. The encounter uses native graybox meshes for this implementation. Import and bind the Perforatore model, animation and cues for the production presentation.

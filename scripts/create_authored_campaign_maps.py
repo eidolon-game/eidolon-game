@@ -33,6 +33,7 @@ GENERATORS = (
     ("create_double_clearing.py", None),
     ("create_vein_overlook.py", None),
     ("create_riftroot_arena.py", None),
+    ("create_quarry_threshold.py", None),
 )
 
 

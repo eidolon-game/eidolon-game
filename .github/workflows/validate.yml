@@ -21,7 +21,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression ossuary_tick lintel_mantis_attack sluice_progression censer_hagfish_attack marrow_latch marrow_ram_attack counterweight rattle_millipede_attack mirror_progression mortar_leech_attack pincer_winch vault_pincer_attack branch_latch rootclaw_attack forest_stalker_attack riftroot_attack; do
+          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression ossuary_tick lintel_mantis_attack sluice_progression censer_hagfish_attack marrow_latch marrow_ram_attack counterweight rattle_millipede_attack mirror_progression mortar_leech_attack pincer_winch vault_pincer_attack branch_latch rootclaw_attack forest_stalker_attack riftroot_attack mine_borer_attack; do
             c++ -std=c++17 -Wall -Wextra -Werror -pedantic "tests/$suite.cpp" -o "$RUNNER_TEMP/$suite"
             "$RUNNER_TEMP/$suite"
           done

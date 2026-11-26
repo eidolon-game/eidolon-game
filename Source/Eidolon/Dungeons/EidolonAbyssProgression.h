@@ -23,6 +23,7 @@ namespace EidolonAbyss
     inline constexpr std::uint8_t DoubleClearingLatchMaxStep = 2;
     inline constexpr int VeinOverlookFloor = 19;
     inline constexpr int RiftrootFloor = 20;
+    inline constexpr int QuarryThresholdFloor = 21;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -45,7 +46,8 @@ namespace EidolonAbyss
         RootletCounterweightReleased,
         SuspendedBridgeAligned,
         DoubleClearingLatchOpened,
-        RiftrootDefeated
+        RiftrootDefeated,
+        QuarryLatchOpened
     };
 
     enum class Producer
@@ -75,7 +77,8 @@ namespace EidolonAbyss
         RootletCounterweight,
         SuspendedBridgeControl,
         DoubleClearingLatch,
-        Riftroot
+        Riftroot,
+        QuarryLatch
     };
 
     struct Progress
@@ -253,6 +256,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::RiftrootDefeated || Input.Source != Producer::Encounter
                 || Input.Subject != Target::Riftroot)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == QuarryThresholdFloor)
+        {
+            if (Input.Kind != EventKind::QuarryLatchOpened || Input.Source != Producer::Puzzle
+                || Input.Subject != Target::QuarryLatch)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

@@ -59,6 +59,11 @@ int main()
                 Clear.Kind = EventKind::RiftrootDefeated;
                 Clear.Subject = Target::Riftroot;
                 break;
+            case QuarryThresholdFloor:
+                Clear.Kind = EventKind::QuarryLatchOpened;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::QuarryLatch;
+                break;
             case ObliqueClearingFloor:
             case VeinOverlookFloor:
                 Clear.Kind = EventKind::FloorTraversed;
@@ -278,6 +283,19 @@ int main()
             if (Advance(State, Kill))
             {
                 std::cerr << "Killing an enemy cannot finish puzzle floor " << Floor << '\n';
+                return 1;
+            }
+        }
+
+        if (Floor == QuarryThresholdFloor)
+        {
+            Event SpoofedLatch = Clear;
+            SpoofedLatch.Source = Producer::Encounter;
+            Event OtherLatch = Clear;
+            OtherLatch.Subject = Target::MarrowLatch;
+            if (Advance(State, SpoofedLatch) || Advance(State, OtherLatch))
+            {
+                std::cerr << "The quarry accepted an encounter or the wrong latch for the exit\n";
                 return 1;
             }
         }

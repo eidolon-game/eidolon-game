@@ -59,6 +59,7 @@ public:
     int32 GetAuthoredAbyssRevision() const;
     // The native map adapter attests to the specific encounter or story outcome.
     bool CommitAuthoredAbyssEvent(const EidolonAbyss::Event& Event);
+    bool CommitQuarryArrival();
     uint8 GetAbyssDrainProgress(int32 Floor) const;
     bool CommitAbyssDrain(int32 Floor, EidolonSluice::Control Control, uint8 ExpectedProgress);
     EidolonMarrowLatch::Stage GetAbyssMarrowLatchStage() const;

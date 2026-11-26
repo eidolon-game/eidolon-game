@@ -1,0 +1,1738 @@
+{
+  "schema": 1,
+  "status": "provisional_balance",
+  "level_cap": 100,
+  "currency": "gold",
+  "chapters": [
+    {
+      "id": 1,
+      "act": 1,
+      "target_level": 1,
+      "xp_budget": 0,
+      "gold_budget": 160,
+      "essential_spend": 88
+    },
+    {
+      "id": 2,
+      "act": 1,
+      "target_level": 2,
+      "xp_budget": 200,
+      "gold_budget": 220,
+      "essential_spend": 121
+    },
+    {
+      "id": 3,
+      "act": 1,
+      "target_level": 3,
+      "xp_budget": 300,
+      "gold_budget": 280,
+      "essential_spend": 154
+    },
+    {
+      "id": 4,
+      "act": 2,
+      "target_level": 25,
+      "xp_budget": 31900,
+      "gold_budget": 1600,
+      "essential_spend": 880
+    },
+    {
+      "id": 5,
+      "act": 3,
+      "target_level": 27,
+      "xp_budget": 5300,
+      "gold_budget": 1720,
+      "essential_spend": 946
+    },
+    {
+      "id": 6,
+      "act": 3,
+      "target_level": 28,
+      "xp_budget": 2800,
+      "gold_budget": 1780,
+      "essential_spend": 979
+    },
+    {
+      "id": 7,
+      "act": 3,
+      "target_level": 35,
+      "xp_budget": 22400,
+      "gold_budget": 2200,
+      "essential_spend": 1210
+    },
+    {
+      "id": 8,
+      "act": 4,
+      "target_level": 37,
+      "xp_budget": 7300,
+      "gold_budget": 2320,
+      "essential_spend": 1276
+    },
+    {
+      "id": 9,
+      "act": 4,
+      "target_level": 40,
+      "xp_budget": 11700,
+      "gold_budget": 2500,
+      "essential_spend": 1375
+    },
+    {
+      "id": 10,
+      "act": 4,
+      "target_level": 42,
+      "xp_budget": 8300,
+      "gold_budget": 2620,
+      "essential_spend": 1441
+    },
+    {
+      "id": 11,
+      "act": 5,
+      "target_level": 44,
+      "xp_budget": 8700,
+      "gold_budget": 2740,
+      "essential_spend": 1507
+    },
+    {
+      "id": 12,
+      "act": 5,
+      "target_level": 46,
+      "xp_budget": 9100,
+      "gold_budget": 2860,
+      "essential_spend": 1573
+    },
+    {
+      "id": 13,
+      "act": 5,
+      "target_level": 48,
+      "xp_budget": 9500,
+      "gold_budget": 2980,
+      "essential_spend": 1639
+    },
+    {
+      "id": 14,
+      "act": 6,
+      "target_level": 50,
+      "xp_budget": 9900,
+      "gold_budget": 3100,
+      "essential_spend": 1705
+    },
+    {
+      "id": 15,
+      "act": 6,
+      "target_level": 52,
+      "xp_budget": 10300,
+      "gold_budget": 3220,
+      "essential_spend": 1771
+    },
+    {
+      "id": 16,
+      "act": 6,
+      "target_level": 54,
+      "xp_budget": 10700,
+      "gold_budget": 3340,
+      "essential_spend": 1837
+    },
+    {
+      "id": 17,
+      "act": 7,
+      "target_level": 56,
+      "xp_budget": 11100,
+      "gold_budget": 3460,
+      "essential_spend": 1903
+    },
+    {
+      "id": 18,
+      "act": 7,
+      "target_level": 58,
+      "xp_budget": 11500,
+      "gold_budget": 3580,
+      "essential_spend": 1969
+    },
+    {
+      "id": 19,
+      "act": 7,
+      "target_level": 60,
+      "xp_budget": 11900,
+      "gold_budget": 3700,
+      "essential_spend": 2035
+    },
+    {
+      "id": 20,
+      "act": 8,
+      "target_level": 64,
+      "xp_budget": 25000,
+      "gold_budget": 3940,
+      "essential_spend": 2167
+    },
+    {
+      "id": 21,
+      "act": 8,
+      "target_level": 66,
+      "xp_budget": 13100,
+      "gold_budget": 4060,
+      "essential_spend": 2233
+    },
+    {
+      "id": 22,
+      "act": 8,
+      "target_level": 68,
+      "xp_budget": 13500,
+      "gold_budget": 4180,
+      "essential_spend": 2299
+    },
+    {
+      "id": 23,
+      "act": 9,
+      "target_level": 90,
+      "xp_budget": 174900,
+      "gold_budget": 5500,
+      "essential_spend": 3025
+    },
+    {
+      "id": 24,
+      "act": 9,
+      "target_level": 93,
+      "xp_budget": 27600,
+      "gold_budget": 5680,
+      "essential_spend": 3124
+    },
+    {
+      "id": 25,
+      "act": 9,
+      "target_level": 97,
+      "xp_budget": 38200,
+      "gold_budget": 5920,
+      "essential_spend": 3256
+    },
+    {
+      "id": 26,
+      "act": 10,
+      "target_level": 100,
+      "xp_budget": 29700,
+      "gold_budget": 6100,
+      "essential_spend": 3355
+    }
+  ],
+  "items": [
+    {
+      "id": "sword.t1",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 1,
+      "price": 200,
+      "stats": {
+        "physical": 10
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t1",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 1,
+      "price": 200,
+      "stats": {
+        "physical": 10
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t1",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 1,
+      "price": 200,
+      "stats": {
+        "physical": 10
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t1",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 1,
+      "price": 200,
+      "stats": {
+        "magic": 10
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t1",
+      "slot": "body",
+      "rarity": "common",
+      "level": 1,
+      "price": 200,
+      "stats": {
+        "defense": 10
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t1",
+      "slot": "material",
+      "rarity": "common",
+      "level": 1,
+      "price": 10,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t2",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 11,
+      "price": 400,
+      "stats": {
+        "physical": 20
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t2",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 11,
+      "price": 400,
+      "stats": {
+        "physical": 20
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t2",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 11,
+      "price": 400,
+      "stats": {
+        "physical": 20
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t2",
+      "slot": "weapon",
+      "rarity": "common",
+      "level": 11,
+      "price": 400,
+      "stats": {
+        "magic": 20
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t2",
+      "slot": "body",
+      "rarity": "common",
+      "level": 11,
+      "price": 400,
+      "stats": {
+        "defense": 20
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t2",
+      "slot": "material",
+      "rarity": "common",
+      "level": 11,
+      "price": 20,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t3",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 21,
+      "price": 600,
+      "stats": {
+        "physical": 30
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t3",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 21,
+      "price": 600,
+      "stats": {
+        "physical": 30
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t3",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 21,
+      "price": 600,
+      "stats": {
+        "physical": 30
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t3",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 21,
+      "price": 600,
+      "stats": {
+        "magic": 30
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t3",
+      "slot": "body",
+      "rarity": "uncommon",
+      "level": 21,
+      "price": 600,
+      "stats": {
+        "defense": 30
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t3",
+      "slot": "material",
+      "rarity": "common",
+      "level": 21,
+      "price": 30,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t4",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 31,
+      "price": 800,
+      "stats": {
+        "physical": 40
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t4",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 31,
+      "price": 800,
+      "stats": {
+        "physical": 40
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t4",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 31,
+      "price": 800,
+      "stats": {
+        "physical": 40
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t4",
+      "slot": "weapon",
+      "rarity": "uncommon",
+      "level": 31,
+      "price": 800,
+      "stats": {
+        "magic": 40
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t4",
+      "slot": "body",
+      "rarity": "uncommon",
+      "level": 31,
+      "price": 800,
+      "stats": {
+        "defense": 40
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t4",
+      "slot": "material",
+      "rarity": "common",
+      "level": 31,
+      "price": 40,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t5",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 41,
+      "price": 1000,
+      "stats": {
+        "physical": 50
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t5",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 41,
+      "price": 1000,
+      "stats": {
+        "physical": 50
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t5",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 41,
+      "price": 1000,
+      "stats": {
+        "physical": 50
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t5",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 41,
+      "price": 1000,
+      "stats": {
+        "magic": 50
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t5",
+      "slot": "body",
+      "rarity": "rare",
+      "level": 41,
+      "price": 1000,
+      "stats": {
+        "defense": 50
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t5",
+      "slot": "material",
+      "rarity": "common",
+      "level": 41,
+      "price": 50,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t6",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 51,
+      "price": 1200,
+      "stats": {
+        "physical": 60
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t6",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 51,
+      "price": 1200,
+      "stats": {
+        "physical": 60
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t6",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 51,
+      "price": 1200,
+      "stats": {
+        "physical": 60
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t6",
+      "slot": "weapon",
+      "rarity": "rare",
+      "level": 51,
+      "price": 1200,
+      "stats": {
+        "magic": 60
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t6",
+      "slot": "body",
+      "rarity": "rare",
+      "level": 51,
+      "price": 1200,
+      "stats": {
+        "defense": 60
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t6",
+      "slot": "material",
+      "rarity": "common",
+      "level": 51,
+      "price": 60,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t7",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 61,
+      "price": 1400,
+      "stats": {
+        "physical": 70
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t7",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 61,
+      "price": 1400,
+      "stats": {
+        "physical": 70
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t7",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 61,
+      "price": 1400,
+      "stats": {
+        "physical": 70
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t7",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 61,
+      "price": 1400,
+      "stats": {
+        "magic": 70
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t7",
+      "slot": "body",
+      "rarity": "epic",
+      "level": 61,
+      "price": 1400,
+      "stats": {
+        "defense": 70
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t7",
+      "slot": "material",
+      "rarity": "common",
+      "level": 61,
+      "price": 70,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t8",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 71,
+      "price": 1600,
+      "stats": {
+        "physical": 80
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t8",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 71,
+      "price": 1600,
+      "stats": {
+        "physical": 80
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t8",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 71,
+      "price": 1600,
+      "stats": {
+        "physical": 80
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t8",
+      "slot": "weapon",
+      "rarity": "epic",
+      "level": 71,
+      "price": 1600,
+      "stats": {
+        "magic": 80
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t8",
+      "slot": "body",
+      "rarity": "epic",
+      "level": 71,
+      "price": 1600,
+      "stats": {
+        "defense": 80
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t8",
+      "slot": "material",
+      "rarity": "common",
+      "level": 71,
+      "price": 80,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t9",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 81,
+      "price": 1800,
+      "stats": {
+        "physical": 90
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t9",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 81,
+      "price": 1800,
+      "stats": {
+        "physical": 90
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t9",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 81,
+      "price": 1800,
+      "stats": {
+        "physical": 90
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t9",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 81,
+      "price": 1800,
+      "stats": {
+        "magic": 90
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t9",
+      "slot": "body",
+      "rarity": "legendary",
+      "level": 81,
+      "price": 1800,
+      "stats": {
+        "defense": 90
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t9",
+      "slot": "material",
+      "rarity": "common",
+      "level": 81,
+      "price": 90,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "sword.t10",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 91,
+      "price": 2000,
+      "stats": {
+        "physical": 100
+      },
+      "stack": 1
+    },
+    {
+      "id": "spear.t10",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 91,
+      "price": 2000,
+      "stats": {
+        "physical": 100
+      },
+      "stack": 1
+    },
+    {
+      "id": "bow.t10",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 91,
+      "price": 2000,
+      "stats": {
+        "physical": 100
+      },
+      "stack": 1
+    },
+    {
+      "id": "staff.t10",
+      "slot": "weapon",
+      "rarity": "legendary",
+      "level": 91,
+      "price": 2000,
+      "stats": {
+        "magic": 100
+      },
+      "stack": 1
+    },
+    {
+      "id": "armor.t10",
+      "slot": "body",
+      "rarity": "legendary",
+      "level": 91,
+      "price": 2000,
+      "stats": {
+        "defense": 100
+      },
+      "stack": 1
+    },
+    {
+      "id": "ore.t10",
+      "slot": "material",
+      "rarity": "common",
+      "level": 91,
+      "price": 100,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "potion.health",
+      "slot": "consumable",
+      "rarity": "common",
+      "level": 1,
+      "price": 20,
+      "stats": {
+        "heal": 60
+      },
+      "stack": 99
+    },
+    {
+      "id": "herb.red",
+      "slot": "material",
+      "rarity": "common",
+      "level": 1,
+      "price": 4,
+      "stats": {},
+      "stack": 999
+    },
+    {
+      "id": "relic.aurelion",
+      "slot": "weapon",
+      "rarity": "mythic",
+      "level": 100,
+      "price": 0,
+      "stats": {
+        "physical": 120
+      },
+      "stack": 1,
+      "unique": true
+    }
+  ],
+  "recipes": [
+    {
+      "id": "forge.sword.t1",
+      "output": "sword.t1",
+      "count": 1,
+      "level": 1,
+      "gold": 50,
+      "inputs": {
+        "ore.t1": 5
+      }
+    },
+    {
+      "id": "forge.spear.t1",
+      "output": "spear.t1",
+      "count": 1,
+      "level": 1,
+      "gold": 50,
+      "inputs": {
+        "ore.t1": 5
+      }
+    },
+    {
+      "id": "forge.bow.t1",
+      "output": "bow.t1",
+      "count": 1,
+      "level": 1,
+      "gold": 50,
+      "inputs": {
+        "ore.t1": 5
+      }
+    },
+    {
+      "id": "forge.staff.t1",
+      "output": "staff.t1",
+      "count": 1,
+      "level": 1,
+      "gold": 50,
+      "inputs": {
+        "ore.t1": 5
+      }
+    },
+    {
+      "id": "forge.sword.t2",
+      "output": "sword.t2",
+      "count": 1,
+      "level": 11,
+      "gold": 100,
+      "inputs": {
+        "ore.t2": 5
+      }
+    },
+    {
+      "id": "forge.spear.t2",
+      "output": "spear.t2",
+      "count": 1,
+      "level": 11,
+      "gold": 100,
+      "inputs": {
+        "ore.t2": 5
+      }
+    },
+    {
+      "id": "forge.bow.t2",
+      "output": "bow.t2",
+      "count": 1,
+      "level": 11,
+      "gold": 100,
+      "inputs": {
+        "ore.t2": 5
+      }
+    },
+    {
+      "id": "forge.staff.t2",
+      "output": "staff.t2",
+      "count": 1,
+      "level": 11,
+      "gold": 100,
+      "inputs": {
+        "ore.t2": 5
+      }
+    },
+    {
+      "id": "forge.sword.t3",
+      "output": "sword.t3",
+      "count": 1,
+      "level": 21,
+      "gold": 150,
+      "inputs": {
+        "ore.t3": 5
+      }
+    },
+    {
+      "id": "forge.spear.t3",
+      "output": "spear.t3",
+      "count": 1,
+      "level": 21,
+      "gold": 150,
+      "inputs": {
+        "ore.t3": 5
+      }
+    },
+    {
+      "id": "forge.bow.t3",
+      "output": "bow.t3",
+      "count": 1,
+      "level": 21,
+      "gold": 150,
+      "inputs": {
+        "ore.t3": 5
+      }
+    },
+    {
+      "id": "forge.staff.t3",
+      "output": "staff.t3",
+      "count": 1,
+      "level": 21,
+      "gold": 150,
+      "inputs": {
+        "ore.t3": 5
+      }
+    },
+    {
+      "id": "forge.sword.t4",
+      "output": "sword.t4",
+      "count": 1,
+      "level": 31,
+      "gold": 200,
+      "inputs": {
+        "ore.t4": 5
+      }
+    },
+    {
+      "id": "forge.spear.t4",
+      "output": "spear.t4",
+      "count": 1,
+      "level": 31,
+      "gold": 200,
+      "inputs": {
+        "ore.t4": 5
+      }
+    },
+    {
+      "id": "forge.bow.t4",
+      "output": "bow.t4",
+      "count": 1,
+      "level": 31,
+      "gold": 200,
+      "inputs": {
+        "ore.t4": 5
+      }
+    },
+    {
+      "id": "forge.staff.t4",
+      "output": "staff.t4",
+      "count": 1,
+      "level": 31,
+      "gold": 200,
+      "inputs": {
+        "ore.t4": 5
+      }
+    },
+    {
+      "id": "forge.sword.t5",
+      "output": "sword.t5",
+      "count": 1,
+      "level": 41,
+      "gold": 250,
+      "inputs": {
+        "ore.t5": 5
+      }
+    },
+    {
+      "id": "forge.spear.t5",
+      "output": "spear.t5",
+      "count": 1,
+      "level": 41,
+      "gold": 250,
+      "inputs": {
+        "ore.t5": 5
+      }
+    },
+    {
+      "id": "forge.bow.t5",
+      "output": "bow.t5",
+      "count": 1,
+      "level": 41,
+      "gold": 250,
+      "inputs": {
+        "ore.t5": 5
+      }
+    },
+    {
+      "id": "forge.staff.t5",
+      "output": "staff.t5",
+      "count": 1,
+      "level": 41,
+      "gold": 250,
+      "inputs": {
+        "ore.t5": 5
+      }
+    },
+    {
+      "id": "forge.sword.t6",
+      "output": "sword.t6",
+      "count": 1,
+      "level": 51,
+      "gold": 300,
+      "inputs": {
+        "ore.t6": 5
+      }
+    },
+    {
+      "id": "forge.spear.t6",
+      "output": "spear.t6",
+      "count": 1,
+      "level": 51,
+      "gold": 300,
+      "inputs": {
+        "ore.t6": 5
+      }
+    },
+    {
+      "id": "forge.bow.t6",
+      "output": "bow.t6",
+      "count": 1,
+      "level": 51,
+      "gold": 300,
+      "inputs": {
+        "ore.t6": 5
+      }
+    },
+    {
+      "id": "forge.staff.t6",
+      "output": "staff.t6",
+      "count": 1,
+      "level": 51,
+      "gold": 300,
+      "inputs": {
+        "ore.t6": 5
+      }
+    },
+    {
+      "id": "forge.sword.t7",
+      "output": "sword.t7",
+      "count": 1,
+      "level": 61,
+      "gold": 350,
+      "inputs": {
+        "ore.t7": 5
+      }
+    },
+    {
+      "id": "forge.spear.t7",
+      "output": "spear.t7",
+      "count": 1,
+      "level": 61,
+      "gold": 350,
+      "inputs": {
+        "ore.t7": 5
+      }
+    },
+    {
+      "id": "forge.bow.t7",
+      "output": "bow.t7",
+      "count": 1,
+      "level": 61,
+      "gold": 350,
+      "inputs": {
+        "ore.t7": 5
+      }
+    },
+    {
+      "id": "forge.staff.t7",
+      "output": "staff.t7",
+      "count": 1,
+      "level": 61,
+      "gold": 350,
+      "inputs": {
+        "ore.t7": 5
+      }
+    },
+    {
+      "id": "forge.sword.t8",
+      "output": "sword.t8",
+      "count": 1,
+      "level": 71,
+      "gold": 400,
+      "inputs": {
+        "ore.t8": 5
+      }
+    },
+    {
+      "id": "forge.spear.t8",
+      "output": "spear.t8",
+      "count": 1,
+      "level": 71,
+      "gold": 400,
+      "inputs": {
+        "ore.t8": 5
+      }
+    },
+    {
+      "id": "forge.bow.t8",
+      "output": "bow.t8",
+      "count": 1,
+      "level": 71,
+      "gold": 400,
+      "inputs": {
+        "ore.t8": 5
+      }
+    },
+    {
+      "id": "forge.staff.t8",
+      "output": "staff.t8",
+      "count": 1,
+      "level": 71,
+      "gold": 400,
+      "inputs": {
+        "ore.t8": 5
+      }
+    },
+    {
+      "id": "forge.sword.t9",
+      "output": "sword.t9",
+      "count": 1,
+      "level": 81,
+      "gold": 450,
+      "inputs": {
+        "ore.t9": 5
+      }
+    },
+    {
+      "id": "forge.spear.t9",
+      "output": "spear.t9",
+      "count": 1,
+      "level": 81,
+      "gold": 450,
+      "inputs": {
+        "ore.t9": 5
+      }
+    },
+    {
+      "id": "forge.bow.t9",
+      "output": "bow.t9",
+      "count": 1,
+      "level": 81,
+      "gold": 450,
+      "inputs": {
+        "ore.t9": 5
+      }
+    },
+    {
+      "id": "forge.staff.t9",
+      "output": "staff.t9",
+      "count": 1,
+      "level": 81,
+      "gold": 450,
+      "inputs": {
+        "ore.t9": 5
+      }
+    },
+    {
+      "id": "forge.sword.t10",
+      "output": "sword.t10",
+      "count": 1,
+      "level": 91,
+      "gold": 500,
+      "inputs": {
+        "ore.t10": 5
+      }
+    },
+    {
+      "id": "forge.spear.t10",
+      "output": "spear.t10",
+      "count": 1,
+      "level": 91,
+      "gold": 500,
+      "inputs": {
+        "ore.t10": 5
+      }
+    },
+    {
+      "id": "forge.bow.t10",
+      "output": "bow.t10",
+      "count": 1,
+      "level": 91,
+      "gold": 500,
+      "inputs": {
+        "ore.t10": 5
+      }
+    },
+    {
+      "id": "forge.staff.t10",
+      "output": "staff.t10",
+      "count": 1,
+      "level": 91,
+      "gold": 500,
+      "inputs": {
+        "ore.t10": 5
+      }
+    },
+    {
+      "id": "brew.health",
+      "output": "potion.health",
+      "count": 1,
+      "level": 1,
+      "gold": 2,
+      "inputs": {
+        "herb.red": 2
+      }
+    }
+  ],
+  "loot": [
+    {
+      "id": "loot.t1",
+      "entries": [
+        {
+          "id": "ore.t1",
+          "weight": 75
+        },
+        {
+          "id": "sword.t1",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t2",
+      "entries": [
+        {
+          "id": "ore.t2",
+          "weight": 75
+        },
+        {
+          "id": "sword.t2",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t3",
+      "entries": [
+        {
+          "id": "ore.t3",
+          "weight": 75
+        },
+        {
+          "id": "sword.t3",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t4",
+      "entries": [
+        {
+          "id": "ore.t4",
+          "weight": 75
+        },
+        {
+          "id": "sword.t4",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t5",
+      "entries": [
+        {
+          "id": "ore.t5",
+          "weight": 75
+        },
+        {
+          "id": "sword.t5",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t6",
+      "entries": [
+        {
+          "id": "ore.t6",
+          "weight": 75
+        },
+        {
+          "id": "sword.t6",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t7",
+      "entries": [
+        {
+          "id": "ore.t7",
+          "weight": 75
+        },
+        {
+          "id": "sword.t7",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t8",
+      "entries": [
+        {
+          "id": "ore.t8",
+          "weight": 75
+        },
+        {
+          "id": "sword.t8",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t9",
+      "entries": [
+        {
+          "id": "ore.t9",
+          "weight": 75
+        },
+        {
+          "id": "sword.t9",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "loot.t10",
+      "entries": [
+        {
+          "id": "ore.t10",
+          "weight": 75
+        },
+        {
+          "id": "sword.t10",
+          "weight": 5
+        },
+        {
+          "id": "potion.health",
+          "weight": 20
+        }
+      ]
+    }
+  ],
+  "companions": [
+    "riven",
+    "aiden",
+    "selene",
+    "nyra",
+    "theron",
+    "iris"
+  ],
+  "skills": [
+    {
+      "id": "skill.physical.1",
+      "level": 1,
+      "cost": 1,
+      "requires": []
+    },
+    {
+      "id": "skill.physical.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.physical.1"
+      ]
+    },
+    {
+      "id": "skill.physical.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.physical.2"
+      ]
+    },
+    {
+      "id": "skill.physical.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.physical.3"
+      ]
+    },
+    {
+      "id": "skill.physical.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.physical.4"
+      ]
+    },
+    {
+      "id": "skill.guard.1",
+      "level": 1,
+      "cost": 1,
+      "requires": []
+    },
+    {
+      "id": "skill.guard.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.guard.1"
+      ]
+    },
+    {
+      "id": "skill.guard.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.guard.2"
+      ]
+    },
+    {
+      "id": "skill.guard.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.guard.3"
+      ]
+    },
+    {
+      "id": "skill.guard.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.guard.4"
+      ]
+    },
+    {
+      "id": "skill.ranged.1",
+      "level": 1,
+      "cost": 1,
+      "requires": []
+    },
+    {
+      "id": "skill.ranged.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.ranged.1"
+      ]
+    },
+    {
+      "id": "skill.ranged.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.ranged.2"
+      ]
+    },
+    {
+      "id": "skill.ranged.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.ranged.3"
+      ]
+    },
+    {
+      "id": "skill.ranged.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.ranged.4"
+      ]
+    },
+    {
+      "id": "skill.magic.1",
+      "level": 1,
+      "cost": 1,
+      "requires": []
+    },
+    {
+      "id": "skill.magic.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.magic.1"
+      ]
+    },
+    {
+      "id": "skill.magic.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.magic.2"
+      ]
+    },
+    {
+      "id": "skill.magic.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.magic.3"
+      ]
+    },
+    {
+      "id": "skill.magic.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.magic.4"
+      ]
+    },
+    {
+      "id": "skill.alchemy.1",
+      "level": 1,
+      "cost": 1,
+      "requires": []
+    },
+    {
+      "id": "skill.alchemy.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.alchemy.1"
+      ]
+    },
+    {
+      "id": "skill.alchemy.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.alchemy.2"
+      ]
+    },
+    {
+      "id": "skill.alchemy.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.alchemy.3"
+      ]
+    },
+    {
+      "id": "skill.alchemy.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.alchemy.4"
+      ]
+    },
+    {
+      "id": "skill.memory.1",
+      "level": 1,
+      "cost": 1,
+      "requires": [],
+      "flag": "eidolon_awakened"
+    },
+    {
+      "id": "skill.memory.2",
+      "level": 16,
+      "cost": 1,
+      "requires": [
+        "skill.memory.1"
+      ],
+      "flag": "eidolon_awakened"
+    },
+    {
+      "id": "skill.memory.3",
+      "level": 31,
+      "cost": 1,
+      "requires": [
+        "skill.memory.2"
+      ],
+      "flag": "eidolon_awakened"
+    },
+    {
+      "id": "skill.memory.4",
+      "level": 46,
+      "cost": 1,
+      "requires": [
+        "skill.memory.3"
+      ],
+      "flag": "eidolon_awakened"
+    },
+    {
+      "id": "skill.memory.5",
+      "level": 61,
+      "cost": 1,
+      "requires": [
+        "skill.memory.4"
+      ],
+      "flag": "eidolon_awakened"
+    }
+  ],
+  "merchant": {
+    "sell_percent": 40,
+    "buyback": false
+  },
+  "reputation": {
+    "min": -100,
+    "max": 100
+  },
+  "ranks": [
+    "F",
+    "E",
+    "D",
+    "C",
+    "B",
+    "A",
+    "S",
+    "SS",
+    "SSS",
+    "EX",
+    "Omega"
+  ]
+}

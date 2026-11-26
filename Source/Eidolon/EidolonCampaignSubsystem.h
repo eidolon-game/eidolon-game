@@ -28,6 +28,8 @@ public:
     UFUNCTION(BlueprintCallable) bool SaveCampaign();
     UFUNCTION(BlueprintPure) FEidolonChapter CurrentChapter() const;
     UFUNCTION(BlueprintPure) int32 GetObjectiveCount() const;
+    UFUNCTION(BlueprintPure) int32 GetFloor(bool bStair) const;
+    UFUNCTION(BlueprintPure) FName GetEnding() const;
     UFUNCTION(BlueprintPure) int32 GetLevel() const;
     UFUNCTION(BlueprintPure) FName GetRank() const;
     UFUNCTION(BlueprintCallable) bool RecordObjective(FName Type, int32 Count = 1);

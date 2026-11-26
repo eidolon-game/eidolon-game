@@ -1,6 +1,11 @@
-"""Build the Broken Portico survey or validate its authored grid offline."""
+"""Build the Broken Portico survey or validate its authored grid offline.
+
+Set EIDOLON_MARROW_INTERACTIVE=1 before the Unreal commandlet to build the
+separate gated encounter map.
+"""
 
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -10,6 +15,8 @@ from create_first_descent_floor import MAP_FOLDER, build_shell, center, create_g
 
 MAP_PACKAGE = MAP_FOLDER + "/AbyssFloor005Survey"
 MODE_PATH = "/Script/Eidolon.EidolonAbyssSurveyGameMode"
+INTERACTIVE_PACKAGE = MAP_FOLDER + "/AbyssFloor005"
+INTERACTIVE_MODE_PATH = "/Script/Eidolon.EidolonMarrowRamGameMode"
 LAYOUT = Path(__file__).resolve().parents[1] / "Content/Eidolon/Data/Dungeons/abyss_005_authored.json"
 ANCHORS = ("entry", "checkpoint", "encounter", "latch", "exit")
 INTERACTION_RADIUS_CM = 180
@@ -75,8 +82,10 @@ def read_layout():
     return layout, cells
 
 
-def build(unreal, layout, cells):
-    graybox = create_graybox(unreal, MAP_PACKAGE, MODE_PATH)
+def build(unreal, layout, cells, interactive=False):
+    package = INTERACTIVE_PACKAGE if interactive else MAP_PACKAGE
+    mode_path = INTERACTIVE_MODE_PATH if interactive else MODE_PATH
+    graybox = create_graybox(unreal, package, mode_path)
     if graybox is None:
         return
     editor, world, spawn, box = graybox
@@ -95,7 +104,10 @@ def build(unreal, layout, cells):
             (jamb, thickness, height))
     box("ram_gate_header", (gx, gy, (height + clearance) / 2),
         (width, thickness, height - clearance))
-    spawn(unreal.TargetPoint, gate["id"], (gx, gy, clearance / 2))
+    if interactive:
+        box(gate["id"], (gx, gy, clearance / 2), (width, thickness, clearance), movable=True)
+    else:
+        spawn(unreal.TargetPoint, gate["id"], (gx, gy, clearance / 2))
 
     beam = layout["collision_beam"]
     bx, by = center(beam["cell"], size)
@@ -123,9 +135,13 @@ def build(unreal, layout, cells):
     x, y = center(layout["entry"], size)
     start = spawn(unreal.PlayerStart, "abyss_005_player_start", (x, y, 110))
     start.set_actor_rotation(unreal.Rotator(yaw=layout["entry_yaw_deg"]), False)
+    if interactive:
+        x, y = center(layout["checkpoint"], size)
+        checkpoint = spawn(unreal.PlayerStart, "abyss_005_checkpoint_start", (x, y, 110))
+        checkpoint.set_actor_rotation(unreal.Rotator(yaw=layout["checkpoint_yaw_deg"]), False)
 
-    if not editor.save_map(world, MAP_PACKAGE):
-        raise RuntimeError(f"Could not save the Broken Portico at {MAP_PACKAGE}.")
+    if not editor.save_map(world, package):
+        raise RuntimeError(f"Could not save the Broken Portico at {package}.")
 
 
 if __name__ == "__main__":
@@ -135,4 +151,4 @@ if __name__ == "__main__":
     else:
         import unreal
 
-        build(unreal, layout, cells)
+        build(unreal, layout, cells, interactive=os.environ.get("EIDOLON_MARROW_INTERACTIVE") == "1")

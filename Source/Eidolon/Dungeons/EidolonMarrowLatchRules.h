@@ -8,6 +8,12 @@ namespace EidolonMarrowLatch
     enum class Stage : std::uint8_t { Locked, ReleasedByImpact, ReleasedByDefeat, Open };
     enum class Signal : std::uint8_t { BeamImpact, RamDefeat, OperateLatch };
 
+    inline bool IsValid(Stage Committed)
+    {
+        return Committed == Stage::Locked || Committed == Stage::ReleasedByImpact ||
+            Committed == Stage::ReleasedByDefeat || Committed == Stage::Open;
+    }
+
     inline bool IsReleased(Stage Committed)
     {
         return Committed == Stage::ReleasedByImpact || Committed == Stage::ReleasedByDefeat;

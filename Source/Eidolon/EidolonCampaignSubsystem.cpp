@@ -2,6 +2,7 @@
 #include "EidolonCampaignSave.h"
 #include "Dungeons/EidolonAbyssProgression.h"
 #include "Dungeons/EidolonSluiceRules.h"
+#include "Dungeons/EidolonMarrowLatchRules.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
 #include "Engine/GameInstance.h"
@@ -196,6 +197,15 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    using MarrowStage = EidolonMarrowLatch::Stage;
+    const auto Marrow = static_cast<MarrowStage>(Checkpoint->AbyssMarrowLatchStage);
+    if (!EidolonMarrowLatch::IsValid(Marrow) ||
+        (Authored.CompletedFloor < EidolonAbyss::MarrowFloor - 1 && Marrow != MarrowStage::Locked) ||
+        ((Marrow == MarrowStage::Open) != (Authored.CompletedFloor >= EidolonAbyss::MarrowFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -221,7 +231,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
     if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
         State->Chapter != EidolonAbyss::Chapter ||
         State->FirstDescentCursor != FinalFirstDescentCursor ||
-        Event.Kind == EidolonAbyss::EventKind::SluicesOpened)
+        Event.Kind == EidolonAbyss::EventKind::SluicesOpened ||
+        Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened)
     {
         return false;
     }
@@ -281,6 +292,42 @@ bool UEidolonCampaignSubsystem::CommitAbyssSluice(EidolonSluice::Control Control
         const auto Progress = ReadAuthoredAbyssProgress(*State);
         const auto NextFloor = Advance(Progress, {Chapter, SluiceFloor, SluiceFloor, Revision(Progress),
             EventKind::SluicesOpened, Producer::Puzzle, Target::SluiceControls});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+EidolonMarrowLatch::Stage UEidolonCampaignSubsystem::GetAbyssMarrowLatchStage() const
+{
+    return State ? static_cast<EidolonMarrowLatch::Stage>(State->AbyssMarrowLatchStage)
+        : EidolonMarrowLatch::Stage::Locked;
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssMarrowLatch(EidolonMarrowLatch::Signal Signal, EidolonMarrowLatch::Stage ExpectedStage)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != MarrowFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), MarrowFloor)) return false;
+    const auto NextLatch = EidolonMarrowLatch::Propose(GetAbyssMarrowLatchStage(), ExpectedStage, Signal);
+    if (!NextLatch) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssMarrowLatchStage = static_cast<uint8>(*NextLatch);
+    if (*NextLatch == EidolonMarrowLatch::Stage::Open)
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, MarrowFloor, MarrowFloor, Revision(Progress),
+            EventKind::MarrowLatchOpened, Producer::Puzzle, Target::MarrowLatch});
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }

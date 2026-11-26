@@ -24,6 +24,7 @@ public:
     UPROPERTY(SaveGame) int32 AuthoredAbyssCompletedFloor = 0;
     UPROPERTY(SaveGame) bool bAuthoredAbyssRicordaHeard = false;
     UPROPERTY(SaveGame) uint8 AbyssSluiceProgress = 0;
+    UPROPERTY(SaveGame) uint8 AbyssMarrowLatchStage = 0;
     UPROPERTY(SaveGame) TSet<FName> Flags;
     UPROPERTY(SaveGame) TSet<FName> Memories;
     UPROPERTY(SaveGame) TMap<FName, int32> Relationships;

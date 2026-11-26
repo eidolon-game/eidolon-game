@@ -5,6 +5,7 @@
 class UEidolonCampaignSave;
 namespace EidolonAbyss { struct Event; }
 namespace EidolonSluice { enum class Control : uint8; }
+namespace EidolonMarrowLatch { enum class Stage : uint8; enum class Signal : uint8; }
 namespace EidolonFirstDescent { struct Event; }
 
 USTRUCT(BlueprintType)
@@ -56,6 +57,8 @@ public:
     bool CommitAuthoredAbyssEvent(const EidolonAbyss::Event& Event);
     uint8 GetAbyssSluiceProgress() const;
     bool CommitAbyssSluice(EidolonSluice::Control Control, uint8 ExpectedProgress);
+    EidolonMarrowLatch::Stage GetAbyssMarrowLatchStage() const;
+    bool CommitAbyssMarrowLatch(EidolonMarrowLatch::Signal Signal, EidolonMarrowLatch::Stage ExpectedStage);
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
     bool BeginValdrisFirstDescent();

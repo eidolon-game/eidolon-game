@@ -109,4 +109,11 @@ The raised footpath is optional. The moored Hagfish activates near the canal. Te
 
 ## Broken Portico survey
 
-Generate `/Game/Eidolon/Maps/AbyssFloor005Survey` using `scripts/create_marrow_ram_floor.py` in the Unreal Python commandlet. Inspect the beam, the two escape lanes and the bridge route to the latch. The survey uses the open route for geometry inspection. The standalone latch test covers release by impact or defeat, a separate latch interaction, repeated events and retry before a checkpoint is committed. The Ram, gate behavior and latch save integration are pending.
+Generate `/Game/Eidolon/Maps/AbyssFloor005Survey` using `scripts/create_marrow_ram_floor.py` in the Unreal Python commandlet. Inspect the beam, the two escape lanes and the bridge route to the latch. The survey uses the open route for geometry inspection.
+
+For the interactive package, set `EIDOLON_MARROW_INTERACTIVE=1` before running the editor Python commandlet. Enter `/Game/Eidolon/Maps/AbyssFloor005` from the Canals after their saved completion.
+
+- Activate the encounter at the arena marker. The Ram shows two hoof scrapes before charging. Bait a hit on the authored beam, then repeat with a fresh checkpoint using a kill instead. Hits on the player, floor geometry and other walls must leave the latch locked.
+- Confirm that a beam hit releases the latch while the Ram stays alive. Approach from the side bridge and operate the latch. The gate must remain closed until the checkpoint succeeds.
+- Simulate failed writes separately for release and latch operation. Retry at the appropriate anchor and ensure no duplicate progress. Reload after release and after opening. The gate should open only in the latter state.
+- Inspect collision, escape lanes and the checkpoint spawn. The next stair is reserved for the interactive floor 6 map. The Ram uses placeholder geometry while the GLB and hoof cue await import.

@@ -11,10 +11,13 @@ int main()
     {
         const bool Guardian = Floor == GuardianFloor;
         const bool Sluice = Floor == SluiceFloor;
+        const bool Marrow = Floor == MarrowFloor;
         Event Clear{Chapter, Floor, Floor, Revision(State),
-            Sluice ? EventKind::SluicesOpened : Guardian ? EventKind::GuardianDefeated : EventKind::FloorCleared,
-            Sluice ? Producer::Puzzle : Producer::Encounter,
-            Sluice ? Target::SluiceControls : Guardian ? Target::AbyssGuardian : Target::FloorEncounter};
+            Sluice ? EventKind::SluicesOpened : Marrow ? EventKind::MarrowLatchOpened :
+                Guardian ? EventKind::GuardianDefeated : EventKind::FloorCleared,
+            Sluice || Marrow ? Producer::Puzzle : Producer::Encounter,
+            Sluice ? Target::SluiceControls : Marrow ? Target::MarrowLatch :
+                Guardian ? Target::AbyssGuardian : Target::FloorEncounter};
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
             {Chapter, Floor - 1, Floor, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -68,13 +71,13 @@ int main()
                 return 1;
             }
         }
-        if (Sluice)
+        if (Sluice || Marrow)
         {
             const Event Kill{Chapter, Floor, Floor, Revision(State),
                 EventKind::FloorCleared, Producer::Encounter, Target::FloorEncounter};
             if (Advance(State, Kill))
             {
-                std::cerr << "Killing an enemy cannot finish the sluice floor\n";
+                std::cerr << "Killing an enemy cannot finish puzzle floor " << Floor << '\n';
                 return 1;
             }
         }

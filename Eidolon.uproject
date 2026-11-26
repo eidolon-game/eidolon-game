@@ -1,0 +1,12 @@
+{
+  "FileVersion": 3,
+  "Category": "Games",
+  "Description": "EIDOLON – Beyond the Last Wall",
+  "Modules": [
+    {
+      "Name": "Eidolon",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}

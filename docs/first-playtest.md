@@ -231,4 +231,18 @@ Generate `/Game/Eidolon/Maps/AbyssFloor018` with `scripts/create_double_clearing
 
 - Approach the ground Stalker, then the perch. Test both attack orders, a death during windup and a blocked perch landing. Only one Stalker should have an attack warning or active move at a time. Verify that a surviving enemy resumes after its partner aborts or dies and that a failed spawn never blocks either latch step.
 - Test the first detent from out of range and behind cover. Fail the first write, then retry. The first success changes the handle and prompt, with the gate still closed. Retreat, reload, and verify the same intermediate state. Fail the second write and confirm the first detent survives. Retry successfully and verify that the gate and floor completion survive reload.
-- Take the exit after the second detent. The exit targets the future `AbyssFloor019`. Check side-path width, hatch collision, warning readability and controller input in Unreal. Import and bind the separate latch model and both cues.
+- Take the exit after the second detent. It leads to `AbyssFloor019` once generated. Check side-path width, hatch collision, warning readability and controller input in Unreal. Import and bind the separate latch model and both cues.
+
+## Vein Overlook
+
+Generate `/Game/Eidolon/Maps/AbyssFloor019` with `scripts/create_vein_overlook.py` or the campaign generator. Enter after the second Double Clearing detent. Walk the quiet descent straight through, then revisit the guarded overlook and return to the dry rest landing. Verify the vista, lighting, collision along the edge and walking grade without sprinting or jumping.
+
+- Attempt direct entry before saving floor 18 and remote interaction at the stair. Profile a failed write and retry at the final stair. Verify that only a successful traversal receipt records floor 19. The stair leads to `AbyssFloor020` once generated. The standalone balcony and ambience require Unreal import.
+
+## Roots in the Fissure
+
+Generate `/Game/Eidolon/Maps/AbyssFloor020` with `scripts/create_riftroot_arena.py` or the campaign generator. Enter after completing Vein Overlook. Start Riftroot Tangle from the encounter marker. Reach the west checkpoint from both flanks and check that the approach baffle protects it.
+
+- Test the rock wedge and root draw from the center and either flank with mouse and keyboard and with controller. Verify that the wedge locks its axis before impact, the roots threaten only the signaled side and both warnings remain readable without sound.
+- Cross 45% health during each phase. The one-time relocation must wait for a break in the attacks and must deal no damage. Test a blocked destination, an obstruction along the path and a lethal hit crossing the threshold.
+- Block the spawn or remove an authored boss anchor and attempt again. Only the registered boss defeat can unlock the exit. Fail the checkpoint after defeat, retry and verify that Rank E and the open gate survive reload, with the boss absent. The stair targets the future `AbyssFloor021`. The final art, animations and cues require Unreal integration.

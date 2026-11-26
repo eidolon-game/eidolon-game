@@ -21,6 +21,8 @@ namespace EidolonAbyss
     inline constexpr int SuspendedTrunksFloor = 17;
     inline constexpr int DoubleClearingFloor = 18;
     inline constexpr std::uint8_t DoubleClearingLatchMaxStep = 2;
+    inline constexpr int VeinOverlookFloor = 19;
+    inline constexpr int RiftrootFloor = 20;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -42,7 +44,8 @@ namespace EidolonAbyss
         HollowTrunkPinSeated,
         RootletCounterweightReleased,
         SuspendedBridgeAligned,
-        DoubleClearingLatchOpened
+        DoubleClearingLatchOpened,
+        RiftrootDefeated
     };
 
     enum class Producer
@@ -71,7 +74,8 @@ namespace EidolonAbyss
         HollowTrunkSocket,
         RootletCounterweight,
         SuspendedBridgeControl,
-        DoubleClearingLatch
+        DoubleClearingLatch,
+        Riftroot
     };
 
     struct Progress
@@ -203,7 +207,7 @@ namespace EidolonAbyss
             return Progress{Floor, State.RicordaHeard};
         }
 
-        if (Floor == ObliqueClearingFloor)
+        if (Floor == ObliqueClearingFloor || Floor == VeinOverlookFloor)
         {
             if (Input.Kind != EventKind::FloorTraversed || Input.Source != Producer::Traversal ||
                 Input.Subject != Target::TraversalExit)
@@ -241,6 +245,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::DoubleClearingLatchOpened || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::DoubleClearingLatch)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == RiftrootFloor)
+        {
+            if (Input.Kind != EventKind::RiftrootDefeated || Input.Source != Producer::Encounter
+                || Input.Subject != Target::Riftroot)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

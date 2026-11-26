@@ -729,11 +729,12 @@ FName UEidolonCampaignSubsystem::GetRank() const
     if (State->Chapter >= 13) return TEXT("SSS");
     if (State->TitansDefeated > 0) return TEXT("SS");
     if (State->GiantsDefeated >= 100) return TEXT("S");
-    if (State->AbyssFloor >= 100) return TEXT("A");
-    if (State->AbyssFloor >= 80) return TEXT("B");
-    if (State->AbyssFloor >= 60) return TEXT("C");
-    if (State->AbyssFloor >= 40) return TEXT("D");
-    if (State->AbyssFloor >= 20) return TEXT("E");
+    const int32 AbyssProgress = FMath::Max(State->AbyssFloor, GetAuthoredAbyssCompletedFloor());
+    if (AbyssProgress >= 100) return TEXT("A");
+    if (AbyssProgress >= 80) return TEXT("B");
+    if (AbyssProgress >= 60) return TEXT("C");
+    if (AbyssProgress >= 40) return TEXT("D");
+    if (AbyssProgress >= 20) return TEXT("E");
     return TEXT("F");
 }
 

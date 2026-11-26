@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "abyss_020",
+  "legacy_id": "abyss.020",
+  "dungeon_id": "abyss",
+  "floor": 20,
+  "family": "buried_forest",
+  "status": "authored_graybox_unverified",
+  "display_name": {
+    "it": "Radici nella faglia",
+    "en": "Roots in the Rift"
+  },
+  "roof_height_cm": 620,
+  "wall_thickness_cm": 40,
+  "approach": {
+    "x_cm": [0, 800],
+    "half_width_cm": 550,
+    "baffle_x_cm": 650,
+    "baffle_half_width_cm": 230
+  },
+  "arena": {
+    "x_cm": [800, 2600],
+    "half_width_cm": 1200,
+    "flank_inner_abs_y_cm": 780,
+    "boss_footprint_cm": [420, 500]
+  },
+  "outlet": {
+    "x_cm": [2600, 2960],
+    "half_width_cm": 550
+  },
+  "gate": {
+    "tag": "abyss_020_riftroot_gate",
+    "width_cm": 380,
+    "height_cm": 300
+  },
+  "anchors_cm": {
+    "player_start": [200, 0, 110],
+    "checkpoint_start": [500, 0, 110],
+    "encounter": [850, 0, 110],
+    "boss_spawn": [1550, 0, 0],
+    "boss_advance": [2050, 0, 0],
+    "exit": [2820, 0, 110]
+  },
+  "boss_spawn_yaw_deg": 180,
+  "connections": {
+    "entry": {"from_floor": "abyss_019", "requires_completed_floor": 19},
+    "exit": {"to_floor": "abyss_021", "requires_completed_floor": 20}
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

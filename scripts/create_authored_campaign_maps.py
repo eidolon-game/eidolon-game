@@ -31,6 +31,8 @@ GENERATORS = (
     ("create_rootlet_canal.py", None),
     ("create_suspended_trunks.py", None),
     ("create_double_clearing.py", None),
+    ("create_vein_overlook.py", None),
+    ("create_riftroot_arena.py", None),
 )
 
 

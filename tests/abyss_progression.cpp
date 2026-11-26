@@ -55,7 +55,12 @@ int main()
                 Clear.Kind = EventKind::RootclawDefeated;
                 Clear.Subject = Target::Rootclaw;
                 break;
+            case RiftrootFloor:
+                Clear.Kind = EventKind::RiftrootDefeated;
+                Clear.Subject = Target::Riftroot;
+                break;
             case ObliqueClearingFloor:
+            case VeinOverlookFloor:
                 Clear.Kind = EventKind::FloorTraversed;
                 Clear.Source = Producer::Traversal;
                 Clear.Subject = Target::TraversalExit;
@@ -133,7 +138,7 @@ int main()
 
         const Event Traverse{Chapter, Floor, Floor, Revision(State), EventKind::FloorTraversed,
             Producer::Traversal, Target::TraversalExit};
-        if (Floor == ObliqueClearingFloor)
+        if (Floor == ObliqueClearingFloor || Floor == VeinOverlookFloor)
         {
             const Event Encounter{Chapter, Floor, Floor, Revision(State), EventKind::FloorCleared,
                 Producer::Encounter, Target::FloorEncounter};
@@ -143,7 +148,7 @@ int main()
             WrongSource.Source = Producer::Encounter;
             if (Advance(State, Encounter) || Advance(State, WrongAnchor) || Advance(State, WrongSource))
             {
-                std::cerr << "The Oblique Clearing allowed a substitute for reaching its exit\n";
+                std::cerr << "Traversal floor " << Floor << " allowed a substitute for reaching its exit\n";
                 return 1;
             }
         }
@@ -253,7 +258,7 @@ int main()
             }
         }
 
-        if (Guardian || Floor == RootclawFloor)
+        if (Guardian || Floor == RootclawFloor || Floor == RiftrootFloor)
         {
             Event OrdinaryClear = Clear;
             OrdinaryClear.Kind = EventKind::FloorCleared;

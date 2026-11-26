@@ -14,6 +14,7 @@
 #include "InputModifiers.h"
 #include "InputCoreTypes.h"
 #include "EidolonArenaEnemy.h"
+#include "EidolonGameMode.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "EngineUtils.h"
@@ -74,6 +75,12 @@ void AEidolonCharacter::BuildInputMapping()
     DodgeAction = MakeAction(EInputActionValueType::Boolean);
     BlockAction = MakeAction(EInputActionValueType::Boolean);
     RestartAction = MakeAction(EInputActionValueType::Boolean);
+    MemoryAction = MakeAction(EInputActionValueType::Boolean);
+    InteractAction = MakeAction(EInputActionValueType::Boolean);
+    EndingOne = MakeAction(EInputActionValueType::Boolean);
+    EndingTwo = MakeAction(EInputActionValueType::Boolean);
+    EndingThree = MakeAction(EInputActionValueType::Boolean);
+    EndingFour = MakeAction(EInputActionValueType::Boolean);
     const auto Map = [this](UInputAction* Action, FKey Key, bool bNegate = false, bool bDeadZone = false)
     {
         auto& Binding = Mapping->MapKey(Action, Key);
@@ -110,6 +117,18 @@ void AEidolonCharacter::BuildInputMapping()
     Map(BlockAction, EKeys::Gamepad_LeftShoulder);
     Map(RestartAction, EKeys::R);
     Map(RestartAction, EKeys::Gamepad_FaceButton_Top);
+    Map(MemoryAction, EKeys::M);
+    Map(MemoryAction, EKeys::Gamepad_RightThumbstick);
+    Map(InteractAction, EKeys::E);
+    Map(InteractAction, EKeys::Gamepad_FaceButton_Left);
+    Map(EndingOne, EKeys::One);
+    Map(EndingTwo, EKeys::Two);
+    Map(EndingThree, EKeys::Three);
+    Map(EndingFour, EKeys::Four);
+    Map(EndingOne, EKeys::Gamepad_DPad_Up);
+    Map(EndingTwo, EKeys::Gamepad_DPad_Right);
+    Map(EndingThree, EKeys::Gamepad_DPad_Down);
+    Map(EndingFour, EKeys::Gamepad_DPad_Left);
 }
 
 void AEidolonCharacter::PawnClientRestart()
@@ -158,6 +177,12 @@ void AEidolonCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
     Input->BindAction(BlockAction, ETriggerEvent::Completed, this, &AEidolonCharacter::EndBlock);
     Input->BindAction(BlockAction, ETriggerEvent::Canceled, this, &AEidolonCharacter::EndBlock);
     Input->BindAction(RestartAction, ETriggerEvent::Started, this, &AEidolonCharacter::RestartArena);
+    Input->BindAction(MemoryAction, ETriggerEvent::Started, this, &AEidolonCharacter::RecoverMemory);
+    Input->BindAction(InteractAction, ETriggerEvent::Started, this, &AEidolonCharacter::Interact);
+    Input->BindAction(EndingOne, ETriggerEvent::Started, this, &AEidolonCharacter::ChooseOne);
+    Input->BindAction(EndingTwo, ETriggerEvent::Started, this, &AEidolonCharacter::ChooseTwo);
+    Input->BindAction(EndingThree, ETriggerEvent::Started, this, &AEidolonCharacter::ChooseThree);
+    Input->BindAction(EndingFour, ETriggerEvent::Started, this, &AEidolonCharacter::ChooseFour);
     Input->BindAction(ForwardAction, ETriggerEvent::Triggered, this, &AEidolonCharacter::MoveForward);
     Input->BindAction(RightAction, ETriggerEvent::Triggered, this, &AEidolonCharacter::MoveRight);
     Input->BindAction(MouseYawAction, ETriggerEvent::Triggered, this, &AEidolonCharacter::MouseYaw);
@@ -244,4 +269,11 @@ void AEidolonCharacter::Dodge()
 }
 void AEidolonCharacter::StartBlock() { if (!IsDefeated()) { bBlocking = true; StopSprint(); } }
 void AEidolonCharacter::EndBlock() { bBlocking = false; }
-void AEidolonCharacter::RestartArena() { UGameplayStatics::OpenLevel(this, FName(*UGameplayStatics::GetCurrentLevelName(this))); }
+void AEidolonCharacter::RestartArena() { if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->ReloadCheckpoint(); }
+void AEidolonCharacter::Interact() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->Interact(this); }
+void AEidolonCharacter::ChooseOne() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->SelectEnding(1); }
+void AEidolonCharacter::ChooseTwo() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->SelectEnding(2); }
+void AEidolonCharacter::ChooseThree() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->SelectEnding(3); }
+void AEidolonCharacter::ChooseFour() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->SelectEnding(4); }
+
+void AEidolonCharacter::RecoverMemory() { if (!IsDefeated()) if (auto* GM = GetWorld()->GetAuthGameMode<AEidolonGameMode>()) GM->RecoverMemory(this); }

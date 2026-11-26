@@ -23,6 +23,7 @@ GENERATORS = (
     ("create_rootclaw_floor.py", None),
     ("create_buried_forest_entry.py", None),
     ("create_oblique_clearing.py", None),
+    ("create_branch_terrace.py", None),
 )
 
 

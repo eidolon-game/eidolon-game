@@ -57,6 +57,11 @@ int main()
                 Clear.Source = Producer::Traversal;
                 Clear.Subject = Target::TraversalExit;
                 break;
+            case BranchTerraceFloor:
+                Clear.Kind = EventKind::BranchStairReleased;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::BranchStairRelease;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -117,6 +122,14 @@ int main()
         else if (Advance(State, Traverse))
         {
             std::cerr << "Traversal receipt allowed on the wrong floor\n";
+            return 1;
+        }
+
+        const Event WrongStair{Chapter, Floor, Floor, Revision(State), EventKind::BranchStairReleased,
+            Producer::Puzzle, Floor == BranchTerraceFloor ? Target::BranchLatches : Target::BranchStairRelease};
+        if (Advance(State, WrongStair))
+        {
+            std::cerr << "The Branch Terraces stair release was accepted at a different anchor or floor\n";
             return 1;
         }
 

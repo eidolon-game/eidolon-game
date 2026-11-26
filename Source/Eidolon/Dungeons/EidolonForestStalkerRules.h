@@ -20,6 +20,63 @@ namespace EidolonForestStalker
     inline constexpr double PounceActiveSeconds = 0.42;
     inline constexpr double HitRecoverySeconds = 0.82;
     inline constexpr double MissRecoverySeconds = 1.65;
+    inline constexpr double PerchCenterHeightCm = 95.0;
+    inline constexpr double MinPerchRouteCm = 120.0;
+    inline constexpr double MaxPerchRouteCm = 500.0;
+    inline constexpr double MinPerchElevationCm = 45.0;
+    inline constexpr double MaxPerchElevationCm = 220.0;
+    inline constexpr double PerchLandingRadiusCm = 145.0;
+    inline constexpr double PerchWindupSeconds = 1.10;
+    inline constexpr double PerchTraversalSeconds = 0.85;
+    inline constexpr double PerchWaitSeconds = 2.40;
+
+    inline bool IsPerchRouteValid(double HorizontalCm, double ElevationCm)
+    {
+        return std::isfinite(HorizontalCm) && std::isfinite(ElevationCm)
+            && HorizontalCm >= MinPerchRouteCm && HorizontalCm <= MaxPerchRouteCm
+            && ElevationCm >= MinPerchElevationCm && ElevationCm <= MaxPerchElevationCm;
+    }
+
+    // Hold ledge height while the body clears the lip, then descend. The
+    // climb follows this same authored route in reverse.
+    inline double PerchAltitude(double UpperZ, double LowerZ, double Alpha)
+    {
+        const double Fraction = std::clamp((Alpha - 0.68) / 0.32, 0.0, 1.0);
+        const double Smooth = Fraction * Fraction * (3.0 - 2.0 * Fraction);
+        return UpperZ + (LowerZ - UpperZ) * Smooth;
+    }
+
+    inline bool IsPerchLandingHit(bool ReachedAuthoredLanding, bool Visible,
+                                  double DistanceSquaredCm, double HeightFromCenterCm)
+    {
+        return ReachedAuthoredLanding && Visible && std::isfinite(DistanceSquaredCm)
+            && std::isfinite(HeightFromCenterCm) && DistanceSquaredCm >= 0.0
+            && DistanceSquaredCm <= PerchLandingRadiusCm * PerchLandingRadiusCm
+            && std::abs(HeightFromCenterCm) <= MaxHeightDeltaCm;
+    }
+
+    struct PerchTravel
+    {
+        double Alpha = 0.0;
+        bool bTowardUpper = false;
+        bool bAborted = false;
+
+        double Next(double DeltaSeconds) const
+        {
+            if (!std::isfinite(DeltaSeconds) || DeltaSeconds <= 0.0) return Alpha;
+            const double Step = std::min(0.08, DeltaSeconds / PerchTraversalSeconds);
+            return std::clamp(Alpha + (bTowardUpper ? -Step : Step), 0.0, 1.0);
+        }
+
+        void Obstructed()
+        {
+            if (bAborted) return;
+            bAborted = true;
+            bTowardUpper = !bTowardUpper;
+        }
+
+        bool Arrived() const { return bTowardUpper ? Alpha <= 0.0 : Alpha >= 1.0; }
+    };
 
     struct Search
     {

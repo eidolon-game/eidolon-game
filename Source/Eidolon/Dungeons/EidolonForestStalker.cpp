@@ -2,6 +2,7 @@
 
 #include "../EidolonCharacter.h"
 #include "CollisionQueryParams.h"
+#include "CollisionShape.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/HitResult.h"
 #include "Engine/StaticMesh.h"
@@ -19,6 +20,9 @@ namespace
     constexpr double TelegraphDropCm = 91.0;
     constexpr float PounceDamage = 23.0f;
     constexpr float SweepDamage = 16.0f;
+    constexpr float PerchDamage = 26.0f;
+    constexpr double PerchAnchorToleranceCm = 22.0;
+    constexpr double PerchPlayerRangeCm = 390.0;
 }
 
 AEidolonForestStalker::AEidolonForestStalker()
@@ -53,6 +57,15 @@ AEidolonForestStalker::AEidolonForestStalker()
     Telegraph->SetCastShadow(false);
     Telegraph->SetHiddenInGame(true);
     if (Cube.Succeeded()) Telegraph->SetStaticMesh(Cube.Object);
+
+    PerchMarker = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PerchLandingMarker"));
+    PerchMarker->SetupAttachment(GetRootComponent());
+    PerchMarker->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+    PerchMarker->SetGenerateOverlapEvents(false);
+    PerchMarker->SetCastShadow(false);
+    PerchMarker->SetHiddenInGame(true);
+    static ConstructorHelpers::FObjectFinder<UStaticMesh> Cylinder(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+    if (Cylinder.Succeeded()) PerchMarker->SetStaticMesh(Cylinder.Object);
 }
 
 void AEidolonForestStalker::BeginPlay()
@@ -114,6 +127,199 @@ void AEidolonForestStalker::StalkToward(const FVector& Destination, double Delta
     SweepGrounded(Direction * Distance, Hit);
 }
 
+bool AEidolonForestStalker::ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet)
+{
+    using namespace EidolonForestStalker;
+    if (!HasAuthority() || Perch != PerchStage::Disabled || Attack.Current != Phase::Ready ||
+        PerchFeet.ContainsNaN() || LandingFeet.ContainsNaN() ||
+        !IsPerchRouteValid(FVector::Dist2D(PerchFeet, LandingFeet), PerchFeet.Z - LandingFeet.Z))
+    {
+        return false;
+    }
+
+    const FVector Offset(0.0, 0.0, PerchCenterHeightCm);
+    const FVector Upper = PerchFeet + Offset;
+    const FVector Landing = LandingFeet + Offset;
+    const bool AlreadyUpper = FVector::DistSquared(GetActorLocation(), Upper) <= FMath::Square(PerchAnchorToleranceCm);
+    const FVector Lower = AlreadyUpper ? Landing : GetActorLocation();
+    if (!CanStandAt(Upper) || !CanStandAt(Landing) || !CanStandAt(Lower) ||
+        !IsPerchRouteValid(FVector::Dist2D(Upper, Lower), Upper.Z - Lower.Z))
+    {
+        return false;
+    }
+
+    PerchCenter = Upper;
+    PerchGround = Lower;
+    LandingCenter = Landing;
+    PerchRemaining = PerchWaitSeconds;
+    Perch = AlreadyUpper ? PerchStage::Waiting : PerchStage::Ground;
+    return true;
+}
+
+FVector AEidolonForestStalker::GetPerchRoutePoint(const FVector& Lower, double Alpha) const
+{
+    FVector Point = FMath::Lerp(PerchCenter, Lower, Alpha);
+    Point.Z = EidolonForestStalker::PerchAltitude(PerchCenter.Z, Lower.Z, Alpha);
+    return Point;
+}
+
+bool AEidolonForestStalker::IsPerchPathClear(const FVector& Lower, const AActor* PreviewTarget) const
+{
+    const FQuat Facing = (Lower - PerchCenter).GetSafeNormal2D().Rotation().Quaternion();
+    const FCollisionShape Body = FCollisionShape::MakeBox(FVector(103.0, 68.0, 85.0));
+    FCollisionQueryParams Query(SCENE_QUERY_STAT(ForestStalkerPerch), false, this);
+    if (PreviewTarget) Query.AddIgnoredActor(PreviewTarget);
+
+    if (GetWorld()->OverlapBlockingTestByChannel(PerchCenter, Facing, ECC_Pawn, Body, Query)
+        || GetWorld()->OverlapBlockingTestByChannel(Lower, Facing, ECC_Pawn, Body, Query))
+    {
+        return false;
+    }
+
+    constexpr int32 Segments = 16;
+    FVector Previous = PerchCenter;
+    for (int32 Index = 1; Index <= Segments; ++Index)
+    {
+        const FVector Next = GetPerchRoutePoint(Lower, static_cast<double>(Index) / Segments);
+        if (GetWorld()->SweepTestByChannel(Previous, Next, Facing, ECC_Pawn, Body, Query))
+            return false;
+        Previous = Next;
+    }
+    return true;
+}
+
+void AEidolonForestStalker::BeginPerchTravel(PerchStage Stage, const FVector& Lower, bool bAscending)
+{
+    Perch = Stage;
+    FlightLower = Lower;
+    Flight = {bAscending ? 1.0 : 0.0, bAscending, false};
+    const FVector Direction = (Lower - PerchCenter).GetSafeNormal2D();
+    SetActorRotation((bAscending ? -Direction : Direction).Rotation());
+}
+
+void AEidolonForestStalker::ShowPerchLanding(bool bShow)
+{
+    using namespace EidolonForestStalker;
+    PerchMarker->SetHiddenInGame(!bShow);
+    Crest->SetRelativeRotation(FRotator(bShow ? 55.0 : 12.0, 0.0, 0.0));
+    if (!bShow) return;
+
+    const FVector Surface(0.0, 0.0, PerchCenterHeightCm - 3.0);
+    PerchMarker->SetWorldLocation(LandingCenter - Surface);
+    const double DiameterScale = 2.0 * PerchLandingRadiusCm / 100.0;
+    PerchMarker->SetWorldScale3D(FVector(DiameterScale, DiameterScale, 0.035));
+}
+
+void AEidolonForestStalker::TickPerchTravel(AEidolonCharacter* Player, double DeltaSeconds)
+{
+    using namespace EidolonForestStalker;
+    const double NextAlpha = Flight.Next(DeltaSeconds);
+    FHitResult Hit;
+    if (NextAlpha != Flight.Alpha)
+    {
+        const FVector Destination = GetPerchRoutePoint(FlightLower, NextAlpha);
+        AddActorWorldOffset(Destination - GetActorLocation(), true, &Hit);
+        if (Hit.bBlockingHit)
+        {
+            // FHitResult::Time keeps the cursor close to the actual swept
+            // position, including partial movement before the obstruction.
+            Flight.Alpha = FMath::Lerp(Flight.Alpha, NextAlpha, static_cast<double>(Hit.Time));
+            Flight.Obstructed();
+            ShowPerchLanding(false);
+            return;
+        }
+        Flight.Alpha = NextAlpha;
+    }
+    if (!Flight.Arrived()) return;
+
+    ShowPerchLanding(false);
+    if (Flight.bTowardUpper)
+    {
+        Perch = PerchStage::Waiting;
+        PerchRemaining = Flight.bAborted ? 0.70 : PerchWaitSeconds;
+        return;
+    }
+
+    const bool Landed = Perch == PerchStage::Drop && !Flight.bAborted
+        && FVector::DistSquared(GetActorLocation(), LandingCenter) <= FMath::Square(PerchAnchorToleranceCm);
+    Perch = PerchStage::Disabled;
+    Home = FlightLower;
+    if (Landed)
+    {
+        const FVector Offset = Player ? Player->GetActorLocation() - LandingCenter : FVector::ZeroVector;
+        const bool Caught = Player && !Player->IsDefeated() && IsPerchLandingHit(
+            true, CanSee(*Player), Offset.SizeSquared2D(), Offset.Z);
+        if (Caught) UGameplayStatics::ApplyDamage(Player, PerchDamage, nullptr, this, nullptr);
+        Attack.Current = Phase::Recovery;
+        Attack.bHit = Caught;
+        Attack.Remaining = Caught ? HitRecoverySeconds : MissRecoverySeconds;
+    }
+    UpdatePose();
+}
+
+bool AEidolonForestStalker::TickPerch(AEidolonCharacter* Player, bool bVisible, double DeltaSeconds)
+{
+    using namespace EidolonForestStalker;
+    switch (Perch)
+    {
+        case PerchStage::Disabled:
+            return false;
+        case PerchStage::Ground:
+            if (Attack.Current != Phase::Ready || !bVisible ||
+                FVector::DistSquared(GetActorLocation(), PerchGround) > FMath::Square(PerchAnchorToleranceCm)
+                || !IsPerchPathClear(PerchGround))
+            {
+                return false;
+            }
+            BeginPerchTravel(PerchStage::Climb, PerchGround, true);
+            return true;
+        case PerchStage::Waiting:
+            if (bVisible && FVector::DistSquared2D(Player->GetActorLocation(), LandingCenter) <= FMath::Square(PerchPlayerRangeCm)
+                && IsPerchPathClear(LandingCenter, Player))
+            {
+                Perch = PerchStage::Telegraph;
+                PerchRemaining = PerchWindupSeconds;
+                SetActorRotation((LandingCenter - PerchCenter).GetSafeNormal2D().Rotation());
+                ShowPerchLanding(true);
+            }
+            else
+            {
+                PerchRemaining = FMath::Max(0.0, PerchRemaining - DeltaSeconds);
+                if (PerchRemaining <= 0.0 && IsPerchPathClear(PerchGround))
+                    BeginPerchTravel(PerchStage::ReturnToGround, PerchGround, false);
+            }
+            return true;
+        case PerchStage::Telegraph:
+            PerchRemaining = FMath::Max(0.0, PerchRemaining - DeltaSeconds);
+            if (PerchRemaining <= 0.0)
+            {
+                if (IsPerchPathClear(LandingCenter))
+                    BeginPerchTravel(PerchStage::Drop, LandingCenter, false);
+                else
+                {
+                    ShowPerchLanding(false);
+                    if (IsPerchPathClear(PerchGround))
+                    {
+                        BeginPerchTravel(PerchStage::ReturnToGround, PerchGround, false);
+                    }
+                    else
+                    {
+                        Perch = PerchStage::Waiting;
+                        PerchRemaining = 0.70;
+                    }
+                }
+            }
+            return true;
+        case PerchStage::Climb:
+        case PerchStage::Drop:
+        case PerchStage::ReturnToGround:
+            TickPerchTravel(Player, DeltaSeconds);
+            return true;
+    }
+
+    return false;
+}
+
 void AEidolonForestStalker::Tick(float DeltaSeconds)
 {
     AActor::Tick(DeltaSeconds);
@@ -123,6 +329,7 @@ void AEidolonForestStalker::Tick(float DeltaSeconds)
     auto* Player = Cast<AEidolonCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
     const bool PlayerAvailable = Player && !Player->IsDefeated();
     const bool Visible = PlayerAvailable && CanSee(*Player);
+    if (TickPerch(Player, Visible, DeltaSeconds)) return;
     Search.Observe(Visible, DeltaSeconds);
     if (Visible) LastSeen = Player->GetActorLocation();
 

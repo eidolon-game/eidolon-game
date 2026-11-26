@@ -25,6 +25,8 @@ struct FEidolonAbyssEncounter
     const TCHAR* FightItalian = TEXT("");
     EidolonAbyss::EventKind CompletionKind = EidolonAbyss::EventKind::FloorCleared;
     EidolonAbyss::Target CompletionTarget = EidolonAbyss::Target::FloorEncounter;
+    FName CompletionControlTag = NAME_None;
+    FName ShortcutBlockTag = NAME_None;
 
     bool IsTraversal() const { return CompletionKind == EidolonAbyss::EventKind::FloorTraversed; }
 };
@@ -58,6 +60,7 @@ private:
     bool CanInteractAt(const AEidolonCharacter& Player, const ATargetPoint* Marker) const;
     void SpawnEnemy(UEidolonCampaignSubsystem& Campaign);
     void HandleDefeat(AEidolonArenaEnemy& Enemy);
+    bool SaveFloorCompletion(UEidolonCampaignSubsystem& Campaign, EidolonAbyss::Producer Source, int32 Revision);
     void CommitEncounter(UEidolonCampaignSubsystem& Campaign);
     void SetGateOpen(bool bOpen);
 
@@ -66,6 +69,7 @@ private:
     TWeakObjectPtr<ATargetPoint> Lever;
     TWeakObjectPtr<ATargetPoint> Exit;
     TWeakObjectPtr<AStaticMeshActor> Gate;
+    TWeakObjectPtr<AStaticMeshActor> ShortcutBlock;
     UPROPERTY() TObjectPtr<AEidolonArenaEnemy> ActiveEnemy;
     int32 SpawnRevision = INDEX_NONE;
     bool bFloorBound = false;

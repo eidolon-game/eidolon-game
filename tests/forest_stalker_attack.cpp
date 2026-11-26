@@ -66,5 +66,39 @@ int main()
     if (!Pounce.StopPounce(true) || Pounce.Remaining != HitRecoverySeconds)
         return 1;
 
-    std::cout << "Forest Stalker: sight memory, search expiry, evadable sweep, locked pounce and recovery passed\n";
+    const double PerchLower = PerchCenterHeightCm;
+    const double PerchUpper = PerchLower + 180.0;
+    // Authored floor 13 has a 100 cm ledge lip and up to 124 cm swept
+    // support envelope in its diagonal return across a 350 cm horizontal run.
+    const double ClearLipAlpha = (100.0 + 124.0) / 350.0;
+    if (!IsPerchRouteValid(350.0, 180.0) || !IsPerchRouteValid(std::hypot(200.0, 350.0), 180.0)
+        || IsPerchRouteValid(350.0, -180.0) || IsPerchRouteValid(MaxPerchRouteCm + 1.0, 150.0)
+        || PerchAltitude(PerchUpper, PerchLower, ClearLipAlpha) != PerchUpper
+        || PerchAltitude(PerchUpper, PerchLower, 1.0) != PerchLower)
+    {
+        std::cerr << "Authored perch route bounds, endpoints or ledge clearance failed\n";
+        return 1;
+    }
+    PerchTravel Climb{1.0, true, false};
+    if (Climb.Arrived() || Climb.Next(-1.0) != 1.0 || Climb.Next(100.0) < 0.91)
+        return 1;
+    Climb.Alpha = 0.45;
+    Climb.Obstructed();
+    if (!Climb.bAborted || Climb.bTowardUpper || Climb.Next(0.1) <= Climb.Alpha)
+        return 1;
+    Climb.Obstructed();
+    if (Climb.bTowardUpper) return 1;
+    PerchTravel Drop{0.55, false, false};
+    Drop.Obstructed();
+    if (!Drop.bAborted || !Drop.bTowardUpper || Drop.Next(0.1) >= Drop.Alpha
+        || IsPerchLandingHit(false, true, 0.0, 0.0) || IsPerchLandingHit(true, false, 0.0, 0.0)
+        || IsPerchLandingHit(true, true, PerchLandingRadiusCm * PerchLandingRadiusCm + 1.0, 0.0)
+        || IsPerchLandingHit(true, true, 0.0, MaxHeightDeltaCm + 1.0)
+        || !IsPerchLandingHit(true, true, PerchLandingRadiusCm * PerchLandingRadiusCm, 0.0))
+    {
+        std::cerr << "Blocked drop did not retreat or could damage outside its landed circle\n";
+        return 1;
+    }
+
+    std::cout << "Forest Stalker: sight memory, sweep, locked pounce, ledge clearance, abort and landing passed\n";
 }

@@ -184,3 +184,11 @@ Generate `/Game/Eidolon/Maps/AbyssFloor012` with `scripts/create_oblique_clearin
 - Try direct map entry with floor 11 incomplete. Verify the stair does not grant credit. On an eligible save, try interacting out of range, behind cover and while defeated.
 - Fail the checkpoint write at the stair. Verify progress stays on floor 11 and the player stays at the stair. Retry and check that the floor 12 credit survives reload. Interact again and verify no duplicate progress occurs.
 - The stair leads to `AbyssFloor013` once generated. With that package absent, the stair reports an unavailable route and retains the saved completion. Confirm that the authored checkpoint remains reachable on reload.
+
+## Branch Terraces
+
+Generate `/Game/Eidolon/Maps/AbyssFloor013` with `scripts/create_branch_terrace.py` or the campaign generator. Enter after completing the Oblique Clearing. Play both routes from a floor 12 checkpoint with the Stalker alive. Use the external ramp to bypass the lower encounter or cross the short route after the fixed landing cue. Check clearance without jumping and use the camera in both orientations near the switchbacks.
+
+- Observe the anchored climb and landing. Walk out of the impact zone after the telegraph. Test a blocked ascent or landing and a missing optional spawn or perch anchor. The upper stair release must remain reachable in every case.
+- Try the release from the lower route, out of range and behind geometry. From the upper platform, fail the checkpoint and verify both the lower shortcut and the onward gate stay blocked. Save successfully, then test returning through the opened shortcut and leaving through the exit.
+- Reload before and after the release. Verify the closed or open geometry matches the checkpoint and repeated interactions do not re-award completion. The exit targets the future `AbyssFloor014`. Rigging and import of the preview ladder and native runtime tests are pending.

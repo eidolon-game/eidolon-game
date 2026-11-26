@@ -4,6 +4,7 @@
 #include "EidolonCampaignSubsystem.generated.h"
 class UEidolonCampaignSave;
 namespace EidolonAbyss { struct Event; }
+namespace EidolonSluice { enum class Control : uint8; }
 namespace EidolonFirstDescent { struct Event; }
 
 USTRUCT(BlueprintType)
@@ -53,6 +54,8 @@ public:
     int32 GetAuthoredAbyssRevision() const;
     // The native map adapter attests to the specific encounter or story outcome.
     bool CommitAuthoredAbyssEvent(const EidolonAbyss::Event& Event);
+    uint8 GetAbyssSluiceProgress() const;
+    bool CommitAbyssSluice(EidolonSluice::Control Control, uint8 ExpectedProgress);
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
     bool BeginValdrisFirstDescent();

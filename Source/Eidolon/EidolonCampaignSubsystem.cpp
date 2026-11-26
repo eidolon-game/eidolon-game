@@ -1,6 +1,7 @@
 #include "EidolonCampaignSubsystem.h"
 #include "EidolonCampaignSave.h"
 #include "Dungeons/EidolonAbyssProgression.h"
+#include "Dungeons/EidolonSluiceRules.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
 #include "Engine/GameInstance.h"
@@ -187,6 +188,14 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const uint8 Sluice = Checkpoint->AbyssSluiceProgress;
+    if (!EidolonSluice::IsValid(Sluice) ||
+        (Authored.CompletedFloor < EidolonAbyss::SluiceFloor - 1 && Sluice != 0) ||
+        (EidolonSluice::CanExit(Sluice) != (Authored.CompletedFloor >= EidolonAbyss::SluiceFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -211,7 +220,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
 {
     if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
         State->Chapter != EidolonAbyss::Chapter ||
-        State->FirstDescentCursor != FinalFirstDescentCursor)
+        State->FirstDescentCursor != FinalFirstDescentCursor ||
+        Event.Kind == EidolonAbyss::EventKind::SluicesOpened)
     {
         return false;
     }
@@ -240,6 +250,41 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
     }
     if (!WriteCheckpoint(Snapshot)) return false;
 
+    State = Snapshot;
+    return true;
+}
+
+uint8 UEidolonCampaignSubsystem::GetAbyssSluiceProgress() const
+{
+    return State ? State->AbyssSluiceProgress : 0;
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssSluice(EidolonSluice::Control Control, uint8 ExpectedProgress)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != SluiceFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), SluiceFloor)) return false;
+    const auto NextSluice = EidolonSluice::ProposeActivation(State->AbyssSluiceProgress, ExpectedProgress, Control);
+    if (!NextSluice) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssSluiceProgress = *NextSluice;
+    if (EidolonSluice::CanExit(*NextSluice))
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, SluiceFloor, SluiceFloor, Revision(Progress),
+            EventKind::SluicesOpened, Producer::Puzzle, Target::SluiceControls});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
     State = Snapshot;
     return true;
 }

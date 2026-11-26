@@ -5,12 +5,14 @@
 namespace EidolonAbyss
 {
     inline constexpr int Chapter = 4;
+    inline constexpr int SluiceFloor = 4;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
     enum class EventKind
     {
         FloorCleared,
+        SluicesOpened,
         RicordaHeard,
         GuardianDefeated
     };
@@ -18,12 +20,14 @@ namespace EidolonAbyss
     enum class Producer
     {
         Encounter,
+        Puzzle,
         StorySequence
     };
 
     enum class Target
     {
         FloorEncounter,
+        SluiceControls,
         NamelessSpeaker,
         AbyssGuardian
     };
@@ -83,6 +87,14 @@ namespace EidolonAbyss
 
         if (Floor == SpeakerFloor && !State.RicordaHeard)
             return std::nullopt;
+
+        if (Floor == SluiceFloor)
+        {
+            if (Input.Kind != EventKind::SluicesOpened || Input.Source != Producer::Puzzle ||
+                Input.Subject != Target::SluiceControls)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
 
         const bool Guardian = Floor == GuardianFloor;
         if (Input.Source != Producer::Encounter

@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "id": "abyss_004",
+  "legacy_id": "abyss.004",
+  "dungeon_id": "abyss",
+  "floor": 4,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Condotti delle Paratoie",
+    "en": "Sluice Conduits"
+  },
+  "cell_cm": 200,
+  "height_cm": 300,
+  "footprint_cm": [
+    2200,
+    2200
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [0, 0],
+    [1, 0],
+    [2, 0],
+    [3, 0],
+    [0, 1],
+    [1, 1],
+    [2, 1],
+    [3, 1],
+    [0, 2],
+    [1, 2],
+    [2, 2],
+    [3, 2],
+    [3, 3],
+    [3, 4],
+    [4, 4],
+    [5, 4],
+    [6, 4],
+    [7, 4],
+    [8, 4],
+    [9, 4],
+    [3, 5],
+    [4, 5],
+    [5, 5],
+    [6, 5],
+    [7, 5],
+    [8, 5],
+    [9, 5],
+    [3, 6],
+    [4, 6],
+    [5, 6],
+    [6, 6],
+    [7, 6],
+    [8, 6],
+    [9, 6],
+    [10, 6],
+    [3, 7],
+    [4, 7],
+    [7, 7],
+    [9, 7],
+    [10, 7],
+    [3, 8],
+    [4, 8],
+    [7, 8],
+    [7, 9],
+    [7, 10],
+    [8, 10]
+  ],
+  "entry": [
+    1,
+    1
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint": [
+    2,
+    1
+  ],
+  "checkpoint_yaw_deg": 0,
+  "sluice_west": [
+    3,
+    8
+  ],
+  "sluice_east": [
+    10,
+    7
+  ],
+  "exit": [
+    8,
+    10
+  ],
+  "gate": {
+    "id": "abyss_004_sluice_gate",
+    "from_cell": [
+      7,
+      6
+    ],
+    "to_cell": [
+      7,
+      7
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": [
+      "abyss_004_sluice_west",
+      "abyss_004_sluice_east"
+    ]
+  },
+  "water": {
+    "id": "abyss_004_water",
+    "min_cell": [
+      4,
+      5
+    ],
+    "max_cell": [
+      8,
+      6
+    ],
+    "height_cm": 8,
+    "collision": false
+  },
+  "raised_footpath": {
+    "required": false,
+    "cells": [
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        8,
+        5
+      ]
+    ],
+    "height_cm": 20,
+    "width_cm": 160
+  },
+  "moored_hagfish": {
+    "spawn_marker": "abyss_004_censer_hagfish_01",
+    "creature_id": "abyss_censer_hagfish",
+    "cell": [
+      6,
+      6
+    ],
+    "status": "reserved_for_combat_integration"
+  },
+  "mechanism": {
+    "id": "abyss_004_dual_sluice",
+    "mode": "independent_latches_in_either_order",
+    "requires_durable_completion": true,
+    "timed": false,
+    "presentation": {
+      "it": "Ogni paratoia resta azionata. La leva dell'altra sponda rimane raggiungibile a piedi e la grata a nord conduce al piano inferiore.",
+      "en": "Each sluice stays latched. The opposite lever remains reachable on foot, and the north grate leads to the next floor."
+    }
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_003",
+      "transition": "abyss_003_lower_stair",
+      "requires_completed_floor": 3,
+      "save_required": true
+    },
+    "exit": {
+      "to_floor": "abyss_005",
+      "transition": "abyss_004_lower_stair",
+      "requires_completed_floor": 4,
+      "save_required": true
+    }
+  },
+  "accessibility": {
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

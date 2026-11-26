@@ -98,3 +98,11 @@ The interactive prototype uses the shared collision mesh. The Tick GLB and scrap
 Generate `/Game/Eidolon/Maps/AbyssFloor003` with `scripts/create_lintel_floor.py` in the Unreal Python commandlet. Enter from the Ossuary exit after the floor 2 checkpoint, or resume from the Valdris entrance. Test early direct entry, duplicate tags, premature lever use, and replay from the saved checkpoint. The gate must stay closed until an authoritative defeat and a successful lever checkpoint.
 
 Move to the encounter marker and start the fight. Use the blades and the floor marker to anticipate the fixed dive. Compare hits, sidesteps, and wall impacts. The Mantis must clear the ledge before lowering toward the floor, use one impact per dive, and offer a longer vulnerable recovery on a miss. Verify the approach at low and high frame rates. The lower stair is reserved for floor 4.
+
+## Drainage Canals
+
+Generate `/Game/Eidolon/Maps/AbyssFloor004` with `scripts/create_sluice_floor.py` in the Unreal Python commandlet. Enter from the Lintel Gallery after the floor 3 checkpoint, or resume from Valdris.
+
+Activate the west then east sluice, then repeat on a fresh test save in the opposite order. After one activation, the water drops and the gate stays closed. Reload and verify that the first sluice is still open. A failed second save leaves the first activation intact and the gate closed. A successful second save drains the basin, unlocks the ramp and records floor 4 together. Reopen the map to verify the gate stays open. Verify that early entry and interactions through walls cannot grant credit.
+
+The raised footpath is optional. The encounter's Hagfish anchor is reserved for combat integration and the lower stair awaits `AbyssFloor005`.

@@ -1,6 +1,7 @@
 #include "EidolonAuthoredAbyssGameMode.h"
 
 #include "EidolonAbyssProgression.h"
+#include "EidolonAbyssActorBindings.h"
 #include "../EidolonArenaEnemy.h"
 #include "../EidolonCampaignSubsystem.h"
 #include "../EidolonCharacter.h"
@@ -9,7 +10,6 @@
 #include "Engine/StaticMeshActor.h"
 #include "Engine/TargetPoint.h"
 #include "Engine/World.h"
-#include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/PlayerStart.h"
 #include "Internationalization/Culture.h"
@@ -40,20 +40,6 @@ namespace
         return FInternationalization::Get().GetCurrentLanguage()->GetTwoLetterISOLanguageName()
             == TEXT("it") ? Italian : English;
     }
-
-    template <typename ActorType>
-    ActorType* FindTaggedActor(UWorld& World, FName Tag)
-    {
-        ActorType* Found = nullptr;
-        for (TActorIterator<AActor> It(&World); It; ++It)
-        {
-            if (It->IsActorBeingDestroyed() || !It->ActorHasTag(Tag)) continue;
-            if (Found || !It->HasAuthority()) return nullptr;
-            Found = Cast<ActorType>(*It);
-            if (!Found) return nullptr;
-        }
-        return Found;
-    }
 }
 
 void AEidolonAuthoredAbyssGameMode::StartPlay()
@@ -78,7 +64,7 @@ AActor* AEidolonAuthoredAbyssGameMode::ChoosePlayerStart_Implementation(AControl
     {
         const bool bCheckpoint = UGameplayStatics::HasOption(OptionsString, CheckpointOption);
         const FName Tag = FloorTag(GetEncounter().Floor, bCheckpoint ? TEXT("checkpoint_start") : TEXT("player_start"));
-        if (auto* Start = FindTaggedActor<APlayerStart>(*World, Tag)) return Start;
+        if (auto* Start = EidolonAbyss::FindTaggedActor<APlayerStart>(*World, Tag)) return Start;
     }
     return Super::ChoosePlayerStart_Implementation(Player);
 }
@@ -106,17 +92,17 @@ bool AEidolonAuthoredAbyssGameMode::BindFloor()
         return false;
     }
 
-    Arena = FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("encounter")));
-    EnemySpawn = FindTaggedActor<ATargetPoint>(*World, Encounter.SpawnTag);
-    Exit = FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("exit")));
-    Gate = FindTaggedActor<AStaticMeshActor>(*World, Encounter.GateTag);
+    Arena = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("encounter")));
+    EnemySpawn = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, Encounter.SpawnTag);
+    Exit = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("exit")));
+    Gate = EidolonAbyss::FindTaggedActor<AStaticMeshActor>(*World, Encounter.GateTag);
     if (Encounter.bRequiresLever)
-        Lever = FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("lever")));
+        Lever = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("lever")));
 
     return Arena.IsValid() && EnemySpawn.IsValid() && Exit.IsValid() && Gate.IsValid()
         && (!Encounter.bRequiresLever || Lever.IsValid())
-        && FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("player_start")))
-        && FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("checkpoint_start")));
+        && EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("player_start")))
+        && EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("checkpoint_start")));
 }
 
 bool AEidolonAuthoredAbyssGameMode::CanInteractAt(const AEidolonCharacter& Player, const ATargetPoint* Marker) const

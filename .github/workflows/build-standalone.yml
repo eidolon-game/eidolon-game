@@ -1,0 +1,35 @@
+name: Standalone department reproduction
+on:
+  push:
+    branches: ['feature/build-engineering', 'integration/studio']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  ai-cpp:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 4697eef4168f4305380c49bb83642d45ca059397
+          persist-credentials: false
+      - name: Compile and execute AI suites
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir evidence
+          git rev-parse HEAD > evidence/source-sha.txt
+          c++ --version > evidence/compiler.txt
+          (
+            set -ex
+            c++ -std=c++17 -Wall -Wextra -Werror -pedantic tests/npc_ai_policy.cpp -o /tmp/eidolon-legacy
+            /tmp/eidolon-legacy
+            c++ -std=c++17 -Wall -Wextra -Werror -pedantic -x c++ Source/Eidolon/AI/EidolonM2PolicyTests.cpp.txt -o /tmp/eidolon-m2
+            /tmp/eidolon-m2
+          ) 2>&1 | tee evidence/tests.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: ai-4697eef-${{ github.run_id }}
+          path: evidence/
+          if-no-files-found: error

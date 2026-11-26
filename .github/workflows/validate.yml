@@ -1,7 +1,7 @@
-name: EIDOLON CI
+name: EIDOLON source validation
 on:
   push:
-    branches: [main, develop, 'feature/**']
+    branches: [main, develop, 'integration/**', 'feature/**']
   pull_request:
   workflow_dispatch:
 permissions:
@@ -13,30 +13,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Validate project manifest and source
-        run: python3 scripts/validate_source.py
-  windows-probe:
+      - run: python3 scripts/validate_source.py
+      - run: python3 scripts/build/validate_data.py
+      - run: python3 -m unittest discover -s scripts/build -p 'test_*.py'
+  engine-availability-only:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Check for Unreal Engine and disk capacity
+      - name: Report engine availability (not compilation or packaging)
         shell: pwsh
         run: |
-          Get-PSDrive -PSProvider FileSystem
           $engines = @(Get-ChildItem 'C:\Program Files\Epic Games' -Directory -ErrorAction SilentlyContinue | Where-Object { Test-Path (Join-Path $_.FullName 'Engine\Build\BatchFiles\Build.bat') })
-          if ($engines.Count -eq 0) {
-            Write-Host '::notice::Unreal Engine unavailable on this hosted runner. No Windows binary produced.'
-            'No Unreal Engine available; source validation only.' | Out-File -Append $env:GITHUB_STEP_SUMMARY
-          } else {
-            & ./scripts/Package-Windows.ps1 -EngineRoot $engines[0].FullName
-            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          }
-      - name: Upload Windows demo when packaged
-        uses: actions/upload-artifact@v4
-        with:
-          name: Eidolon-Windows-Demo
-          path: Saved/Distribution/Windows/
-          if-no-files-found: ignore
-          retention-days: 14
+          "Engine installations found: $($engines.Count). UE compilation, automation, packaging and playtest: NOT RUN." | Out-File -Append $env:GITHUB_STEP_SUMMARY

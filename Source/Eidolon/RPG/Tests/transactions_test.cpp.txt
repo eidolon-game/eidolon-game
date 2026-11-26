@@ -1,0 +1,22 @@
+#include "../EidolonRpgTransactions.h"
+#include <cassert>
+#include <iostream>
+using namespace EidolonRpgV2;
+int main(){
+ Catalog c={{"sword_t1",{1,1,"weapon"}},{"armor_t1",{1,1,"body"}},{"potion_health",{99,1,"consumable"}},{"relic",{1,100,"weapon",true}}};
+ State s; Command g{"guild_registration_reward","guild","kael","first_descent","grant",2,100,0,{{"sword_t1",1},{"armor_t1",1},{"potion_health",3}},{{"weapon","sword_t1"},{"body","armor_t1"}}};
+ assert(Apply(s,c,g,2)==Result::Applied);assert(s.gold==100&&s.equipped.size()==2);
+ assert(Apply(s,c,g,3)==Result::Duplicate);auto conflict=g;conflict.gold=101;assert(Apply(s,c,conflict,2)==Result::Conflict);
+ auto bad=g;bad.id="bad";bad.items={{"missing",1}};bad.equip.clear();assert(Apply(s,c,bad,2)==Result::Rejected&&s.gold==100&&!s.receipts.count("bad"));
+ Command spend{"buy","guild","kael","first_descent","spend",2,20,0,{{"potion_health",1}},{}};
+ assert(Apply(s,c,spend,2)==Result::Applied&&s.gold==80&&Qty(s.items,"potion_health")==2);
+ spend.id="spend_equipped";spend.items={{"sword_t1",1}};assert(Apply(s,c,spend,2)==Result::Rejected&&s.gold==80);
+ Command equip{"unequip","kael","kael","first_descent","equip",2,0,0,{},{{"weapon",""}}};assert(Apply(s,c,equip,2)==Result::Applied);
+ Command reward{"unique_reward","guild","kael","first_descent","grant",2,0,XpCap,{{"relic",1}},{}};
+ assert(Apply(s,c,reward,2)==Result::Applied&&Level(s.xp)==100);
+ Command consume{"consume","kael","kael","first_descent","spend",2,0,0,{{"relic",1}},{}};
+ assert(Apply(s,c,consume,2)==Result::Applied);reward.id="second_unique";assert(Apply(s,c,reward,2)==Result::Rejected);
+ auto overflow=g;overflow.id="overflow";overflow.gold=Cap;overflow.items.clear();overflow.equip.clear();assert(Apply(s,c,overflow,2)==Result::Rejected);
+ assert(Level(0)==1&&Level(199)==1&&Level(200)==2&&Level(XpCap)==100);
+ std::cout<<"RPG transaction tests passed\n";
+}

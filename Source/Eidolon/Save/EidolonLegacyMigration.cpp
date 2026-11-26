@@ -10,6 +10,11 @@ UEidolonRealitySave* FEidolonLegacyMigration::Convert(UEidolonCampaignSave* Lega
     // Chapter 22+ requires evidence of scene transitions not stored by schema 1.
     // Chapter 20/21 are also ambiguous until explicit scene markers exist.
     if (Legacy->Chapter >= 20) return nullptr;
+    // Reject contradictory legacy evidence rather than deleting it.
+    if (Legacy->Chapter < 3 && (Legacy->Flags.Contains(TEXT("noah_present")) ||
+        Legacy->Memories.Contains(TEXT("family_before_noah")))) return nullptr;
+    if (Legacy->Chapter < 11 && Legacy->Memories.Contains(TEXT("vareth_survivor"))) return nullptr;
+    if (Legacy->Flags.Contains(TEXT("noah_found_in_oblivion"))) return nullptr;
     auto State = FEidolonRealityState::Initial();
     if (Legacy->Chapter >= 3)
     {

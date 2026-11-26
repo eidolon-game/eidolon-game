@@ -1,21 +1,44 @@
 #include "EidolonCampaignSubsystem.h"
 #include "EidolonCampaignSave.h"
+#include "Dungeons/EidolonAbyssProgression.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
 #include "Engine/GameInstance.h"
+#include "Engine/World.h"
 #include "Internationalization/Culture.h"
 #include "Internationalization/Internationalization.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/FileHelper.h"
+#include "Misc/PackageName.h"
 #include "Misc/Paths.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 #include "Dom/JsonObject.h"
 #include "UObject/UObjectGlobals.h"
+#include "UObject/Package.h"
 
 namespace
 {
     const FString Slot = TEXT("EidolonCampaign01");
+    constexpr int32 FinalFirstDescentCursor = static_cast<int32>(EidolonFirstDescent::Steps.size());
+
+    EidolonAbyss::Progress ReadAuthoredAbyssProgress(const UEidolonCampaignSave& Snapshot)
+    {
+        // The authored tutorial already proves that the first encounter was completed.
+        const int32 TutorialFloor = Snapshot.Chapter >= EidolonAbyss::Chapter &&
+            Snapshot.FirstDescentCursor == FinalFirstDescentCursor ? 1 : 0;
+        return {FMath::Max(Snapshot.AuthoredAbyssCompletedFloor, TutorialFloor),
+            Snapshot.bAuthoredAbyssRicordaHeard};
+    }
+
+    bool IsAuthoredAbyssMap(UWorld* World, int32 Floor)
+    {
+        if (!World || FPackageName::GetLongPackagePath(World->GetPackage()->GetName()) != TEXT("/Game/Eidolon/Maps"))
+            return false;
+
+        // GetCurrentLevelName strips the world-specific PIE prefix.
+        return UGameplayStatics::GetCurrentLevelName(World) == FString::Printf(TEXT("AbyssFloor%03d"), Floor);
+    }
 
     void RevealNoah(UEidolonCampaignSave& Snapshot)
     {
@@ -153,16 +176,72 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const EidolonAbyss::Progress Authored{
+        Checkpoint->AuthoredAbyssCompletedFloor, Checkpoint->bAuthoredAbyssRicordaHeard
+    };
     const int32 Cursor = Checkpoint->FirstDescentCursor;
-    const int32 FinalCursor = static_cast<int32>(EidolonFirstDescent::Steps.size());
+    if (!EidolonAbyss::IsValid(Authored) ||
+        (Authored.CompletedFloor > 0 && (Checkpoint->Chapter < EidolonAbyss::Chapter ||
+            Cursor != FinalFirstDescentCursor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
-        (Cursor > 0 && Cursor < FinalCursor && Checkpoint->Chapter == 2) ||
-        (Cursor == FinalCursor && Checkpoint->Chapter >= 3);
+        (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
+        (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
 }
 
 int32 UEidolonCampaignSubsystem::GetFirstDescentCursor() const
 {
     return State ? State->FirstDescentCursor : 0;
+}
+
+int32 UEidolonCampaignSubsystem::GetAuthoredAbyssCompletedFloor() const
+{
+    return State ? ReadAuthoredAbyssProgress(*State).CompletedFloor : 0;
+}
+
+int32 UEidolonCampaignSubsystem::GetAuthoredAbyssRevision() const
+{
+    return State ? EidolonAbyss::Revision(ReadAuthoredAbyssProgress(*State)) : 0;
+}
+
+bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Event& Event)
+{
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != EidolonAbyss::Chapter ||
+        State->FirstDescentCursor != FinalFirstDescentCursor)
+    {
+        return false;
+    }
+
+    const auto Next = EidolonAbyss::Advance(ReadAuthoredAbyssProgress(*State), Event);
+    const UGameInstance* GameInstance = GetGameInstance();
+    if (!Next || !GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), Event.AuthenticatedFloor))
+        return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AuthoredAbyssCompletedFloor = Next->CompletedFloor;
+    Snapshot->bAuthoredAbyssRicordaHeard = Next->RicordaHeard;
+    if (Event.Kind == EidolonAbyss::EventKind::RicordaHeard)
+        Snapshot->Memories.Add(TEXT("abyss_ricorda"));
+    if (Event.Kind == EidolonAbyss::EventKind::GuardianDefeated)
+    {
+        Snapshot->AbyssFloor = EidolonAbyss::GuardianFloor;
+        Snapshot->Flags.Add(TEXT("abyss_guardian_defeated"));
+        const int32 Target = CurrentChapter().Target;
+        if (Snapshot->ObjectiveCount < Target)
+        {
+            Snapshot->ObjectiveCount = Target;
+            Snapshot->Experience = static_cast<int32>(FMath::Min<int64>(MAX_int32,
+                static_cast<int64>(Snapshot->Experience) + 25));
+        }
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
+
+    State = Snapshot;
+    return true;
 }
 
 bool UEidolonCampaignSubsystem::CanEnterWorldRegion(FName RegionId) const

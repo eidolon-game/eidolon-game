@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression; do
+          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression ossuary_tick; do
             c++ -std=c++17 -Wall -Wextra -Werror -pedantic "tests/$suite.cpp" -o "$RUNNER_TEMP/$suite"
             "$RUNNER_TEMP/$suite"
           done

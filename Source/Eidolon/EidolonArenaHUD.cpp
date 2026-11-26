@@ -38,7 +38,7 @@ void AEidolonArenaHUD::DrawHUD()
             if (GM && GM->ShowsArenaObjectiveCounter())
                 DrawText(FString::Printf(TEXT("Rank %s | Level %d | Objective %d/%d"), *C->GetRank().ToString(), C->GetLevel(), C->GetObjectiveCount(), Chapter.Target), FLinearColor::White,30,235);
             if (Chapter.Id == 6 || Chapter.Id == 20) DrawText(TEXT("M / R3: optional memory objective"), FLinearColor::Yellow,30,350);
-            if (Chapter.Id == 4 || Chapter.Id == 23)
+            if (GM && GM->ShowsArenaObjectiveCounter() && (Chapter.Id == 4 || Chapter.Id == 23))
                 DrawText(FString::Printf(TEXT("Floor %d/100"), C->GetFloor(Chapter.Id == 23)), FLinearColor::White,30,260);
         }
     if (Player->IsDefeated()) DrawText(TEXT("DEFEATED - R / Y to reload checkpoint"), FLinearColor::Red,30,290,nullptr,1.5f);

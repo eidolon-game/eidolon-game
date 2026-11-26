@@ -1,6 +1,11 @@
-"""Generate the floor-two traversal graybox or validate its data offline."""
+"""Build the Ossuary survey or validate its data offline.
+
+Set EIDOLON_OSSUARY_INTERACTIVE=1 before the Unreal commandlet to build the
+separate playable graybox instead of the open-gate survey.
+"""
 
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -10,6 +15,8 @@ from create_first_descent_floor import MAP_FOLDER, build_shell, center, create_g
 
 MAP_PACKAGE = MAP_FOLDER + "/AbyssFloor002Survey"
 MODE_PATH = "/Script/Eidolon.EidolonAbyssSurveyGameMode"
+INTERACTIVE_PACKAGE = MAP_FOLDER + "/AbyssFloor002"
+INTERACTIVE_MODE_PATH = "/Script/Eidolon.EidolonOssuaryGameMode"
 LAYOUT = Path(__file__).resolve().parents[1] / "Content/Eidolon/Data/Dungeons/abyss_002_authored.json"
 ANCHORS = ("entry", "checkpoint", "encounter", "exit", "secret")
 
@@ -45,8 +52,10 @@ def read_layout():
     return layout, cells
 
 
-def build(unreal, layout, cells):
-    graybox = create_graybox(unreal, MAP_PACKAGE, MODE_PATH)
+def build(unreal, layout, cells, interactive=False):
+    package = INTERACTIVE_PACKAGE if interactive else MAP_PACKAGE
+    mode_path = INTERACTIVE_MODE_PATH if interactive else MODE_PATH
+    graybox = create_graybox(unreal, package, mode_path)
     if graybox is None:
         return
     editor, world, spawn, box = graybox
@@ -83,8 +92,10 @@ def build(unreal, layout, cells):
             (jamb, thickness, height))
     box("ossuary_gate_header", (gx, gy, (height + gap_height) / 2),
         (gap_width, thickness, height - gap_height))
-    # The gate anchor is visible to map authors. The survey keeps the route open.
-    spawn(unreal.TargetPoint, gate["id"], (gx, gy, gap_height / 2))
+    if interactive:
+        box(gate["id"], (gx, gy, gap_height / 2), (gap_width, thickness, gap_height), movable=True)
+    else:
+        spawn(unreal.TargetPoint, gate["id"], (gx, gy, gap_height / 2))
 
     for anchor in ANCHORS:
         x, y = center(layout[anchor], size)
@@ -98,9 +109,13 @@ def build(unreal, layout, cells):
     x, y = center(layout["entry"], size)
     start = spawn(unreal.PlayerStart, "abyss_002_player_start", (x, y, 110))
     start.set_actor_rotation(unreal.Rotator(yaw=layout["entry_yaw_deg"]), False)
+    if interactive:
+        x, y = center(layout["checkpoint"], size)
+        checkpoint = spawn(unreal.PlayerStart, "abyss_002_checkpoint_start", (x, y, 110))
+        checkpoint.set_actor_rotation(unreal.Rotator(yaw=layout["entry_yaw_deg"]), False)
 
-    if not editor.save_map(world, MAP_PACKAGE):
-        raise RuntimeError("Could not save the Ossuary traversal graybox.")
+    if not editor.save_map(world, package):
+        raise RuntimeError(f"Could not save the Ossuary graybox at {package}.")
 
 
 if __name__ == "__main__":
@@ -110,4 +125,4 @@ if __name__ == "__main__":
     else:
         import unreal
 
-        build(unreal, layout, cells)
+        build(unreal, layout, cells, interactive=os.environ.get("EIDOLON_OSSUARY_INTERACTIVE") == "1")

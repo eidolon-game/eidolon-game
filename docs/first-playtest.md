@@ -75,3 +75,20 @@ From the chapter 3 checkpoint after Noah's reveal, return to the Abyss entrance 
 Run `python3 -B scripts/create_ossuary_floor.py --validate` to verify the authored floor-two connectivity. After building the editor, execute `scripts/create_ossuary_floor.py` with the same Unreal Python commandlet used above and open `/Game/Eidolon/Maps/AbyssFloor002Survey`. Walk from the stair to the ring and the optional alcove. Check both sidestep lanes, the 110 cm niche, and the passage to the next stair. The survey leaves the gate open and reserves actor tags for the future encounter. Generating the survey requires UE 5.6.
 
 The standalone `abyss_progression` suite exercises 100 clears in order, the floor 90 memory receipt and the floor 100 Guardian event. Connecting the policy to native encounters and checkpoint writes remains a runtime task.
+
+## Ossuary encounter
+
+Generate the interactive package separately from the survey. In a Linux shell with UE 5.6 available:
+
+```bash
+EIDOLON_OSSUARY_INTERACTIVE=1 UnrealEditor-Cmd /path/to/Eidolon.uproject -run=pythonscript -script=/path/to/scripts/create_ossuary_floor.py -unattended -nop4
+```
+
+From an authored Chapter 4 checkpoint after Riven's scene and the Guild warning, interact with the Abyss entrance in Valdris to open `/Game/Eidolon/Maps/AbyssFloor002`. The first floor credit comes from the completed prologue.
+
+- Approach the arena marker and interact. An obstruction in the spawn area must leave the gate closed and permit a retry.
+- Wait for the crouch, then sidestep. Compare the missed-leap recovery with the recovery after a connect. Use a wall, a defeated pawn and a large frame time to check swept collision and one impact per leap.
+- Defeat the spawned Tick. Confirm the gate opens after the checkpoint and remains open after reload. Simulate a failed write with an isolated test save. The gate must stay closed until retry succeeds. Entering the map from an earlier chapter or from a legacy Arena save must not grant floor credit.
+- Interact at the lower stair. The target is reserved for `AbyssFloor003`; the current project reports an unavailable passage until that package exists.
+
+The interactive prototype uses the shared collision mesh. The Tick GLB and scrape WAV are separate art deliverables awaiting Unreal import and integration.

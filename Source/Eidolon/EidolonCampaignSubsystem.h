@@ -3,6 +3,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "EidolonCampaignSubsystem.generated.h"
 class UEidolonCampaignSave;
+namespace EidolonAbyss { struct Event; }
 namespace EidolonFirstDescent { struct Event; }
 
 USTRUCT(BlueprintType)
@@ -48,6 +49,10 @@ public:
     UFUNCTION(BlueprintPure) bool CanChooseEnding(FName Ending) const;
     UFUNCTION(BlueprintPure, Category="Eidolon|World") bool CanEnterWorldRegion(FName RegionId) const;
     int32 GetFirstDescentCursor() const;
+    int32 GetAuthoredAbyssCompletedFloor() const;
+    int32 GetAuthoredAbyssRevision() const;
+    // The native map adapter attests to the specific encounter or story outcome.
+    bool CommitAuthoredAbyssEvent(const EidolonAbyss::Event& Event);
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
     bool BeginValdrisFirstDescent();

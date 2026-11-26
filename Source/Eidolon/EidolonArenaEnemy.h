@@ -13,6 +13,8 @@ public:
     virtual float TakeDamage(float Amount, const FDamageEvent& Event, AController* Instigator, AActor* Causer) override;
     void Configure(FName Type, int32 Difficulty);
     float GetHealth() const { return Health; }
+protected:
+    virtual void OnLethalDamage();
 private:
     UPROPERTY() TObjectPtr<UStaticMeshComponent> Body;
     float Health = 60.f;

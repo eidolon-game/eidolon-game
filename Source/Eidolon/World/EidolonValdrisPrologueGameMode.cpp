@@ -23,6 +23,7 @@ namespace
     constexpr int32 Reveal = 6;
 
     const FString AbyssMap = TEXT("/Game/Eidolon/Maps/AbyssFloor001");
+    const FString OssuaryMap = TEXT("/Game/Eidolon/Maps/AbyssFloor002");
     const FName PrologueMap = TEXT("/Game/Eidolon/Maps/ValdrisPrologue");
 
     const TCHAR* Display(const TCHAR* English, const TCHAR* Italian)
@@ -115,7 +116,9 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
         Dialogue.Reset();
         return;
     }
-    if (Chapter.Id != 2 && Chapter.Id != 3) return;
+    const int32 CompletedFloor = Campaign->GetAuthoredAbyssCompletedFloor();
+    const bool bOssuaryDescent = Chapter.Id == 4 && CompletedFloor >= 1 && CompletedFloor <= 2;
+    if (Chapter.Id != 2 && Chapter.Id != 3 && !bOssuaryDescent) return;
 
     const int32 Cursor = Campaign->GetFirstDescentCursor();
     const bool bSecondDay = Chapter.Id == 3;
@@ -134,24 +137,25 @@ void AEidolonValdrisPrologueGameMode::Interact(AEidolonCharacter* Player)
         if (!Campaign->FinishSecondDay()) SaveFailure();
         return;
     }
-    if (bSecondDay || (Cursor >= Descent && Cursor <= Return))
+    if (bOssuaryDescent || bSecondDay || (Cursor >= Descent && Cursor <= Return))
     {
         const auto* Entrance = Anchors.Find(Descent);
         const auto* Target = Entrance ? Entrance->Get() : nullptr;
         if (!Target || !QuestInteraction.CanReachTarget(*Player, *Target, Descent, InteractionRange)) return;
 
-        if (Cursor == Return && Campaign->HasPendingFirstDescentSurfaceReturn())
+        if (Chapter.Id == 2 && Cursor == Return && Campaign->HasPendingFirstDescentSurfaceReturn())
         {
             if (!Campaign->CompleteFirstDescentSurfaceReturn()) SaveFailure();
             return;
         }
-        if (!FPackageName::DoesPackageExist(AbyssMap))
+        const FString& Destination = bOssuaryDescent ? OssuaryMap : AbyssMap;
+        if (!FPackageName::DoesPackageExist(Destination))
         {
             PromptOverride = Display(TEXT("The route to the Abyss is unavailable."),
                                      TEXT("Il passaggio per l'Abisso non è disponibile."));
             return;
         }
-        UGameplayStatics::OpenLevel(this, FName(*AbyssMap));
+        UGameplayStatics::OpenLevel(this, FName(*Destination));
         return;
     }
 
@@ -201,7 +205,13 @@ FString AEidolonValdrisPrologueGameMode::GetPrompt() const
             ? Display(TEXT("Speak to the adventurer outside the Guild."), TEXT("Parla con l'avventuriero fuori dalla Gilda."))
             : Display(TEXT("Meet Riven on the first floor of the Abyss."), TEXT("Raggiungi Riven al primo piano dell'Abisso."));
     if (Chapter == 4)
+    {
+        const int32 CompletedFloor = Campaign->GetAuthoredAbyssCompletedFloor();
+        if (CompletedFloor >= 1 && CompletedFloor <= 2)
+            return Display(TEXT("Continue the descent at the Abyss entrance."),
+                           TEXT("Prosegui la discesa dall'ingresso dell'Abisso."));
         return Display(TEXT("Next chapter: the hundredth floor."), TEXT("Prossimo capitolo: il centesimo livello."));
+    }
     if (Chapter != 2) return {};
 
     switch (Campaign->GetFirstDescentCursor())

@@ -75,13 +75,18 @@ float AEidolonArenaEnemy::TakeDamage(float Amount, const FDamageEvent& Event, AC
     Health -= Applied;
     if (Health <= 0.f)
     {
-        if (auto* GI = GetGameInstance())
-            if (auto* C = GI->GetSubsystem<UEidolonCampaignSubsystem>())
-            {
-                const auto Chapter = C->CurrentChapter();
-                if (Chapter.Id == OriginChapter && Chapter.Id != 4 && Chapter.Id != 23) C->RecordObjective(ObjectiveType);
-            }
+        OnLethalDamage();
         Destroy();
     }
     return Applied;
+}
+
+void AEidolonArenaEnemy::OnLethalDamage()
+{
+    if (auto* GI = GetGameInstance())
+        if (auto* C = GI->GetSubsystem<UEidolonCampaignSubsystem>())
+        {
+            const auto Chapter = C->CurrentChapter();
+            if (Chapter.Id == OriginChapter && Chapter.Id != 4 && Chapter.Id != 23) C->RecordObjective(ObjectiveType);
+        }
 }

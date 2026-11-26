@@ -66,9 +66,11 @@ struct FState
     }
     bool Counter(const FAttack& A,float Now)
     {
-        if (Now>=CounterUntil) return false;
+        if (Now>=CounterUntil || !IsAlive() || Now<ReadyAt || Now<StaggerUntil) return false;
+        const bool WasBlocking=bBlocking;
+        bBlocking=false;
+        if (!BeginAttack(A,Now)) { bBlocking=WasBlocking; return false; }
         EndBlock();
-        if (!BeginAttack(A,Now)) return false;
         CounterUntil=0.f; return true;
     }
     void Recover(float Delta,float Now)

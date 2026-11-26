@@ -69,6 +69,8 @@ FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const
     return State && Chapters.IsValidIndex(State->Chapter-1) ? Chapters[State->Chapter-1] : FEidolonChapter();
 }
 int32 UEidolonCampaignSubsystem::GetObjectiveCount() const { return State ? State->ObjectiveCount : 0; }
+int32 UEidolonCampaignSubsystem::GetFloor(bool bStair) const { return State ? (bStair ? State->StairFloor : State->AbyssFloor) : 0; }
+FName UEidolonCampaignSubsystem::GetEnding() const { return State ? State->Ending : NAME_None; }
 int32 UEidolonCampaignSubsystem::GetLevel() const { return State ? 1 + State->Experience / 100 : 1; }
 FName UEidolonCampaignSubsystem::GetRank() const
 {
@@ -118,7 +120,7 @@ bool UEidolonCampaignSubsystem::AdvanceChapter()
     if (C.Id == 4) SetFlag(TEXT("sigil_aegis"));
     if (C.Id == 7) SetFlag(TEXT("sigil_horizon"));
     if (C.Id == 10) ApplyDiscrepancy(TEXT("vareth_survivor"), TEXT("vareth_present"), false);
-    if (C.Id == 22) { ApplyDiscrepancy(TEXT("noah_forgotten"), TEXT("noah_present"), false); SetFlag(TEXT("noah_found_in_oblivion")); }
+    if (C.Id == 22 && !HasFlag(TEXT("noah_found_in_oblivion"))) return false;
     State->Chapter++;
     State->ObjectiveCount = 0;
     return true;

@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "id": "abyss_005",
+  "legacy_id": "abyss.005",
+  "dungeon_id": "abyss",
+  "floor": 5,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Portico spezzato",
+    "en": "Broken Portico"
+  },
+  "cell_cm": 200,
+  "height_cm": 300,
+  "footprint_cm": [
+    2600,
+    2000
+  ],
+  "wall_thickness_cm": 25,
+  "cells": [
+    [9, 0],
+    [10, 0],
+    [5, 1],
+    [6, 1],
+    [7, 1],
+    [8, 1],
+    [9, 1],
+    [10, 1],
+    [11, 1],
+    [12, 1],
+    [0, 2],
+    [1, 2],
+    [2, 2],
+    [5, 2],
+    [6, 2],
+    [7, 2],
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [11, 2],
+    [12, 2],
+    [0, 3],
+    [1, 3],
+    [2, 3],
+    [3, 3],
+    [4, 3],
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [9, 3],
+    [10, 3],
+    [11, 3],
+    [12, 3],
+    [0, 4],
+    [1, 4],
+    [2, 4],
+    [5, 4],
+    [6, 4],
+    [7, 4],
+    [8, 4],
+    [9, 4],
+    [10, 4],
+    [11, 4],
+    [12, 4],
+    [5, 5],
+    [6, 5],
+    [7, 5],
+    [8, 5],
+    [9, 5],
+    [10, 5],
+    [11, 5],
+    [12, 5],
+    [8, 6],
+    [9, 6],
+    [11, 6],
+    [11, 7],
+    [11, 8],
+    [11, 9],
+    [12, 9]
+  ],
+  "entry": [
+    0,
+    3
+  ],
+  "entry_yaw_deg": 0,
+  "checkpoint": [
+    2,
+    3
+  ],
+  "checkpoint_yaw_deg": 0,
+  "encounter": [
+    9,
+    3
+  ],
+  "latch": [
+    12,
+    5
+  ],
+  "exit": [
+    12,
+    9
+  ],
+  "escape_lanes": {
+    "south": {
+      "cells": [
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          11,
+          2
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "refuge": [
+        9,
+        0
+      ]
+    },
+    "north": {
+      "cells": [
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          12,
+          4
+        ]
+      ],
+      "refuge": [
+        8,
+        6
+      ]
+    }
+  },
+  "collision_beam": {
+    "id": "abyss_005_collision_beam",
+    "cell": [
+      11,
+      3
+    ],
+    "dimensions_cm": [
+      70,
+      240,
+      190
+    ]
+  },
+  "side_bridge": {
+    "cells": [
+      [
+        9,
+        4
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        12,
+        4
+      ]
+    ],
+    "height_cm": 28,
+    "width_cm": 150
+  },
+  "gate": {
+    "id": "abyss_005_ram_gate",
+    "from_cell": [
+      11,
+      5
+    ],
+    "to_cell": [
+      11,
+      6
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "open_action": "abyss_005_latch",
+    "requires_durable_completion": true
+  },
+  "encounter_definition": {
+    "id": "abyss_005_marrow_ram_encounter",
+    "creature_id": "abyss_marrow_ram",
+    "spawn_marker": "abyss_005_marrow_ram_01",
+    "spawn_cell": [
+      7,
+      3
+    ],
+    "spawn_yaw_deg": 0,
+    "charge_lane_end": [
+      11,
+      3
+    ],
+    "latch_enablers": [
+      "verified_charge_hits_collision_beam",
+      "confirmed_marrow_ram_defeat"
+    ],
+    "boss": false,
+    "presentation": {
+      "it": "L'Ariete raspa due volte prima di caricare lungo il portico. Le due corsie laterali permettono di evitare l'urto. Sblocca il fermo con un urto confermato sulla traversa oppure con la sconfitta dell'Ariete, poi azionalo dalla passerella laterale.",
+      "en": "The Ram scrapes twice before charging down the portico. Either side lane gives room to evade. A confirmed beam collision or Ram defeat makes the latch available; reach it by the side bridge."
+    }
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_004",
+      "transition": "abyss_004_lower_stair",
+      "requires_completed_floor": 4,
+      "save_required": true
+    },
+    "exit": {
+      "to_floor": "abyss_006",
+      "transition": "abyss_005_lower_stair",
+      "requires_completed_floor": 5,
+      "save_required": true
+    }
+  },
+  "accessibility": {
+    "visual_telegraph_required": true,
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

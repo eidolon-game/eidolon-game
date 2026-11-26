@@ -5,6 +5,7 @@
 
 class AStaticMeshActor;
 class ATargetPoint;
+class AEidolonCenserHagfish;
 class UEidolonCampaignSubsystem;
 
 UCLASS()
@@ -33,6 +34,7 @@ private:
     TWeakObjectPtr<ATargetPoint> Exit;
     TWeakObjectPtr<AStaticMeshActor> Gate;
     TWeakObjectPtr<AStaticMeshActor> Water;
+    TWeakObjectPtr<AEidolonCenserHagfish> Hagfish;
     FVector InitialWaterPosition = FVector::ZeroVector;
     FString Notice;
     bool bBound = false;

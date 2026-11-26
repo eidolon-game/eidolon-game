@@ -105,4 +105,8 @@ Generate `/Game/Eidolon/Maps/AbyssFloor004` with `scripts/create_sluice_floor.py
 
 Activate the west then east sluice, then repeat on a fresh test save in the opposite order. After one activation, the water drops and the gate stays closed. Reload and verify that the first sluice is still open. A failed second save leaves the first activation intact and the gate closed. A successful second save drains the basin, unlocks the ramp and records floor 4 together. Reopen the map to verify the gate stays open. Verify that early entry and interactions through walls cannot grant credit.
 
-The raised footpath is optional. The encounter's Hagfish anchor is reserved for combat integration and the lower stair awaits `AbyssFloor005`.
+The raised footpath is optional. The moored Hagfish activates near the canal. Test the visual warning, sidesteps, one hit per strip and clipping at walls. Test reaching both levers while it is alive. A failed spawn or defeat cannot affect a sluice, and draining the basin removes the hazard. The creature uses placeholder geometry pending GLB import. The lower stair awaits the interactive `AbyssFloor005` package.
+
+## Broken Portico survey
+
+Generate `/Game/Eidolon/Maps/AbyssFloor005Survey` using `scripts/create_marrow_ram_floor.py` in the Unreal Python commandlet. Inspect the beam, the two escape lanes and the bridge route to the latch. The survey uses the open route for geometry inspection. The standalone latch test covers release by impact or defeat, a separate latch interaction, repeated events and retry before a checkpoint is committed. The Ram, gate behavior and latch save integration are pending.

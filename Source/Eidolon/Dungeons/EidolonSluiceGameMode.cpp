@@ -5,6 +5,7 @@
 #include "../Quest/EidolonFirstDescentInteraction.h"
 #include "EidolonAbyssActorBindings.h"
 #include "EidolonAbyssProgression.h"
+#include "EidolonCenserHagfish.h"
 #include "EidolonSluiceRules.h"
 #include "Engine/GameInstance.h"
 #include "Engine/StaticMeshActor.h"
@@ -19,6 +20,7 @@
 namespace
 {
     constexpr double RangeCm = 180.0;
+    constexpr double HagfishHeightCm = 50.0;
     const FName FloorPackage(TEXT("/Game/Eidolon/Maps/AbyssFloor004"));
     const FString NextPackage(TEXT("/Game/Eidolon/Maps/AbyssFloor005"));
     const TCHAR* CheckpointOption = TEXT("AbyssCheckpoint");
@@ -73,7 +75,24 @@ void AEidolonSluiceGameMode::StartPlay()
 
     InitialWaterPosition = Water->GetActorLocation();
     const auto* Campaign = GetCampaign();
-    UpdateSluices(Campaign && CanUseFloor(*Campaign) ? Campaign->GetAbyssSluiceProgress() : 0);
+    const bool bCanUseFloor = Campaign && CanUseFloor(*Campaign);
+    const uint8 Progress = bCanUseFloor ? Campaign->GetAbyssSluiceProgress() : 0;
+    UpdateSluices(Progress);
+
+    if (bCanUseFloor && !EidolonSluice::CanExit(Progress))
+    {
+        const auto* Anchor = EidolonAbyss::FindTaggedActor<ATargetPoint>(
+            *World, TEXT("abyss_004_censer_hagfish_01"));
+        if (Anchor)
+        {
+            FActorSpawnParameters Params;
+            Params.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::DontSpawnIfColliding;
+            Hagfish = World->SpawnActor<AEidolonCenserHagfish>(
+                Anchor->GetActorLocation() + FVector(0, 0, HagfishHeightCm), Anchor->GetActorRotation(), Params);
+        }
+        if (!Hagfish.IsValid())
+            UE_LOG(LogTemp, Warning, TEXT("The optional Hagfish could not be spawned in AbyssFloor004."));
+    }
 }
 
 AActor* AEidolonSluiceGameMode::ChoosePlayerStart_Implementation(AController* Player)
@@ -140,6 +159,10 @@ void AEidolonSluiceGameMode::UpdateSluices(uint8 Progress)
         Basin->SetActorLocation(Progress == 0 ? InitialWaterPosition
             : FVector(InitialWaterPosition.X, InitialWaterPosition.Y, 0.0));
         Basin->SetActorHiddenInGame(bDrained);
+    }
+    if (bDrained)
+    {
+        if (auto* Enemy = Hagfish.Get()) Enemy->Destroy();
     }
 }
 

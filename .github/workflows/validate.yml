@@ -22,11 +22,12 @@ jobs:
           python3 -B scripts/create_ossuary_floor.py --validate
           python3 -B scripts/create_lintel_floor.py --validate
           python3 -B scripts/create_sluice_floor.py --validate
+          python3 -B scripts/create_marrow_ram_floor.py --validate
       - name: Run standalone progression tests
         shell: bash
         run: |
           set -euo pipefail
-          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression ossuary_tick lintel_mantis_attack sluice_progression; do
+          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression ossuary_tick lintel_mantis_attack sluice_progression censer_hagfish_attack marrow_latch; do
             c++ -std=c++17 -Wall -Wextra -Werror -pedantic "tests/$suite.cpp" -o "$RUNNER_TEMP/$suite"
             "$RUNNER_TEMP/$suite"
           done

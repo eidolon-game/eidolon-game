@@ -1,0 +1,1547 @@
+{
+  "schema": 1,
+  "status": "provisional",
+  "units": "meters",
+  "rpg_source_blob": "b6b9741b2dac63bb742ebcc1e1b9d24506d32244",
+  "assets": [
+    {
+      "id": "sword.t1",
+      "family": "sword",
+      "rpg_id": "sword.t1",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t1",
+      "family": "spear",
+      "rpg_id": "spear.t1",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t1",
+      "family": "bow",
+      "rpg_id": "bow.t1",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t1",
+      "family": "staff",
+      "rpg_id": "staff.t1",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t1",
+      "family": "armor",
+      "rpg_id": "armor.t1",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t1",
+      "family": "ore",
+      "rpg_id": "ore.t1",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t2",
+      "family": "sword",
+      "rpg_id": "sword.t2",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t2",
+      "family": "spear",
+      "rpg_id": "spear.t2",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t2",
+      "family": "bow",
+      "rpg_id": "bow.t2",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t2",
+      "family": "staff",
+      "rpg_id": "staff.t2",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t2",
+      "family": "armor",
+      "rpg_id": "armor.t2",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t2",
+      "family": "ore",
+      "rpg_id": "ore.t2",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t3",
+      "family": "sword",
+      "rpg_id": "sword.t3",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t3",
+      "family": "spear",
+      "rpg_id": "spear.t3",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t3",
+      "family": "bow",
+      "rpg_id": "bow.t3",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t3",
+      "family": "staff",
+      "rpg_id": "staff.t3",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t3",
+      "family": "armor",
+      "rpg_id": "armor.t3",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t3",
+      "family": "ore",
+      "rpg_id": "ore.t3",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t4",
+      "family": "sword",
+      "rpg_id": "sword.t4",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t4",
+      "family": "spear",
+      "rpg_id": "spear.t4",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t4",
+      "family": "bow",
+      "rpg_id": "bow.t4",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t4",
+      "family": "staff",
+      "rpg_id": "staff.t4",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t4",
+      "family": "armor",
+      "rpg_id": "armor.t4",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t4",
+      "family": "ore",
+      "rpg_id": "ore.t4",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t5",
+      "family": "sword",
+      "rpg_id": "sword.t5",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t5",
+      "family": "spear",
+      "rpg_id": "spear.t5",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t5",
+      "family": "bow",
+      "rpg_id": "bow.t5",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t5",
+      "family": "staff",
+      "rpg_id": "staff.t5",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t5",
+      "family": "armor",
+      "rpg_id": "armor.t5",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t5",
+      "family": "ore",
+      "rpg_id": "ore.t5",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t6",
+      "family": "sword",
+      "rpg_id": "sword.t6",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t6",
+      "family": "spear",
+      "rpg_id": "spear.t6",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t6",
+      "family": "bow",
+      "rpg_id": "bow.t6",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t6",
+      "family": "staff",
+      "rpg_id": "staff.t6",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t6",
+      "family": "armor",
+      "rpg_id": "armor.t6",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t6",
+      "family": "ore",
+      "rpg_id": "ore.t6",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t7",
+      "family": "sword",
+      "rpg_id": "sword.t7",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t7",
+      "family": "spear",
+      "rpg_id": "spear.t7",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t7",
+      "family": "bow",
+      "rpg_id": "bow.t7",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t7",
+      "family": "staff",
+      "rpg_id": "staff.t7",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t7",
+      "family": "armor",
+      "rpg_id": "armor.t7",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t7",
+      "family": "ore",
+      "rpg_id": "ore.t7",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t8",
+      "family": "sword",
+      "rpg_id": "sword.t8",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t8",
+      "family": "spear",
+      "rpg_id": "spear.t8",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t8",
+      "family": "bow",
+      "rpg_id": "bow.t8",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t8",
+      "family": "staff",
+      "rpg_id": "staff.t8",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t8",
+      "family": "armor",
+      "rpg_id": "armor.t8",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t8",
+      "family": "ore",
+      "rpg_id": "ore.t8",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t9",
+      "family": "sword",
+      "rpg_id": "sword.t9",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t9",
+      "family": "spear",
+      "rpg_id": "spear.t9",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t9",
+      "family": "bow",
+      "rpg_id": "bow.t9",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t9",
+      "family": "staff",
+      "rpg_id": "staff.t9",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t9",
+      "family": "armor",
+      "rpg_id": "armor.t9",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t9",
+      "family": "ore",
+      "rpg_id": "ore.t9",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "sword.t10",
+      "family": "sword",
+      "rpg_id": "sword.t10",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.05,
+        1.05
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "spear.t10",
+      "family": "spear",
+      "rpg_id": "spear.t10",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.09,
+        0.09,
+        2.1
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "bow.t10",
+      "family": "bow",
+      "rpg_id": "bow.t10",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.55,
+        0.06,
+        1.4
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "staff.t10",
+      "family": "staff",
+      "rpg_id": "staff.t10",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.12,
+        0.12,
+        1.75
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "armor.t10",
+      "family": "armor",
+      "rpg_id": "armor.t10",
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "ore.t10",
+      "family": "ore",
+      "rpg_id": "ore.t10",
+      "slot": "material",
+      "dimensions_m": [
+        0.15,
+        0.12,
+        0.1
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "potion.health",
+      "family": "potion",
+      "rpg_id": "potion.health",
+      "slot": "consumable",
+      "dimensions_m": [
+        0.07,
+        0.07,
+        0.14
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "herb.red",
+      "family": "herb",
+      "rpg_id": "herb.red",
+      "slot": "material",
+      "dimensions_m": [
+        0.12,
+        0.08,
+        0.18
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "relic.aurelion",
+      "family": "relic",
+      "rpg_id": "relic.aurelion",
+      "slot": "weapon",
+      "dimensions_m": [
+        0.3,
+        0.3,
+        0.6
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_r",
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.greatsword.prototype",
+      "family": "greatsword",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.18,
+        0.07,
+        1.5
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.dagger.prototype",
+      "family": "dagger",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.07,
+        0.035,
+        0.4
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.axe.prototype",
+      "family": "axe",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.3,
+        0.08,
+        0.85
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.mace.prototype",
+      "family": "mace",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.16,
+        0.16,
+        0.75
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.shield.prototype",
+      "family": "shield",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.6,
+        0.12,
+        0.8
+      ],
+      "pivot": "center",
+      "socket_candidate": "hand_l",
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.clothing.prototype",
+      "family": "clothing",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.8
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.ring.prototype",
+      "family": "ring",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.025,
+        0.025,
+        0.008
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.necklace.prototype",
+      "family": "necklace",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.18,
+        0.025,
+        0.25
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.tool.prototype",
+      "family": "tool",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.24,
+        0.08,
+        0.5
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.sigil.prototype",
+      "family": "sigil",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.08,
+        0.025,
+        0.08
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.journal.prototype",
+      "family": "journal",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.15,
+        0.04,
+        0.22
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.key.prototype",
+      "family": "key",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.06,
+        0.02,
+        0.15
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.heart.prototype",
+      "family": "heart",
+      "rpg_id": null,
+      "slot": "unassigned",
+      "dimensions_m": [
+        0.45,
+        0.45,
+        0.55
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mineral",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.sigil.aegis",
+      "family": "sigil",
+      "rpg_id": null,
+      "slot": "quest",
+      "dimensions_m": [
+        0.08,
+        0.025,
+        0.08
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.sigil.horizon",
+      "family": "sigil",
+      "rpg_id": null,
+      "slot": "quest",
+      "dimensions_m": [
+        0.08,
+        0.025,
+        0.08
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "mixed",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.armor.light",
+      "family": "armor",
+      "rpg_id": null,
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.armor.medium",
+      "family": "armor",
+      "rpg_id": null,
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    },
+    {
+      "id": "prop.armor.heavy",
+      "family": "armor",
+      "rpg_id": null,
+      "slot": "body",
+      "dimensions_m": [
+        0.55,
+        0.32,
+        0.65
+      ],
+      "pivot": "center",
+      "socket_candidate": null,
+      "material": "organic",
+      "collision": "prototype_bounds_only",
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "runtime_unlock": "authority_required"
+    }
+  ]
+}

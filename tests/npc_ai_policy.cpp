@@ -8,6 +8,8 @@ int main() {
  x.role=Role::Priest; x.allyCritical=true; assert(Decide(x)==Intent::Heal);
  x.role=Role::Assassin; assert(Decide(x)==Intent::Flank);
  x.role=Role::Mage; x.inRange=true; assert(Decide(x)==Intent::Cast);
+ x.role=Role::Duelist; assert(Decide(x)==Intent::Counter);
+ x.role=Role::Lancer; x.inRange=false; assert(Decide(x)==Intent::MaintainRange);
  x.seen=false; x.heard=true; assert(Decide(x)==Intent::Search);
  x.recruited=true; x.order=Order::Hold; assert(Decide(x)==Intent::Hold);
  x.health=0; assert(Decide(x)==Intent::Idle);

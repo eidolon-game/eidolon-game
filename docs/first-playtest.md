@@ -222,5 +222,13 @@ Generate `/Game/Eidolon/Maps/AbyssFloor016` with `scripts/create_rootlet_canal.p
 Generate `/Game/Eidolon/Maps/AbyssFloor017` with `scripts/create_suspended_trunks.py` or the campaign generator. Walk the fixed trunk from the west bank to the island. Try the side landing and return before changing the bridge. Check the two Stalkers independently, including a blocked spawn in each sector and both alive. The stable island and control should stay outside both attack volumes.
 
 - From the island, align the empty bridge toward the exit. Try from outside the interaction radius, place a pawn or dynamic obstruction on the bridge and in the rotation path, and attempt again after clearing it. Test a failed checkpoint before the successful attempt. Rotation and the exit gate must remain in their previous state on each rejection.
-- After a successful save, walk to the far bank and return over the bridge. Reload and verify that the aligned pose and gate persist, and that repeating the interaction does not rotate the bridge again. The exit targets `AbyssFloor018` when authored.
+- After a successful save, walk to the far bank and return over the bridge. Reload and verify that the aligned pose and gate persist, and that repeating the interaction does not rotate the bridge again. The exit leads to `AbyssFloor018` once generated.
 - Check rail and landing collision, camera clearance and the suspended bridge art scale in UE 5.6 with both input schemes. The separate model and sound require import and integration.
+
+## Double Clearing
+
+Generate `/Game/Eidolon/Maps/AbyssFloor018` with `scripts/create_double_clearing.py` or the campaign generator. Enter after aligning the Suspended Trunks bridge. Compare the central arch with the side path. Verify that the side path and the latch niche remain usable while both Stalkers are alive.
+
+- Approach the ground Stalker, then the perch. Test both attack orders, a death during windup and a blocked perch landing. Only one Stalker should have an attack warning or active move at a time. Verify that a surviving enemy resumes after its partner aborts or dies and that a failed spawn never blocks either latch step.
+- Test the first detent from out of range and behind cover. Fail the first write, then retry. The first success changes the handle and prompt, with the gate still closed. Retreat, reload, and verify the same intermediate state. Fail the second write and confirm the first detent survives. Retry successfully and verify that the gate and floor completion survive reload.
+- Take the exit after the second detent. The exit targets the future `AbyssFloor019`. Check side-path width, hatch collision, warning readability and controller input in Unreal. Import and bind the separate latch model and both cues.

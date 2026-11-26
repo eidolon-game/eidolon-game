@@ -55,11 +55,14 @@ protected:
     virtual bool BindCompletionActors(UWorld&) { return true; }
     virtual void UpdateCompletionActors(bool) {}
     virtual bool InteractWithControl(AEidolonCharacter& Player, const ATargetPoint& Control);
+    virtual bool TryCompleteControl(UEidolonCampaignSubsystem& Campaign, AEidolonCharacter& Player,
+        const ATargetPoint& Control);
     virtual FString GetControlPrompt() const;
     UEidolonCampaignSubsystem* GetCampaign() const;
     bool CanUseFloor(const UEidolonCampaignSubsystem& Campaign) const;
     bool CanInteractAt(const AEidolonCharacter& Player, const AActor* Marker) const;
     void ClearNotice() { Notice.Reset(); }
+    void ReportCheckpointSaveFailure();
 
 private:
     bool BindFloor();

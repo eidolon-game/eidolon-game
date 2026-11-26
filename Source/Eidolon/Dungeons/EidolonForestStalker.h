@@ -18,8 +18,9 @@ public:
     void Tick(float DeltaSeconds) override;
     float TakeDamage(float Amount, const FDamageEvent& Event,
                      AController* Instigator, AActor* Causer) override;
-    bool ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet);
+    bool ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet, bool bWaitForPlayer = false);
     void EnableCanalGroundFollowing();
+    void SetAttackPartner(AEidolonForestStalker* Other);
 
 private:
     enum class PerchStage { Disabled, Ground, Climb, Waiting, Telegraph, Drop, ReturnToGround };
@@ -29,6 +30,8 @@ private:
     bool ReadSupportZ(const FVector& Position, double Depth, double& SupportZ) const;
     bool ResolveGroundStep(FVector& Position, bool bFollowGrade) const;
     bool CanStartGroundAttack(const FVector& Offset) const;
+    bool IsAttackInProgress() const;
+    bool IsPartnerAttacking() const;
     bool SweepGrounded(const FVector& Movement, FHitResult& Hit, bool bFollowGrade = false);
     void StalkToward(const FVector& Destination, double DeltaSeconds, double Speed);
     void UpdatePose();
@@ -49,7 +52,9 @@ private:
     FVector LastSeen = FVector::ZeroVector;
     FVector LockedDirection = FVector::ZeroVector;
     TWeakObjectPtr<AEidolonCharacter> LockedPlayer;
+    TWeakObjectPtr<AEidolonForestStalker> AttackPartner;
     bool bCanalGroundFollowing = false;
+    bool bAwaitInitialPerchTarget = false;
     PerchStage Perch = PerchStage::Disabled;
     EidolonForestStalker::PerchTravel Flight;
     FVector PerchCenter = FVector::ZeroVector;

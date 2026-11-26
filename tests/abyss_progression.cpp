@@ -85,6 +85,11 @@ int main()
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::SuspendedBridgeControl;
                 break;
+            case DoubleClearingFloor:
+                Clear.Kind = EventKind::DoubleClearingLatchOpened;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::DoubleClearingLatch;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -216,6 +221,26 @@ int main()
             return 1;
         }
 
+        const Event Ratchet{Chapter, Floor, Floor, Revision(State), EventKind::DoubleClearingLatchOpened,
+            Producer::Puzzle, Target::DoubleClearingLatch};
+        if (Floor == DoubleClearingFloor)
+        {
+            Event WrongLatch = Ratchet;
+            WrongLatch.Subject = Target::MarrowLatch;
+            Event WrongProducer = Ratchet;
+            WrongProducer.Source = Producer::Traversal;
+            if (Advance(State, WrongLatch) || Advance(State, WrongProducer))
+            {
+                std::cerr << "The Double Clearing accepted a different latch or producer\n";
+                return 1;
+            }
+        }
+        else if (Advance(State, Ratchet))
+        {
+            std::cerr << "The Double Clearing latch was accepted on another floor\n";
+            return 1;
+        }
+
         if (Floor == FernBasinFloor)
         {
             Event CanalClear = Clear;
@@ -289,6 +314,29 @@ int main()
     {
         std::cerr << "The suspended bridge accepted an invalid alignment or angular direction\n";
         return 1;
+    }
+
+    for (unsigned Value = 0; Value <= 255; ++Value)
+    {
+        const auto Step = static_cast<std::uint8_t>(Value);
+        if (MatchesDoubleClearingLatchProgress(Step, DoubleClearingFloor - 2) != (Value == 0)
+            || MatchesDoubleClearingLatchProgress(Step, DoubleClearingFloor - 1) != (Value < 2)
+            || MatchesDoubleClearingLatchProgress(Step, DoubleClearingFloor) != (Value == 2)
+            || MatchesDoubleClearingLatchProgress(Step, DoubleClearingFloor + 1) != (Value == 2))
+        {
+            std::cerr << "Ratchet save step and completed floor disagreed\n";
+            return 1;
+        }
+        for (unsigned Expected = 0; Expected <= 255; ++Expected)
+        {
+            const auto Next = ProposeDoubleClearingLatchStep(Step, static_cast<std::uint8_t>(Expected));
+            if (Next.has_value() != (Value == Expected && Value < 2)
+                || (Next && static_cast<unsigned>(*Next) != Value + 1))
+            {
+                std::cerr << "The ratchet accepted a stale or invalid step\n";
+                return 1;
+            }
+        }
     }
 
     std::cout << "Abyss: all 100 ordered clears plus floor 90 memory; invalid authority, skip, replay and bounds rejected\n";

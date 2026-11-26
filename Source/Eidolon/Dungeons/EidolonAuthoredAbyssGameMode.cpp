@@ -134,6 +134,13 @@ bool AEidolonAuthoredAbyssGameMode::InteractWithControl(AEidolonCharacter& Playe
     return CanInteractAt(Player, &Control);
 }
 
+bool AEidolonAuthoredAbyssGameMode::TryCompleteControl(UEidolonCampaignSubsystem& Campaign,
+    AEidolonCharacter& Player, const ATargetPoint& Control)
+{
+    return InteractWithControl(Player, Control)
+        && SaveFloorCompletion(Campaign, EidolonAbyss::Producer::Puzzle, Campaign.GetAuthoredAbyssRevision());
+}
+
 void AEidolonAuthoredAbyssGameMode::Interact(AEidolonCharacter* Player)
 {
     using namespace EidolonAbyss;
@@ -163,9 +170,8 @@ void AEidolonAuthoredAbyssGameMode::Interact(AEidolonCharacter* Player)
     if (!Encounter.CompletionControlTag.IsNone())
     {
         const auto* Control = Lever.Get();
-        if (Control && (Encounter.ShortcutBlockTag.IsNone() || ShortcutBlock.IsValid()) &&
-            InteractWithControl(*Player, *Control) &&
-            SaveFloorCompletion(*Campaign, Producer::Puzzle, Campaign->GetAuthoredAbyssRevision()))
+        if (Control && (Encounter.ShortcutBlockTag.IsNone() || ShortcutBlock.IsValid())
+            && TryCompleteControl(*Campaign, *Player, *Control))
         {
             SetGateOpen(true);
         }
@@ -235,13 +241,18 @@ bool AEidolonAuthoredAbyssGameMode::SaveFloorCompletion(UEidolonCampaignSubsyste
                            Encounter.CompletionKind, Source, Encounter.CompletionTarget};
     if (!Campaign.CommitAuthoredAbyssEvent(Completion))
     {
-        Notice = Display(TEXT("Progress could not be saved. Interact to retry."),
-                         TEXT("Impossibile salvare i progressi. Interagisci per riprovare."));
+        ReportCheckpointSaveFailure();
         return false;
     }
 
     Notice.Reset();
     return true;
+}
+
+void AEidolonAuthoredAbyssGameMode::ReportCheckpointSaveFailure()
+{
+    Notice = Display(TEXT("Progress could not be saved. Interact to retry."),
+        TEXT("Impossibile salvare i progressi. Interagisci per riprovare."));
 }
 
 void AEidolonAuthoredAbyssGameMode::CommitEncounter(UEidolonCampaignSubsystem& Campaign)

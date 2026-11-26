@@ -101,6 +101,25 @@ void AEidolonForestStalker::EnableCanalGroundFollowing()
     if (HasAuthority()) bCanalGroundFollowing = true;
 }
 
+void AEidolonForestStalker::SetAttackPartner(AEidolonForestStalker* Other)
+{
+    if (HasAuthority()) AttackPartner = Other != this ? Other : nullptr;
+}
+
+bool AEidolonForestStalker::IsAttackInProgress() const
+{
+    return GetHealth() > 0.0f && !IsActorBeingDestroyed()
+        && (Attack.Current != EidolonForestStalker::Phase::Ready
+            || Perch == PerchStage::Telegraph
+            || (Perch == PerchStage::Drop && !Flight.bAborted));
+}
+
+bool AEidolonForestStalker::IsPartnerAttacking() const
+{
+    const AEidolonForestStalker* Partner = AttackPartner.Get();
+    return Partner && Partner->IsAttackInProgress();
+}
+
 bool AEidolonForestStalker::ReadSupportZ(const FVector& Position, double Depth, double& SupportZ) const
 {
     if (FVector::DistSquared2D(Home, Position) > FMath::Square(HomeRadiusCm)) return false;
@@ -179,7 +198,8 @@ void AEidolonForestStalker::StalkToward(const FVector& Destination, double Delta
     SweepGrounded(Direction * Distance, Hit, true);
 }
 
-bool AEidolonForestStalker::ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet)
+bool AEidolonForestStalker::ConfigurePerch(const FVector& PerchFeet, const FVector& LandingFeet,
+                                          bool bWaitForPlayer)
 {
     using namespace EidolonForestStalker;
     if (!HasAuthority() || Perch != PerchStage::Disabled || Attack.Current != Phase::Ready ||
@@ -204,6 +224,7 @@ bool AEidolonForestStalker::ConfigurePerch(const FVector& PerchFeet, const FVect
     PerchGround = Lower;
     LandingCenter = Landing;
     PerchRemaining = PerchWaitSeconds;
+    bAwaitInitialPerchTarget = bWaitForPlayer && AlreadyUpper && IsPerchPathClear(LandingCenter);
     Perch = AlreadyUpper ? PerchStage::Waiting : PerchStage::Ground;
     return true;
 }
@@ -326,20 +347,26 @@ bool AEidolonForestStalker::TickPerch(AEidolonCharacter* Player, bool bVisible, 
             BeginPerchTravel(PerchStage::Climb, PerchGround, true);
             return true;
         case PerchStage::Waiting:
-            if (bVisible && FVector::DistSquared2D(Player->GetActorLocation(), LandingCenter) <= FMath::Square(PerchPlayerRangeCm)
-                && IsPerchPathClear(LandingCenter, Player))
+            if (bAwaitInitialPerchTarget)
             {
-                Perch = PerchStage::Telegraph;
-                PerchRemaining = PerchWindupSeconds;
-                SetActorRotation((LandingCenter - PerchCenter).GetSafeNormal2D().Rotation());
-                ShowPerchLanding(true);
+                if (!bVisible) return true;
+                bAwaitInitialPerchTarget = false;
             }
-            else
+            if (bVisible && FVector::DistSquared2D(Player->GetActorLocation(), LandingCenter) <= FMath::Square(PerchPlayerRangeCm))
             {
-                PerchRemaining = FMath::Max(0.0, PerchRemaining - DeltaSeconds);
-                if (PerchRemaining <= 0.0 && IsPerchPathClear(PerchGround))
-                    BeginPerchTravel(PerchStage::ReturnToGround, PerchGround, false);
+                if (IsPartnerAttacking()) return true;
+                if (IsPerchPathClear(LandingCenter, Player))
+                {
+                    Perch = PerchStage::Telegraph;
+                    PerchRemaining = PerchWindupSeconds;
+                    SetActorRotation((LandingCenter - PerchCenter).GetSafeNormal2D().Rotation());
+                    ShowPerchLanding(true);
+                    return true;
+                }
             }
+            PerchRemaining = FMath::Max(0.0, PerchRemaining - DeltaSeconds);
+            if (PerchRemaining <= 0.0 && IsPerchPathClear(PerchGround))
+                BeginPerchTravel(PerchStage::ReturnToGround, PerchGround, false);
             return true;
         case PerchStage::Telegraph:
             PerchRemaining = FMath::Max(0.0, PerchRemaining - DeltaSeconds);
@@ -389,7 +416,8 @@ void AEidolonForestStalker::Tick(float DeltaSeconds)
     if (Previous == Phase::Ready)
     {
         const FVector Offset = LastSeen - GetActorLocation();
-        if (Visible && CanStartGroundAttack(Offset) && Attack.Begin(true, Offset.Size2D()))
+        if (Visible && !IsPartnerAttacking() && CanStartGroundAttack(Offset)
+            && Attack.Begin(true, Offset.Size2D()))
         {
             LockedDirection = Offset.GetSafeNormal2D();
             LockedPlayer = Player;

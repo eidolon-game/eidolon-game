@@ -30,6 +30,7 @@ GENERATORS = (
     ("create_hollow_trunk_plates.py", None),
     ("create_rootlet_canal.py", None),
     ("create_suspended_trunks.py", None),
+    ("create_double_clearing.py", None),
 )
 
 

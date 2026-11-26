@@ -266,6 +266,12 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    if (!EidolonAbyss::MatchesDoubleClearingLatchProgress(
+            Checkpoint->AbyssDoubleClearingLatchStep, Authored.CompletedFloor))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -297,7 +303,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled ||
         Event.Kind == EidolonAbyss::EventKind::MirrorsAligned ||
         Event.Kind == EidolonAbyss::EventKind::PincerWinchOpened ||
-        Event.Kind == EidolonAbyss::EventKind::BranchLatchSelected)
+        Event.Kind == EidolonAbyss::EventKind::BranchLatchSelected ||
+        Event.Kind == EidolonAbyss::EventKind::DoubleClearingLatchOpened)
     {
         return false;
     }
@@ -551,6 +558,41 @@ bool UEidolonCampaignSubsystem::CommitAbyssBranchLatch(EidolonBranchLatch::Route
     UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
     Snapshot->AbyssBranchLatchRoute = static_cast<uint8>(*NextRoute);
     Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+uint8 UEidolonCampaignSubsystem::GetAbyssDoubleClearingLatchStep() const
+{
+    return State ? State->AbyssDoubleClearingLatchStep : 0;
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssDoubleClearingLatchStep(uint8 ExpectedStep)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != DoubleClearingFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), DoubleClearingFloor)) return false;
+    const auto NextStep = ProposeDoubleClearingLatchStep(GetAbyssDoubleClearingLatchStep(), ExpectedStep);
+    if (!NextStep) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssDoubleClearingLatchStep = *NextStep;
+    if (*NextStep == DoubleClearingLatchMaxStep)
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, DoubleClearingFloor, DoubleClearingFloor, Revision(Progress),
+            EventKind::DoubleClearingLatchOpened, Producer::Puzzle, Target::DoubleClearingLatch});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
     if (!WriteCheckpoint(Snapshot)) return false;
     State = Snapshot;
     return true;

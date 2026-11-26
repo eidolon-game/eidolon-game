@@ -71,6 +71,8 @@ public:
     bool CommitAbyssPincerWinch(EidolonPincerWinch::Signal Signal, EidolonPincerWinch::Stage ExpectedStage);
     EidolonBranchLatch::Route GetAbyssBranchLatchRoute() const;
     bool CommitAbyssBranchLatch(EidolonBranchLatch::Route VerifiedLatch, EidolonBranchLatch::Route ExpectedRoute);
+    uint8 GetAbyssDoubleClearingLatchStep() const;
+    bool CommitAbyssDoubleClearingLatchStep(uint8 ExpectedStep);
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
     bool BeginValdrisFirstDescent();

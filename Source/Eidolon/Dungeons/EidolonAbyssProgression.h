@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <optional>
 
 namespace EidolonAbyss
@@ -18,6 +19,8 @@ namespace EidolonAbyss
     inline constexpr int HollowTrunkFloor = 15;
     inline constexpr int RootletCanalFloor = 16;
     inline constexpr int SuspendedTrunksFloor = 17;
+    inline constexpr int DoubleClearingFloor = 18;
+    inline constexpr std::uint8_t DoubleClearingLatchMaxStep = 2;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -38,7 +41,8 @@ namespace EidolonAbyss
         FernBasinDrained,
         HollowTrunkPinSeated,
         RootletCounterweightReleased,
-        SuspendedBridgeAligned
+        SuspendedBridgeAligned,
+        DoubleClearingLatchOpened
     };
 
     enum class Producer
@@ -66,7 +70,8 @@ namespace EidolonAbyss
         FernBasinDrains,
         HollowTrunkSocket,
         RootletCounterweight,
-        SuspendedBridgeControl
+        SuspendedBridgeControl,
+        DoubleClearingLatch
     };
 
     struct Progress
@@ -96,6 +101,21 @@ namespace EidolonAbyss
     inline int Revision(const Progress& State)
     {
         return State.CompletedFloor + (State.RicordaHeard ? 1 : 0);
+    }
+
+    inline constexpr bool MatchesDoubleClearingLatchProgress(std::uint8_t Step, int CompletedFloor)
+    {
+        if (Step > DoubleClearingLatchMaxStep) return false;
+        if (CompletedFloor >= DoubleClearingFloor) return Step == DoubleClearingLatchMaxStep;
+        if (CompletedFloor == DoubleClearingFloor - 1) return Step < DoubleClearingLatchMaxStep;
+        return Step == 0;
+    }
+
+    inline std::optional<std::uint8_t> ProposeDoubleClearingLatchStep(std::uint8_t Committed, std::uint8_t Expected)
+    {
+        if (Committed != Expected || Committed >= DoubleClearingLatchMaxStep)
+            return std::nullopt;
+        return static_cast<std::uint8_t>(Committed + 1);
     }
 
     // Source and floor are authenticated by the runtime adapter before reducing.
@@ -213,6 +233,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::SuspendedBridgeAligned || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::SuspendedBridgeControl)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == DoubleClearingFloor)
+        {
+            if (Input.Kind != EventKind::DoubleClearingLatchOpened || Input.Source != Producer::Puzzle ||
+                Input.Subject != Target::DoubleClearingLatch)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

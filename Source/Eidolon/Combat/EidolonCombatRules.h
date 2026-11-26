@@ -7,6 +7,11 @@ enum class EAction : uint8 { Light, Heavy, Charged, Dodge, Block, Counter, Abili
 enum class EDamage : uint8 { Physical, Magic, Fire, Frost, Lightning, Count };
 enum class EOutcome : uint8 { Ignored, Evaded, Parried, Blocked, Hit, GuardBroken };
 
+template<class Key> bool ClaimHit(TSet<Key>& Seen,const Key& Target)
+{
+    if(Seen.Contains(Target)) return false;
+    Seen.Add(Target); return true;
+}
 struct FAttack
 {
     float Damage = 20.f, Stamina = 12.f, Mana = 0.f, Poise = 20.f;

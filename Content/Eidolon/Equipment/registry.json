@@ -1254,12 +1254,14 @@
         4,
         22
       ],
-      "status": "specified",
+      "status": "graybox_source",
       "rights": "All rights reserved",
       "source": "Original department specification",
       "socket_candidate": null,
       "authority": "gameplay_owner",
-      "disclosure": "gameplay_review_required"
+      "disclosure": "chapter_6_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_journal_prototype.obj",
+      "source_units": "m"
     },
     {
       "asset_id": "equipment_prop_key_prototype",
@@ -1305,12 +1307,14 @@
         2.5,
         8
       ],
-      "status": "specified",
+      "status": "graybox_source",
       "rights": "All rights reserved",
       "source": "Original department specification",
       "socket_candidate": null,
       "authority": "gameplay_owner",
-      "disclosure": "gameplay_review_required"
+      "disclosure": "chapter_4_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_sigil_aegis.obj",
+      "source_units": "m"
     },
     {
       "asset_id": "equipment_prop_sigil_horizon",
@@ -1322,12 +1326,14 @@
         2.5,
         8
       ],
-      "status": "specified",
+      "status": "graybox_source",
       "rights": "All rights reserved",
       "source": "Original department specification",
       "socket_candidate": null,
       "authority": "gameplay_owner",
-      "disclosure": "gameplay_review_required"
+      "disclosure": "chapter_7_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_sigil_horizon.obj",
+      "source_units": "m"
     },
     {
       "asset_id": "equipment_prop_armor_light",

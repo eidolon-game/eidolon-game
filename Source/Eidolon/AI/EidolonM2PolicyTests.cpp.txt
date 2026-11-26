@@ -1,4 +1,4 @@
-#include "EidolonM2Policy.h"
+#include "EidolonM2Adapters.h"
 #include <cassert>
 #include <limits>
 using namespace EidolonAI::M2;
@@ -23,5 +23,10 @@ int main(){
  x.target.alive=true; x.target.hostile=false; assert(Decide(x)==Intent::Patrol);
  x.target.hostile=true; x.target.distanceCm=std::numeric_limits<double>::quiet_NaN(); assert(Decide(x)==Intent::Patrol);
  x.target.distanceCm=100; x.actor=Actor::Darius; assert(Decide(x)==Intent::Flee); assert(!CanInteract(x,100,true));
+ x.actor=Actor::Monster; x.target={true,true,true,true,true,false,100,0};
+ CombatView v{true,true,1,2,100,100,100,true,true,true}; assert(RequestAttack(x,v));
+ v.targetTeam=1; assert(!RequestAttack(x,v)); v.targetTeam=2; v.distanceCm=151; assert(!RequestAttack(x,v));
+ assert(QuestId(Actor::Noah)=="noah" && SaveId(Actor::Noah)=="npc_noah");
+ assert(Propose(x,"kael").semantic=="attack");
  x.snapshot.committed=false; assert(Decide(x)==Intent::Dormant);
 }

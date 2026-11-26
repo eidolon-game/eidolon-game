@@ -1,0 +1,11 @@
+# Department 06 — Save & Discrepancy handoff
+
+Base: campaign foundation fc9cf93; stacked on PR #6. Canon: eidolon-docs develop narrative/story.md. No shared files changed because campaign ownership/integration must be coordinated.
+
+Implemented source: isolated reality state, optimistic revision guard, copy/validate/commit transactions, canonical event IDs, original vs current memory, four ending choices, two-generation SaveGame storage for ten slots, and Unreal automation test source. Not compiled or executed.
+
+Integration contract: CampaignSubsystem remains the progression authority. Its owner must call reality Apply on chapter 2/10 transitions and explicit chapter 20/21/22 scene triggers; synchronize flags and campaign ending in one candidate snapshot before publishing. Do not call both legacy ApplyDiscrepancy and new revision mutation independently. Quest/AI/UI read committed snapshots; no direct writes. Noah recovered in Oblivion is not automatically present in prime reality. Vareth and survivor remain in Oblivion; final restoration/passages require richer world projection. The secret ending uses existing lost_memories/eidolon_aid/origin_truth gates pending Narrative quest IDs.
+
+Persistence: serialize existing UEidolonCampaignSave using SaveGameToMemory into CampaignBytes, preserve all schema-1 fields, then Store an envelope. No automatic migration yet: reconstruct historical events from chapter and explicit flags, reject ambiguous chapter 22 state rather than guessing; keep original EidolonCampaign01 untouched. Never silently start a new campaign on corruption. Slot 0–9 is a proposed logical mapping; autosave/checkpoint scheduling and platform storage policy pending. Two-copy readback is recovery support, not guaranteed atomic disk writes or cryptographic corruption detection. Future schema versions must not be overwritten.
+
+Remaining: director approval for adapter, migration implementation and fixtures, full invariant validation (including NPC projections, region-local data, progression consistency), event definition assets, delegate publication, asynchronous/platform save coordination, checkpoint/autosave policy, save corruption tests, full ending consequences and all chapter reachability. UE5.6 build and automation runs required. No integration, approval or playable build claimed.

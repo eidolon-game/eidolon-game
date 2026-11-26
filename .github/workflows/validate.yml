@@ -19,11 +19,12 @@ jobs:
         run: |
           python3 scripts/create_valdris_prologue.py --validate
           python3 scripts/create_first_descent_floor.py --validate
+          python3 -B scripts/create_ossuary_floor.py --validate
       - name: Run standalone progression tests
         shell: bash
         run: |
           set -euo pipefail
-          for suite in first_descent_policy world_access first_descent_interaction_range; do
+          for suite in first_descent_policy world_access first_descent_interaction_range abyss_progression; do
             c++ -std=c++17 -Wall -Wextra -Werror -pedantic "tests/$suite.cpp" -o "$RUNNER_TEMP/$suite"
             "$RUNNER_TEMP/$suite"
           done

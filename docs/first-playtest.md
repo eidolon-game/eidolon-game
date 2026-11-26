@@ -69,3 +69,9 @@ These maps use graybox geometry and interaction text. Character staging, final e
 ## The Weight of Memories
 
 From the chapter 3 checkpoint after Noah's reveal, return to the Abyss entrance in Valdris. On the first floor, find the Riven anchor beyond the checkpoint and finish the conversation. Test that wrong or obscured targets leave the checkpoint unchanged. Reload after the saved dialogue and confirm it is not repeated. Use the surface exit, then acknowledge the adventurer's warning near the Guild. Confirm that the chapter 4 checkpoint keeps Noah's presence and Riven's conversation. Riven and the adventurer use interaction markers in this graybox.
+
+## Ossuary traversal survey
+
+Run `python3 -B scripts/create_ossuary_floor.py --validate` to verify the authored floor-two connectivity. After building the editor, execute `scripts/create_ossuary_floor.py` with the same Unreal Python commandlet used above and open `/Game/Eidolon/Maps/AbyssFloor002Survey`. Walk from the stair to the ring and the optional alcove. Check both sidestep lanes, the 110 cm niche, and the passage to the next stair. The survey leaves the gate open and reserves actor tags for the future encounter. Generating the survey requires UE 5.6.
+
+The standalone `abyss_progression` suite exercises 100 clears in order, the floor 90 memory receipt and the floor 100 Guardian event. Connecting the policy to native encounters and checkpoint writes remains a runtime task.

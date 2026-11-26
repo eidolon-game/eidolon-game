@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "id": "abyss_002",
+  "legacy_id": "abyss.002",
+  "dungeon_id": "abyss",
+  "floor": 2,
+  "family": "catacombs",
+  "status": "authored_graybox_unintegrated",
+  "display_name": {
+    "it": "Ossario degli Archi Bassi",
+    "en": "Low-Arch Ossuary"
+  },
+  "cell_cm": 200,
+  "height_cm": 300,
+  "footprint_cm": [
+    3400,
+    2400
+  ],
+  "wall_thickness_cm": 25,
+  "ceiling_thickness_cm": 18,
+  "floor_thickness_cm": 18,
+  "cells": [
+    [14, 0],
+    [15, 0],
+    [16, 0],
+    [8, 1],
+    [9, 1],
+    [10, 1],
+    [11, 1],
+    [12, 1],
+    [13, 1],
+    [14, 1],
+    [15, 1],
+    [16, 1],
+    [8, 2],
+    [9, 2],
+    [14, 2],
+    [15, 2],
+    [16, 2],
+    [3, 3],
+    [4, 3],
+    [5, 3],
+    [6, 3],
+    [7, 3],
+    [8, 3],
+    [3, 4],
+    [4, 4],
+    [5, 4],
+    [6, 4],
+    [7, 4],
+    [8, 4],
+    [3, 5],
+    [4, 5],
+    [7, 5],
+    [8, 5],
+    [0, 6],
+    [1, 6],
+    [2, 6],
+    [3, 6],
+    [4, 6],
+    [7, 6],
+    [8, 6],
+    [0, 7],
+    [1, 7],
+    [2, 7],
+    [3, 7],
+    [4, 7],
+    [5, 7],
+    [6, 7],
+    [7, 7],
+    [8, 7],
+    [3, 8],
+    [4, 8],
+    [5, 8],
+    [6, 8],
+    [7, 8],
+    [8, 8],
+    [7, 9],
+    [7, 10],
+    [8, 10],
+    [7, 11],
+    [8, 11]
+  ],
+  "entry": [
+    16,
+    1
+  ],
+  "entry_yaw_deg": 180,
+  "checkpoint": [
+    14,
+    1
+  ],
+  "encounter": [
+    8,
+    4
+  ],
+  "exit": [
+    8,
+    11
+  ],
+  "secret": [
+    1,
+    7
+  ],
+  "blocked_island": [
+    [5, 5],
+    [6, 5],
+    [5, 6],
+    [6, 6]
+  ],
+  "gate": {
+    "id": "abyss_002_ossuary_gate",
+    "from_cell": [
+      7,
+      8
+    ],
+    "to_cell": [
+      7,
+      9
+    ],
+    "clear_width_cm": 150,
+    "clear_height_cm": 240,
+    "requires": "abyss_002_ossuary_encounter_committed"
+  },
+  "ossuary_tick_niche": {
+    "cell": [
+      9,
+      4
+    ],
+    "entrance_cell": [
+      8,
+      4
+    ],
+    "clear_width_cm": 110,
+    "clear_height_cm": 110,
+    "spawn_position_cm": [
+      1900,
+      900,
+      0
+    ],
+    "leap_lane_end_cm": [
+      1500,
+      900,
+      0
+    ],
+    "sidestep_cells": [
+      [
+        8,
+        3
+      ],
+      [
+        8,
+        5
+      ]
+    ],
+    "player_walkable": false
+  },
+  "encounter_definition": {
+    "id": "abyss_002_ossuary_encounter",
+    "creature_id": "abyss_ossuary_tick",
+    "required_spawn_ids": [
+      "abyss_002_ossuary_tick_01"
+    ],
+    "activation_cell": [
+      8,
+      4
+    ],
+    "completion": "confirmed_required_defeat_and_durable_receipt",
+    "defeat_or_spawn_failure": "retry_from_checkpoint",
+    "boss": false,
+    "presentation": {
+      "it": "Una sola Zecca d'ossario. Il raschio dalla nicchia anticipa la posa di caricamento; lascia al giocatore entrambe le vie laterali. Dopo un salto a vuoto, gli uncini restano incastrati per la finestra di contrattacco.",
+      "en": "One Ossuary Tick. A scrape from the niche cues the crouching telegraph; keep both sidestep lanes clear. After a missed leap, the hooks stick in the stone during the counterattack window."
+    }
+  },
+  "connections": {
+    "entry": {
+      "from_floor": "abyss_001",
+      "transition": "abyss_001_lower_stair",
+      "mode": "later_descent_only",
+      "save_required": true,
+      "first_descent_surface_return_preserved": true
+    },
+    "exit": {
+      "to_floor": "abyss_003",
+      "transition": "abyss_002_lower_stair",
+      "mode": "validated_floor_transition",
+      "save_required": true
+    }
+  },
+  "optional_alcove": {
+    "id": "abyss_002_burial_shelf",
+    "required": false,
+    "reward": null
+  },
+  "accessibility": {
+    "visual_telegraph_required": true,
+    "color_only_cues": false,
+    "mandatory_timed_traversal": false
+  },
+  "provenance": "Original EIDOLON graybox layout. All rights reserved."
+}

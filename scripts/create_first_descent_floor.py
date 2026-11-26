@@ -82,15 +82,15 @@ def center(cell, size):
     return tuple(coordinate * size + size / 2 for coordinate in cell)
 
 
-def build_map(unreal, layout, cells, gate):
+def create_graybox(unreal, map_package, mode_path):
     assets = unreal.EditorAssetLibrary
-    if assets.does_asset_exist(MAP_PACKAGE):
-        unreal.log("EIDOLON Abyss floor exists. Reusing the saved map.")
-        return
+    if assets.does_asset_exist(map_package):
+        unreal.log(f"{map_package} exists. Reusing the saved map.")
+        return None
 
     if not assets.does_directory_exist(MAP_FOLDER) and not assets.make_directory(MAP_FOLDER):
         raise RuntimeError("Failed to create the Eidolon Maps folder.")
-    mode_class = unreal.load_class(None, MODE_CLASS)
+    mode_class = unreal.load_class(None, mode_path)
     if not mode_class:
         raise RuntimeError("Build EidolonEditor before generating the Abyss floor.")
     editor = unreal.EditorLoadingAndSavingUtils
@@ -126,6 +126,10 @@ def build_map(unreal, layout, cells, gate):
         component.set_collision_profile_name("BlockAllDynamic" if movable else "BlockAll")
         actor.set_actor_scale3d(unreal.Vector(*(dimension / 100 for dimension in dimensions)))
 
+    return editor, world, spawn, box
+
+
+def build_shell(layout, cells, box, wall_openings=()):
     size = layout["cell_cm"]
     height = layout["height_cm"]
     for cell in sorted(cells):
@@ -134,13 +138,23 @@ def build_map(unreal, layout, cells, gate):
         box(f"floor_{label}", (x, y, -FLOOR_THICKNESS / 2), (size, size, FLOOR_THICKNESS))
         box(f"ceiling_{label}", (x, y, height + FLOOR_THICKNESS / 2), (size, size, FLOOR_THICKNESS))
         for dx, dy in DIRECTIONS:
-            if (cell[0] + dx, cell[1] + dy) in cells:
+            adjacent = (cell[0] + dx, cell[1] + dy)
+            if adjacent in cells or (cell, adjacent) in wall_openings:
                 continue
             span = size + WALL_THICKNESS
             dimensions = (WALL_THICKNESS, span, height) if dx else (span, WALL_THICKNESS, height)
             box(f"wall_{label}_{dx}_{dy}",
                 (x + dx * size / 2, y + dy * size / 2, height / 2), dimensions)
 
+
+def build_map(unreal, layout, cells, gate):
+    graybox = create_graybox(unreal, MAP_PACKAGE, MODE_CLASS)
+    if graybox is None:
+        return
+    editor, world, spawn, box = graybox
+    build_shell(layout, cells, box)
+    size = layout["cell_cm"]
+    height = layout["height_cm"]
     gate_x = gate[0] * size
     _, gate_y = center(gate, size)
     jamb_width = (size - GATE_WIDTH) / 2

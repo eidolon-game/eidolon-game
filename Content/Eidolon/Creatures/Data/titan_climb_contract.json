@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "status": "proposed",
+  "units": "centimeters",
+  "coordinateSpace": "segment-local",
+  "segments": [
+    {
+      "id": "leg_front_left",
+      "anchors": [
+        {
+          "id": "ankle",
+          "position": [
+            0,
+            0,
+            100
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "shin",
+          "position": [
+            0,
+            0,
+            250
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "torso_left",
+      "anchors": [
+        {
+          "id": "shoulder",
+          "position": [
+            0,
+            0,
+            100
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "dorsal",
+          "position": [
+            0,
+            0,
+            250
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "leg_front_left:ankle",
+      "to": "leg_front_left:shin",
+      "type": "climb"
+    },
+    {
+      "from": "torso_left:shoulder",
+      "to": "torso_left:dorsal",
+      "type": "climb"
+    }
+  ],
+  "constraints": {
+    "maxReachCm": 160,
+    "requireRuntimeSweep": true,
+    "requireSegmentTransform": true,
+    "requireSafeDetach": true,
+    "crossSegmentEdges": "runtime validated only"
+  },
+  "notes": "Disconnected example segments only; not a traversable route or mesh. Cross-segment transitions require runtime validation. Legacy v1 retained in Design/CreatureArt.",
+  "creatureId": "titan_roaming"
+}

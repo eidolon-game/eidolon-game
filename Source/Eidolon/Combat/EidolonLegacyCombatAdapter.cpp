@@ -24,8 +24,9 @@ bool UEidolonLegacyCombatAdapter::ExecuteIntent(FName Intent,AActor* Target)
 {
  auto* C=Combat(); if(!C) return false;
  if(Intent==TEXT("defend")) return C->BeginGuard();
+ if(Intent!=TEXT("counter")) C->EndGuard();
  if(Intent!=TEXT("attack") && Intent!=TEXT("counter")) return false;
  const auto P=EidolonCombat::PlayerAttack(false);
- if(!C->IsInRange(Target,P.Reach)) return false;
- return Intent==TEXT("counter")?C->CounterAttack():C->Attack(false);
+ if(Intent==TEXT("counter") && !C->IsInRange(Target,P.Reach)) return false;
+ return Intent==TEXT("counter")?C->CounterAttack():C->AttackEnemy(Target);
 }

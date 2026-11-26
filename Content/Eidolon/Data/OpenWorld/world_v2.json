@@ -1,0 +1,318 @@
+{
+  "schema": 2,
+  "units": "metres",
+  "status": "graybox_proposal",
+  "nodes": [
+    {
+      "id": "valdris",
+      "x": 0,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 1,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "valdris_outer",
+      "x": 1500,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 8
+    },
+    {
+      "id": "ignareth",
+      "x": 9000,
+      "y": 4000,
+      "biome": "volcanic",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "ignareth_outer",
+      "x": 10500,
+      "y": 4000,
+      "biome": "volcanic",
+      "chapter": 8
+    },
+    {
+      "id": "thalassar",
+      "x": -10000,
+      "y": -3000,
+      "biome": "coast",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "thalassar_outer",
+      "x": -8500,
+      "y": -3000,
+      "biome": "coast",
+      "chapter": 8
+    },
+    {
+      "id": "nordheim",
+      "x": 0,
+      "y": 11000,
+      "biome": "snow",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "nordheim_outer",
+      "x": 1500,
+      "y": 11000,
+      "biome": "snow",
+      "chapter": 8
+    },
+    {
+      "id": "solkar",
+      "x": 6000,
+      "y": -10000,
+      "biome": "desert",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "solkar_outer",
+      "x": 7500,
+      "y": -10000,
+      "biome": "desert",
+      "chapter": 8
+    },
+    {
+      "id": "elyndor",
+      "x": -8000,
+      "y": 7000,
+      "biome": "forest",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "elyndor_outer",
+      "x": -6500,
+      "y": 7000,
+      "biome": "forest",
+      "chapter": 8
+    },
+    {
+      "id": "aureth",
+      "x": 10000,
+      "y": -4000,
+      "biome": "highlands",
+      "chapter": 8,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "aureth_outer",
+      "x": 11500,
+      "y": -4000,
+      "biome": "highlands",
+      "chapter": 8
+    },
+    {
+      "id": "vareth",
+      "x": -4000,
+      "y": -9000,
+      "biome": "ruins",
+      "chapter": 10,
+      "inner_radius": 500,
+      "outer_radius": 1500
+    },
+    {
+      "id": "vareth_outer",
+      "x": -2500,
+      "y": -9000,
+      "biome": "ruins",
+      "chapter": 10
+    },
+    {
+      "id": "valdris_giants",
+      "x": 1000,
+      "y": 0,
+      "biome": "plains",
+      "chapter": 5
+    },
+    {
+      "id": "valdris_home",
+      "x": -100,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris_guild",
+      "x": 100,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris_abyss",
+      "x": 0,
+      "y": 0,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris_forge",
+      "x": -150,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    },
+    {
+      "id": "valdris_dormitory",
+      "x": 150,
+      "y": 100,
+      "biome": "urban",
+      "chapter": 1
+    }
+  ],
+  "edges": [
+    {
+      "a": "valdris_outer",
+      "b": "ignareth_outer",
+      "chapter": 8
+    },
+    {
+      "a": "ignareth_outer",
+      "b": "ignareth",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "thalassar_outer",
+      "chapter": 8
+    },
+    {
+      "a": "thalassar_outer",
+      "b": "thalassar",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "nordheim_outer",
+      "chapter": 8
+    },
+    {
+      "a": "nordheim_outer",
+      "b": "nordheim",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "solkar_outer",
+      "chapter": 8
+    },
+    {
+      "a": "solkar_outer",
+      "b": "solkar",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "elyndor_outer",
+      "chapter": 8
+    },
+    {
+      "a": "elyndor_outer",
+      "b": "elyndor",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "aureth_outer",
+      "chapter": 8
+    },
+    {
+      "a": "aureth_outer",
+      "b": "aureth",
+      "chapter": 8
+    },
+    {
+      "a": "valdris_outer",
+      "b": "vareth_outer",
+      "chapter": 10
+    },
+    {
+      "a": "vareth_outer",
+      "b": "vareth",
+      "chapter": 10
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_giants",
+      "chapter": 5
+    },
+    {
+      "a": "valdris_giants",
+      "b": "valdris_outer",
+      "chapter": 8
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_home",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_guild",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_abyss",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_forge",
+      "chapter": 1
+    },
+    {
+      "a": "valdris",
+      "b": "valdris_dormitory",
+      "chapter": 1
+    }
+  ],
+  "variants": [
+    {
+      "id": "vareth_erased",
+      "node": "vareth",
+      "after_chapter": 10,
+      "visible": false
+    },
+    {
+      "id": "valdris_home_noah_present",
+      "node": "valdris_home",
+      "after_chapter": 2
+    },
+    {
+      "id": "valdris_home_noah_erased",
+      "node": "valdris_home",
+      "during_chapter": 22
+    }
+  ],
+  "id_aliases": {
+    "valdris.outer": "valdris_outer",
+    "ignareth.outer": "ignareth_outer",
+    "thalassar.outer": "thalassar_outer",
+    "nordheim.outer": "nordheim_outer",
+    "solkar.outer": "solkar_outer",
+    "elyndor.outer": "elyndor_outer",
+    "aureth.outer": "aureth_outer",
+    "vareth.outer": "vareth_outer",
+    "valdris.giants": "valdris_giants",
+    "valdris.home": "valdris_home",
+    "valdris.guild": "valdris_guild",
+    "valdris.abyss": "valdris_abyss",
+    "valdris.forge": "valdris_forge",
+    "valdris.dormitory": "valdris_dormitory"
+  }
+}

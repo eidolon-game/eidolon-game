@@ -12,6 +12,7 @@ namespace EidolonAbyss
     inline constexpr int PincerWinchFloor = 8;
     inline constexpr int BranchLatchFloor = 9;
     inline constexpr int RootclawFloor = 10;
+    inline constexpr int ObliqueClearingFloor = 12;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -26,14 +27,16 @@ namespace EidolonAbyss
         BranchLatchSelected,
         RootclawDefeated,
         RicordaHeard,
-        GuardianDefeated
+        GuardianDefeated,
+        FloorTraversed
     };
 
     enum class Producer
     {
         Encounter,
         Puzzle,
-        StorySequence
+        StorySequence,
+        Traversal
     };
 
     enum class Target
@@ -47,7 +50,8 @@ namespace EidolonAbyss
         BranchLatches,
         Rootclaw,
         NamelessSpeaker,
-        AbyssGuardian
+        AbyssGuardian,
+        TraversalExit
     };
 
     struct Progress
@@ -158,6 +162,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::RootclawDefeated || Input.Source != Producer::Encounter ||
                 Input.Subject != Target::Rootclaw)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == ObliqueClearingFloor)
+        {
+            if (Input.Kind != EventKind::FloorTraversed || Input.Source != Producer::Traversal ||
+                Input.Subject != Target::TraversalExit)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

@@ -57,7 +57,7 @@ void AEidolonAuthoredAbyssGameMode::StartPlay()
     const bool bCanUseFloor = Campaign && CanUseFloor(*Campaign);
     const bool bCompleted = bCanUseFloor && Campaign->GetAuthoredAbyssCompletedFloor() >= GetEncounter().Floor;
     SetGateOpen(bCompleted);
-    if (bCanUseFloor && !bCompleted) SpawnOptionalThreats();
+    if (bCanUseFloor && !bCompleted && !GetEncounter().IsTraversal()) SpawnOptionalThreats();
 }
 
 AActor* AEidolonAuthoredAbyssGameMode::ChoosePlayerStart_Implementation(AController* Player)
@@ -87,24 +87,29 @@ bool AEidolonAuthoredAbyssGameMode::BindFloor()
 {
     auto* World = GetWorld();
     const auto Encounter = GetEncounter();
-    if (!World || Encounter.Floor < 2 || !Encounter.EnemyClass
+    if (!World || Encounter.Floor < 2
         || UGameplayStatics::GetCurrentLevelName(this) != FloorName(Encounter.Floor)
         || FPackageName::GetLongPackagePath(World->GetPackage()->GetName()) != MapFolder)
     {
         return false;
     }
 
+    Exit = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("exit")));
+    if (!Exit.IsValid()
+        || !EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("player_start")))
+        || !EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("checkpoint_start"))))
+        return false;
+    if (Encounter.IsTraversal()) return true;
+    if (!Encounter.EnemyClass) return false;
+
     Arena = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("encounter")));
     EnemySpawn = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, Encounter.SpawnTag);
-    Exit = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("exit")));
     Gate = EidolonAbyss::FindTaggedActor<AStaticMeshActor>(*World, Encounter.GateTag);
     if (Encounter.bRequiresLever)
         Lever = EidolonAbyss::FindTaggedActor<ATargetPoint>(*World, FloorTag(Encounter.Floor, TEXT("lever")));
 
-    return Arena.IsValid() && EnemySpawn.IsValid() && Exit.IsValid() && Gate.IsValid()
-        && (!Encounter.bRequiresLever || Lever.IsValid())
-        && EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("player_start")))
-        && EidolonAbyss::FindTaggedActor<APlayerStart>(*World, FloorTag(Encounter.Floor, TEXT("checkpoint_start")));
+    return Arena.IsValid() && EnemySpawn.IsValid() && Gate.IsValid()
+        && (!Encounter.bRequiresLever || Lever.IsValid());
 }
 
 bool AEidolonAuthoredAbyssGameMode::CanInteractAt(const AEidolonCharacter& Player, const ATargetPoint* Marker) const
@@ -118,13 +123,28 @@ bool AEidolonAuthoredAbyssGameMode::CanInteractAt(const AEidolonCharacter& Playe
 void AEidolonAuthoredAbyssGameMode::Interact(AEidolonCharacter* Player)
 {
     auto* Campaign = GetCampaign();
-    if (!bFloorBound || !Gate.IsValid() || !IsValid(Player) || !Campaign || !CanUseFloor(*Campaign))
+    if (!bFloorBound || !IsValid(Player) || !Campaign || !CanUseFloor(*Campaign))
         return;
 
     const auto Encounter = GetEncounter();
-    if (Campaign->GetAuthoredAbyssCompletedFloor() >= Encounter.Floor)
+    if (!Encounter.IsTraversal() && !Gate.IsValid()) return;
+
+    const bool bCompleted = Campaign->GetAuthoredAbyssCompletedFloor() >= Encounter.Floor;
+    if (bCompleted || Encounter.IsTraversal())
     {
         if (!CanInteractAt(*Player, Exit.Get())) return;
+        if (!bCompleted)
+        {
+            using namespace EidolonAbyss;
+            const Event Arrival{Chapter, Encounter.Floor, Encounter.Floor, Campaign->GetAuthoredAbyssRevision(),
+                Encounter.CompletionKind, Producer::Traversal, Encounter.CompletionTarget};
+            if (!Campaign->CommitAuthoredAbyssEvent(Arrival))
+            {
+                Notice = Display(TEXT("Progress could not be saved. Interact to retry."),
+                    TEXT("Impossibile salvare i progressi. Interagisci per riprovare."));
+                return;
+            }
+        }
         const FString Destination = FPaths::Combine(MapFolder, FloorName(Encounter.Floor + 1));
         if (!FPackageName::DoesPackageExist(Destination))
         {
@@ -244,6 +264,7 @@ FString AEidolonAuthoredAbyssGameMode::GetPrompt() const
     const auto Encounter = GetEncounter();
     if (Campaign->GetAuthoredAbyssCompletedFloor() >= Encounter.Floor)
         return Display(TEXT("Interact at the stairs down."), TEXT("Interagisci alla scala verso il basso."));
+    if (Encounter.IsTraversal()) return Display(Encounter.FightEnglish, Encounter.FightItalian);
     if (bDefeatAwaitingReceipt && Encounter.bRequiresLever)
         return Display(TEXT("Pull the lever by the stair."), TEXT("Aziona la leva accanto alla scala."));
     if (IsValid(ActiveEnemy.Get()))

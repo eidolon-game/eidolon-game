@@ -174,5 +174,13 @@ Generate `/Game/Eidolon/Maps/AbyssFloor010` with `scripts/create_rootclaw_floor.
 Generate `/Game/Eidolon/Maps/AbyssFloor011` with `scripts/create_buried_forest_entry.py` or the campaign generator. Enter through the stair after Rootclaw's defeat has been saved. Try both the raised dry path and the shallow marsh, then pass under the root arch to reach the encounter.
 
 - Test the Stalker's line of sight from the approach and behind roots. Break line of sight before the attack locks, then repeat after the pounce direction locks. Check the ground warning, one impact per attack, the longer recovery on a miss, and the return to the ambush after losing sight of the player.
-- Block the spawn, retry, then defeat the registered Stalker. Test a failed save and retry before advancing. After a successful save, reload and confirm the gate stays open and the Stalker stays defeated. The exit targets the future interactive floor 12.
+- Block the spawn, retry, then defeat the registered Stalker. Test a failed save and retry before advancing. After a successful save, reload and confirm the gate stays open and the Stalker stays defeated. The exit leads to `AbyssFloor012` once generated.
 - Check route clearance, ledges, sightlines, and the arch with mouse and keyboard and with a controller. The map and enemy use placeholder art. The static Root Stalker and Root Arch meshes and the ambience preview require Unreal import and runtime integration.
+
+## Oblique Clearing
+
+Generate `/Game/Eidolon/Maps/AbyssFloor012` with `scripts/create_oblique_clearing.py` or the campaign generator. Enter from the Threshold after saving the Stalker defeat. Walk the incline to the next stair, then repeat via the overlook. Check both directions along the ramp, the join to the overlook and the camera near the ledge. The route has no enemies or time limit.
+
+- Try direct map entry with floor 11 incomplete. Verify the stair does not grant credit. On an eligible save, try interacting out of range, behind cover and while defeated.
+- Fail the checkpoint write at the stair. Verify progress stays on floor 11 and the player stays at the stair. Retry and check that the floor 12 credit survives reload. Interact again and verify no duplicate progress occurs.
+- The stair leads to `AbyssFloor013` once generated. With that package absent, the stair reports an unavailable route and retains the saved completion. Confirm that the authored checkpoint remains reachable on reload.

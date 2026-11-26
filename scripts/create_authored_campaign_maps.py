@@ -22,6 +22,7 @@ GENERATORS = (
     ("create_urn_fork_floor.py", None),
     ("create_rootclaw_floor.py", None),
     ("create_buried_forest_entry.py", None),
+    ("create_oblique_clearing.py", None),
 )
 
 

@@ -25,6 +25,8 @@ struct FEidolonAbyssEncounter
     const TCHAR* FightItalian = TEXT("");
     EidolonAbyss::EventKind CompletionKind = EidolonAbyss::EventKind::FloorCleared;
     EidolonAbyss::Target CompletionTarget = EidolonAbyss::Target::FloorEncounter;
+
+    bool IsTraversal() const { return CompletionKind == EidolonAbyss::EventKind::FloorTraversed; }
 };
 
 UCLASS(Abstract)

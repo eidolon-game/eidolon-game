@@ -52,6 +52,11 @@ int main()
                 Clear.Kind = EventKind::RootclawDefeated;
                 Clear.Subject = Target::Rootclaw;
                 break;
+            case ObliqueClearingFloor:
+                Clear.Kind = EventKind::FloorTraversed;
+                Clear.Source = Producer::Traversal;
+                Clear.Subject = Target::TraversalExit;
+                break;
         }
         const Event Rejected[]{
             {Chapter, Floor + 1, Floor + 1, Revision(State), Clear.Kind, Clear.Source, Clear.Subject},
@@ -90,6 +95,28 @@ int main()
         else if (MemoryProgress)
         {
             std::cerr << "Ricorda accepted off floor 90\n";
+            return 1;
+        }
+
+        const Event Traverse{Chapter, Floor, Floor, Revision(State), EventKind::FloorTraversed,
+            Producer::Traversal, Target::TraversalExit};
+        if (Floor == ObliqueClearingFloor)
+        {
+            const Event Encounter{Chapter, Floor, Floor, Revision(State), EventKind::FloorCleared,
+                Producer::Encounter, Target::FloorEncounter};
+            Event WrongAnchor = Traverse;
+            WrongAnchor.Subject = Target::FloorEncounter;
+            Event WrongSource = Traverse;
+            WrongSource.Source = Producer::Encounter;
+            if (Advance(State, Encounter) || Advance(State, WrongAnchor) || Advance(State, WrongSource))
+            {
+                std::cerr << "The Oblique Clearing allowed a substitute for reaching its exit\n";
+                return 1;
+            }
+        }
+        else if (Advance(State, Traverse))
+        {
+            std::cerr << "Traversal receipt allowed on the wrong floor\n";
             return 1;
         }
 

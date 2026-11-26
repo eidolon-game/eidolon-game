@@ -22,3 +22,8 @@ assert all(c["target"] >= 0 and c["objective"] for c in chapters)
 assert {e["id"] for e in campaign["endings"]} == {"custodian", "origin", "guild", "freedom"}
 assert chapters[6]["target"] == 100
 print("Campaign manifest validated; runtime not tested.")
+
+assert all(len(c["dialogue"]) >= 2 and all(d["speaker"] and d["text"] for d in c["dialogue"]) for c in chapters)
+assert all(e["epilogue"] for e in campaign["endings"])
+assert len(campaign["endings"]) == 4
+print("All 26 chapter dialogue records and four epilogues present.")

@@ -29,6 +29,7 @@ GENERATORS = (
     ("create_fern_basin.py", None),
     ("create_hollow_trunk_plates.py", None),
     ("create_rootlet_canal.py", None),
+    ("create_suspended_trunks.py", None),
 )
 
 

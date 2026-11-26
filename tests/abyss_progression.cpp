@@ -1,5 +1,6 @@
 #include "../Source/Eidolon/Dungeons/EidolonAbyssProgression.h"
 #include "../Source/Eidolon/Dungeons/EidolonRootletCanalRules.h"
+#include "../Source/Eidolon/Dungeons/EidolonSuspendedBridgeRules.h"
 
 #include <iostream>
 #include <limits>
@@ -78,6 +79,11 @@ int main()
                 Clear.Kind = EventKind::RootletCounterweightReleased;
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::RootletCounterweight;
+                break;
+            case SuspendedTrunksFloor:
+                Clear.Kind = EventKind::SuspendedBridgeAligned;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::SuspendedBridgeControl;
                 break;
         }
         const Event Rejected[]{
@@ -190,6 +196,26 @@ int main()
             return 1;
         }
 
+        const Event Bridge{Chapter, Floor, Floor, Revision(State), EventKind::SuspendedBridgeAligned,
+            Producer::Puzzle, Target::SuspendedBridgeControl};
+        if (Floor == SuspendedTrunksFloor)
+        {
+            Event WrongControl = Bridge;
+            WrongControl.Subject = Target::RootletCounterweight;
+            Event WrongProducer = Bridge;
+            WrongProducer.Source = Producer::Traversal;
+            if (Advance(State, WrongControl) || Advance(State, WrongProducer))
+            {
+                std::cerr << "Suspended Trunks accepted a different control or producer\n";
+                return 1;
+            }
+        }
+        else if (Advance(State, Bridge))
+        {
+            std::cerr << "Suspended bridge alignment was accepted outside floor 17\n";
+            return 1;
+        }
+
         if (Floor == FernBasinFloor)
         {
             Event CanalClear = Clear;
@@ -252,6 +278,16 @@ int main()
         IsOnReleaseSide(std::numeric_limits<double>::quiet_NaN(), 500.0))
     {
         std::cerr << "Rootlet Canal accepted a release on the wrong side of the gate\n";
+        return 1;
+    }
+
+    using EidolonSuspendedBridge::QuarterTurnDelta;
+    if (QuarterTurnDelta(90.0, 0.0) != -90.0 || QuarterTurnDelta(290.0, 20.0) != 90.0 ||
+        QuarterTurnDelta(80.0, 350.0) != -90.0 || QuarterTurnDelta(0.0, 180.0) ||
+        QuarterTurnDelta(9.0, 9.0) || QuarterTurnDelta(0.0, 91.1) ||
+        QuarterTurnDelta(0.0, std::numeric_limits<double>::infinity()))
+    {
+        std::cerr << "The suspended bridge accepted an invalid alignment or angular direction\n";
         return 1;
     }
 

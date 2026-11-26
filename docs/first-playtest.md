@@ -215,4 +215,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor016` with `scripts/create_rootlet_canal.p
 
 - Try the release from the outside, behind cover and out of range. Bypass the Stalker and release the counterweight from the inner landing. Repeat by drawing the Stalker toward an opening before taking the other one. Verify support, swept movement and the fixed pounce on both approaches. A failed enemy spawn must leave both routes usable.
 - With a failed checkpoint, the grate and counterweight must stay in place. Save successfully, then verify the raised grate, lowered counterweight, clear return opening and floor 16 completion. Reload before and after this change and confirm opening the grate does not award completion twice.
-- Check the headroom under the lifted grate, collision on the ramps and travel toward the future `AbyssFloor017`. The separate gate art and sound still await Unreal import and routing.
+- Check the headroom under the lifted grate and collision on the ramps. The stair leads to `AbyssFloor017` once generated. The separate gate art and sound still await Unreal import and routing.
+
+## Suspended Trunks
+
+Generate `/Game/Eidolon/Maps/AbyssFloor017` with `scripts/create_suspended_trunks.py` or the campaign generator. Walk the fixed trunk from the west bank to the island. Try the side landing and return before changing the bridge. Check the two Stalkers independently, including a blocked spawn in each sector and both alive. The stable island and control should stay outside both attack volumes.
+
+- From the island, align the empty bridge toward the exit. Try from outside the interaction radius, place a pawn or dynamic obstruction on the bridge and in the rotation path, and attempt again after clearing it. Test a failed checkpoint before the successful attempt. Rotation and the exit gate must remain in their previous state on each rejection.
+- After a successful save, walk to the far bank and return over the bridge. Reload and verify that the aligned pose and gate persist, and that repeating the interaction does not rotate the bridge again. The exit targets `AbyssFloor018` when authored.
+- Check rail and landing collision, camera clearance and the suspended bridge art scale in UE 5.6 with both input schemes. The separate model and sound require import and integration.

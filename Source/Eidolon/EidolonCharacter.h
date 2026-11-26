@@ -62,6 +62,16 @@ private:
     void Dodge();
     void StartBlock();
     void EndBlock();
+    UPROPERTY(Transient) TObjectPtr<UInputAction> InteractAction;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> EndingOne;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> EndingTwo;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> EndingThree;
+    UPROPERTY(Transient) TObjectPtr<UInputAction> EndingFour;
+    void Interact();
+    void ChooseOne();
+    void ChooseTwo();
+    void ChooseThree();
+    void ChooseFour();
     void RestartArena();
     void BuildInputMapping();
     void RemoveInputMapping();

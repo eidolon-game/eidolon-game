@@ -5,6 +5,7 @@
 #include "Dungeons/EidolonSluiceRules.h"
 #include "Dungeons/EidolonMarrowLatchRules.h"
 #include "Dungeons/EidolonMirrorRules.h"
+#include "Dungeons/EidolonPincerWinchRules.h"
 #include "Quest/EidolonFirstDescentRules.h"
 #include "World/EidolonWorldAccess.h"
 #include "Engine/GameInstance.h"
@@ -230,6 +231,15 @@ bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Ch
         return false;
     }
 
+    const auto PincerWinch = static_cast<EidolonPincerWinch::Stage>(Checkpoint->AbyssPincerWinchStage);
+    if (!EidolonPincerWinch::IsValid(PincerWinch) ||
+        (Authored.CompletedFloor < EidolonAbyss::PincerWinchFloor - 1 &&
+            PincerWinch != EidolonPincerWinch::Stage::Initial) ||
+        (EidolonPincerWinch::CanExit(PincerWinch) != (Authored.CompletedFloor >= EidolonAbyss::PincerWinchFloor)))
+    {
+        return false;
+    }
+
     return Cursor == 0 ||
         (Cursor > 0 && Cursor < FinalFirstDescentCursor && Checkpoint->Chapter == 2) ||
         (Cursor == FinalFirstDescentCursor && Checkpoint->Chapter >= 3);
@@ -258,7 +268,8 @@ bool UEidolonCampaignSubsystem::CommitAuthoredAbyssEvent(const EidolonAbyss::Eve
         Event.Kind == EidolonAbyss::EventKind::SluicesOpened ||
         Event.Kind == EidolonAbyss::EventKind::MarrowLatchOpened ||
         Event.Kind == EidolonAbyss::EventKind::CounterweightInstalled ||
-        Event.Kind == EidolonAbyss::EventKind::MirrorsAligned)
+        Event.Kind == EidolonAbyss::EventKind::MirrorsAligned ||
+        Event.Kind == EidolonAbyss::EventKind::PincerWinchOpened)
     {
         return false;
     }
@@ -431,6 +442,43 @@ bool UEidolonCampaignSubsystem::CommitAbyssMirror(const EidolonMirror::Event& Ev
         const auto Progress = ReadAuthoredAbyssProgress(*State);
         const auto NextFloor = Advance(Progress, {Chapter, MirrorFloor, MirrorFloor, Revision(Progress),
             EventKind::MirrorsAligned, Producer::Puzzle, Target::MirrorControls});
+        if (!NextFloor) return false;
+        Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
+    }
+    if (!WriteCheckpoint(Snapshot)) return false;
+    State = Snapshot;
+    return true;
+}
+
+EidolonPincerWinch::Stage UEidolonCampaignSubsystem::GetAbyssPincerWinchStage() const
+{
+    return State ? static_cast<EidolonPincerWinch::Stage>(State->AbyssPincerWinchStage)
+        : EidolonPincerWinch::Stage::Initial;
+}
+
+bool UEidolonCampaignSubsystem::CommitAbyssPincerWinch(EidolonPincerWinch::Signal Signal,
+                                                       EidolonPincerWinch::Stage ExpectedStage)
+{
+    using namespace EidolonAbyss;
+    if (!IsInGameThread() || !IsValidCheckpoint(State) || !State->Ending.IsNone() ||
+        State->Chapter != Chapter || State->FirstDescentCursor != FinalFirstDescentCursor ||
+        GetAuthoredAbyssCompletedFloor() != PincerWinchFloor - 1)
+    {
+        return false;
+    }
+
+    const auto* GameInstance = GetGameInstance();
+    if (!GameInstance || !IsAuthoredAbyssMap(GameInstance->GetWorld(), PincerWinchFloor)) return false;
+    const auto NextWinch = EidolonPincerWinch::Propose(GetAbyssPincerWinchStage(), ExpectedStage, Signal);
+    if (!NextWinch) return false;
+
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->AbyssPincerWinchStage = static_cast<uint8>(*NextWinch);
+    if (EidolonPincerWinch::CanExit(*NextWinch))
+    {
+        const auto Progress = ReadAuthoredAbyssProgress(*State);
+        const auto NextFloor = Advance(Progress, {Chapter, PincerWinchFloor, PincerWinchFloor, Revision(Progress),
+            EventKind::PincerWinchOpened, Producer::Puzzle, Target::PincerWinch});
         if (!NextFloor) return false;
         Snapshot->AuthoredAbyssCompletedFloor = NextFloor->CompletedFloor;
     }

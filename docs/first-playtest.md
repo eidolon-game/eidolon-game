@@ -136,3 +136,12 @@ Generate `/Game/Eidolon/Maps/AbyssFloor007` with `scripts/create_pillar_hall_flo
 - Save a partial alignment and reload. Test a failed write and verify the pointer, other mirror and closed gate stay at their saved state. When both point at their receivers, confirm the gate and floor credit persist on reload.
 - Approach each Mortar Leech from two sides, step behind a pillar after it locks its thrust, and check one hit per cast. Both mirrors must be reachable while both enemies are alive or fail to spawn. The monster mesh is a prototype pending import and rig.
 - The lower stair targets the future interactive floor 8 package.
+
+## Counterweight Vault
+
+Generate `/Game/Eidolon/Maps/AbyssFloor008` with `scripts/create_counterweight_vault_floor.py` in Unreal's Python commandlet. Enter from the Pillar Hall after the mirrors have been aligned and saved.
+
+- Start the first fight at the arena marker. Compare the Pincer's frontal guard, its flank, and the recovery after the sweep. Interacting with the winch before the tracked enemy is defeated must leave both latches hidden and the gate closed.
+- Defeat the Pincer and operate the winch. Check the first indicator and the eastern entrance warning. Reload from this checkpoint and verify only the Crawler spawns. Test a blocked spawn, clear the entrance, and retry from the winch or arena.
+- Defeat the Crawler and operate the winch again. The second indicator, open gate and floor credit must appear only after saving succeeds. Retry a failed write and confirm no repeat encounter or credit.
+- Fault-test both defeat receipts and the first latch separately. The lower stair targets the future floor 9 package. The Pincer still uses placeholder geometry pending import and rig.

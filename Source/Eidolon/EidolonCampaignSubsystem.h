@@ -8,6 +8,7 @@ namespace EidolonSluice { enum class Control : uint8; }
 namespace EidolonMarrowLatch { enum class Stage : uint8; enum class Signal : uint8; }
 namespace EidolonCounterweight { struct Progress; struct Event; }
 namespace EidolonMirror { struct Progress; struct Event; }
+namespace EidolonPincerWinch { enum class Stage : uint8; enum class Signal : uint8; }
 namespace EidolonFirstDescent { struct Event; }
 
 USTRUCT(BlueprintType)
@@ -65,6 +66,8 @@ public:
     bool CommitAbyssCounterweight(const EidolonCounterweight::Event& Event);
     EidolonMirror::Progress GetAbyssMirrorProgress() const;
     bool CommitAbyssMirror(const EidolonMirror::Event& Event);
+    EidolonPincerWinch::Stage GetAbyssPincerWinchStage() const;
+    bool CommitAbyssPincerWinch(EidolonPincerWinch::Signal Signal, EidolonPincerWinch::Stage ExpectedStage);
     // C++ runtime adapters must verify the actual producer and target before submitting.
     bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
     bool BeginValdrisFirstDescent();

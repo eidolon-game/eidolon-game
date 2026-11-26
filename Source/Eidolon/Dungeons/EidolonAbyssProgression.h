@@ -9,6 +9,7 @@ namespace EidolonAbyss
     inline constexpr int MarrowFloor = 5;
     inline constexpr int CounterweightFloor = 6;
     inline constexpr int MirrorFloor = 7;
+    inline constexpr int PincerWinchFloor = 8;
     inline constexpr int SpeakerFloor = 90;
     inline constexpr int GuardianFloor = 100;
 
@@ -19,6 +20,7 @@ namespace EidolonAbyss
         MarrowLatchOpened,
         CounterweightInstalled,
         MirrorsAligned,
+        PincerWinchOpened,
         RicordaHeard,
         GuardianDefeated
     };
@@ -37,6 +39,7 @@ namespace EidolonAbyss
         MarrowLatch,
         CounterweightWinch,
         MirrorControls,
+        PincerWinch,
         NamelessSpeaker,
         AbyssGuardian
     };
@@ -125,6 +128,14 @@ namespace EidolonAbyss
         {
             if (Input.Kind != EventKind::MirrorsAligned || Input.Source != Producer::Puzzle ||
                 Input.Subject != Target::MirrorControls)
+                return std::nullopt;
+            return Progress{Floor, State.RicordaHeard};
+        }
+
+        if (Floor == PincerWinchFloor)
+        {
+            if (Input.Kind != EventKind::PincerWinchOpened || Input.Source != Producer::Puzzle ||
+                Input.Subject != Target::PincerWinch)
                 return std::nullopt;
             return Progress{Floor, State.RicordaHeard};
         }

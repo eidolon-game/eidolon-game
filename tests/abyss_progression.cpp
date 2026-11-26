@@ -34,6 +34,11 @@ int main()
                 Clear.Source = Producer::Puzzle;
                 Clear.Subject = Target::MirrorControls;
                 break;
+            case PincerWinchFloor:
+                Clear.Kind = EventKind::PincerWinchOpened;
+                Clear.Source = Producer::Puzzle;
+                Clear.Subject = Target::PincerWinch;
+                break;
             case GuardianFloor:
                 Clear.Kind = EventKind::GuardianDefeated;
                 Clear.Subject = Target::AbyssGuardian;

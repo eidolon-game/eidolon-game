@@ -15,9 +15,12 @@ public:
     void ReloadCheckpoint();
     FString GetPrompt() const;
     FString GetNarrative() const;
+    FString GetDialogue() const;
+    void RecoverMemory(class AEidolonCharacter* Player);
 private:
     void SpawnEncounter();
     bool IsEncounterClear() const;
     bool CommitCheckpoint();
     FString Notice;
+    int32 DialogueIndex = 0;
 };

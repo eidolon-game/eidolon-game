@@ -1,0 +1,1390 @@
+{
+  "schema_version": 1,
+  "units": "cm",
+  "status": "provisional",
+  "assets": [
+    {
+      "asset_id": "equipment_sword_t1",
+      "legacy_id": "sword.t1",
+      "rpg_id": "sword.t1",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t1",
+      "legacy_id": "spear.t1",
+      "rpg_id": "spear.t1",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t1",
+      "legacy_id": "bow.t1",
+      "rpg_id": "bow.t1",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t1",
+      "legacy_id": "staff.t1",
+      "rpg_id": "staff.t1",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t1",
+      "legacy_id": "armor.t1",
+      "rpg_id": "armor.t1",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t1",
+      "legacy_id": "ore.t1",
+      "rpg_id": "ore.t1",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t2",
+      "legacy_id": "sword.t2",
+      "rpg_id": "sword.t2",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t2",
+      "legacy_id": "spear.t2",
+      "rpg_id": "spear.t2",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t2",
+      "legacy_id": "bow.t2",
+      "rpg_id": "bow.t2",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t2",
+      "legacy_id": "staff.t2",
+      "rpg_id": "staff.t2",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t2",
+      "legacy_id": "armor.t2",
+      "rpg_id": "armor.t2",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t2",
+      "legacy_id": "ore.t2",
+      "rpg_id": "ore.t2",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t3",
+      "legacy_id": "sword.t3",
+      "rpg_id": "sword.t3",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t3",
+      "legacy_id": "spear.t3",
+      "rpg_id": "spear.t3",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t3",
+      "legacy_id": "bow.t3",
+      "rpg_id": "bow.t3",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t3",
+      "legacy_id": "staff.t3",
+      "rpg_id": "staff.t3",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t3",
+      "legacy_id": "armor.t3",
+      "rpg_id": "armor.t3",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t3",
+      "legacy_id": "ore.t3",
+      "rpg_id": "ore.t3",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t4",
+      "legacy_id": "sword.t4",
+      "rpg_id": "sword.t4",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t4",
+      "legacy_id": "spear.t4",
+      "rpg_id": "spear.t4",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t4",
+      "legacy_id": "bow.t4",
+      "rpg_id": "bow.t4",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t4",
+      "legacy_id": "staff.t4",
+      "rpg_id": "staff.t4",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t4",
+      "legacy_id": "armor.t4",
+      "rpg_id": "armor.t4",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t4",
+      "legacy_id": "ore.t4",
+      "rpg_id": "ore.t4",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t5",
+      "legacy_id": "sword.t5",
+      "rpg_id": "sword.t5",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t5",
+      "legacy_id": "spear.t5",
+      "rpg_id": "spear.t5",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t5",
+      "legacy_id": "bow.t5",
+      "rpg_id": "bow.t5",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t5",
+      "legacy_id": "staff.t5",
+      "rpg_id": "staff.t5",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t5",
+      "legacy_id": "armor.t5",
+      "rpg_id": "armor.t5",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t5",
+      "legacy_id": "ore.t5",
+      "rpg_id": "ore.t5",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t6",
+      "legacy_id": "sword.t6",
+      "rpg_id": "sword.t6",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t6",
+      "legacy_id": "spear.t6",
+      "rpg_id": "spear.t6",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t6",
+      "legacy_id": "bow.t6",
+      "rpg_id": "bow.t6",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t6",
+      "legacy_id": "staff.t6",
+      "rpg_id": "staff.t6",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t6",
+      "legacy_id": "armor.t6",
+      "rpg_id": "armor.t6",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t6",
+      "legacy_id": "ore.t6",
+      "rpg_id": "ore.t6",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t7",
+      "legacy_id": "sword.t7",
+      "rpg_id": "sword.t7",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t7",
+      "legacy_id": "spear.t7",
+      "rpg_id": "spear.t7",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t7",
+      "legacy_id": "bow.t7",
+      "rpg_id": "bow.t7",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t7",
+      "legacy_id": "staff.t7",
+      "rpg_id": "staff.t7",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t7",
+      "legacy_id": "armor.t7",
+      "rpg_id": "armor.t7",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t7",
+      "legacy_id": "ore.t7",
+      "rpg_id": "ore.t7",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t8",
+      "legacy_id": "sword.t8",
+      "rpg_id": "sword.t8",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t8",
+      "legacy_id": "spear.t8",
+      "rpg_id": "spear.t8",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t8",
+      "legacy_id": "bow.t8",
+      "rpg_id": "bow.t8",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t8",
+      "legacy_id": "staff.t8",
+      "rpg_id": "staff.t8",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t8",
+      "legacy_id": "armor.t8",
+      "rpg_id": "armor.t8",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t8",
+      "legacy_id": "ore.t8",
+      "rpg_id": "ore.t8",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t9",
+      "legacy_id": "sword.t9",
+      "rpg_id": "sword.t9",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t9",
+      "legacy_id": "spear.t9",
+      "rpg_id": "spear.t9",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t9",
+      "legacy_id": "bow.t9",
+      "rpg_id": "bow.t9",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t9",
+      "legacy_id": "staff.t9",
+      "rpg_id": "staff.t9",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t9",
+      "legacy_id": "armor.t9",
+      "rpg_id": "armor.t9",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t9",
+      "legacy_id": "ore.t9",
+      "rpg_id": "ore.t9",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_sword_t10",
+      "legacy_id": "sword.t10",
+      "rpg_id": "sword.t10",
+      "family": "sword",
+      "dimensions_cm": [
+        9,
+        5,
+        105
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_spear_t10",
+      "legacy_id": "spear.t10",
+      "rpg_id": "spear.t10",
+      "family": "spear",
+      "dimensions_cm": [
+        9,
+        9,
+        210
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_bow_t10",
+      "legacy_id": "bow.t10",
+      "rpg_id": "bow.t10",
+      "family": "bow",
+      "dimensions_cm": [
+        55,
+        6,
+        140
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_staff_t10",
+      "legacy_id": "staff.t10",
+      "rpg_id": "staff.t10",
+      "family": "staff",
+      "dimensions_cm": [
+        12,
+        12,
+        175
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_armor_t10",
+      "legacy_id": "armor.t10",
+      "rpg_id": "armor.t10",
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_ore_t10",
+      "legacy_id": "ore.t10",
+      "rpg_id": "ore.t10",
+      "family": "ore",
+      "dimensions_cm": [
+        15,
+        12,
+        10
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_potion_health",
+      "legacy_id": "potion.health",
+      "rpg_id": "potion.health",
+      "family": "potion",
+      "dimensions_cm": [
+        7,
+        7,
+        14
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_herb_red",
+      "legacy_id": "herb.red",
+      "rpg_id": "herb.red",
+      "family": "herb",
+      "dimensions_cm": [
+        12,
+        8,
+        18
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_relic_aurelion",
+      "legacy_id": "relic.aurelion",
+      "rpg_id": "relic.aurelion",
+      "family": "relic",
+      "dimensions_cm": [
+        30,
+        30,
+        60
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_r",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_greatsword_prototype",
+      "legacy_id": "prop.greatsword.prototype",
+      "rpg_id": null,
+      "family": "greatsword",
+      "dimensions_cm": [
+        18,
+        7,
+        150
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_dagger_prototype",
+      "legacy_id": "prop.dagger.prototype",
+      "rpg_id": null,
+      "family": "dagger",
+      "dimensions_cm": [
+        7,
+        3.5,
+        40
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_axe_prototype",
+      "legacy_id": "prop.axe.prototype",
+      "rpg_id": null,
+      "family": "axe",
+      "dimensions_cm": [
+        30,
+        8,
+        85
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_mace_prototype",
+      "legacy_id": "prop.mace.prototype",
+      "rpg_id": null,
+      "family": "mace",
+      "dimensions_cm": [
+        16,
+        16,
+        75
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_shield_prototype",
+      "legacy_id": "prop.shield.prototype",
+      "rpg_id": null,
+      "family": "shield",
+      "dimensions_cm": [
+        60,
+        12,
+        80
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": "hand_l",
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_clothing_prototype",
+      "legacy_id": "prop.clothing.prototype",
+      "rpg_id": null,
+      "family": "clothing",
+      "dimensions_cm": [
+        55,
+        32,
+        80
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_ring_prototype",
+      "legacy_id": "prop.ring.prototype",
+      "rpg_id": null,
+      "family": "ring",
+      "dimensions_cm": [
+        2.5,
+        2.5,
+        0.8
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_necklace_prototype",
+      "legacy_id": "prop.necklace.prototype",
+      "rpg_id": null,
+      "family": "necklace",
+      "dimensions_cm": [
+        18,
+        2.5,
+        25
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_tool_prototype",
+      "legacy_id": "prop.tool.prototype",
+      "rpg_id": null,
+      "family": "tool",
+      "dimensions_cm": [
+        24,
+        8,
+        50
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_sigil_prototype",
+      "legacy_id": "prop.sigil.prototype",
+      "rpg_id": null,
+      "family": "sigil",
+      "dimensions_cm": [
+        8,
+        2.5,
+        8
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_journal_prototype",
+      "legacy_id": "prop.journal.prototype",
+      "rpg_id": null,
+      "family": "journal",
+      "dimensions_cm": [
+        15,
+        4,
+        22
+      ],
+      "status": "graybox_source",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "chapter_6_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_journal_prototype.obj",
+      "source_units": "m"
+    },
+    {
+      "asset_id": "equipment_prop_key_prototype",
+      "legacy_id": "prop.key.prototype",
+      "rpg_id": null,
+      "family": "key",
+      "dimensions_cm": [
+        6,
+        2,
+        15
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_heart_prototype",
+      "legacy_id": "prop.heart.prototype",
+      "rpg_id": null,
+      "family": "heart",
+      "dimensions_cm": [
+        45,
+        45,
+        55
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "narrative_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_sigil_aegis",
+      "legacy_id": "prop.sigil.aegis",
+      "rpg_id": null,
+      "family": "sigil",
+      "dimensions_cm": [
+        8,
+        2.5,
+        8
+      ],
+      "status": "graybox_source",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "chapter_4_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_sigil_aegis.obj",
+      "source_units": "m"
+    },
+    {
+      "asset_id": "equipment_prop_sigil_horizon",
+      "legacy_id": "prop.sigil.horizon",
+      "rpg_id": null,
+      "family": "sigil",
+      "dimensions_cm": [
+        8,
+        2.5,
+        8
+      ],
+      "status": "graybox_source",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "chapter_7_acquisition",
+      "source_path": "Content/Eidolon/Equipment/Prototypes/equipment_prop_sigil_horizon.obj",
+      "source_units": "m"
+    },
+    {
+      "asset_id": "equipment_prop_armor_light",
+      "legacy_id": "prop.armor.light",
+      "rpg_id": null,
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_armor_medium",
+      "legacy_id": "prop.armor.medium",
+      "rpg_id": null,
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    },
+    {
+      "asset_id": "equipment_prop_armor_heavy",
+      "legacy_id": "prop.armor.heavy",
+      "rpg_id": null,
+      "family": "armor",
+      "dimensions_cm": [
+        55,
+        32,
+        65
+      ],
+      "status": "specified",
+      "rights": "All rights reserved",
+      "source": "Original department specification",
+      "socket_candidate": null,
+      "authority": "gameplay_owner",
+      "disclosure": "gameplay_review_required"
+    }
+  ]
+}

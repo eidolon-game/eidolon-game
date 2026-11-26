@@ -12,6 +12,9 @@
 #include "Engine/DirectionalLight.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/LightComponent.h"
+#include "Components/TextRenderComponent.h"
+#include "Engine/TextRenderActor.h"
+#include "Materials/MaterialInstanceDynamic.h"
 #include "GameFramework/PlayerController.h"
 
 AEidolonGameMode::AEidolonGameMode()
@@ -49,6 +52,7 @@ void AEidolonGameMode::StartPlay()
         if (auto* Pawn = PC->GetPawn()) Pawn->SetActorLocation(FVector(0,0,110), false, nullptr, ETeleportType::TeleportPhysics);
         PC->SetControlRotation(FRotator(-15,0,0));
     }
+    BuildChapterScenery();
     SpawnEncounter();
 }
 
@@ -137,6 +141,7 @@ void AEidolonGameMode::Interact(AEidolonCharacter* Player)
     if (!C->AdvanceChapter()) return;
     Notice.Reset();
     DialogueIndex = 0;
+    BuildChapterScenery();
     CommitCheckpoint();
     SpawnEncounter();
 }
@@ -166,7 +171,7 @@ FString AEidolonGameMode::GetPrompt() const
     if (!C) return TEXT("Campaign unavailable");
     if (!C->GetEnding().IsNone()) return TEXT("Campaign ended.");
     if (!IsEncounterClear()) return TEXT("Defeat enemies");
-    if (C->CurrentChapter().Id == 26) return TEXT("1 Custodian | 2 Origin | 3 Guild | 4 Freedom (locked unless qualified)");
+    if (C->CurrentChapter().Id == 26 && DialogueIndex >= C->CurrentChapter().Dialogue.Num()) return TEXT("1 Custodian | 2 Origin | 3 Guild | 4 Freedom (locked unless qualified)");
     return TEXT("E / X or Square: continue");
 }
 FString AEidolonGameMode::GetNarrative() const
@@ -205,5 +210,76 @@ void AEidolonGameMode::RecoverMemory(AEidolonCharacter* Player)
         C->SetFlag(TEXT("eidolon_aid"));
         Notice = TEXT("Forgotten residents assisted (graybox objective).");
         CommitCheckpoint();
+    }
+}
+
+void AEidolonGameMode::BuildChapterScenery()
+{
+    for (const auto& Actor : Scenery) if (IsValid(Actor.Get())) Actor->Destroy();
+    Scenery.Reset();
+    auto* C = Campaign(this);
+    if (!C) return;
+    const auto Chapter = C->CurrentChapter();
+    auto* Cube = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cube.Cube"));
+    auto* Cylinder = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+    auto* Cone = LoadObject<UStaticMesh>(nullptr, TEXT("/Engine/BasicShapes/Cone.Cone"));
+    const auto Shape = [this](UStaticMesh* Mesh, FVector P, FVector S)
+    {
+        if (!Mesh) return;
+        auto* A = GetWorld()->SpawnActor<AStaticMeshActor>(P, FRotator::ZeroRotator);
+        if (!A) return;
+        A->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
+        A->GetStaticMeshComponent()->SetStaticMesh(Mesh);
+        A->GetStaticMeshComponent()->SetCollisionProfileName(TEXT("NoCollision"));
+        A->SetActorScale3D(S);
+        Scenery.Add(A);
+    };
+    const auto Label = [this](const FString& Text, FVector P)
+    {
+        auto* A = GetWorld()->SpawnActor<ATextRenderActor>(P, FRotator(0,180,0));
+        if (!A) return;
+        auto* T = A->GetTextRender();
+        T->SetText(FText::FromString(Text));
+        T->SetWorldSize(36.f);
+        T->SetHorizontalAlignment(EHTA_Center);
+        Scenery.Add(A);
+    };
+    if (Chapter.Type == TEXT("home"))
+    {
+        Shape(Cube, FVector(1150,0,180), FVector(1,14,3.6));
+        Shape(Cube, FVector(850,650,180), FVector(7,1,3.6));
+        Shape(Cube, FVector(850,-650,180), FVector(7,1,3.6));
+        Shape(Cube, FVector(900,0,65), FVector(2,3,1.3));
+        Label(TEXT("Darius / Elara / Lyra"), FVector(1100,0,340));
+        if (C->HasFlag(TEXT("noah_present")) || Chapter.Id == 22)
+        {
+            Shape(Cylinder,FVector(600,200,55),FVector(.55,.55,1.1));
+            Label(TEXT("Noah"), FVector(600,200,140));
+        }
+    }
+    else if (Chapter.Type == TEXT("dungeon"))
+    {
+        for (int32 I=0; I<5; ++I)
+            for (int32 Side : {-1,1})
+            {
+                Shape(Cylinder,FVector(-1100+I*550,Side*1050,250), FVector(1.5,1.5,5));
+                Shape(Cube,FVector(-1100+I*550,Side*1050,500), FVector(2,2,.5));
+            }
+        Label(Chapter.Region,FVector(1200,0,300));
+    }
+    else if (Chapter.Type == TEXT("giant") || Chapter.Type == TEXT("titan"))
+    {
+        for (int32 I=0; I<6; ++I)
+        {
+            Shape(Cylinder,FVector(-1250+I*480,1250,180),FVector(.6,.6,3.6));
+            Shape(Cone,FVector(-1250+I*480,1250,420),FVector(2.5,2.5,5));
+        }
+        Label(Chapter.Region,FVector(1200,0,300));
+    }
+    else
+    {
+        for (int32 I=0; I<4; ++I)
+            Shape(Cube,FVector(1300,-1050+I*700,180+I*35),FVector(2.5,3.5,3.6+I*.7));
+        Label(Chapter.Region,FVector(1200,0,330));
     }
 }

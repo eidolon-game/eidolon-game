@@ -9,4 +9,5 @@ class EIDOLON_API AEidolonGameMode : public AGameModeBase
     GENERATED_BODY()
 public:
     AEidolonGameMode();
+    virtual void StartPlay() override;
 };

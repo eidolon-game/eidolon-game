@@ -1,0 +1,48 @@
+#pragma once
+#include "CoreMinimal.h"
+#include "Subsystems/GameInstanceSubsystem.h"
+#include "EidolonCampaignSubsystem.generated.h"
+class UEidolonCampaignSave;
+
+USTRUCT(BlueprintType)
+struct FEidolonChapter
+{
+    GENERATED_BODY()
+    UPROPERTY(BlueprintReadOnly) int32 Id = 0;
+    UPROPERTY(BlueprintReadOnly) int32 Act = 0;
+    UPROPERTY(BlueprintReadOnly) FString Title;
+    UPROPERTY(BlueprintReadOnly) FString Region;
+    UPROPERTY(BlueprintReadOnly) FString Objective;
+    UPROPERTY(BlueprintReadOnly) FName Type;
+    UPROPERTY(BlueprintReadOnly) int32 Target = 0;
+};
+
+UCLASS()
+class EIDOLON_API UEidolonCampaignSubsystem : public UGameInstanceSubsystem
+{
+    GENERATED_BODY()
+public:
+    virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+    UFUNCTION(BlueprintCallable) bool NewCampaign();
+    UFUNCTION(BlueprintCallable) bool LoadCampaign();
+    UFUNCTION(BlueprintCallable) bool SaveCampaign();
+    UFUNCTION(BlueprintPure) FEidolonChapter CurrentChapter() const;
+    UFUNCTION(BlueprintPure) int32 GetObjectiveCount() const;
+    UFUNCTION(BlueprintPure) int32 GetLevel() const;
+    UFUNCTION(BlueprintPure) FName GetRank() const;
+    UFUNCTION(BlueprintCallable) bool RecordObjective(FName Type, int32 Count = 1);
+    UFUNCTION(BlueprintCallable) bool AdvanceChapter();
+    UFUNCTION(BlueprintCallable) bool ReachFloor(bool bStair, int32 Floor);
+    UFUNCTION(BlueprintCallable) void RecordMemory(FName Memory);
+    UFUNCTION(BlueprintCallable) void SetFlag(FName Flag);
+    UFUNCTION(BlueprintPure) bool HasFlag(FName Flag) const;
+    UFUNCTION(BlueprintCallable) void ApplyDiscrepancy(FName Memory, FName CurrentFlag, bool bPresent);
+    UFUNCTION(BlueprintCallable) bool ChangeRelationship(FName Character, int32 Delta);
+    UFUNCTION(BlueprintCallable) bool GrantItem(FName Item, int32 Count);
+    UFUNCTION(BlueprintCallable) bool ChooseEnding(FName Ending);
+    UFUNCTION(BlueprintPure) bool CanChooseEnding(FName Ending) const;
+private:
+    UPROPERTY() TObjectPtr<UEidolonCampaignSave> State;
+    UPROPERTY() TArray<FEidolonChapter> Chapters;
+    bool LoadDefinitions();
+};

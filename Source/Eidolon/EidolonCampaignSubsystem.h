@@ -50,4 +50,5 @@ private:
     UPROPERTY() TArray<FEidolonChapter> Chapters;
     TMap<FName, FString> Epilogues;
     bool LoadDefinitions();
+    bool IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const;
 };

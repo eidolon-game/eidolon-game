@@ -7,7 +7,10 @@
 #include "Serialization/JsonSerializer.h"
 #include "Dom/JsonObject.h"
 
-namespace { const FString Slot = TEXT("EidolonCampaign01"); }
+namespace
+{
+    const FString Slot = TEXT("EidolonCampaign01");
+}
 
 void UEidolonCampaignSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -69,14 +72,34 @@ bool UEidolonCampaignSubsystem::NewCampaign()
 bool UEidolonCampaignSubsystem::LoadCampaign()
 {
     auto* Loaded = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(Slot, 0));
-    if (!Loaded || Loaded->Schema != 1 || !Chapters.IsValidIndex(Loaded->Chapter-1) || Loaded->ObjectiveCount < 0) return false;
+    if (!IsValidCheckpoint(Loaded)) return false;
     State = Loaded;
     return true;
 }
 
 bool UEidolonCampaignSubsystem::SaveCampaign()
 {
-    return State && UGameplayStatics::SaveGameToSlot(State, Slot, 0);
+    if (!IsValidCheckpoint(State)) return false;
+
+    // Never replace an occupied slot whose data we cannot recover.
+    if (UGameplayStatics::DoesSaveGameExist(Slot, 0))
+    {
+        const auto* Existing = Cast<UEidolonCampaignSave>(UGameplayStatics::LoadGameFromSlot(Slot, 0));
+        if (!IsValidCheckpoint(Existing))
+        {
+            UE_LOG(LogTemp, Warning, TEXT("Checkpoint write blocked because the existing slot could not be validated."));
+            return false;
+        }
+    }
+
+    return UGameplayStatics::SaveGameToSlot(State, Slot, 0);
+}
+
+bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const
+{
+    return Checkpoint && Checkpoint->Schema == 1
+        && Checkpoint->Chapter > 0 && Chapters.IsValidIndex(Checkpoint->Chapter - 1)
+        && Checkpoint->ObjectiveCount >= 0;
 }
 
 FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const

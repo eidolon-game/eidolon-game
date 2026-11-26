@@ -15,6 +15,7 @@ struct FEidolonChapter
     UPROPERTY(BlueprintReadOnly) FString Objective;
     UPROPERTY(BlueprintReadOnly) FName Type;
     UPROPERTY(BlueprintReadOnly) int32 Target = 0;
+    UPROPERTY(BlueprintReadOnly) TArray<FString> Dialogue;
 };
 
 UCLASS()
@@ -30,6 +31,7 @@ public:
     UFUNCTION(BlueprintPure) int32 GetObjectiveCount() const;
     UFUNCTION(BlueprintPure) int32 GetFloor(bool bStair) const;
     UFUNCTION(BlueprintPure) FName GetEnding() const;
+    UFUNCTION(BlueprintPure) FString GetEpilogue() const;
     UFUNCTION(BlueprintPure) int32 GetLevel() const;
     UFUNCTION(BlueprintPure) FName GetRank() const;
     UFUNCTION(BlueprintCallable) bool RecordObjective(FName Type, int32 Count = 1);
@@ -46,5 +48,6 @@ public:
 private:
     UPROPERTY() TObjectPtr<UEidolonCampaignSave> State;
     UPROPERTY() TArray<FEidolonChapter> Chapters;
+    TMap<FName, FString> Epilogues;
     bool LoadDefinitions();
 };

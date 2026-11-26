@@ -19,6 +19,8 @@ public:
     void RecoverMemory(class AEidolonCharacter* Player);
 private:
     void SpawnEncounter();
+    void BuildChapterScenery();
+    UPROPERTY() TArray<TObjectPtr<AActor>> Scenery;
     bool IsEncounterClear() const;
     bool CommitCheckpoint();
     FString Notice;

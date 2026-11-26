@@ -1,0 +1,262 @@
+{
+  "schema": 1,
+  "chapters": [
+    {
+      "id": 1,
+      "act": 1,
+      "title": "La città senza orizzonte",
+      "region": "Valdris",
+      "objective": "Explore Valdris and meet the Veyr family",
+      "type": "home",
+      "target": 0
+    },
+    {
+      "id": 2,
+      "act": 1,
+      "title": "La prima discesa",
+      "region": "Abisso",
+      "objective": "Register at the Guild, defeat the first monsters, return after the dormitory night",
+      "type": "dungeon",
+      "target": 3
+    },
+    {
+      "id": 3,
+      "act": 1,
+      "title": "Il peso dei ricordi",
+      "region": "Valdris",
+      "objective": "Meet Noah, investigate the discrepancy and speak to Riven",
+      "type": "home",
+      "target": 0
+    },
+    {
+      "id": 4,
+      "act": 2,
+      "title": "Il centesimo livello",
+      "region": "Abisso",
+      "objective": "Reach floor 100 and defeat the Custode; receive the Sigillo dell'Egida",
+      "type": "dungeon",
+      "target": 1
+    },
+    {
+      "id": 5,
+      "act": 3,
+      "title": "Il territorio dei Giganti",
+      "region": "Prima cinta",
+      "objective": "Discover monsters emerging from a defeated Giant",
+      "type": "giant",
+      "target": 1
+    },
+    {
+      "id": 6,
+      "act": 3,
+      "title": "La famiglia dimenticata",
+      "region": "Prima cinta",
+      "objective": "Meet Edran and recover his diary",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 7,
+      "act": 3,
+      "title": "La seconda cinta muraria",
+      "region": "Prima cinta",
+      "objective": "Defeat 100 Giants and receive the Sigillo dell'Orizzonte",
+      "type": "giant",
+      "target": 100
+    },
+    {
+      "id": 8,
+      "act": 4,
+      "title": "Aetheryon",
+      "region": "Aetheryon",
+      "objective": "Discover the seven cities and the territory of the Titans",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 9,
+      "act": 4,
+      "title": "Il ciclo dei mostri",
+      "region": "Aetheryon",
+      "objective": "Defeat a Titan and its emerging Giants",
+      "type": "titan",
+      "target": 1
+    },
+    {
+      "id": 10,
+      "act": 4,
+      "title": "La prima città caduta",
+      "region": "Vareth",
+      "objective": "Rescue the survivor; witness Vareth vanish",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 11,
+      "act": 5,
+      "title": "La caduta dal cielo",
+      "region": "Osservatorio",
+      "objective": "Witness a Titan falling through the celestial fracture",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 12,
+      "act": 5,
+      "title": "Il Concilio Celeste",
+      "region": "Aetheryon",
+      "objective": "Investigate the seven ancient gods",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 13,
+      "act": 5,
+      "title": "I sette traditori",
+      "region": "Aureth",
+      "objective": "Infiltrate the archives with Selene and Iris",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 14,
+      "act": 6,
+      "title": "La vera origine della Gilda",
+      "region": "Aureth",
+      "objective": "Discover the theft of the Cuore dell'Eternità",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 15,
+      "act": 6,
+      "title": "Il prezzo della sopravvivenza",
+      "region": "Aureth",
+      "objective": "Learn the nature of the Eidolon and the Discrepancy",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 16,
+      "act": 6,
+      "title": "Il fratello impossibile",
+      "region": "Valdris",
+      "objective": "Discover Noah's origin and decide to protect him",
+      "type": "home",
+      "target": 0
+    },
+    {
+      "id": 17,
+      "act": 7,
+      "title": "La Gilda si divide",
+      "region": "Aureth",
+      "objective": "Meet the three factions and face companion loyalties",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 18,
+      "act": 7,
+      "title": "Il primo dio",
+      "region": "Aetheryon",
+      "objective": "Meet Nhalor and learn the nature of the Titans",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 19,
+      "act": 7,
+      "title": "Il ritorno dei dimenticati",
+      "region": "Aetheryon",
+      "objective": "Find the survivor of Vareth and learn of the Oblio",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 20,
+      "act": 8,
+      "title": "L'Oblio",
+      "region": "Oblio",
+      "objective": "Cross the fracture and explore erased realities",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 21,
+      "act": 8,
+      "title": "La famiglia che avrebbe dovuto avere",
+      "region": "Oblio",
+      "objective": "Meet the alternate Veyr family",
+      "type": "home",
+      "target": 0
+    },
+    {
+      "id": 22,
+      "act": 8,
+      "title": "La scomparsa di Noah",
+      "region": "Oblio",
+      "objective": "Find Noah after the world forgets him",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 23,
+      "act": 9,
+      "title": "L'ultimo dungeon",
+      "region": "Scala dell'Eternità",
+      "objective": "Obtain the founders' keys and ascend 100 floors",
+      "type": "dungeon",
+      "target": 1
+    },
+    {
+      "id": 24,
+      "act": 9,
+      "title": "La verità sulla creazione",
+      "region": "Empyrea",
+      "objective": "Meet Elyria and learn about the Origine",
+      "type": "explore",
+      "target": 0
+    },
+    {
+      "id": 25,
+      "act": 9,
+      "title": "La guerra degli dei",
+      "region": "Empyrea",
+      "objective": "Defend humanity and confront the allied gods",
+      "type": "boss",
+      "target": 1
+    },
+    {
+      "id": 26,
+      "act": 10,
+      "title": "Aurelion, il Dio dell'Ordine",
+      "region": "Origine",
+      "objective": "Defeat Aurelion and choose the fate of reality",
+      "type": "boss",
+      "target": 1
+    }
+  ],
+  "endings": [
+    {
+      "id": "custodian",
+      "title": "Il nuovo custode"
+    },
+    {
+      "id": "origin",
+      "title": "Il ritorno all'origine"
+    },
+    {
+      "id": "guild",
+      "title": "L'eternità della Gilda"
+    },
+    {
+      "id": "freedom",
+      "title": "Il mondo senza padroni",
+      "requires": [
+        "lost_memories",
+        "eidolon_aid",
+        "origin_truth"
+      ]
+    }
+  ]
+}

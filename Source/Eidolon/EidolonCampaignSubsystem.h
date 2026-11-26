@@ -3,6 +3,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "EidolonCampaignSubsystem.generated.h"
 class UEidolonCampaignSave;
+namespace EidolonFirstDescent { struct Event; }
 
 USTRUCT(BlueprintType)
 struct FEidolonChapter
@@ -45,10 +46,15 @@ public:
     UFUNCTION(BlueprintCallable) bool GrantItem(FName Item, int32 Count);
     UFUNCTION(BlueprintCallable) bool ChooseEnding(FName Ending);
     UFUNCTION(BlueprintPure) bool CanChooseEnding(FName Ending) const;
+    UFUNCTION(BlueprintPure, Category="Eidolon|World") bool CanEnterWorldRegion(FName RegionId) const;
+    int32 GetFirstDescentCursor() const;
+    // C++ runtime adapters must verify the actual producer and target before submitting.
+    bool CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event);
 private:
     UPROPERTY() TObjectPtr<UEidolonCampaignSave> State;
     UPROPERTY() TArray<FEidolonChapter> Chapters;
     TMap<FName, FString> Epilogues;
     bool LoadDefinitions();
     bool IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const;
+    bool WriteCheckpoint(UEidolonCampaignSave* Snapshot) const;
 };

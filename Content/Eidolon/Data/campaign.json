@@ -12,13 +12,20 @@
       "dialogue": [
         {
           "speaker": "Darius",
-          "text": "Diciannove anni, Kael. La fucina sarà qui quando tornerai."
+          "text": "Diciannove anni, Kael. La fucina sarà qui quando tornerai.",
+          "speaker_en": "Darius",
+          "text_en": "Nineteen years old, Kael. The forge will be here when you get back."
         },
         {
           "speaker": "Elara",
-          "text": "Promettimi che tornerai a casa."
+          "text": "Promettimi che tornerai a casa.",
+          "speaker_en": "Elara",
+          "text_en": "Promise me you'll come home."
         }
-      ]
+      ],
+      "title_en": "The City Without a Horizon",
+      "region_en": "Valdris",
+      "objective_it": "Esplora Valdris e incontra la famiglia Veyr."
     },
     {
       "id": 2,
@@ -31,32 +38,46 @@
       "dialogue": [
         {
           "speaker": "Aldren",
-          "text": "L'Abisso custodisce ciò che non deve raggiungere Valdris."
+          "text": "L'Abisso custodisce ciò che non deve raggiungere Valdris.",
+          "speaker_en": "Aldren",
+          "text_en": "The Abyss holds what must never reach Valdris."
         },
         {
           "speaker": "Kael",
-          "text": "Quella voce... che cosa è successo?"
+          "text": "Quella voce... che cosa è successo?",
+          "speaker_en": "Kael",
+          "text_en": "That voice… what just happened?"
         }
-      ]
+      ],
+      "title_en": "The First Descent",
+      "region_en": "Abyss",
+      "objective_it": "Registrati alla Gilda, sconfiggi i primi mostri e torna a casa dopo la notte in dormitorio."
     },
     {
       "id": 3,
       "act": 1,
       "title": "Il peso dei ricordi",
       "region": "Valdris",
-      "objective": "Meet Noah, investigate the discrepancy and speak to Riven",
+      "objective": "Investigate the Discrepancy and speak to Riven",
       "type": "home",
       "target": 0,
       "dialogue": [
         {
           "speaker": "Noah",
-          "text": "Fratellone! Ti ho aspettato!"
+          "text": "Fratellone! Ti ho aspettato!",
+          "speaker_en": "Noah",
+          "text_en": "Big brother! I've been waiting for you!"
         },
         {
           "speaker": "Riven",
-          "text": "Ricordo il giorno in cui è nato. Forse hai bisogno di riposare."
+          "text": "Ricordo il giorno in cui è nato. Forse hai bisogno di riposare.",
+          "speaker_en": "Riven",
+          "text_en": "I remember the day he was born. Maybe you need some rest."
         }
-      ]
+      ],
+      "title_en": "The Weight of Memories",
+      "region_en": "Valdris",
+      "objective_it": "Indaga sulla Discrepanza e parla con Riven."
     },
     {
       "id": 4,
@@ -68,14 +89,21 @@
       "target": 1,
       "dialogue": [
         {
-          "speaker": "Custode",
-          "text": "Ricorda."
+          "speaker": "Kael",
+          "text": "La creatura al novantesimo piano ha parlato. Mi ha detto di ricordare.",
+          "speaker_en": "Kael",
+          "text_en": "The creature on the ninetieth floor spoke. It told me to remember."
         },
         {
           "speaker": "Aldren",
-          "text": "L'Abisso è una nostra creazione. Ora puoi oltrepassare le mura."
+          "text": "L'Abisso è una nostra creazione. Ora puoi oltrepassare le mura.",
+          "speaker_en": "Aldren",
+          "text_en": "We built the Abyss. Now you may pass beyond the walls."
         }
-      ]
+      ],
+      "title_en": "The Hundredth Floor",
+      "region_en": "Abyss",
+      "objective_it": "Raggiungi il piano 100, sconfiggi il Custode e ricevi il Sigillo dell’Egida."
     },
     {
       "id": 5,
@@ -88,32 +116,46 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Questi mostri provengono dal Gigante."
+          "text": "Questi mostri provengono dal Gigante.",
+          "speaker_en": "Kael",
+          "text_en": "These monsters came from the Giant."
         },
         {
           "speaker": "Avventuriero",
-          "text": "Lascia fare a noi. Li porteremo all'Abisso."
+          "text": "Lascia fare a noi. Li porteremo all'Abisso.",
+          "speaker_en": "Adventurer",
+          "text_en": "Leave them to us. We'll take them to the Abyss."
         }
-      ]
+      ],
+      "title_en": "The Land of Giants",
+      "region_en": "Inner Wall",
+      "objective_it": "Scopri da dove provengono i mostri che emergono dal Gigante sconfitto."
     },
     {
       "id": 6,
       "act": 3,
       "title": "La famiglia dimenticata",
       "region": "Prima cinta",
-      "objective": "Meet Edran and recover his diary",
+      "objective": "Explore Giant territory. Meeting Edran and recovering his journal are optional.",
       "type": "explore",
       "target": 0,
       "dialogue": [
         {
           "speaker": "Edran",
-          "text": "Una moglie, una figlia. Non ricordavo nessuna delle due."
+          "text": "Una moglie, una figlia. Non ricordavo nessuna delle due.",
+          "speaker_en": "Edran",
+          "text_en": "A wife, a daughter. I remembered neither of them."
         },
         {
           "speaker": "Edran",
-          "text": "Chiamiamo questo fenomeno la Discrepanza. Prendi il mio diario."
+          "text": "Chiamiamo questo fenomeno la Discrepanza. Prendi il mio diario.",
+          "speaker_en": "Edran",
+          "text_en": "We call it the Discrepancy. Take my journal."
         }
-      ]
+      ],
+      "title_en": "The Forgotten Family",
+      "region_en": "Inner Wall",
+      "objective_it": "Esplora il territorio dei Giganti. Puoi incontrare Edran e recuperare il suo diario."
     },
     {
       "id": 7,
@@ -126,13 +168,20 @@
       "dialogue": [
         {
           "speaker": "Lucien",
-          "text": "Valdris non è l'unica città. Oltre questa cinta vivono i Titani."
+          "text": "Valdris non è l'unica città. Oltre questa cinta vivono i Titani.",
+          "speaker_en": "Lucien",
+          "text_en": "Valdris is not the only city. Beyond this wall live the Titans."
         },
         {
           "speaker": "Kael",
-          "text": "Quante altre cose ci avete nascosto?"
+          "text": "Quante altre cose ci avete nascosto?",
+          "speaker_en": "Kael",
+          "text_en": "What else have you kept from us?"
         }
-      ]
+      ],
+      "title_en": "The Second Wall",
+      "region_en": "Inner Wall",
+      "objective_it": "Sconfiggi 100 Giganti e ricevi il Sigillo dell’Orizzonte."
     },
     {
       "id": 8,
@@ -145,13 +194,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Ignareth, Thalassar, Nordheim, Solkar, Elyndor, Aureth... un mondo intero."
+          "text": "Ignareth, Thalassar, Nordheim, Solkar, Elyndor, Aureth... un mondo intero.",
+          "speaker_en": "Kael",
+          "text_en": "Ignareth, Thalassar, Nordheim, Solkar, Elyndor, Aureth… a whole world."
         },
         {
           "speaker": "Kael",
-          "text": "E tutti vivono dietro le mura."
+          "text": "E tutti vivono dietro le mura.",
+          "speaker_en": "Kael",
+          "text_en": "And everyone lives behind walls."
         }
-      ]
+      ],
+      "title_en": "Aetheryon",
+      "region_en": "Aetheryon",
+      "objective_it": "Scopri le sette città e il territorio dei Titani."
     },
     {
       "id": 9,
@@ -164,13 +220,20 @@
       "dialogue": [
         {
           "speaker": "Avventuriero",
-          "text": "Un Titano abbattuto non significa che la battaglia sia finita."
+          "text": "Un Titano abbattuto non significa che la battaglia sia finita.",
+          "speaker_en": "Adventurer",
+          "text_en": "Bringing down a Titan doesn't mean the fight is over."
         },
         {
           "speaker": "Kael",
-          "text": "I Giganti emergono dal suo corpo."
+          "text": "I Giganti emergono dal suo corpo.",
+          "speaker_en": "Kael",
+          "text_en": "Giants are coming out of its body."
         }
-      ]
+      ],
+      "title_en": "The Cycle of Monsters",
+      "region_en": "Aetheryon",
+      "objective_it": "Sconfiggi un Titano e affronta i Giganti che emergono dal suo corpo."
     },
     {
       "id": 10,
@@ -183,13 +246,20 @@
       "dialogue": [
         {
           "speaker": "Bambina",
-          "text": "Mi aiuterai a ritrovare i miei genitori?"
+          "text": "Mi aiuterai a ritrovare i miei genitori?",
+          "speaker_en": "Girl",
+          "text_en": "Will you help me find my parents?"
         },
         {
           "speaker": "Kael",
-          "text": "Vareth... non compare più nemmeno sulle mappe."
+          "text": "Vareth... non compare più nemmeno sulle mappe.",
+          "speaker_en": "Kael",
+          "text_en": "Vareth… it isn't even on the maps anymore."
         }
-      ]
+      ],
+      "title_en": "The First Fallen City",
+      "region_en": "Vareth",
+      "objective_it": "Salva la bambina e assisti alla scomparsa di Vareth."
     },
     {
       "id": 11,
@@ -202,13 +272,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Quelle figure, oltre la frattura..."
+          "text": "Quelle figure, oltre la frattura...",
+          "speaker_en": "Kael",
+          "text_en": "Those figures, beyond the rift…"
         },
         {
           "speaker": "Ricercatore",
-          "text": "Il Consiglio ci ha ordinato di non parlarne."
+          "text": "Il Consiglio ci ha ordinato di non parlarne.",
+          "speaker_en": "Researcher",
+          "text_en": "The Council ordered us to keep quiet."
         }
-      ]
+      ],
+      "title_en": "The Fall from the Sky",
+      "region_en": "Observatory",
+      "objective_it": "Assisti alla caduta di un Titano attraverso la frattura celeste."
     },
     {
       "id": 12,
@@ -221,13 +298,20 @@
       "dialogue": [
         {
           "speaker": "Iris",
-          "text": "Sette divinità. I loro nomi sono stati rimossi dalla nostra storia."
+          "text": "Sette divinità. I loro nomi sono stati rimossi dalla nostra storia.",
+          "speaker_en": "Iris",
+          "text_en": "Seven gods. Their names were erased from our history."
         },
         {
           "speaker": "Selene",
-          "text": "Empyrea. Il regno oltre il firmamento."
+          "text": "Empyrea. Il regno oltre il firmamento.",
+          "speaker_en": "Selene",
+          "text_en": "Empyrea. The realm beyond the firmament."
         }
-      ]
+      ],
+      "title_en": "The Celestial Council",
+      "region_en": "Aetheryon",
+      "objective_it": "Indaga sulle sette antiche divinità."
     },
     {
       "id": 13,
@@ -240,13 +324,20 @@
       "dialogue": [
         {
           "speaker": "Selene",
-          "text": "Guarda questi ritratti. Hanno tremila anni."
+          "text": "Guarda questi ritratti. Hanno tremila anni.",
+          "speaker_en": "Selene",
+          "text_en": "Look at these portraits. They're three thousand years old."
         },
         {
           "speaker": "Kael",
-          "text": "Aldren e Lucien. Sono ancora vivi."
+          "text": "Aldren e Lucien. Sono ancora vivi.",
+          "speaker_en": "Kael",
+          "text_en": "Aldren and Lucien. They're still alive."
         }
-      ]
+      ],
+      "title_en": "The Seven Traitors",
+      "region_en": "Aureth",
+      "objective_it": "Infiltrati negli archivi con Selene e Iris."
     },
     {
       "id": 14,
@@ -259,13 +350,20 @@
       "dialogue": [
         {
           "speaker": "Archivio",
-          "text": "Sette eroi sottrassero il Cuore dell'Eternità alle divinità."
+          "text": "Sette eroi sottrassero il Cuore dell'Eternità alle divinità.",
+          "speaker_en": "Archive",
+          "text_en": "Seven heroes stole the Heart of Eternity from the gods."
         },
         {
           "speaker": "Kael",
-          "text": "La Gilda ci ha protetti. Ma a quale prezzo?"
+          "text": "La Gilda ci ha protetti. Ma a quale prezzo?",
+          "speaker_en": "Kael",
+          "text_en": "The Guild protected us. But at what cost?"
         }
-      ]
+      ],
+      "title_en": "The True Origin of the Guild",
+      "region_en": "Aureth",
+      "objective_it": "Scopri il furto del Cuore dell’Eternità."
     },
     {
       "id": 15,
@@ -278,13 +376,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Il Cuore modifica la realtà. Gli Eidolon ricordano ciò che viene perduto."
+          "text": "Il Cuore modifica la realtà. Gli Eidolon ricordano ciò che viene perduto.",
+          "speaker_en": "Kael",
+          "text_en": "The Heart changes reality. The Eidolon remember what is lost."
         },
         {
           "speaker": "Kael",
-          "text": "È successo anche a me."
+          "text": "È successo anche a me.",
+          "speaker_en": "Kael",
+          "text_en": "It happened to me, too."
         }
-      ]
+      ],
+      "title_en": "The Price of Survival",
+      "region_en": "Aureth",
+      "objective_it": "Scopri la natura degli Eidolon e della Discrepanza."
     },
     {
       "id": 16,
@@ -297,13 +402,20 @@
       "dialogue": [
         {
           "speaker": "Noah",
-          "text": "Quando torni, mi racconti un'altra avventura?"
+          "text": "Quando torni, mi racconti un'altra avventura?",
+          "speaker_en": "Noah",
+          "text_en": "Will you tell me another adventure when you get home?"
         },
         {
           "speaker": "Kael",
-          "text": "Sei mio fratello. Nessuno potrà negarlo."
+          "text": "Sei mio fratello. Nessuno potrà negarlo.",
+          "speaker_en": "Kael",
+          "text_en": "You're my brother. No one can take that away."
         }
-      ]
+      ],
+      "title_en": "The Impossible Brother",
+      "region_en": "Valdris",
+      "objective_it": "Scopri l’origine di Noah e decidi di proteggerlo."
     },
     {
       "id": 17,
@@ -316,13 +428,20 @@
       "dialogue": [
         {
           "speaker": "Riven",
-          "text": "Senza l'Egida saremmo tutti morti."
+          "text": "Senza l'Egida saremmo tutti morti.",
+          "speaker_en": "Riven",
+          "text_en": "Without the Aegis we'd all be dead."
         },
         {
           "speaker": "Selene",
-          "text": "Deve esserci un'altra strada."
+          "text": "Deve esserci un'altra strada.",
+          "speaker_en": "Selene",
+          "text_en": "There has to be another way."
         }
-      ]
+      ],
+      "title_en": "The Guild Divides",
+      "region_en": "Aureth",
+      "objective_it": "Incontra le tre fazioni e affronta le scelte dei compagni."
     },
     {
       "id": 18,
@@ -335,13 +454,20 @@
       "dialogue": [
         {
           "speaker": "Nhalor",
-          "text": "I Titani cercano l'energia del Cuore. Non tutti gli dei vogliono la vostra fine."
+          "text": "I Titani cercano l'energia del Cuore. Non tutti gli dei vogliono la vostra fine.",
+          "speaker_en": "Nhalor",
+          "text_en": "The Titans seek the Heart's energy. Some gods still want you to live."
         },
         {
           "speaker": "Kael",
-          "text": "Allora questa guerra si alimenta da sola."
+          "text": "Allora questa guerra si alimenta da sola.",
+          "speaker_en": "Kael",
+          "text_en": "Then this war is feeding itself."
         }
-      ]
+      ],
+      "title_en": "The First God",
+      "region_en": "Aetheryon",
+      "objective_it": "Incontra Nhalor e scopri la natura dei Titani."
     },
     {
       "id": 19,
@@ -354,13 +480,20 @@
       "dialogue": [
         {
           "speaker": "Bambina",
-          "text": "Ti ricordi di me? Mi sono svegliata in un mondo senza sole."
+          "text": "Ti ricordi di me? Mi sono svegliata in un mondo senza sole.",
+          "speaker_en": "Girl",
+          "text_en": "Do you remember me? I woke up in a world without a sun."
         },
         {
           "speaker": "Kael",
-          "text": "L'Oblio. Le persone cancellate sono ancora vive."
+          "text": "L'Oblio. Le persone cancellate sono ancora vive.",
+          "speaker_en": "Kael",
+          "text_en": "Oblivion. The people who were erased are still alive."
         }
-      ]
+      ],
+      "title_en": "The Return of the Forgotten",
+      "region_en": "Aetheryon",
+      "objective_it": "Ritrova la bambina di Vareth e scopri l’Oblio."
     },
     {
       "id": 20,
@@ -373,13 +506,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Questa città non appartiene al nostro mondo. Eppure è reale."
+          "text": "Questa città non appartiene al nostro mondo. Eppure è reale.",
+          "speaker_en": "Kael",
+          "text_en": "This city doesn't belong in our world. Yet it's real."
         },
         {
           "speaker": "Kael",
-          "text": "Devo aiutare chi è stato dimenticato."
+          "text": "Devo aiutare chi è stato dimenticato.",
+          "speaker_en": "Kael",
+          "text_en": "I have to help those who were forgotten."
         }
-      ]
+      ],
+      "title_en": "Oblivion",
+      "region_en": "Oblivion",
+      "objective_it": "Attraversa la frattura ed esplora le realtà cancellate."
     },
     {
       "id": 21,
@@ -392,13 +532,20 @@
       "dialogue": [
         {
           "speaker": "Elara",
-          "text": "Kael? Ti credevo morto."
+          "text": "Kael? Ti credevo morto.",
+          "speaker_en": "Elara",
+          "text_en": "Kael? I thought you were dead."
         },
         {
           "speaker": "Kael",
-          "text": "Non esiste una realtà che valga meno di un'altra."
+          "text": "Non esiste una realtà che valga meno di un'altra.",
+          "speaker_en": "Kael",
+          "text_en": "Every reality deserves to exist."
         }
-      ]
+      ],
+      "title_en": "The Family He Should Have Had",
+      "region_en": "Oblivion",
+      "objective_it": "Incontra la famiglia Veyr di un’altra realtà."
     },
     {
       "id": 22,
@@ -411,13 +558,20 @@
       "dialogue": [
         {
           "speaker": "Noah",
-          "text": "Fratellone, perché non venivi a prendermi?"
+          "text": "Fratellone, perché non venivi a prendermi?",
+          "speaker_en": "Noah",
+          "text_en": "Big brother, why didn't you come for me?"
         },
         {
           "speaker": "Kael",
-          "text": "Non permetterò più che ci separino."
+          "text": "Non permetterò più che ci separino.",
+          "speaker_en": "Kael",
+          "text_en": "I won't let them separate us again."
         }
-      ]
+      ],
+      "title_en": "The Disappearance of Noah",
+      "region_en": "Oblivion",
+      "objective_it": "Ritrova Noah dopo che il mondo lo ha dimenticato."
     },
     {
       "id": 23,
@@ -430,13 +584,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Cento livelli verso il cielo. Questa volta non scenderò."
+          "text": "Cento livelli verso il cielo. Questa volta non scenderò.",
+          "speaker_en": "Kael",
+          "text_en": "A hundred floors toward the sky. This time I'll climb."
         },
         {
           "speaker": "Kael",
-          "text": "La Scala dell'Eternità è aperta."
+          "text": "La Scala dell'Eternità è aperta.",
+          "speaker_en": "Kael",
+          "text_en": "The Stair of Eternity is open."
         }
-      ]
+      ],
+      "title_en": "The Last Dungeon",
+      "region_en": "Stair of Eternity",
+      "objective_it": "Ottieni le chiavi dei fondatori e sali i cento livelli della Scala dell’Eternità."
     },
     {
       "id": 24,
@@ -449,13 +610,20 @@
       "dialogue": [
         {
           "speaker": "Elyria",
-          "text": "Gli dei non sono creatori. Siamo custodi delle leggi dell'esistenza."
+          "text": "Gli dei non sono creatori. Siamo custodi delle leggi dell'esistenza.",
+          "speaker_en": "Elyria",
+          "text_en": "The gods did not create the world. We are custodians of the laws of existence."
         },
         {
           "speaker": "Kael",
-          "text": "Nessuno dovrebbe controllare da solo il potere dell'Origine."
+          "text": "Nessuno dovrebbe controllare da solo il potere dell'Origine.",
+          "speaker_en": "Kael",
+          "text_en": "No one should wield the Origin's power alone."
         }
-      ]
+      ],
+      "title_en": "The Truth About Creation",
+      "region_en": "Empyrea",
+      "objective_it": "Incontra Elyria e apprendi la verità sull’Origine."
     },
     {
       "id": 25,
@@ -468,13 +636,20 @@
       "dialogue": [
         {
           "speaker": "Kael",
-          "text": "Tutte le città sono sotto attacco."
+          "text": "Tutte le città sono sotto attacco.",
+          "speaker_en": "Kael",
+          "text_en": "Every city is under attack."
         },
         {
           "speaker": "Kael",
-          "text": "Dobbiamo porre fine alla guerra."
+          "text": "Dobbiamo porre fine alla guerra.",
+          "speaker_en": "Kael",
+          "text_en": "We have to end this war."
         }
-      ]
+      ],
+      "title_en": "The War of the Gods",
+      "region_en": "Empyrea",
+      "objective_it": "Difendi l’umanità e affronta le divinità schierate con Aurelion."
     },
     {
       "id": 26,
@@ -487,30 +662,43 @@
       "dialogue": [
         {
           "speaker": "Aurelion",
-          "text": "Sacrificheresti davvero l'ordine dell'universo per un solo bambino?"
+          "text": "Sacrificheresti davvero l'ordine dell'universo per un solo bambino?",
+          "speaker_en": "Aurelion",
+          "text_en": "Would you really sacrifice the order of the universe for a single child?"
         },
         {
           "speaker": "Kael",
-          "text": "Un universo in cui qualcuno può decidere che una vita non merita di esistere non è un universo in ordine."
+          "text": "Un universo in cui qualcuno può decidere che una vita non merita di esistere non è un universo in ordine.",
+          "speaker_en": "Kael",
+          "text_en": "A universe where someone can decide that a life doesn't deserve to exist is a universe without order."
         }
-      ]
+      ],
+      "title_en": "Aurelion, God of Order",
+      "region_en": "Origin",
+      "objective_it": "Sconfiggi Aurelion e scegli il destino della realtà."
     }
   ],
   "endings": [
     {
       "id": "custodian",
       "title": "Il nuovo custode",
-      "epilogue": "Kael governa la realtà. Secoli dopo, un nuovo avventuriero scopre una persona che non ricorda. Il ciclo ricomincia."
+      "epilogue": "Kael governa la realtà. Secoli dopo, un nuovo avventuriero scopre una persona che non ricorda. Il ciclo ricomincia.",
+      "title_en": "The New Custodian",
+      "epilogue_en": "Kael rules reality. Centuries later, a young adventurer meets someone they don't remember. The cycle begins again."
     },
     {
       "id": "origin",
       "title": "Il ritorno all'origine",
-      "epilogue": "La realtà originaria ritorna. A casa, la sedia di Noah è vuota. Kael è il solo a ricordarlo."
+      "epilogue": "La realtà originaria ritorna. A casa, la sedia di Noah è vuota. Kael è il solo a ricordarlo.",
+      "title_en": "Return to the Origin",
+      "epilogue_en": "The original reality returns. Back home, Noah's chair is empty. Kael alone remembers him."
     },
     {
       "id": "guild",
       "title": "L'eternità della Gilda",
-      "epilogue": "Le mura rimangono. Kael guida l'Egida e rivela la verità, ma le Discrepanze continuano."
+      "epilogue": "Le mura rimangono. Kael guida l'Egida e rivela la verità, ma le Discrepanze continuano.",
+      "title_en": "The Eternity of the Guild",
+      "epilogue_en": "The walls stand. Kael leads the Aegis and reveals the truth, but the Discrepancies continue."
     },
     {
       "id": "freedom",
@@ -520,7 +708,9 @@
         "eidolon_aid",
         "origin_truth"
       ],
-      "epilogue": "Le realtà dimenticate sopravvivono. Le mura si aprono. Noah chiede cosa ci sia oltre: Tutto quello che vorrai scoprire."
+      "epilogue": "Le realtà dimenticate sopravvivono. Le mura si aprono. Noah chiede cosa ci sia oltre: Tutto quello che vorrai scoprire.",
+      "title_en": "A World Without Masters",
+      "epilogue_en": "Forgotten realities survive. The walls open. Noah asks what lies beyond. Everything you want to discover."
     }
   ]
 }

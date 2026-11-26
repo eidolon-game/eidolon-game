@@ -1,15 +1,40 @@
 #include "EidolonCampaignSubsystem.h"
 #include "EidolonCampaignSave.h"
+#include "Quest/EidolonFirstDescentRules.h"
+#include "World/EidolonWorldAccess.h"
+#include "Internationalization/Culture.h"
+#include "Internationalization/Internationalization.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 #include "Dom/JsonObject.h"
+#include "UObject/UObjectGlobals.h"
 
 namespace
 {
     const FString Slot = TEXT("EidolonCampaign01");
+
+    FString ReadText(const FJsonObject& Object, const TCHAR* Preferred, const TCHAR* Fallback)
+    {
+        FString Value;
+        if (Object.TryGetStringField(Preferred, Value) && !Value.IsEmpty()) return Value;
+        return Object.GetStringField(Fallback);
+    }
+
+    bool ResolveRegion(FName Id, EidolonWorld::Region& Destination)
+    {
+        using EidolonWorld::Region;
+        if (Id == TEXT("valdris")) { Destination = Region::Valdris; return true; }
+        if (Id == TEXT("giant_territory")) { Destination = Region::GiantTerritory; return true; }
+        if (Id == TEXT("continent")) { Destination = Region::Continent; return true; }
+        if (Id == TEXT("vareth")) { Destination = Region::Vareth; return true; }
+        if (Id == TEXT("oblivion")) { Destination = Region::Oblivion; return true; }
+        if (Id == TEXT("stair")) { Destination = Region::Stair; return true; }
+        if (Id == TEXT("empyrea")) { Destination = Region::Empyrea; return true; }
+        return false;
+    }
 }
 
 void UEidolonCampaignSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -27,6 +52,7 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
     if (!FJsonSerializer::Deserialize(TJsonReaderFactory<>::Create(Data), Root) || !Root.IsValid()) return false;
     const TArray<TSharedPtr<FJsonValue>>* Values = nullptr;
     if (!Root->TryGetArrayField(TEXT("chapters"), Values) || Values->Num() != 26) return false;
+    const bool bItalian = FInternationalization::Get().GetCurrentLanguage()->GetTwoLetterISOLanguageName() == TEXT("it");
     TArray<FEidolonChapter> Parsed;
     for (const auto& Value : *Values)
     {
@@ -35,9 +61,9 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
         FEidolonChapter C;
         C.Id = Object->GetIntegerField(TEXT("id"));
         C.Act = Object->GetIntegerField(TEXT("act"));
-        C.Title = Object->GetStringField(TEXT("title"));
-        C.Region = Object->GetStringField(TEXT("region"));
-        C.Objective = Object->GetStringField(TEXT("objective"));
+        C.Title = ReadText(*Object, bItalian ? TEXT("title") : TEXT("title_en"), TEXT("title"));
+        C.Region = ReadText(*Object, bItalian ? TEXT("region") : TEXT("region_en"), TEXT("region"));
+        C.Objective = ReadText(*Object, bItalian ? TEXT("objective_it") : TEXT("objective"), TEXT("objective"));
         C.Type = FName(*Object->GetStringField(TEXT("type")));
         C.Target = Object->GetIntegerField(TEXT("target"));
         if (C.Id != Parsed.Num()+1 || C.Act < 1 || C.Act > 10 || C.Target < 0) return false;
@@ -46,7 +72,12 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
             for (const auto& Line : *Lines)
             {
                 const auto Entry = Line->AsObject();
-                if (Entry.IsValid()) C.Dialogue.Add(Entry->GetStringField(TEXT("speaker")) + TEXT(": ") + Entry->GetStringField(TEXT("text")));
+                if (Entry.IsValid())
+                {
+                    const FString Speaker = ReadText(*Entry, bItalian ? TEXT("speaker") : TEXT("speaker_en"), TEXT("speaker"));
+                    const FString LineText = ReadText(*Entry, bItalian ? TEXT("text") : TEXT("text_en"), TEXT("text"));
+                    C.Dialogue.Add(Speaker + TEXT(": ") + LineText);
+                }
             }
         Parsed.Add(C);
     }
@@ -56,7 +87,11 @@ bool UEidolonCampaignSubsystem::LoadDefinitions()
     for (const auto& Value : *Endings)
     {
         const auto Entry = Value->AsObject();
-        if (Entry.IsValid()) Epilogues.Add(FName(*Entry->GetStringField(TEXT("id"))), Entry->GetStringField(TEXT("epilogue")));
+        if (Entry.IsValid())
+        {
+            const FName Id(*Entry->GetStringField(TEXT("id")));
+            Epilogues.Add(Id, ReadText(*Entry, bItalian ? TEXT("epilogue") : TEXT("epilogue_en"), TEXT("epilogue")));
+        }
     }
     Chapters = MoveTemp(Parsed);
     return true;
@@ -79,7 +114,12 @@ bool UEidolonCampaignSubsystem::LoadCampaign()
 
 bool UEidolonCampaignSubsystem::SaveCampaign()
 {
-    if (!IsValidCheckpoint(State)) return false;
+    return WriteCheckpoint(State);
+}
+
+bool UEidolonCampaignSubsystem::WriteCheckpoint(UEidolonCampaignSave* Snapshot) const
+{
+    if (!IsValidCheckpoint(Snapshot)) return false;
 
     // Never replace an occupied slot whose data we cannot recover.
     if (UGameplayStatics::DoesSaveGameExist(Slot, 0))
@@ -92,14 +132,54 @@ bool UEidolonCampaignSubsystem::SaveCampaign()
         }
     }
 
-    return UGameplayStatics::SaveGameToSlot(State, Slot, 0);
+    return UGameplayStatics::SaveGameToSlot(Snapshot, Slot, 0);
 }
 
 bool UEidolonCampaignSubsystem::IsValidCheckpoint(const UEidolonCampaignSave* Checkpoint) const
 {
     return Checkpoint && Checkpoint->Schema == 1
         && Checkpoint->Chapter > 0 && Chapters.IsValidIndex(Checkpoint->Chapter - 1)
+        && Checkpoint->FirstDescentCursor >= 0
+        && Checkpoint->FirstDescentCursor <= static_cast<int32>(EidolonFirstDescent::Steps.size())
+        && (Checkpoint->FirstDescentCursor == 0 || Checkpoint->Chapter >= 2)
         && Checkpoint->ObjectiveCount >= 0;
+}
+
+int32 UEidolonCampaignSubsystem::GetFirstDescentCursor() const
+{
+    return State ? State->FirstDescentCursor : 0;
+}
+
+bool UEidolonCampaignSubsystem::CanEnterWorldRegion(FName RegionId) const
+{
+    EidolonWorld::Region Destination;
+    if (!State || !ResolveRegion(RegionId, Destination)) return false;
+
+    const EidolonWorld::Progress Progress{
+        State->Chapter, State->GiantsDefeated, State->StairFloor,
+        HasFlag(TEXT("sigil_aegis")), HasFlag(TEXT("sigil_horizon"))
+    };
+    return EidolonWorld::CanEnter(Destination, Progress);
+}
+
+bool UEidolonCampaignSubsystem::CommitFirstDescentEvent(const EidolonFirstDescent::Event& Event)
+{
+    if (!IsInGameThread() || !IsValidCheckpoint(State) ||
+        State->Chapter != Event.Chapter || !State->Ending.IsNone())
+    {
+        return false;
+    }
+
+    const auto Next = EidolonFirstDescent::Advance(State->FirstDescentCursor, Event);
+    if (!Next) return false;
+
+    // The cursor is the durable receipt because each position has one accepted payload.
+    UEidolonCampaignSave* Snapshot = DuplicateObject<UEidolonCampaignSave>(State.Get(), this);
+    Snapshot->FirstDescentCursor = static_cast<int32>(*Next);
+    if (!WriteCheckpoint(Snapshot)) return false;
+
+    State = Snapshot;
+    return true;
 }
 
 FEidolonChapter UEidolonCampaignSubsystem::CurrentChapter() const

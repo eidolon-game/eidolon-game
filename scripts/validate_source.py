@@ -27,3 +27,12 @@ assert all(len(c["dialogue"]) >= 2 and all(d["speaker"] and d["text"] for d in c
 assert all(e["epilogue"] for e in campaign["endings"])
 assert len(campaign["endings"]) == 4
 print("All 26 chapter dialogue records and four epilogues present.")
+
+for chapter in chapters:
+    for key in ("title_en", "region_en", "objective_it"):
+        assert chapter[key].strip(), (chapter["id"], key)
+    for dialogue in chapter["dialogue"]:
+        assert dialogue["speaker_en"].strip() and dialogue["text_en"].strip(), chapter["id"]
+for ending in campaign["endings"]:
+    assert ending["title_en"].strip() and ending["epilogue_en"].strip(), ending["id"]
+print("Italian and English campaign text validated for all chapters and endings.")

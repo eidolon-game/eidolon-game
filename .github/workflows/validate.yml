@@ -15,6 +15,16 @@ jobs:
           persist-credentials: false
       - name: Validate project manifest and source
         run: python3 scripts/validate_source.py
+      - name: Validate the first Abyss floor layout
+        run: python3 scripts/create_first_descent_floor.py --validate
+      - name: Run standalone progression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          for suite in first_descent_policy world_access; do
+            c++ -std=c++17 -Wall -Wextra -Werror -pedantic "tests/$suite.cpp" -o "$RUNNER_TEMP/$suite"
+            "$RUNNER_TEMP/$suite"
+          done
   windows-probe:
     runs-on: windows-latest
     steps:

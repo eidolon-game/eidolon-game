@@ -11,6 +11,9 @@ bool FEidolonCampaignRules::RunTest(const FString& Parameters)
     if (!TestNotNull(TEXT("Campaign subsystem"), Campaign)) { Instance->Shutdown(); return false; }
     TestTrue(TEXT("Definitions loaded"), Campaign->NewCampaign());
     TestEqual(TEXT("First chapter"), Campaign->CurrentChapter().Id, 1);
+    TestTrue(TEXT("Valdris accessible from the start"), Campaign->CanEnterWorldRegion(TEXT("valdris")));
+    TestFalse(TEXT("Unknown region rejected"), Campaign->CanEnterWorldRegion(TEXT("unknown")));
+    TestFalse(TEXT("Giant territory initially locked"), Campaign->CanEnterWorldRegion(TEXT("giant_territory")));
     TestFalse(TEXT("Cannot skip unresolved chapter"), Campaign->AdvanceChapter());
     TestFalse(TEXT("Cannot select early ending"), Campaign->ChooseEnding(TEXT("freedom")));
     Campaign->SetFlag(TEXT("chapter_1_resolved"));
@@ -32,7 +35,17 @@ bool FEidolonCampaignRules::RunTest(const FString& Parameters)
         if (Chapter.Target > 0) TestTrue(TEXT("Complete objective"), Campaign->RecordObjective(Chapter.Type, Chapter.Target));
         Campaign->SetFlag(FName(*FString::Printf(TEXT("chapter_%d_resolved"), ChapterId)));
         if (ChapterId == 22) Campaign->SetFlag(TEXT("noah_found_in_oblivion"));
+        if (ChapterId == 4)
+            TestFalse(TEXT("Completing the floor still requires leaving chapter four"), Campaign->CanEnterWorldRegion(TEXT("giant_territory")));
+        if (ChapterId == 7)
+            TestFalse(TEXT("Defeating one hundred giants still requires passing the second wall"), Campaign->CanEnterWorldRegion(TEXT("continent")));
         if (ChapterId < 26) TestTrue(TEXT("Advance chapter"), Campaign->AdvanceChapter());
+        if (ChapterId == 4)
+            TestTrue(TEXT("Aegis Seal unlocks Giant territory"), Campaign->CanEnterWorldRegion(TEXT("giant_territory")));
+        if (ChapterId == 7)
+            TestTrue(TEXT("Horizon Seal unlocks the continent"), Campaign->CanEnterWorldRegion(TEXT("continent")));
+        if (ChapterId == 23)
+            TestTrue(TEXT("Completing the Stair unlocks Empyrea"), Campaign->CanEnterWorldRegion(TEXT("empyrea")));
     }
     TestFalse(TEXT("Secret ending locked"), Campaign->CanChooseEnding(TEXT("freedom")));
     Campaign->SetFlag(TEXT("lost_memories"));

@@ -1,5 +1,7 @@
 #include "EidolonArenaEnemy.h"
 #include "EidolonCharacter.h"
+#include "EidolonCampaignSubsystem.h"
+#include "Engine/GameInstance.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
@@ -39,6 +41,15 @@ float AEidolonArenaEnemy::TakeDamage(float Amount, const FDamageEvent& Event, AC
     if (Amount <= 0.f || Health <= 0.f) return 0.f;
     const float Applied = FMath::Min(Health, Amount);
     Health -= Applied;
-    if (Health <= 0.f) Destroy();
+    if (Health <= 0.f)
+    {
+        if (auto* GI = GetGameInstance())
+            if (auto* C = GI->GetSubsystem<UEidolonCampaignSubsystem>())
+            {
+                const auto Chapter = C->CurrentChapter();
+                if (Chapter.Id != 4 && Chapter.Id != 23) C->RecordObjective(Chapter.Type);
+            }
+        Destroy();
+    }
     return Applied;
 }

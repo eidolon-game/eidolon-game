@@ -33,7 +33,7 @@ inline std::string Fingerprint(const Command& c){
 // Trusted callers must validate event provenance, current chapter and entitlement.
 // Save commits the returned candidate together with quest progress before acknowledgement.
 inline Result Apply(State& s,const Catalog& catalog,const Command& c,int activeChapter){
- if(!Id(c.id)||!Id(c.source)||!Id(c.target)||!Id(c.quest)||c.chapter<1||c.chapter>26||!Valid(s,catalog))return Result::Rejected;
+ if(c.items.size()>256||c.equip.size()>2||!Id(c.id)||!Id(c.source)||!Id(c.target)||!Id(c.quest)||c.chapter<1||c.chapter>26||!Valid(s,catalog))return Result::Rejected;
  auto fp=Fingerprint(c);auto receipt=s.receipts.find(c.id);
  if(receipt!=s.receipts.end())return receipt->second==fp?Result::Duplicate:Result::Conflict;
  if(c.chapter!=activeChapter||s.receipts.size()>=100000||c.gold<0||c.gold>Cap||c.xp<0||c.xp>XpCap)return Result::Rejected;
@@ -47,7 +47,7 @@ inline Result Apply(State& s,const Catalog& catalog,const Command& c,int activeC
   for(auto& p:c.items){if(p.second<=0||Qty(next.items,p.first)<p.second)return Result::Rejected;auto& n=next.items[p.first];n-=p.second;if(!n)next.items.erase(p.first);}
  }else if(c.type=="equip"){if(c.gold||c.xp||!c.items.empty()||c.equip.empty())return Result::Rejected;}
  else return Result::Rejected;
- for(auto& p:c.equip){if(p.second.empty())next.equipped.erase(p.first);else next.equipped[p.first]=p.second;}
+ for(auto& p:c.equip){if(p.first!="weapon"&&p.first!="body")return Result::Rejected;if(p.second.empty())next.equipped.erase(p.first);else next.equipped[p.first]=p.second;}
  if(!Valid(next,catalog))return Result::Rejected;
  next.receipts.emplace(c.id,std::move(fp));s=std::move(next);return Result::Applied;
 }

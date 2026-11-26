@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "status": "prototype_specification",
+  "units": "cm",
+  "assets": [
+    {
+      "id": "env_asset_wall_stone",
+      "size_cm": [
+        400,
+        50,
+        300
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_floor_stone",
+      "size_cm": [
+        200,
+        200,
+        18
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_door_frame",
+      "size_cm": [
+        150,
+        25,
+        240
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_table_oak",
+      "size_cm": [
+        160,
+        80,
+        80
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_chair_oak",
+      "size_cm": [
+        45,
+        45,
+        90
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_bed_child",
+      "size_cm": [
+        150,
+        75,
+        65
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_storage_crate",
+      "size_cm": [
+        60,
+        45,
+        45
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_toy_wood",
+      "size_cm": [
+        20,
+        10,
+        15
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_forge_anvil",
+      "size_cm": [
+        65,
+        28,
+        85
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_dorm_bunk",
+      "size_cm": [
+        200,
+        90,
+        190
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    },
+    {
+      "id": "env_asset_catacomb_pier",
+      "size_cm": [
+        80,
+        80,
+        300
+      ],
+      "pivot": "bottom_center",
+      "status": "specified",
+      "provenance": "original project design",
+      "rights": "all_rights_reserved"
+    }
+  ],
+  "location_ids": [
+    "env_veyr_home",
+    "env_forge",
+    "env_guild",
+    "env_dormitory",
+    "env_abyss"
+  ],
+  "notes": "Dimensions provisional pending World and Level Design. No binary asset or registry approval implied."
+}

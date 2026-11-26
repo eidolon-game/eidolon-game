@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "states": [
+    {
+      "id": "env.veyr-home.before",
+      "chapter": 1,
+      "room": "ordinary storage proposal",
+      "noah_props": false
+    },
+    {
+      "id": "env.veyr-home.present",
+      "chapter": 2,
+      "room": "Noah bedroom",
+      "noah_props": true
+    },
+    {
+      "id": "env.veyr-home.erased",
+      "chapter": 22,
+      "room": "storage",
+      "noah_props": false
+    },
+    {
+      "id": "env.vareth.ruins",
+      "chapter": 10,
+      "layout": "ruins"
+    },
+    {
+      "id": "env.vareth.erased",
+      "chapter": 10,
+      "layout": "vegetated plain"
+    },
+    {
+      "id": "env.oblivion.veyr-alternate",
+      "chapter": 21,
+      "layout": "alternate family home"
+    },
+    {
+      "id": "env.oblivion.valdris-deserted",
+      "chapter": 22,
+      "layout": "deserted city"
+    }
+  ],
+  "contract": "Save and Quest own transition predicates; chapter is earliest disclosure, not automatic transition. Stable entity IDs, atomic collision/nav/visual changes, no spoiler preload exposure."
+}
